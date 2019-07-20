@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="TMcxAndTMgj_GoodBottomV">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Psz-Iq-ZIh">
+                    <rect key="frame" x="18" y="5" width="284" height="40"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cwo-Qb-Ymz">
+                            <rect key="frame" x="0.0" y="0.0" width="142" height="40"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <inset key="imageEdgeInsets" minX="-6" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            <state key="normal" title="分享赚" image="icon_tmdt_share" backgroundImage="img_button_tm_lift">
+                                <color key="titleColor" red="0.97254901959999995" green="0.87843137250000003" blue="0.36078431370000003" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="shareAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="a0x-SR-aE4"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lPV-dB-iWt">
+                            <rect key="frame" x="142" y="0.0" width="142" height="40"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <inset key="imageEdgeInsets" minX="-6" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            <state key="normal" title="自购省" image="icon_tm_shopping" backgroundImage="img_button_tm__right">
+                                <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="buyAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="aBz-ip-Z0S"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="lPV-dB-iWt" firstAttribute="top" secondItem="Psz-Iq-ZIh" secondAttribute="top" id="09e-dC-iWK"/>
+                        <constraint firstItem="Cwo-Qb-Ymz" firstAttribute="width" secondItem="lPV-dB-iWt" secondAttribute="width" id="HJz-KK-aJT"/>
+                        <constraint firstAttribute="trailing" secondItem="lPV-dB-iWt" secondAttribute="trailing" id="JIy-OB-b2m"/>
+                        <constraint firstItem="lPV-dB-iWt" firstAttribute="leading" secondItem="Cwo-Qb-Ymz" secondAttribute="trailing" id="YVW-s9-755"/>
+                        <constraint firstAttribute="bottom" secondItem="Cwo-Qb-Ymz" secondAttribute="bottom" id="Zpc-3a-xqj"/>
+                        <constraint firstItem="Cwo-Qb-Ymz" firstAttribute="leading" secondItem="Psz-Iq-ZIh" secondAttribute="leading" id="aZl-0Q-nfY"/>
+                        <constraint firstItem="Cwo-Qb-Ymz" firstAttribute="top" secondItem="Psz-Iq-ZIh" secondAttribute="top" id="jZd-YH-VPS"/>
+                        <constraint firstAttribute="height" constant="40" id="mBx-d5-vbi"/>
+                        <constraint firstAttribute="bottom" secondItem="lPV-dB-iWt" secondAttribute="bottom" id="xbE-3m-iDz"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N8E-aO-iDm">
+                    <rect key="frame" x="18" y="5" width="284" height="40"/>
+                    <color key="backgroundColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="XDQ-Nb-eDj"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                    <state key="normal" title="一键查询优惠券">
+                        <color key="titleColor" red="0.97254901960784312" green="0.8784313725490196" blue="0.36078431372549019" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="checkAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="faN-DQ-NKh"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="N8E-aO-iDm" secondAttribute="trailing" constant="18" id="5wB-IG-Cxq"/>
+                <constraint firstItem="Psz-Iq-ZIh" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="18" id="80g-Bi-4zS"/>
+                <constraint firstItem="Psz-Iq-ZIh" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="NFB-QL-klL"/>
+                <constraint firstItem="Psz-Iq-ZIh" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="U1L-8B-G3o"/>
+                <constraint firstItem="N8E-aO-iDm" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="dzg-Xe-iSo"/>
+                <constraint firstItem="N8E-aO-iDm" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="18" id="kCw-D3-iWd"/>
+                <constraint firstItem="N8E-aO-iDm" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="nB4-u8-51T"/>
+                <constraint firstAttribute="trailing" secondItem="Psz-Iq-ZIh" secondAttribute="trailing" constant="18" id="pah-8F-7UL"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="checkBtn" destination="N8E-aO-iDm" id="vFn-r0-Jib"/>
+                <outlet property="contentview" destination="Psz-Iq-ZIh" id="T7T-sY-Qe2"/>
+                <outlet property="selfBuyBtn" destination="lPV-dB-iWt" id="Tp9-MG-587"/>
+                <outlet property="shareBtn" destination="Cwo-Qb-Ymz" id="ulw-Fk-bbM"/>
+            </connections>
+            <point key="canvasLocation" x="61.600000000000001" y="113.3433283358321"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="icon_tm_shopping" width="15" height="15"/>
+        <image name="icon_tmdt_share" width="15" height="15"/>
+        <image name="img_button_tm__right" width="170" height="40"/>
+        <image name="img_button_tm_lift" width="170" height="40"/>
+    </resources>
+</document>

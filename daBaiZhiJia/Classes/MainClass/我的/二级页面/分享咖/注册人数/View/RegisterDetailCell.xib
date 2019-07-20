@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="RI2-6D-gev" customClass="RegisterDetailCell">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5w3-RE-rRD" userLabel="lineView">
+                    <rect key="frame" x="15" y="49.5" width="384" height="0.5"/>
+                    <color key="backgroundColor" red="0.92549019610000005" green="0.92549019610000005" blue="0.92549019610000005" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="0.5" id="lFm-V0-Gz8"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="33" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1mZ-pT-kUS">
+                    <rect key="frame" x="141" y="16" width="19" height="18"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6666" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MSL-xA-PVO">
+                    <rect key="frame" x="190" y="16" width="37.5" height="18"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5566" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZUt-nt-bLi">
+                    <rect key="frame" x="339" y="16" width="37" height="18"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2018-01-02" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iMl-43-DJQ">
+                    <rect key="frame" x="15" y="16" width="82" height="18"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="5w3-RE-rRD" firstAttribute="leading" secondItem="RI2-6D-gev" secondAttribute="leading" constant="15" id="0OC-Ji-lHA"/>
+                <constraint firstItem="ZUt-nt-bLi" firstAttribute="centerY" secondItem="iMl-43-DJQ" secondAttribute="centerY" id="A4r-O8-ueP"/>
+                <constraint firstItem="1mZ-pT-kUS" firstAttribute="leading" secondItem="iMl-43-DJQ" secondAttribute="trailing" constant="44" id="B60-39-aUB"/>
+                <constraint firstAttribute="trailing" secondItem="ZUt-nt-bLi" secondAttribute="trailing" constant="38" id="MF5-eB-khA"/>
+                <constraint firstItem="1mZ-pT-kUS" firstAttribute="centerY" secondItem="iMl-43-DJQ" secondAttribute="centerY" id="P4F-Kx-qg8"/>
+                <constraint firstAttribute="bottom" secondItem="5w3-RE-rRD" secondAttribute="bottom" id="YCM-3R-zpN"/>
+                <constraint firstItem="iMl-43-DJQ" firstAttribute="top" secondItem="RI2-6D-gev" secondAttribute="top" constant="16" id="eEU-n3-mjw"/>
+                <constraint firstItem="iMl-43-DJQ" firstAttribute="leading" secondItem="RI2-6D-gev" secondAttribute="leading" constant="15" id="ixx-qL-ywy"/>
+                <constraint firstItem="MSL-xA-PVO" firstAttribute="centerY" secondItem="iMl-43-DJQ" secondAttribute="centerY" id="oJA-md-uC8"/>
+                <constraint firstAttribute="trailing" secondItem="5w3-RE-rRD" secondAttribute="trailing" constant="15" id="pMG-82-fhc"/>
+                <constraint firstItem="MSL-xA-PVO" firstAttribute="leading" secondItem="1mZ-pT-kUS" secondAttribute="trailing" constant="30" id="wMM-AM-1Hw"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="newsRegisNum" destination="ZUt-nt-bLi" id="s2G-uQ-NQ8"/>
+                <outlet property="regisLead" destination="B60-39-aUB" id="VK6-cs-Kzk"/>
+                <outlet property="regisNum" destination="1mZ-pT-kUS" id="pZ6-4O-UOF"/>
+                <outlet property="regisTrail" destination="wMM-AM-1Hw" id="dCu-ju-fmp"/>
+                <outlet property="time" destination="iMl-43-DJQ" id="dbU-Jk-pwC"/>
+                <outlet property="vipnum" destination="MSL-xA-PVO" id="LnS-6X-m0d"/>
+            </connections>
+        </view>
+    </objects>
+</document>

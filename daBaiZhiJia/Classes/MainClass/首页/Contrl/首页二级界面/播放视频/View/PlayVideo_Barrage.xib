@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="PlayVideo_Barrage">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="21"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="heo-hH-hEj">
+                    <rect key="frame" x="0.0" y="0.0" width="57.5" height="21"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="张三" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="23C-OO-ysO">
+                            <rect key="frame" x="10" y="3.5" width="22.5" height="14"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" red="0.23529411764705882" green="0.23529411764705882" blue="0.23529411764705882" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstItem="23C-OO-ysO" firstAttribute="centerY" secondItem="heo-hH-hEj" secondAttribute="centerY" id="Hh0-fE-Ku2"/>
+                        <constraint firstAttribute="trailing" secondItem="23C-OO-ysO" secondAttribute="trailing" constant="25" id="Ixh-MV-tB2"/>
+                        <constraint firstItem="23C-OO-ysO" firstAttribute="leading" secondItem="heo-hH-hEj" secondAttribute="leading" constant="10" id="j5B-3O-iTz"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dVU-ff-9dD">
+                    <rect key="frame" x="42.5" y="0.0" width="65" height="21"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="正在分享" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sQR-Y8-b4I">
+                            <rect key="frame" x="10" y="5" width="45" height="11"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="11" id="ier-l4-Oxf"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" red="0.41176470590000003" green="0.36078431370000003" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstItem="sQR-Y8-b4I" firstAttribute="centerY" secondItem="dVU-ff-9dD" secondAttribute="centerY" id="88Q-M2-FB1"/>
+                        <constraint firstAttribute="trailing" secondItem="sQR-Y8-b4I" secondAttribute="trailing" constant="10" id="Kh8-5a-d1R"/>
+                        <constraint firstItem="sQR-Y8-b4I" firstAttribute="leading" secondItem="dVU-ff-9dD" secondAttribute="leading" constant="10" id="r8b-Is-SlY"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="dVU-ff-9dD" firstAttribute="leading" secondItem="heo-hH-hEj" secondAttribute="trailing" constant="-15" id="10d-F0-48a"/>
+                <constraint firstItem="heo-hH-hEj" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="eGb-Mh-NHm"/>
+                <constraint firstAttribute="bottom" secondItem="heo-hH-hEj" secondAttribute="bottom" id="foi-ZO-2YA"/>
+                <constraint firstItem="heo-hH-hEj" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="n8d-I0-LVF"/>
+                <constraint firstItem="dVU-ff-9dD" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="t1I-SD-KBE"/>
+                <constraint firstAttribute="bottom" secondItem="dVU-ff-9dD" secondAttribute="bottom" id="vSJ-pP-cdP"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="action" destination="sQR-Y8-b4I" id="fwY-ut-Mds"/>
+                <outlet property="name" destination="23C-OO-ysO" id="r9c-Db-4B4"/>
+                <outlet property="view1" destination="heo-hH-hEj" id="KnK-eJ-7LU"/>
+                <outlet property="view2" destination="dVU-ff-9dD" id="l59-bA-QlM"/>
+            </connections>
+        </view>
+    </objects>
+</document>

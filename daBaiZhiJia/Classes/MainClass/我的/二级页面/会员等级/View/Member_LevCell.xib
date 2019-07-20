@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="Member_LevCell">
+            <rect key="frame" x="0.0" y="0.0" width="301" height="120"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_vip01" translatesAutoresizingMaskIntoConstraints="NO" id="Wsu-fc-NXF">
+                    <rect key="frame" x="0.0" y="0.0" width="301" height="120"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="Wsu-fc-NXF" secondAttribute="height" multiplier="301:120" id="l8l-bt-ldg"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="普通用户" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lua-AE-2uo">
+                    <rect key="frame" x="31" y="48" width="82" height="24"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" alpha="0.59999999999999998" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="当前等级" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cMi-F3-7fV">
+                    <rect key="frame" x="31" y="84" width="49.5" height="14.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="Wsu-fc-NXF" secondAttribute="trailing" id="6GU-9B-2b2"/>
+                <constraint firstItem="lua-AE-2uo" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="48" id="8HF-Wb-KKP"/>
+                <constraint firstItem="cMi-F3-7fV" firstAttribute="leading" secondItem="lua-AE-2uo" secondAttribute="leading" id="HoO-GY-fSu"/>
+                <constraint firstItem="lua-AE-2uo" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="31" id="J2U-Co-9PL"/>
+                <constraint firstItem="Wsu-fc-NXF" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="THI-kR-bVF"/>
+                <constraint firstAttribute="bottom" secondItem="Wsu-fc-NXF" secondAttribute="bottom" id="W28-cE-6N1"/>
+                <constraint firstItem="cMi-F3-7fV" firstAttribute="top" secondItem="lua-AE-2uo" secondAttribute="bottom" constant="12" id="idb-wl-QIZ"/>
+                <constraint firstItem="Wsu-fc-NXF" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="j4G-OJ-fjn"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="imageView" destination="Wsu-fc-NXF" id="cNU-mC-QUK"/>
+                <outlet property="isCurrent" destination="cMi-F3-7fV" id="5rN-Tf-fDn"/>
+                <outlet property="levTopCons" destination="8HF-Wb-KKP" id="rvY-31-hmk"/>
+                <outlet property="level" destination="lua-AE-2uo" id="c77-Yr-j4i"/>
+            </connections>
+        </view>
+    </objects>
+    <resources>
+        <image name="img_vip01" width="307" height="132"/>
+    </resources>
+</document>

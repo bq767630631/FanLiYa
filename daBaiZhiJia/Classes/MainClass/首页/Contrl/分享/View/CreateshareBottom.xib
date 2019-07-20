@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="CreateshareBottom">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="130"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="图片分享到" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uck-dN-gBU">
+                    <rect key="frame" x="156.5" y="10" width="62" height="15"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bPc-qw-3ia" userLabel="qqButton3">
+                    <rect key="frame" x="157.5" y="39" width="60" height="60"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="60" id="27i-gm-OdO"/>
+                        <constraint firstAttribute="width" secondItem="bPc-qw-3ia" secondAttribute="height" multiplier="1:1" id="APa-Dw-UjY"/>
+                    </constraints>
+                    <state key="normal" image="img_share_qq"/>
+                    <connections>
+                        <action selector="qqAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="GI0-od-lgY"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ET9-o2-vhZ" userLabel="qq空间Button4">
+                    <rect key="frame" x="233" y="39" width="60" height="60"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="ET9-o2-vhZ" secondAttribute="height" multiplier="1:1" id="p5X-xP-qyL"/>
+                    </constraints>
+                    <state key="normal" image="img_qqkongjian"/>
+                    <connections>
+                        <action selector="qZoneAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="rFd-QL-8UX"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KjR-4G-SFf" userLabel="保存Button5">
+                    <rect key="frame" x="305" y="39" width="60" height="60"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="KjR-4G-SFf" secondAttribute="height" multiplier="1:1" id="D5G-np-kDS"/>
+                    </constraints>
+                    <state key="normal" image="img_share_dowpic"/>
+                    <connections>
+                        <action selector="saveMesAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="1Sc-9u-a9f"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0aN-yM-eFJ" userLabel="微信Button">
+                    <rect key="frame" x="10" y="39" width="60" height="60"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="0aN-yM-eFJ" secondAttribute="height" multiplier="1:1" id="Ptg-3Q-rPb"/>
+                    </constraints>
+                    <state key="normal" image="img_share_weixin"/>
+                    <connections>
+                        <action selector="wxChatAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="q45-3n-I1x"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c7B-b3-e3d" userLabel="朋友圈Button">
+                    <rect key="frame" x="84" y="39" width="60" height="60"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="c7B-b3-e3d" secondAttribute="height" multiplier="1:1" id="qfs-RY-5Zu"/>
+                    </constraints>
+                    <state key="normal" image="img_share_quan"/>
+                    <connections>
+                        <action selector="wxSession:" destination="iN0-l3-epB" eventType="touchUpInside" id="Iv9-Yv-f8V"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="微信" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J8y-hO-eEK">
+                    <rect key="frame" x="27.5" y="109" width="25" height="15"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="QQ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eZ1-8Y-OOK">
+                    <rect key="frame" x="178" y="109" width="19" height="15"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="QQ空间" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h1b-NT-Cfs">
+                    <rect key="frame" x="241" y="109" width="44" height="15"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="保存图片" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LZf-Vb-ovk">
+                    <rect key="frame" x="310" y="109" width="50" height="15"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="朋友圈" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WGG-D9-QuJ">
+                    <rect key="frame" x="95.5" y="109" width="37" height="15"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L5F-l7-Efr" userLabel="lineView">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="1"/>
+                    <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="kaA-z2-MLb"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="WGG-D9-QuJ" firstAttribute="centerX" secondItem="c7B-b3-e3d" secondAttribute="centerX" id="3xN-bi-wbY"/>
+                <constraint firstItem="ET9-o2-vhZ" firstAttribute="width" secondItem="bPc-qw-3ia" secondAttribute="width" id="63I-AM-oMU"/>
+                <constraint firstItem="0aN-yM-eFJ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="8rc-gU-20q"/>
+                <constraint firstItem="bPc-qw-3ia" firstAttribute="top" secondItem="uck-dN-gBU" secondAttribute="bottom" constant="14" id="ESB-0Z-A4m"/>
+                <constraint firstItem="c7B-b3-e3d" firstAttribute="width" secondItem="bPc-qw-3ia" secondAttribute="width" id="IUX-q7-f4a"/>
+                <constraint firstItem="eZ1-8Y-OOK" firstAttribute="centerX" secondItem="bPc-qw-3ia" secondAttribute="centerX" id="JO5-qh-aBg"/>
+                <constraint firstItem="c7B-b3-e3d" firstAttribute="centerY" secondItem="bPc-qw-3ia" secondAttribute="centerY" id="Nlj-SP-hDT"/>
+                <constraint firstItem="eZ1-8Y-OOK" firstAttribute="top" secondItem="bPc-qw-3ia" secondAttribute="bottom" constant="10" id="OJ8-b9-FWh"/>
+                <constraint firstItem="ET9-o2-vhZ" firstAttribute="centerY" secondItem="bPc-qw-3ia" secondAttribute="centerY" id="PmG-Rb-UKb"/>
+                <constraint firstItem="uck-dN-gBU" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="RSQ-8z-jN9"/>
+                <constraint firstItem="J8y-hO-eEK" firstAttribute="centerX" secondItem="0aN-yM-eFJ" secondAttribute="centerX" id="RWT-oR-ddd"/>
+                <constraint firstItem="uck-dN-gBU" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="TLI-Es-QM8"/>
+                <constraint firstAttribute="trailing" secondItem="KjR-4G-SFf" secondAttribute="trailing" constant="10" id="TOv-m0-rSl"/>
+                <constraint firstItem="bPc-qw-3ia" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Tai-Dy-jQP"/>
+                <constraint firstItem="KjR-4G-SFf" firstAttribute="width" secondItem="bPc-qw-3ia" secondAttribute="width" id="Zgn-Wv-eE2"/>
+                <constraint firstItem="0aN-yM-eFJ" firstAttribute="width" secondItem="bPc-qw-3ia" secondAttribute="width" id="akA-7Y-cvf"/>
+                <constraint firstItem="KjR-4G-SFf" firstAttribute="centerY" secondItem="bPc-qw-3ia" secondAttribute="centerY" id="bMg-I3-885"/>
+                <constraint firstItem="LZf-Vb-ovk" firstAttribute="centerX" secondItem="KjR-4G-SFf" secondAttribute="centerX" id="bie-dT-OCB"/>
+                <constraint firstItem="ET9-o2-vhZ" firstAttribute="leading" secondItem="bPc-qw-3ia" secondAttribute="trailing" constant="15.5" id="bir-yN-SAO"/>
+                <constraint firstItem="bPc-qw-3ia" firstAttribute="centerY" secondItem="0aN-yM-eFJ" secondAttribute="centerY" id="cWy-gr-NSa"/>
+                <constraint firstItem="L5F-l7-Efr" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="cil-Il-1an"/>
+                <constraint firstItem="bPc-qw-3ia" firstAttribute="leading" secondItem="c7B-b3-e3d" secondAttribute="trailing" constant="13.5" id="hRe-b4-Ws6"/>
+                <constraint firstItem="L5F-l7-Efr" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="mQB-cg-zeV"/>
+                <constraint firstItem="LZf-Vb-ovk" firstAttribute="top" secondItem="KjR-4G-SFf" secondAttribute="bottom" constant="10" id="mSn-6W-RHl"/>
+                <constraint firstItem="J8y-hO-eEK" firstAttribute="top" secondItem="0aN-yM-eFJ" secondAttribute="bottom" constant="10" id="nAm-US-B1y"/>
+                <constraint firstItem="h1b-NT-Cfs" firstAttribute="centerX" secondItem="ET9-o2-vhZ" secondAttribute="centerX" id="ora-LU-Ouu"/>
+                <constraint firstAttribute="trailing" secondItem="L5F-l7-Efr" secondAttribute="trailing" id="ouM-ov-qy1"/>
+                <constraint firstItem="WGG-D9-QuJ" firstAttribute="top" secondItem="c7B-b3-e3d" secondAttribute="bottom" constant="10" id="xTV-fF-y0e"/>
+                <constraint firstItem="h1b-NT-Cfs" firstAttribute="top" secondItem="ET9-o2-vhZ" secondAttribute="bottom" constant="10" id="ykW-19-TlL"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="btn3LeadCons" destination="hRe-b4-Ws6" id="wzU-CV-9tm"/>
+                <outlet property="btn3TrainCons" destination="bir-yN-SAO" id="SU7-R4-s9Q"/>
+                <outlet property="frendBtn" destination="c7B-b3-e3d" id="zS8-cG-qeY"/>
+                <outlet property="frendLb" destination="WGG-D9-QuJ" id="Uhp-nq-HB2"/>
+                <outlet property="imageW" destination="27i-gm-OdO" id="1E5-ax-Jlx"/>
+                <outlet property="qZonBtn" destination="ET9-o2-vhZ" id="gwn-AM-GfB"/>
+                <outlet property="qqBtn" destination="bPc-qw-3ia" id="LAo-VU-B6l"/>
+                <outlet property="qqLb" destination="eZ1-8Y-OOK" id="tbN-ix-CX7"/>
+                <outlet property="qzLb" destination="h1b-NT-Cfs" id="ucn-tR-lvI"/>
+                <outlet property="wxBtn" destination="0aN-yM-eFJ" id="NOg-Ze-0Y1"/>
+                <outlet property="wxLb" destination="J8y-hO-eEK" id="Qqu-z1-I4h"/>
+            </connections>
+            <point key="canvasLocation" x="131.8840579710145" y="103.79464285714285"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="img_qqkongjian" width="75.5" height="76"/>
+        <image name="img_share_dowpic" width="75.5" height="76"/>
+        <image name="img_share_qq" width="75.5" height="76"/>
+        <image name="img_share_quan" width="76" height="76"/>
+        <image name="img_share_weixin" width="76" height="76"/>
+    </resources>
+</document>

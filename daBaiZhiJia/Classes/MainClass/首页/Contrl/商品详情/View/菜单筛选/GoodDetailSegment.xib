@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="GoodDetailSegment">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="40"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1go-sl-rgw">
+                    <rect key="frame" x="79" y="6" width="30" height="28"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="30" id="bR8-19-4ZQ"/>
+                        <constraint firstAttribute="height" constant="28" id="gsu-Op-PyJ"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <state key="normal" title="宝贝">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <state key="selected" title="宝贝">
+                        <color key="titleColor" red="0.76470588240000004" green="0.59607843140000005" blue="0.30196078430000001" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="baobeiAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="a7I-nd-WGv"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wvm-om-3A8">
+                    <rect key="frame" x="266.5" y="6" width="30" height="28"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="28" id="XiK-wH-PHW"/>
+                        <constraint firstAttribute="width" constant="30" id="oph-tY-XdL"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <state key="normal" title="推荐">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <state key="selected" title="推荐">
+                        <color key="titleColor" red="0.76470588240000004" green="0.59607843140000005" blue="0.30196078430000001" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="tuijianAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="wSl-fp-kut"/>
+                    </connections>
+                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YsD-ef-ltX" userLabel="linView">
+                    <rect key="frame" x="79" y="33" width="30" height="2"/>
+                    <color key="backgroundColor" red="0.76470588240000004" green="0.59607843140000005" blue="0.30196078430000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="30" id="pv6-8N-CT7"/>
+                        <constraint firstAttribute="height" constant="2" id="wQh-Ac-bKe"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="1go-sl-rgw" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" multiplier="1/2" id="5BX-qs-pgb"/>
+                <constraint firstItem="YsD-ef-ltX" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" multiplier="0.5" id="6p2-Db-6Ej"/>
+                <constraint firstItem="1go-sl-rgw" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="JiX-1D-jdO"/>
+                <constraint firstItem="Wvm-om-3A8" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="dHa-Ul-vKP"/>
+                <constraint firstItem="Wvm-om-3A8" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" multiplier="1.5" id="djh-tO-t7A"/>
+                <constraint firstItem="YsD-ef-ltX" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" multiplier="1.7" id="ypb-Ht-bBB"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="baoBei" destination="1go-sl-rgw" id="tkj-zp-oca"/>
+                <outlet property="line" destination="YsD-ef-ltX" id="M74-Pf-klo"/>
+                <outlet property="line_cenX" destination="6p2-Db-6Ej" id="CHl-sk-TPn"/>
+                <outlet property="tuijian" destination="Wvm-om-3A8" id="akS-lM-o0H"/>
+            </connections>
+            <point key="canvasLocation" x="131.8840579710145" y="84.375"/>
+        </view>
+    </objects>
+</document>

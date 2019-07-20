@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="New_HomeFlashSale">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="185"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="imh-RX-3XW" userLabel="headView">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_new_time" translatesAutoresizingMaskIntoConstraints="NO" id="YH9-2f-o9L">
+                            <rect key="frame" x="10" y="11" width="18" height="18"/>
+                        </imageView>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_newxianshiqianggou" translatesAutoresizingMaskIntoConstraints="NO" id="0z3-eZ-fbc">
+                            <rect key="frame" x="33" y="13" width="65.5" height="14.5"/>
+                        </imageView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NIF-MO-p2a">
+                            <rect key="frame" x="215" y="5.5" width="95" height="29"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <state key="normal" title="疯抢中疯抢中&gt;">
+                                <color key="titleColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="buyBtnAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="M4o-Yu-jZW"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="0z3-eZ-fbc" firstAttribute="leading" secondItem="YH9-2f-o9L" secondAttribute="trailing" constant="5" id="3qL-8B-MPl"/>
+                        <constraint firstAttribute="trailing" secondItem="NIF-MO-p2a" secondAttribute="trailing" constant="10" id="7Xh-uE-wcg"/>
+                        <constraint firstItem="YH9-2f-o9L" firstAttribute="leading" secondItem="imh-RX-3XW" secondAttribute="leading" constant="10" id="c2H-Fb-Pa5"/>
+                        <constraint firstItem="0z3-eZ-fbc" firstAttribute="centerY" secondItem="imh-RX-3XW" secondAttribute="centerY" id="cuj-Jq-VD9"/>
+                        <constraint firstItem="NIF-MO-p2a" firstAttribute="centerY" secondItem="imh-RX-3XW" secondAttribute="centerY" id="liM-Zg-7ZK"/>
+                        <constraint firstItem="YH9-2f-o9L" firstAttribute="centerY" secondItem="imh-RX-3XW" secondAttribute="centerY" id="ogW-SN-op3"/>
+                        <constraint firstAttribute="height" constant="40" id="xIN-kL-h78"/>
+                    </constraints>
+                </view>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="nWh-ec-XJc">
+                    <rect key="frame" x="0.0" y="40" width="320" height="138"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="138" id="YZi-IS-rTd"/>
+                    </constraints>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="uv1-x2-bVd">
+                        <size key="itemSize" width="50" height="50"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                </collectionView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qGn-4s-30c" userLabel="lineView">
+                    <rect key="frame" x="0.0" y="178" width="320" height="7"/>
+                    <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="7" id="xRe-Uy-gos"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="imh-RX-3XW" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="CJe-Sa-AqQ"/>
+                <constraint firstItem="qGn-4s-30c" firstAttribute="top" secondItem="nWh-ec-XJc" secondAttribute="bottom" id="Mog-gO-m89"/>
+                <constraint firstItem="nWh-ec-XJc" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Tau-06-2OC"/>
+                <constraint firstItem="qGn-4s-30c" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="bhw-SZ-ZTd"/>
+                <constraint firstItem="nWh-ec-XJc" firstAttribute="top" secondItem="imh-RX-3XW" secondAttribute="bottom" id="gP5-xd-c1N"/>
+                <constraint firstAttribute="trailing" secondItem="imh-RX-3XW" secondAttribute="trailing" id="gbQ-lC-JLY"/>
+                <constraint firstAttribute="trailing" secondItem="nWh-ec-XJc" secondAttribute="trailing" id="j96-y6-TGe"/>
+                <constraint firstItem="imh-RX-3XW" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="qqw-j2-1tJ"/>
+                <constraint firstAttribute="trailing" secondItem="qGn-4s-30c" secondAttribute="trailing" id="wcJ-XH-YPI"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="buyBtn" destination="NIF-MO-p2a" id="fLB-5W-TdR"/>
+                <outlet property="collecTionView" destination="nWh-ec-XJc" id="5Et-AY-WL8"/>
+                <outlet property="lineV" destination="qGn-4s-30c" id="E56-GF-1Yk"/>
+            </connections>
+            <point key="canvasLocation" x="47.826086956521742" y="81.696428571428569"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="img_new_time" width="18" height="18"/>
+        <image name="img_newxianshiqianggou" width="65.5" height="14.5"/>
+    </resources>
+</document>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="DWSearchHeadView">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="25"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="热门搜索" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Wd-We-9YQ">
+                    <rect key="frame" x="15" y="5" width="61.5" height="15"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="15" id="Zyw-jW-uvj"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pd2-3W-WRg">
+                    <rect key="frame" x="379" y="0.0" width="25" height="25"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="25" id="Q8G-sJ-sPA"/>
+                        <constraint firstAttribute="width" constant="25" id="fjk-WL-bUN"/>
+                    </constraints>
+                    <state key="normal" image="deleteBtn"/>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="2Wd-We-9YQ" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="KFO-8s-bAg"/>
+                <constraint firstItem="pd2-3W-WRg" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="L28-UT-Jhb"/>
+                <constraint firstAttribute="trailing" secondItem="pd2-3W-WRg" secondAttribute="trailing" constant="10" id="l2F-gQ-BZr"/>
+                <constraint firstItem="2Wd-We-9YQ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="wMo-aU-221"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="deleteBtn" destination="pd2-3W-WRg" id="Ok9-A9-d4j"/>
+                <outlet property="titleLable" destination="2Wd-We-9YQ" id="SNQ-aF-ZfM"/>
+            </connections>
+        </view>
+    </objects>
+    <resources>
+        <image name="deleteBtn" width="16" height="17"/>
+    </resources>
+</document>

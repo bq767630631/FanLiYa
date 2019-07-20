@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="eQg-rL-JDi" customClass="MySpreadContrlcel">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EJf-Kq-hpm" userLabel="lineView">
+                    <rect key="frame" x="50" y="49.5" width="339" height="0.5"/>
+                    <color key="backgroundColor" red="0.92549019607843142" green="0.92549019607843142" blue="0.92549019607843142" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="0.5" id="gBl-DH-rhL"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2018-01-02" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MOW-Hm-QkF">
+                    <rect key="frame" x="50" y="16" width="82" height="18"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="欧系哦" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fVf-ta-PxM">
+                    <rect key="frame" x="184" y="16" width="46" height="18"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5566" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vZ7-Lf-4V9">
+                    <rect key="frame" x="331.5" y="16" width="37" height="18"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="vZ7-Lf-4V9" firstAttribute="centerY" secondItem="fVf-ta-PxM" secondAttribute="centerY" id="2ph-p5-Zkd"/>
+                <constraint firstItem="MOW-Hm-QkF" firstAttribute="leading" secondItem="eQg-rL-JDi" secondAttribute="leading" constant="50" id="Q8J-Zv-V7H"/>
+                <constraint firstAttribute="trailing" secondItem="vZ7-Lf-4V9" secondAttribute="trailing" constant="45.5" id="Rot-JZ-yiI"/>
+                <constraint firstItem="fVf-ta-PxM" firstAttribute="centerX" secondItem="eQg-rL-JDi" secondAttribute="centerX" id="Ylc-31-W3S"/>
+                <constraint firstItem="EJf-Kq-hpm" firstAttribute="leading" secondItem="eQg-rL-JDi" secondAttribute="leading" constant="50" id="fWG-kC-GCy"/>
+                <constraint firstItem="fVf-ta-PxM" firstAttribute="centerY" secondItem="eQg-rL-JDi" secondAttribute="centerY" id="iuC-cn-280"/>
+                <constraint firstItem="MOW-Hm-QkF" firstAttribute="top" secondItem="eQg-rL-JDi" secondAttribute="top" constant="16" id="nXr-xe-laO"/>
+                <constraint firstAttribute="trailing" secondItem="EJf-Kq-hpm" secondAttribute="trailing" constant="25" id="sdG-Vk-5Ld"/>
+                <constraint firstAttribute="bottom" secondItem="EJf-Kq-hpm" secondAttribute="bottom" id="t7j-cG-xPx"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="name" destination="fVf-ta-PxM" id="9Gc-ax-Y87"/>
+                <outlet property="num" destination="vZ7-Lf-4V9" id="AbT-d9-toy"/>
+                <outlet property="time" destination="MOW-Hm-QkF" id="dgq-OD-nvf"/>
+            </connections>
+        </view>
+    </objects>
+</document>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="CouponListBlankView">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ccS-yL-pzU" userLabel="conTainView">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img-blank-coupon" translatesAutoresizingMaskIntoConstraints="NO" id="bGN-Aj-9KD">
+                            <rect key="frame" x="97.5" y="93" width="180" height="130"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="130" id="W9S-Uz-l2w"/>
+                                <constraint firstAttribute="width" constant="180" id="nNb-5e-tFH"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="暂无优惠券" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tLM-tz-c0b">
+                            <rect key="frame" x="0.0" y="248" width="375" height="13"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="13" id="qwB-OD-qHE"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                            <color key="textColor" red="0.73333333333333328" green="0.73333333333333328" blue="0.73333333333333328" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gLv-Dk-m6f">
+                            <rect key="frame" x="152.5" y="287" width="70" height="30"/>
+                            <color key="backgroundColor" red="0.68627450980000004" green="0.52549019610000003" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="IkF-VE-jMn"/>
+                                <constraint firstAttribute="width" constant="70" id="arH-O1-Ixu"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <state key="normal" title="去逛逛"/>
+                            <connections>
+                                <action selector="btnAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="cVN-6p-s4N"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="gLv-Dk-m6f" firstAttribute="centerX" secondItem="ccS-yL-pzU" secondAttribute="centerX" id="0wK-mq-0CK"/>
+                        <constraint firstItem="gLv-Dk-m6f" firstAttribute="top" secondItem="tLM-tz-c0b" secondAttribute="bottom" constant="26" id="1iD-sb-q1e"/>
+                        <constraint firstItem="tLM-tz-c0b" firstAttribute="top" secondItem="bGN-Aj-9KD" secondAttribute="bottom" constant="25" id="3Lv-oL-t39"/>
+                        <constraint firstAttribute="trailing" secondItem="tLM-tz-c0b" secondAttribute="trailing" id="80q-GQ-syJ"/>
+                        <constraint firstItem="tLM-tz-c0b" firstAttribute="leading" secondItem="ccS-yL-pzU" secondAttribute="leading" id="OQY-mC-NUC"/>
+                        <constraint firstItem="bGN-Aj-9KD" firstAttribute="centerX" secondItem="ccS-yL-pzU" secondAttribute="centerX" id="SXo-s9-ObH"/>
+                        <constraint firstItem="bGN-Aj-9KD" firstAttribute="top" secondItem="ccS-yL-pzU" secondAttribute="top" constant="93" id="coN-4m-c6g"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="ccS-yL-pzU" secondAttribute="bottom" id="3Zi-SD-uoH"/>
+                <constraint firstItem="ccS-yL-pzU" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="QmJ-1o-7aQ"/>
+                <constraint firstAttribute="trailing" secondItem="ccS-yL-pzU" secondAttribute="trailing" id="cHQ-Gv-qzX"/>
+                <constraint firstItem="ccS-yL-pzU" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="rUw-zX-Nu4"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="actionBtn" destination="gLv-Dk-m6f" id="ze4-Cj-lds"/>
+                <outlet property="btnW" destination="arH-O1-Ixu" id="8Kr-rD-Z99"/>
+                <outlet property="imageView" destination="bGN-Aj-9KD" id="JeJ-Z0-haS"/>
+                <outlet property="titleLb" destination="tLM-tz-c0b" id="c6w-Dz-7ui"/>
+            </connections>
+            <point key="canvasLocation" x="132" y="128.18590704647679"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="img-blank-coupon" width="180" height="130"/>
+    </resources>
+</document>

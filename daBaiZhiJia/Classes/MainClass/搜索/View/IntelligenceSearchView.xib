@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="IntelligenceSearchView">
+            <rect key="frame" x="0.0" y="0.0" width="292" height="244"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_search_banner" translatesAutoresizingMaskIntoConstraints="NO" id="Vh1-pd-258">
+                    <rect key="frame" x="0.0" y="0.0" width="292" height="111"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="111" id="T6N-Cq-asx"/>
+                        <constraint firstAttribute="width" constant="292" id="Zlo-Jb-slH"/>
+                    </constraints>
+                </imageView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LRi-GA-n3C" userLabel="bgView">
+                    <rect key="frame" x="0.0" y="111" width="292" height="133"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="avf-ga-k2u">
+                    <rect key="frame" x="20" y="131" width="252" height="45"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W0f-II-XuH">
+                    <rect key="frame" x="0.0" y="202" width="145.5" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="xlY-Cn-InC"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <state key="normal" title="取消">
+                        <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="cancleAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="rAm-Id-A45"/>
+                    </connections>
+                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iQp-fc-9ja" userLabel="line1">
+                    <rect key="frame" x="0.0" y="196" width="292" height="1"/>
+                    <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="gnx-lK-loV"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kpM-o9-fcu" userLabel="linne2">
+                    <rect key="frame" x="145.5" y="197" width="1" height="40"/>
+                    <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="1" id="7qi-fl-6cf"/>
+                        <constraint firstAttribute="height" constant="40" id="doH-TB-Jrg"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Em6-k9-puc">
+                    <rect key="frame" x="146.5" y="202" width="145.5" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="yED-wV-rHY"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <state key="normal" title="搜索">
+                        <color key="titleColor" red="0.99215686274509807" green="0.60784313725490191" blue="0.035294117647058823" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="searchAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="t2e-2g-h0N"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="avf-ga-k2u" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="12Y-mA-eDw"/>
+                <constraint firstAttribute="trailing" secondItem="Em6-k9-puc" secondAttribute="trailing" id="4Rj-LE-rrH"/>
+                <constraint firstItem="Em6-k9-puc" firstAttribute="leading" secondItem="kpM-o9-fcu" secondAttribute="trailing" id="5ai-Wv-2Py"/>
+                <constraint firstAttribute="bottom" secondItem="W0f-II-XuH" secondAttribute="bottom" constant="2" id="5cK-Gr-PkF"/>
+                <constraint firstItem="Em6-k9-puc" firstAttribute="top" secondItem="iQp-fc-9ja" secondAttribute="bottom" constant="5" id="5lZ-by-FYC"/>
+                <constraint firstItem="LRi-GA-n3C" firstAttribute="top" secondItem="Vh1-pd-258" secondAttribute="bottom" id="A1a-ql-gX0"/>
+                <constraint firstItem="Vh1-pd-258" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="AxY-Ms-nYj"/>
+                <constraint firstAttribute="trailing" secondItem="iQp-fc-9ja" secondAttribute="trailing" id="Ep8-t4-ekc"/>
+                <constraint firstItem="kpM-o9-fcu" firstAttribute="top" secondItem="iQp-fc-9ja" secondAttribute="bottom" id="LQA-ni-u2z"/>
+                <constraint firstItem="W0f-II-XuH" firstAttribute="top" secondItem="iQp-fc-9ja" secondAttribute="bottom" constant="5" id="NMl-wC-tYu"/>
+                <constraint firstAttribute="trailing" secondItem="avf-ga-k2u" secondAttribute="trailing" constant="20" id="TXd-d7-CeG"/>
+                <constraint firstAttribute="trailing" secondItem="LRi-GA-n3C" secondAttribute="trailing" id="Y2G-GG-ETS"/>
+                <constraint firstItem="W0f-II-XuH" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="YVp-y2-tui"/>
+                <constraint firstItem="kpM-o9-fcu" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Yr6-RE-2Vr"/>
+                <constraint firstItem="avf-ga-k2u" firstAttribute="top" secondItem="Vh1-pd-258" secondAttribute="bottom" constant="20" id="jgB-BC-csS"/>
+                <constraint firstItem="kpM-o9-fcu" firstAttribute="leading" secondItem="W0f-II-XuH" secondAttribute="trailing" id="joA-k5-3ay"/>
+                <constraint firstAttribute="bottom" secondItem="LRi-GA-n3C" secondAttribute="bottom" id="kv1-SX-f35"/>
+                <constraint firstItem="iQp-fc-9ja" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="m2c-Ct-UEL"/>
+                <constraint firstItem="LRi-GA-n3C" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="nmF-jd-kIj"/>
+                <constraint firstAttribute="trailing" secondItem="Vh1-pd-258" secondAttribute="trailing" id="p9X-M7-AQ0"/>
+                <constraint firstItem="Vh1-pd-258" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="r3E-34-95U"/>
+                <constraint firstItem="iQp-fc-9ja" firstAttribute="top" secondItem="avf-ga-k2u" secondAttribute="bottom" constant="20" id="yko-TY-gD1"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="content" destination="avf-ga-k2u" id="0Nc-iL-drM"/>
+            </connections>
+            <point key="canvasLocation" x="47.826086956521742" y="69.642857142857139"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="img_search_banner" width="292" height="111"/>
+    </resources>
+</document>

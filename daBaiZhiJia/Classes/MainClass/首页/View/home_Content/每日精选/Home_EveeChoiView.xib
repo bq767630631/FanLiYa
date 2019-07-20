@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="Home_EveeChoiView">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9kJ-l4-wYH" userLabel="line3">
+                    <rect key="frame" x="15" y="13" width="2" height="15"/>
+                    <color key="backgroundColor" red="0.76470588240000004" green="0.59607843140000005" blue="0.30196078430000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="2" id="4Sz-6I-WAv"/>
+                        <constraint firstAttribute="height" constant="15" id="MVw-U9-YxE"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="每日精选" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p2n-py-Z4R">
+                    <rect key="frame" x="25" y="11.5" width="62" height="18"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Kss-1n-itx">
+                    <rect key="frame" x="0.0" y="44.5" width="320" height="200"/>
+                    <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="200" id="56R-pI-cxI"/>
+                    </constraints>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="xy0-WW-Kii">
+                        <size key="itemSize" width="50" height="50"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                </collectionView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="Kss-1n-itx" secondAttribute="trailing" id="JSn-gK-3b1"/>
+                <constraint firstItem="p2n-py-Z4R" firstAttribute="leading" secondItem="9kJ-l4-wYH" secondAttribute="trailing" constant="8" id="YB1-BE-461"/>
+                <constraint firstItem="p2n-py-Z4R" firstAttribute="centerY" secondItem="9kJ-l4-wYH" secondAttribute="centerY" id="Yvz-3g-nSM"/>
+                <constraint firstItem="9kJ-l4-wYH" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="13" id="ZT8-QK-cm1"/>
+                <constraint firstItem="Kss-1n-itx" firstAttribute="top" secondItem="p2n-py-Z4R" secondAttribute="bottom" constant="15" id="iAa-Lb-Mpz"/>
+                <constraint firstItem="Kss-1n-itx" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="pb0-on-F1b"/>
+                <constraint firstItem="9kJ-l4-wYH" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="wDg-K8-24b"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="everyCollecHCons" destination="56R-pI-cxI" id="jAv-zZ-0V6"/>
+                <outlet property="everyDayCollection" destination="Kss-1n-itx" id="PDv-oc-ptl"/>
+            </connections>
+        </view>
+    </objects>
+</document>

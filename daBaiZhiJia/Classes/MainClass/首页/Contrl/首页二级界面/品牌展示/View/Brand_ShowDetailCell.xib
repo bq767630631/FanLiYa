@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="Brand_ShowDetailCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="96"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="95.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Obl-d8-NKX">
+                        <rect key="frame" x="0.0" y="0.0" width="85" height="85"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="85" id="602-ZD-sgQ"/>
+                            <constraint firstAttribute="height" constant="85" id="K1A-Mw-pSM"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jii-VV-mLR">
+                        <rect key="frame" x="100" y="15" width="205" height="14"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="14" id="rT3-Wr-4Oy"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                        <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qqt-xK-TOK">
+                        <rect key="frame" x="100" y="49" width="20" height="20"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                        <state key="normal" title="券" backgroundImage="img_quan_lift_brand">
+                            <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                        </state>
+                    </button>
+                    <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y33-GB-JJd">
+                        <rect key="frame" x="120" y="49" width="35" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="35" id="ioV-5i-1LB"/>
+                            <constraint firstAttribute="height" constant="20" id="utf-Sz-KFs"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <state key="normal" title="0" backgroundImage="img_quan_rightbrand">
+                            <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                        </state>
+                    </button>
+                    <button opaque="NO" alpha="0.69999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IQZ-W2-yV8">
+                        <rect key="frame" x="245" y="49" width="60" height="20"/>
+                        <color key="backgroundColor" red="1" green="0.792156862745098" blue="0.035294117647058823" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="3uW-mP-RBf"/>
+                            <constraint firstAttribute="width" constant="60" id="tyI-fG-xqZ"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <inset key="titleEdgeInsets" minX="7" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        <inset key="imageEdgeInsets" minX="-2" minY="1.5" maxX="0.0" maxY="0.0"/>
+                        <state key="normal" title="领券" image="brandicon_quan">
+                            <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                        </state>
+                        <connections>
+                            <action selector="action:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="x6A-KO-slw"/>
+                        </connections>
+                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bVm-bZ-qkJ">
+                        <rect key="frame" x="163" y="51.5" width="40" height="15"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="15" id="gq1-dH-5A7"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                        <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mAY-1C-moM" userLabel="lineView">
+                        <rect key="frame" x="0.0" y="85.5" width="320" height="10"/>
+                        <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="10" id="0al-wX-Xns"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="bVm-bZ-qkJ" firstAttribute="centerY" secondItem="Y33-GB-JJd" secondAttribute="centerY" id="3tX-v4-UrI"/>
+                    <constraint firstItem="Y33-GB-JJd" firstAttribute="leading" secondItem="qqt-xK-TOK" secondAttribute="trailing" id="6cG-er-0qb"/>
+                    <constraint firstAttribute="trailing" secondItem="IQZ-W2-yV8" secondAttribute="trailing" constant="15" id="7AE-Xg-CYh"/>
+                    <constraint firstItem="Obl-d8-NKX" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="EL5-Z2-c9g"/>
+                    <constraint firstAttribute="trailing" secondItem="mAY-1C-moM" secondAttribute="trailing" id="FXv-3i-Mha"/>
+                    <constraint firstItem="Obl-d8-NKX" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Ox4-PF-NM7"/>
+                    <constraint firstItem="IQZ-W2-yV8" firstAttribute="centerY" secondItem="Y33-GB-JJd" secondAttribute="centerY" id="Xtv-RM-sGk"/>
+                    <constraint firstAttribute="bottom" secondItem="mAY-1C-moM" secondAttribute="bottom" id="auT-yn-qpi"/>
+                    <constraint firstItem="Jii-VV-mLR" firstAttribute="top" secondItem="Obl-d8-NKX" secondAttribute="top" constant="15" id="f6B-iZ-8sV"/>
+                    <constraint firstItem="mAY-1C-moM" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="fGo-K5-DKb"/>
+                    <constraint firstItem="Y33-GB-JJd" firstAttribute="centerY" secondItem="qqt-xK-TOK" secondAttribute="centerY" id="khF-bj-wLj"/>
+                    <constraint firstItem="qqt-xK-TOK" firstAttribute="leading" secondItem="Jii-VV-mLR" secondAttribute="leading" id="n83-Up-ENB"/>
+                    <constraint firstAttribute="trailing" secondItem="Jii-VV-mLR" secondAttribute="trailing" constant="15" id="tcu-Qd-foJ"/>
+                    <constraint firstItem="bVm-bZ-qkJ" firstAttribute="leading" secondItem="Y33-GB-JJd" secondAttribute="trailing" constant="8" id="wJ2-Jv-yHw"/>
+                    <constraint firstItem="Jii-VV-mLR" firstAttribute="leading" secondItem="Obl-d8-NKX" secondAttribute="trailing" constant="15" id="yFk-vs-xf9"/>
+                    <constraint firstItem="qqt-xK-TOK" firstAttribute="top" secondItem="Jii-VV-mLR" secondAttribute="bottom" constant="20" id="yi4-a0-3hk"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
+            <connections>
+                <outlet property="image" destination="Obl-d8-NKX" id="BZD-eQ-OKa"/>
+                <outlet property="linQuanBtn" destination="IQZ-W2-yV8" id="kci-K2-src"/>
+                <outlet property="price" destination="bVm-bZ-qkJ" id="Dri-dt-xUq"/>
+                <outlet property="quanBtn" destination="Y33-GB-JJd" id="zB1-0p-4RK"/>
+                <outlet property="title" destination="Jii-VV-mLR" id="6HE-Cc-GAL"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="brandicon_quan" width="15" height="15"/>
+        <image name="img_quan_lift_brand" width="19.5" height="20"/>
+        <image name="img_quan_rightbrand" width="34.5" height="20"/>
+    </resources>
+</document>

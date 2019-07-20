@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="MyCollecTionBottom">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="606-q4-hQY" customClass="IndexButton">
+                    <rect key="frame" x="30" y="10" width="17" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="6Li-qg-nAO"/>
+                        <constraint firstAttribute="width" constant="17" id="hFR-aB-eRh"/>
+                    </constraints>
+                    <state key="normal" image="icon_collection_unselect"/>
+                    <state key="selected" image="icon_collec_select"/>
+                    <connections>
+                        <action selector="allSelecAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="npP-fP-XcJ"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="全选" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dZo-Nz-Al5">
+                    <rect key="frame" x="57" y="21.5" width="29" height="17"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5gS-nP-bjE">
+                    <rect key="frame" x="310" y="11" width="90" height="38"/>
+                    <color key="backgroundColor" red="0.76470588240000004" green="0.59607843140000005" blue="0.30196078430000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="90" id="MZY-Gh-P90"/>
+                        <constraint firstAttribute="height" constant="38" id="SSC-Ms-wnB"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <state key="normal" title="删除"/>
+                    <connections>
+                        <action selector="deleteAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="oPf-1S-Egi"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="606-q4-hQY" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="30" id="Ddo-kQ-mtm"/>
+                <constraint firstItem="606-q4-hQY" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="LSt-c5-Tgu"/>
+                <constraint firstItem="5gS-nP-bjE" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="ZrO-di-02u"/>
+                <constraint firstAttribute="trailing" secondItem="5gS-nP-bjE" secondAttribute="trailing" constant="14" id="aF8-2I-Atb"/>
+                <constraint firstItem="dZo-Nz-Al5" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="pUz-qq-K38"/>
+                <constraint firstItem="dZo-Nz-Al5" firstAttribute="leading" secondItem="606-q4-hQY" secondAttribute="trailing" constant="10" id="rSi-2R-XN1"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="deleteBtn" destination="5gS-nP-bjE" id="CVE-DX-Ri4"/>
+                <outlet property="selecBtn" destination="606-q4-hQY" id="EYX-8v-l9S"/>
+            </connections>
+        </view>
+    </objects>
+    <resources>
+        <image name="icon_collec_select" width="17" height="16.5"/>
+        <image name="icon_collection_unselect" width="17" height="17"/>
+    </resources>
+</document>
