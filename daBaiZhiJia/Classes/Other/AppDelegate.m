@@ -15,7 +15,7 @@
 
 
 @interface AppDelegate ()
-
+@property (nonatomic, strong) UIScrollView *scroView;
 @end
 
 @implementation AppDelegate
