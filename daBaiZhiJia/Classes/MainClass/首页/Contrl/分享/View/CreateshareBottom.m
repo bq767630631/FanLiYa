@@ -195,8 +195,8 @@
             }
         }];
     }
-    [self delayDoWork:0.5 WithBlock:^{
-         [YJProgressHUD showMsgWithoutView:@"保存图片成功"];
+    [self delayDoWork:1.2 WithBlock:^{
+         [YJProgressHUD showMsgWithoutView:@"保存已图片成功"];
     }];
 }
 

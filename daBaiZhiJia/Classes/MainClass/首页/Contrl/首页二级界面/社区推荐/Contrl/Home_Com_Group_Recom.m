@@ -49,6 +49,7 @@ static NSString *cellId = @"cellId";
                 self.logo = logo;
                 self.goodArr = goodArr;
                 [self.tableView.mj_footer endRefreshing];
+                [self.tableView.mj_header endRefreshing];
                 [self.tableView reloadData];
             }
         }
@@ -103,11 +104,19 @@ static NSString *cellId = @"cellId";
     @weakify(self);
     MJRefreshBackNormalFooter *footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
         @strongify(self);
-        NSLog(@"加载更多数据");
         [self queryData];
     }];
     [footer setTitle:@"已经是最后一页了" forState:MJRefreshStateNoMoreData];
      self.tableView.mj_footer = footer;
+    
+    MJRefreshStateHeader *head = [MJRefreshStateHeader headerWithRefreshingBlock:^{
+        @strongify(self);
+        self.model.page = 1;
+        self.model.isHaveNomoreData = NO;
+         [self queryData];
+    }];
+    [head setTitle:@"正在刷新" forState:MJRefreshStateRefreshing];
+    _tableView.mj_header = head;
 }
 
 #pragma mark - getter

@@ -79,7 +79,7 @@
     sender.selected = YES;
     if (self.price_sort %2 ==0 ) { //偶数
         [self.priceBtn setImage:ZDBImage(@"icon_select_down") forState:UIControlStateSelected ];
-        self.searchStr = @"price_des";
+        self.searchStr = @"price_desself.navigationItem.titleView";
     }else{
         [self.priceBtn setImage:ZDBImage(@"icon_select_height") forState:UIControlStateSelected ];
         self.searchStr = @"price_asc";

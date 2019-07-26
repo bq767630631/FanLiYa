@@ -113,12 +113,17 @@ static NSString *newHandCell = @"newHandCell";
 
 #pragma mark- UIScrollViewDelegate
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
+  
     if (self.scroView == scrollView) {
         CGFloat offsetX = scrollView.contentOffset.x;
         NSInteger index = offsetX /SCREEN_WIDTH;
           self.type = index + 1;
         [self.head setBtnSelectedWithIndex:index];
+    }else if (self.tableView == scrollView){
+        CGFloat offy = scrollView.contentOffset.y;
+        NSLog(@"offy =%.f",offy);
     }
+    
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{

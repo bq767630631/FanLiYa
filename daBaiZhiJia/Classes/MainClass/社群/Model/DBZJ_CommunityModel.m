@@ -51,12 +51,12 @@
         NSDictionary *dict = @{@"page":@(self.pageNum_Rec),@"token":ToKen};
         NSLog(@"dict1 %@",dict);
         [PPNetworkHelper POST:URL_Add(@"/v.php/goods.share/getGoodsList") parameters:dict success:^(id responseObject) {
-            NSLog(@"今日推荐responseObject %@",responseObject);
+            
             NSInteger code = [responseObject[@"code"] integerValue];
             if (code == SucCode) {
                 NSArray *array = [CommunityRecommendInfo mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"list"]];
                     self.logo1 = responseObject[@"data"][@"logo"];
-                
+                NSLog(@"array.count %zd",array.count);
                 for (CommunityRecommendInfo *info in array) {
                     info.type = type;
                     [self handleCollectionWithInfo:info];
