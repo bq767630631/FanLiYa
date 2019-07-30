@@ -119,11 +119,7 @@ static NSString *newHandCell = @"newHandCell";
         NSInteger index = offsetX /SCREEN_WIDTH;
           self.type = index + 1;
         [self.head setBtnSelectedWithIndex:index];
-    }else if (self.tableView == scrollView){
-        CGFloat offy = scrollView.contentOffset.y;
-        NSLog(@"offy =%.f",offy);
     }
-    
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
@@ -210,6 +206,7 @@ static NSString *newHandCell = @"newHandCell";
         _tableView.delegate = self;
         _tableView.dataSource  = self;
         _tableView.rowHeight = UITableViewAutomaticDimension;
+        _tableView.estimatedRowHeight = 425.f;//一定得加 不然加载更多出现问题
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 0.1f)];
         ViewBorderRadius(_tableView, 7, UIColor.clearColor);
@@ -243,9 +240,10 @@ static NSString *newHandCell = @"newHandCell";
          [_tableView2 registerNib:[UINib nibWithNibName:cell bundle:nil] forCellReuseIdentifier:cellid];
         _tableView2.delegate = self;
         _tableView2.dataSource = self;
-
+        
         _tableView2.backgroundColor = UIColor.whiteColor;
         _tableView2.rowHeight = UITableViewAutomaticDimension;
+        _tableView.estimatedRowHeight = 332.f;//一定得加 不然加载更多出现问题
         _tableView2.showsVerticalScrollIndicator = NO;
         _tableView2.separatorStyle = UITableViewCellSeparatorStyleNone;
         ViewBorderRadius(_tableView2, 7, UIColor.clearColor);

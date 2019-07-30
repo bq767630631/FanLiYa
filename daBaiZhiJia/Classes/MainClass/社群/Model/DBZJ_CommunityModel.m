@@ -60,6 +60,7 @@
                 for (CommunityRecommendInfo *info in array) {
                     info.type = type;
                     [self handleCollectionWithInfo:info];
+                    NSLog(@"title =%@",info.itemtitle );
                 }
                 NSInteger totalPage = [responseObject[@"data"][@"totalpage"] integerValue];
                 NSInteger curPage = [responseObject[@"data"][@"page"] integerValue];
