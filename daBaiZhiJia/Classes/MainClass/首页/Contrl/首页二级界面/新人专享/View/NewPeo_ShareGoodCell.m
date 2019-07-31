@@ -50,7 +50,7 @@
     self.title.text  = self.info.title;
     self.price.text  = self.info.price;
     if (self.info.countTime == 0) {
-        
+        self.qiangGouBtn.userInteractionEnabled = NO;
         self.qiangGouBtn.backgroundColor = UIColor.grayColor;
     }
     self.buTie.text = [NSString stringWithFormat:@"平台补贴¥ %@",self.info.price];
@@ -60,7 +60,6 @@
 
 
 - (IBAction)qiangGouAction:(UIButton *)sender {
-    NSLog(@"");
     if ([self judgeisLogin]) {
         NSDictionary *dict = @{@"sku":self.info.sku,@"token":ToKen};
         @weakify(self);

@@ -52,11 +52,6 @@ static NSString *cellId = @"cellId";
     }
 }
 
-- (void)layoutSubviews{
-    [super layoutSubviews];
-    NSLog(@"self.bottom.bottom %.f",self.bottom.bottom);
-}
-
 - (void)setInfoWith:(NSMutableArray *)arr time:(NSInteger)time rule:(id)rule{
     [self.timeV setTime:time];
     self.goodArr = arr;
