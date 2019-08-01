@@ -99,7 +99,7 @@ static NSString *cellid=  @"cellid";
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     DBZJ_ComCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellid forIndexPath:indexPath];
-    if (self.info.video && indexPath.row==0) {
+    if (self.info.video.length>0 && indexPath.row==0) {
         cell.isVideo = YES;
     }else{
         cell.isVideo = NO;
@@ -111,8 +111,7 @@ static NSString *cellid=  @"cellid";
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     
-    NSLog(@"indexPath %@",indexPath);
-    if (self.info.video && indexPath.row==0) {//这就是视频
+    if (self.info.video.length>0 && indexPath.row==0) {//这就是视频
         NSLog(@"视频");
         NSString *webVideoPath = self.info.video;
         NSURL *webVideoUrl = [NSURL URLWithString:webVideoPath];
