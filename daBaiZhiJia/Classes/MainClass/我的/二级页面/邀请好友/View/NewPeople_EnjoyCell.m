@@ -35,6 +35,7 @@
     [self.bgimage setDefultPlaceholderWithFullPath:info.pic];
      self.codeImage.image = [SGQRCodeGenerateManager generateWithDefaultQRCodeData:info.url imageViewWidth: 90];
     self.codeLb.text = info.code;
+    [self layoutIfNeeded];
 }
 
 @end

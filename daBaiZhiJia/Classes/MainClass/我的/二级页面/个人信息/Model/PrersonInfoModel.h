@@ -26,6 +26,10 @@ typedef void(^prersonRevenueBlock)(PersonRevenue*  reve, NSInteger code);
 + (void)queryTaboBaoAuthUrlWithCallBack:(void (^)(NSString*url))block;
 //查询个人收益
 + (void)queryPersonRevenueWithBlcok:(prersonRevenueBlock)block;
+/**
+ 个人中心-中间广告位
+ */
++ (void)queryMyMidddleWithblock:(PPHttpRequestCallBack)callBack;
 @end
 
 @interface PrersonInfoMsg : NSObject
@@ -56,5 +60,8 @@ typedef void(^prersonRevenueBlock)(PersonRevenue*  reve, NSInteger code);
 @property (nonatomic, copy) NSString *drawcash; //累积提现金额
 @end
 
-
+@interface PersonMiddAdvInfo : NSObject
+@property (nonatomic, copy) NSString *img;
+@property (nonatomic, copy) NSString *url;
+@end
 

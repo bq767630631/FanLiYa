@@ -12,7 +12,7 @@
 + (void)queryNewPeoGoodWithBlock:(NewPeo_shareBlock)block{
     
     [PPNetworkHelper POST:URL_Add(@"/v.php/goods.share/getFreeList") parameters:@{@"token":ToKen} success:^(id responseObject) {
-        NSLog(@"%@",responseObject);
+      //  NSLog(@"%@",responseObject);
         NSInteger code = [responseObject[@"code"] integerValue];
         if (code == SucCode) {
             NSInteger time = [responseObject[@"data"][@"time"]integerValue];

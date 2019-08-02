@@ -14,6 +14,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)setModel:(id)model;
 
+
+- (void)setAddVerInfo:(NSArray*)arr;
 @end
 
 NS_ASSUME_NONNULL_END

@@ -15,7 +15,10 @@
 @interface NewPeo_shareContentV ()<UITableViewDataSource,UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *contentV;
+@property (weak, nonatomic) IBOutlet UIView *tipsV;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *guiZeCntentVH;
 
+@property (weak, nonatomic) IBOutlet UIView *guiZeV;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *lingquanVTop;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *table_H;
@@ -25,8 +28,7 @@
 @property (weak, nonatomic) IBOutlet UIView *time_v;
 
 
-
-@property (nonatomic, strong) NewPeo_shareBottomV *bottom;
+@property (nonatomic, strong) NewPeo_shareBottomV *bottom; //底部视图
 
 @property (nonatomic, strong) NSMutableArray *goodArr;
 @property (nonatomic, assign) NSInteger  time;
@@ -38,7 +40,6 @@ static NSString *cellId = @"cellId";
 - (void)awakeFromNib{
     [super awakeFromNib];
     
-    self.lingquanVTop.constant =   self.lingquanVTop.constant*SCALE_Normal;
     [self.time_v addSubview:self.timeV];
     [self.tableView registerNib:[UINib nibWithNibName:@"NewPeo_ShareGoodCell" bundle:nil] forCellReuseIdentifier:cellId];
     self.tableView.dataSource  = self;
@@ -46,7 +47,8 @@ static NSString *cellId = @"cellId";
     self.tableView.rowHeight = 137.f;
     self.tableView.scrollEnabled = NO;
     self.tableView.backgroundColor = UIColor.clearColor;
-    [self.contentV addSubview:self.bottom];
+//    [self.contentV addSubview:self.bottom];
+    [self.guiZeV addSubview:self.bottom];
     if (IS_iPhone5SE) {
         self.table_lead.constant = self.table_trail.constant = 5;
     }
@@ -56,13 +58,17 @@ static NSString *cellId = @"cellId";
     [self.timeV setTime:time];
     self.goodArr = arr;
     [self.tableView reloadData];
+    [self layoutIfNeeded];
     [self.bottom setModel:rule];
     
+     [self layoutIfNeeded];
     self.table_H.constant = self.goodArr.count *self.tableView.rowHeight;
-    self.bottom.frame = CGRectMake(0, 20 + self.tableView.top +  self.table_H.constant, SCREEN_WIDTH,  self.bottom.height);
-   
-    self.height = self.tableView.top + self.table_H.constant + self.bottom.height + 80;
+
+    self.guiZeCntentVH.constant =  self.bottom.height;
+
+    self.height = self.guiZeV.top + self.guiZeCntentVH.constant + 15 + 28 +  self.table_H.constant + 60;
     self.contentV.height = self.height ;
+
     NSLog(@"self.height  =%.f", self.height);
 }
 
@@ -83,7 +89,7 @@ static NSString *cellId = @"cellId";
 - (NewPeo_shareBottomV *)bottom{
     if (!_bottom) {
         _bottom = [NewPeo_shareBottomV viewFromXib];
-        _bottom.frame = CGRectMake(0, self.tableView.bottom, SCREEN_WIDTH, 371);
+        _bottom.frame = CGRectMake(0, 0, SCREEN_WIDTH, 371);
     }
     return _bottom;
 }

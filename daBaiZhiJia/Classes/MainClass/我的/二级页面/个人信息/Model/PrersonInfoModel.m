@@ -124,6 +124,20 @@
         
     }];
 }
+
++ (void)queryMyMidddleWithblock:(PPHttpRequestCallBack)callBack{
+    [PPNetworkHelper POST:URL_Add(@"/v.php/index.index/getAppUserSide") parameters:nil success:^(id responseObject) {
+        NSLog(@"queryMyMidddleWithblock URL res =%@",responseObject);
+        NSInteger code = [responseObject[@"code"] integerValue];
+        if (code == SucCode) {
+            NSArray *list = [PersonMiddAdvInfo mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
+            callBack(list,nil);
+        }
+    } failure:^(NSError *error) {
+          NSLog(@"%@",error);
+        callBack(nil,error);
+    }];
+}
 @end
 
 
@@ -134,5 +148,10 @@
 @implementation PersonRevenue
 
 
+
+@end
+
+
+@implementation PersonMiddAdvInfo
 
 @end

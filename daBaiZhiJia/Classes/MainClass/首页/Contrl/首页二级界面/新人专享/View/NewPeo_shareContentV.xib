@@ -38,8 +38,8 @@
                                 <constraint firstAttribute="height" constant="22" id="N3L-rm-mdY"/>
                             </constraints>
                         </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eSU-yY-uxL">
-                            <rect key="frame" x="0.0" y="414" width="414" height="15"/>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eSU-yY-uxL" userLabel="tipsV">
+                            <rect key="frame" x="0.0" y="192" width="414" height="15"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="先领券下单,后补贴返款" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ors-CU-PLl">
                                     <rect key="frame" x="128" y="0.0" width="158" height="15"/>
@@ -50,7 +50,7 @@
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CTR-7h-Gib">
+                                <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CTR-7h-Gib" userLabel="line">
                                     <rect key="frame" x="295" y="7" width="53" height="1"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
@@ -58,7 +58,7 @@
                                         <constraint firstAttribute="width" constant="53" id="t9n-qW-bIb"/>
                                     </constraints>
                                 </view>
-                                <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bbF-BR-0v7">
+                                <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bbF-BR-0v7" userLabel="line">
                                     <rect key="frame" x="66" y="7" width="53" height="1"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
@@ -79,25 +79,35 @@
                             </constraints>
                         </view>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="s8t-kS-A7H">
-                            <rect key="frame" x="14" y="443" width="386" height="128"/>
+                            <rect key="frame" x="14" y="221" width="386" height="128"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="128" id="g4e-RZ-OU0"/>
                             </constraints>
                         </tableView>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xxK-fx-Hmb">
+                            <rect key="frame" x="0.0" y="168" width="414" height="10"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="10" id="6BK-Vp-Vil"/>
+                            </constraints>
+                        </view>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="eSU-yY-uxL" firstAttribute="leading" secondItem="re8-kJ-7mb" secondAttribute="leading" id="0Qx-Sf-736"/>
                         <constraint firstAttribute="trailing" secondItem="eSU-yY-uxL" secondAttribute="trailing" id="1MK-Hs-S9Y"/>
-                        <constraint firstItem="eSU-yY-uxL" firstAttribute="top" secondItem="re8-kJ-7mb" secondAttribute="top" constant="414" id="2I7-La-N4Q"/>
                         <constraint firstAttribute="trailing" secondItem="UCG-Ba-7bE" secondAttribute="trailing" id="4s0-FI-qnz"/>
+                        <constraint firstItem="eSU-yY-uxL" firstAttribute="top" secondItem="xxK-fx-Hmb" secondAttribute="bottom" constant="14" id="FLF-TS-3cm"/>
+                        <constraint firstItem="xxK-fx-Hmb" firstAttribute="leading" secondItem="re8-kJ-7mb" secondAttribute="leading" id="FSz-KI-fxY"/>
                         <constraint firstItem="UCG-Ba-7bE" firstAttribute="leading" secondItem="re8-kJ-7mb" secondAttribute="leading" id="JSz-5j-55F"/>
                         <constraint firstItem="rQ8-RL-nQF" firstAttribute="top" secondItem="ZnK-yy-k6t" secondAttribute="bottom" constant="10" id="M87-db-Nhx"/>
+                        <constraint firstAttribute="trailing" secondItem="xxK-fx-Hmb" secondAttribute="trailing" id="VWp-38-R7r"/>
                         <constraint firstAttribute="trailing" secondItem="s8t-kS-A7H" secondAttribute="trailing" constant="14" id="VzK-rJ-DsZ"/>
                         <constraint firstItem="UCG-Ba-7bE" firstAttribute="top" secondItem="re8-kJ-7mb" secondAttribute="top" id="cxQ-Bk-JuE"/>
                         <constraint firstItem="ZnK-yy-k6t" firstAttribute="top" secondItem="re8-kJ-7mb" secondAttribute="top" constant="98" id="cxT-co-8dA"/>
                         <constraint firstItem="s8t-kS-A7H" firstAttribute="top" secondItem="eSU-yY-uxL" secondAttribute="bottom" constant="14" id="cyF-W9-BOh"/>
+                        <constraint firstItem="xxK-fx-Hmb" firstAttribute="top" secondItem="rQ8-RL-nQF" secondAttribute="bottom" constant="10" id="dBs-9i-Bnn"/>
                         <constraint firstItem="ZnK-yy-k6t" firstAttribute="centerX" secondItem="re8-kJ-7mb" secondAttribute="centerX" id="p9z-V4-SyB"/>
                         <constraint firstItem="rQ8-RL-nQF" firstAttribute="centerX" secondItem="re8-kJ-7mb" secondAttribute="centerX" id="s73-Xc-3nF"/>
                         <constraint firstItem="s8t-kS-A7H" firstAttribute="leading" secondItem="re8-kJ-7mb" secondAttribute="leading" constant="14" id="yil-Gq-HAX"/>
@@ -115,12 +125,14 @@
             <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
             <connections>
                 <outlet property="contentV" destination="re8-kJ-7mb" id="a1y-Uf-CJT"/>
-                <outlet property="lingquanVTop" destination="2I7-La-N4Q" id="fGj-re-8WQ"/>
+                <outlet property="guiZeCntentVH" destination="6BK-Vp-Vil" id="oeJ-WV-PEt"/>
+                <outlet property="guiZeV" destination="xxK-fx-Hmb" id="DUt-K6-56I"/>
                 <outlet property="tableView" destination="s8t-kS-A7H" id="ROl-Vk-mCc"/>
                 <outlet property="table_H" destination="g4e-RZ-OU0" id="au7-j6-LmJ"/>
                 <outlet property="table_lead" destination="yil-Gq-HAX" id="iWd-aP-tQa"/>
                 <outlet property="table_trail" destination="VzK-rJ-DsZ" id="kSo-iO-UFX"/>
                 <outlet property="time_v" destination="rQ8-RL-nQF" id="aVD-G4-xHA"/>
+                <outlet property="tipsV" destination="eSU-yY-uxL" id="iEk-ED-Io6"/>
             </connections>
         </view>
     </objects>

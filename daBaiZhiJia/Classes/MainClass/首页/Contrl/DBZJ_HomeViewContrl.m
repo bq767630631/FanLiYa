@@ -76,7 +76,7 @@
                     
                 }];
             }else{ //空白页
-                  NSLog(@"空白页");
+                  NSLog(@"空白页  %@",msg);
                 self.blankv.hidden = NO;
               
                 BlankViewInfo *info = [BlankViewInfo new];

@@ -34,12 +34,13 @@
     self.time.text = info.action_time;
     self.user.text = info.action_user;
     self.type.text = info.action_type;
-//    self.attition.text = info.action_content;
+
     NSMutableParagraphStyle *paraStyle = [[NSMutableParagraphStyle alloc] init];
     paraStyle.lineSpacing = 6.0;
     self.attition.attributedText = [[NSMutableAttributedString alloc] initWithString:info.action_content attributes:@{NSParagraphStyleAttributeName:paraStyle}];
-  
+    [self layoutIfNeeded];
     self.height = self.contentV.bottom;
+    self.width = SCREEN_WIDTH;
 }
 
 - (IBAction)shareAction:(UIButton *)sender {

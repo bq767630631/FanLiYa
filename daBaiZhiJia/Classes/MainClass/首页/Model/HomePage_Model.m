@@ -57,7 +57,8 @@
 + (void)queryCateInfoWithBlock:(HomePage_ModelBlock)block{
     NSDictionary *dict = @{@"token":ToKen};
     [PPNetworkHelper GET:URL_Add(@"/v.php/index.index/getCateList") parameters:dict success:^(id responseObject) {
-        NSLog(@"分类");
+        NSLog(@"分类 %@",responseObject);
+        
         NSInteger code = [responseObject[@"code"] integerValue];
         if (code == SucCode) {
           NSMutableArray *cateArr = [HomePage_CateInfo mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
@@ -73,7 +74,7 @@
             }
             block(titleArr,idArrar,nil);
         }else{
-            block(nil,nil,responseObject[@"msg"]);
+//            block(nil,nil,responseObject[@"msg"]);
         }
         
     } failure:^(NSError *error) {

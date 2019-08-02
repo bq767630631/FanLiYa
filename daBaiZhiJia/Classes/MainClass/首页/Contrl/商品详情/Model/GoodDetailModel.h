@@ -86,6 +86,7 @@
 @interface GoodDetailBannerInfo : NSObject
 @property (nonatomic, copy) NSString *pic;
 @property (nonatomic, copy) NSString *videoUrl;
+@property (nonatomic, copy) NSString *url;
 @end
 
 @interface GoodDetailViewInfo : NSObject

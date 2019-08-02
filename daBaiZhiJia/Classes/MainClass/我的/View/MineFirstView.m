@@ -11,8 +11,11 @@
 #import "PrersonInfoModel.h"
 #import "Member_LevContrl.h"
 #import "DetailWebContrl.h"
+#import "ZKCycleScrollView.h"
+#import "GoodDetailCustomCell.h"
+#import "GoodDetailModel.h"
 
-@interface MineFirstView ()
+@interface MineFirstView ()<ZKCycleScrollViewDelegate,ZKCycleScrollViewDataSource>
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *hedimageTop;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *setBtnTop;
@@ -27,7 +30,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *code;
 @property (weak, nonatomic) IBOutlet UIButton *copysBtn;
 
-@property (weak, nonatomic) IBOutlet UIButton *zhaoHuiBtn;
+@property (weak, nonatomic) IBOutlet UIView *bannerContentV;
+
 
 
 @property (weak, nonatomic) IBOutlet UILabel *yuZhuLb;
@@ -45,22 +49,27 @@
 @property (weak, nonatomic) IBOutlet UIView *profitV;
 
 @property (nonatomic, copy) NSString *codeStr;
+@property (nonatomic, strong) ZKCycleScrollView *bannerV;
+@property (nonatomic, strong) NSArray *bannerArr;//
 @end
+
+static NSString *KbannerId = @"KbannerId";
 @implementation MineFirstView
 
 - (void)awakeFromNib{
     [super awakeFromNib];
-  
+    
     self.hedimageTop.constant += StatusBar_H;
     self.setBtnTop.constant +=  StatusBar_H;
     ViewBorderRadius(self.headImage, self.headImage.height*0.5, UIColor.clearColor);
     ViewBorderRadius(self.moneyV, 5, UIColor.whiteColor);
     ViewBorderRadius(self.profitV, 5, UIColor.whiteColor);
+    [self.bannerContentV addSubview:self.bannerV];
 }
 
 
 - (void)setModel:(id)model{
-    self.height = self.zhaoHuiBtn.bottom ;
+    self.height = self.bannerContentV.bottom ;
     PersonRevenue *info = model;
     [self.headImage setPlaceholderImageWithFullPath:info.wechat_image placeholderImage:@"img_head_moren"];
     self.name.text = info.wechat_name;
@@ -81,9 +90,40 @@
     self.benYueYugu.text = info.month_profit;
     self.lastMonthYugu.text = info.lastmonth_profit_yugu;
     self.lastMonthJeSuan.text = info.lastmonth_profit;
-
 }
 
+- (void)setAddVerInfo:(NSArray *)arr{
+    self.bannerV.width = self.bannerContentV.width;
+    self.bannerV.height = self.bannerContentV.height;
+    NSMutableArray *temp = [NSMutableArray array];
+    for ( PersonMiddAdvInfo *info in arr) {
+        GoodDetailBannerInfo *banner =  [GoodDetailBannerInfo new];
+        banner.videoUrl = @"";
+        banner.pic = info.img;
+        banner.url = info.url;
+        [temp addObject:banner];
+    }
+    self.bannerArr = temp;
+    [self.bannerV reloadData];
+}
+
+#pragma mark - ZKCycleScrollViewDataSource &ZKCycleScrollViewDelegate
+- (NSInteger)numberOfItemsInCycleScrollView:(ZKCycleScrollView *)cycleScrollView{
+    return self.bannerArr.count;
+}
+
+- (UICollectionViewCell *)cycleScrollView:(ZKCycleScrollView *)cycleScrollView cellForItemAtIndex:(NSInteger)index{
+    GoodDetailCustomCell *cusCell = [cycleScrollView dequeueReusableCellWithReuseIdentifier:KbannerId forIndex:index];
+    GoodDetailBannerInfo *banner =   self.bannerArr[index];
+    [cusCell setInfo:banner];
+    return cusCell;
+}
+
+- (void)cycleScrollView:(ZKCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index{
+     GoodDetailBannerInfo *banner=  self.bannerArr[index];
+    NSString *url = [NSString stringWithFormat:@"%@&token=%@", banner.url,ToKen];
+    [self gotoSecVWithUrl:url title:nil];
+}
 
 #pragma mark - private
 - (void)setHuiYuanViewWithInfo:(NSString*)name  huiYuanimage:(UIImage*)image color:(UIColor *)color{
@@ -145,8 +185,22 @@
 
 - (IBAction)findOrder:(UIButton *)sender {
     NSLog(@"");
-    NSString *url = [NSString stringWithFormat:@"%@retrieveOrder.html?token=%@",BASE_WEB_URL,ToKen];
-    [self gotoSecVWithUrl:url title:@"找回订单"];
+//    NSString *url = [NSString stringWithFormat:@"%@retrieveOrder.html?token=%@",BASE_WEB_URL,ToKen];
+//    [self gotoSecVWithUrl:url title:@"找回订单"];
+}
+
+
+#pragma mark - getter
+- (ZKCycleScrollView *)bannerV{
+    if (!_bannerV) {
+        CGRect frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_WIDTH);
+        _bannerV = [[ZKCycleScrollView alloc] initWithFrame:frame];
+        _bannerV.delegate = self;
+        _bannerV.dataSource = self;
+        _bannerV.autoScroll = NO;
+        [_bannerV registerCellNib:[UINib nibWithNibName:@"GoodDetailCustomCell" bundle:nil] forCellWithReuseIdentifier:KbannerId];
+    }
+    return _bannerV;
 }
 
 @end

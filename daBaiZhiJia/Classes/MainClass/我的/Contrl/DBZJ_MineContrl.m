@@ -58,6 +58,11 @@
             self.tool.top = self.first.bottom + 10;
             self.tool.model = reve;
             self.scroview.contentSize = CGSizeMake(0,  self.tool.bottom);
+            [PrersonInfoModel queryMyMidddleWithblock:^(id res, NSError *error) {
+                if (res) {
+                    [self.first setAddVerInfo:res];
+                }
+            }];
         }else if (code == Token_isInvalidCode ){
             LoginContrl *login  = [LoginContrl new];
             login.isFrom_homePage = YES;
