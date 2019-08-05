@@ -54,7 +54,7 @@
     [PrersonInfoModel queryPersonRevenueWithBlcok:^(PersonRevenue * _Nullable reve ,NSInteger code) {
         if (reve) {
             [self.first setModel:reve];
-        
+
             self.tool.top = self.first.bottom + 10;
             self.tool.model = reve;
             self.scroview.contentSize = CGSizeMake(0,  self.tool.bottom);

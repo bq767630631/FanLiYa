@@ -100,7 +100,7 @@ static NSString *KbannerId = @"KbannerId";
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context
 {
     if ([keyPath isEqualToString:@"contentSize"]) {
-        NSLog(@"change %@",change);
+//        NSLog(@"change %@",change);
     
         self.web_H = self.webView.scrollView.contentSize.height;
         [self layoutIfNeeded];
@@ -109,7 +109,7 @@ static NSString *KbannerId = @"KbannerId";
             self.webView.height = self.web_H;
         }
         self.heightBlock(self.webView.bottom,NO);
-        NSLog(@"isLoading %d",self.webView.isLoading);
+//        NSLog(@"isLoading %d",self.webView.isLoading);
 //          NSLog(@"%d",self.webView.com);
     }
 }

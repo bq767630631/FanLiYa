@@ -13,7 +13,7 @@
 
 + (void)queryDetailInfoWithSku:(NSString *)sku Blcok:(detailInfo_Block)block{
     
-    [PPNetworkHelper POST:URL_Add(@"/v.php/goods.goods/getGoodsDetail") parameters:@{@"sku":sku,@"token":ToKen} success:^(id responseObject) {
+    [PPNetworkHelper POST:URL_Add(@"/v.php/goods.goods/getGoodsDetailNew") parameters:@{@"sku":sku,@"token":ToKen} success:^(id responseObject) {
        // NSLog(@"详情responseObject  %@",responseObject);
         NSInteger code = [responseObject[@"code"] integerValue];
         if (code == SucCode) {  //
@@ -65,7 +65,7 @@ NSMutableString *wenanStr= [NSMutableString stringWithFormat:@"%@\n【原价】%
     info.wenAnStr = wenanStr;
     CGFloat maxW = SCREEN_WIDTH - 22*2;
     CGFloat  strH = [wenanStr textHeightWithFont:[UIFont systemFontOfSize:12] maxWidth:maxW];
-    info.shareContent_H = strH + 35 + 165 + 83 + (40 + 48 +10 );
+    info.shareContent_H = strH + 35 + 165 + 83 + (40 + 48 +10 ) + 83 + 20;
     NSLog(@"shareContent_H =%.f",info.shareContent_H);
     return wenanStr;
 }

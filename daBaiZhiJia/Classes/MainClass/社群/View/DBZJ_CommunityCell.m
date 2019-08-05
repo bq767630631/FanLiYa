@@ -181,12 +181,12 @@ static NSString *cellid=  @"cellid";
     NSDictionary *para = @{@"sku":self.comInfo.sku,@"token":ToKen};
     NSLog(@"para =%@",para);
     [PPNetworkHelper POST:URL_Add(@"/v.php/goods.goods/getTao") parameters:para success:^(id responseObject) {
-          NSLog(@"tkl res=%@", responseObject);
+//          NSLog(@"tkl res=%@", responseObject);
         NSInteger code = [responseObject[@"code"] integerValue];
         if (code == SucCode) {
-            [YJProgressHUD showMsgWithoutView:@"淘口令复制成功"];
-              NSDictionary *data = responseObject[@"data"];
-            [UIPasteboard generalPasteboard].string= data[@"tkl"];
+             [YJProgressHUD showMsgWithoutView:@"淘口令复制成功"];
+            NSDictionary *data = responseObject[@"data"];
+            [UIPasteboard generalPasteboard].string=  [UIPasteboard generalPasteboard].string = [NSString stringWithFormat:@"长按復至%@➡[掏✔寳]即可抢购",data[@"tkl"]];
         }else{
             if (code == Token_isInvalidCode) {
                   [YJProgressHUD showMsgWithoutView:responseObject[@"msg"]];

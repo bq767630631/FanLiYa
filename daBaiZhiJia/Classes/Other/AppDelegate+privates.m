@@ -260,7 +260,7 @@ fetchCompletionHandler:
 
 - (void)applicationDidBecomeActive:(UIApplication *)application{
     UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
-    if (pasteboard.string.length>0) {
+    if (pasteboard.string && pasteboard.string.length>0) {
             IntelligenceSearchView *insear  = [IntelligenceSearchView viewFromXib];
             insear.contentStr = pasteboard.string;
             [insear showInWindow];

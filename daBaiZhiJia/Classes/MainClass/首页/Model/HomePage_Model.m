@@ -55,8 +55,8 @@
 }
 
 + (void)queryCateInfoWithBlock:(HomePage_ModelBlock)block{
-    NSDictionary *dict = @{@"token":ToKen};
-    [PPNetworkHelper GET:URL_Add(@"/v.php/index.index/getCateList") parameters:dict success:^(id responseObject) {
+    
+    [PPNetworkHelper GET:URL_Add(@"/v.php/index.index/getCateList") parameters:nil success:^(id responseObject) {
         NSLog(@"分类 %@",responseObject);
         
         NSInteger code = [responseObject[@"code"] integerValue];

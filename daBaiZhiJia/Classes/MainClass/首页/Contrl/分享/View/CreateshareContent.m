@@ -26,6 +26,9 @@ static NSString *cellId = @"cellId";
 @property (weak, nonatomic) IBOutlet UILabel *wenAnLb;
 
 @property (weak, nonatomic) IBOutlet UIButton *tklBtn;
+
+
+
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *tklLeadcons;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *orderLead;
@@ -35,6 +38,12 @@ static NSString *cellId = @"cellId";
 @property (weak, nonatomic) IBOutlet UIButton *downLoadOrdBtn;
 
 @property (weak, nonatomic) IBOutlet UIButton *saveMoneyBtn;
+
+
+@property (weak, nonatomic) IBOutlet UILabel *xiaZaiLB;
+
+@property (weak, nonatomic) IBOutlet UIButton *xiaZaiLianjieBtn;
+
 
 @property (weak, nonatomic) IBOutlet UIButton *codeBtn;
 
@@ -62,7 +71,7 @@ static NSString *cellId = @"cellId";
     ViewBorderRadius(self.haibaoBtn,self.haibaoBtn.height/2,UIColor.clearColor);
     ViewBorderRadius(self.wenanBtn, self.wenanBtn.height/2, UIColor.clearColor);
     ViewBorderRadius(self.taokoulingBtn, self.taokoulingBtn.height/2, UIColor.clearColor); //: 888
-
+     ViewBorderRadius(self.xiaZaiLianjieBtn,self.xiaZaiLianjieBtn.height/2,UIColor.clearColor);
 
     self.collectionView.dataSource = self;
     self.collectionView.delegate = self;
@@ -79,19 +88,21 @@ static NSString *cellId = @"cellId";
     ViewBorderRadius(self.choseBtnView, 5, UIColor.clearColor);
 }
 
-
-
-
 - (void)setInfoWithModel:(id)model{
     self.detailinfo = model;
     self.yujiMoney.text = [NSString stringWithFormat:@"您的奖励预计: ¥%@",self.detailinfo.profit];
-    self.tklLB.text = self.detailinfo.tkl;
+    self.tklLB.text =  [NSString stringWithFormat:@"长按復至%@➡[掏✔寳]即可抢购",self.detailinfo.tkl];
     self.wenAnLb.text = self.detailinfo.wenAnStr;
+    self.xiaZaiLB.text =   [NSString stringWithFormat:@"下单地址: %@",self.detailinfo.shorturl]; 
     for (int i = 0; i < self.detailinfo.pics.count; i ++) {
-        NSString*str  = self.detailinfo.pics[i];
+        NSString*imageStr  = self.detailinfo.pics[i];
         CreateShare_CellInfo *cellInfo = [CreateShare_CellInfo new];
-        cellInfo.imageStr = str;
-        cellInfo.isSelected = (i == 0)?YES:NO;
+        cellInfo.imageStr = imageStr;
+        if (i ==0) {
+            cellInfo.isPoster = YES;
+            cellInfo.isSelected = YES;
+            cellInfo.image = [self geneRatePostImageWithGoodImage:imageStr];
+        }
         [self.dataSource addObject:cellInfo];
     }
     self.selectedInfo = self.dataSource.firstObject;
@@ -138,14 +149,11 @@ static NSString *cellId = @"cellId";
                 self.selectedInfo = nil;
             }
         }
-        NSLog(@"selectedInfo = %@",self.selectedInfo);
     };
     return cell;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    NSLog(@"");
-    
     NSMutableArray *photos = [NSMutableArray new];
     [self.dataSource enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         CreateShare_CellInfo *itemInfo = obj;
@@ -171,23 +179,15 @@ static NSString *cellId = @"cellId";
         [YJProgressHUD showMsgWithoutView:@"请选中一张图片"];
         return;
     }
-    if (self.postImage) {
-         [YJProgressHUD showMsgWithoutView:@"已经生成过海报"];
-        return;
-    }
-    Share_PosterView *postV= [[Share_PosterView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
 
-    self.detailinfo.pic = self.selectedInfo.imageStr;
-
-    [postV setInfoWithModel:self.detailinfo];
-    
-   UIImage *image =  [self getmakeImageWithView:postV andWithSize:CGSizeMake(SCREEN_WIDTH  , SCREEN_HEIGHT)];
+    UIImage *image = [self geneRatePostImageWithGoodImage:self.selectedInfo.imageStr];
      CreateShare_CellInfo *item = [CreateShare_CellInfo new];
     item.isPoster = YES;
     item.image = image;
     item.isSelected = YES;
     self.postImage = image;
     self.selectedInfo = item;
+    [self.dataSource removeFirstObject];  //干掉第一个
     [self.dataSource insertObject:item atIndex:0];//插入到第一个
     for ( CreateShare_CellInfo *info in self.dataSource) {
         if (!(info == item)) {
@@ -195,6 +195,17 @@ static NSString *cellId = @"cellId";
         }
     }
     [self.collectionView reloadData];
+}
+
+- (UIImage *)geneRatePostImageWithGoodImage:(NSString*)imageUrl{
+    Share_PosterView *postV= [[Share_PosterView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
+    
+    self.detailinfo.pic = imageUrl;
+    
+    [postV setInfoWithModel:self.detailinfo];
+    
+    UIImage *image =  [self getmakeImageWithView:postV andWithSize:CGSizeMake(SCREEN_WIDTH  , SCREEN_HEIGHT)];
+    return image;
 }
 
 
@@ -205,10 +216,15 @@ static NSString *cellId = @"cellId";
 }
 
 - (IBAction)koulingAction:(UIButton *)sender {
-      NSLog(@"");
-    [UIPasteboard generalPasteboard].string = self.detailinfo.tkl;
+    [UIPasteboard generalPasteboard].string = [NSString stringWithFormat:@"长按復至%@➡[掏✔寳]即可抢购",self.detailinfo.tkl];
     [YJProgressHUD showMsgWithoutView:@"淘口令复制成功"];
 }
+
+- (IBAction)xiaZaiLianJieAction:(UIButton *)sender {
+    [UIPasteboard generalPasteboard].string = self.detailinfo.shorturl;
+    [YJProgressHUD showMsgWithoutView:@"下单地址复制成功"];
+}
+
 
 #pragma mark - WenAnbtnAction
 - (IBAction)tklAction:(UIButton *)sender {

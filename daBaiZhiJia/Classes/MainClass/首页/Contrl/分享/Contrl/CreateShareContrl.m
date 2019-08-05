@@ -53,13 +53,6 @@
    [self addObserver:self forKeyPath:DetailInfo_Key options:NSKeyValueObservingOptionNew context:nil];
 }
 
-
-//- (void)viewWillAppear:(BOOL)animated{
-//    [super viewWillAppear:animated];
-//     self.navigationController.navigationBarHidden = NO;
-//    [self.navigationController.navigationBar navBarBackGroundColor:RGBColor(33, 33, 33) image:nil isOpaque:YES];
-//}
-
 - (void)queryTkl{
     [CreateShare_Model geneRateTaoKlWithSku:self.sku vc:self navi_vc:self.navigationController  block:^(NSString *tkl, NSString*code,NSString*shorturl) {
         self.detailinfo.tkl = tkl;
