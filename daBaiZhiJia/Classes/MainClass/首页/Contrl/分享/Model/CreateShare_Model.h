@@ -29,4 +29,5 @@ typedef void(^tklBlock)(NSString*tkl, NSString*code,NSString*shorturl);
 @property (nonatomic, assign) BOOL  isPoster; //是否是海报
 @property (nonatomic, strong) UIImage *image;
 @property (nonatomic, strong) NSIndexPath *indexPath;
+@property (nonatomic, strong) NSArray *pics; //图片数组
 @end

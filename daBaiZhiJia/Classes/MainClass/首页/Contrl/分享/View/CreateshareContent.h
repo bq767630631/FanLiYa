@@ -15,7 +15,7 @@
 
 @property (nonatomic, strong) CreateShare_CellInfo *selectedInfo;
 
-
+@property (nonatomic, strong) UIImage *postImage;
 
 - (void)setInfoWithModel:(id)model;
 

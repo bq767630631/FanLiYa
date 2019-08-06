@@ -12,6 +12,8 @@
 #import "CreateShare_Model.h"
 #import "GKPhotoBrowser.h"
 #import "Share_PosterView.h"
+#import "ShareNewPosterV.h"
+
 static NSString *cellId = @"cellId";
 @interface CreateshareContent ()<UICollectionViewDelegate, UICollectionViewDataSource>
 @property (weak, nonatomic) IBOutlet UILabel *yujiMoney;
@@ -55,11 +57,10 @@ static NSString *cellId = @"cellId";
 @property (nonatomic, strong) UICollectionViewFlowLayout *layout;
 
 
-@property (nonatomic, strong) NSMutableArray *dataSource;
+@property (nonatomic, strong) NSMutableArray <CreateShare_CellInfo*>*dataSource;
 
 @property (nonatomic, strong) GoodDetailInfo *detailinfo;
 
-@property (nonatomic, strong) UIImage *postImage;
 @end
 @implementation CreateshareContent
 
@@ -98,15 +99,19 @@ static NSString *cellId = @"cellId";
         NSString*imageStr  = self.detailinfo.pics[i];
         CreateShare_CellInfo *cellInfo = [CreateShare_CellInfo new];
         cellInfo.imageStr = imageStr;
-        if (i ==0) {
-            cellInfo.isPoster = YES;
-            cellInfo.isSelected = YES;
-            cellInfo.image = [self geneRatePostImageWithGoodImage:imageStr];
-        }
         [self.dataSource addObject:cellInfo];
     }
-    self.selectedInfo = self.dataSource.firstObject;
+    
+    CreateShare_CellInfo *firstinfo = self.dataSource.firstObject;
+    CreateShare_CellInfo *info  = [CreateShare_CellInfo new];
+    info.isPoster = YES;
+    info.isSelected = YES;
+    info.image = [self geneRatePostImageWithGoodImage:firstinfo.imageStr];
+    [self.dataSource insertObject:info atIndex:0];
+  
     [self.collectionView reloadData];
+    self.selectedInfo = self.dataSource.firstObject;
+    self.postImage = self.selectedInfo.image;
 }
 
 
@@ -173,10 +178,15 @@ static NSString *cellId = @"cellId";
 }
 
 #pragma mark - action
+//生成海报
 - (IBAction)haibaoAction:(UIButton *)sender {
     NSLog(@"%@",self.selectedInfo);
     if (!self.selectedInfo) {
         [YJProgressHUD showMsgWithoutView:@"请选中一张图片"];
+        return;
+    }
+    if (self.selectedInfo.isPoster) {
+          [YJProgressHUD showMsgWithoutView:@"请选择其他图片"];
         return;
     }
 
@@ -198,14 +208,14 @@ static NSString *cellId = @"cellId";
 }
 
 - (UIImage *)geneRatePostImageWithGoodImage:(NSString*)imageUrl{
-    Share_PosterView *postV= [[Share_PosterView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
-    
+    ShareNewPosterV *post = [ShareNewPosterV  viewFromXib];
+    post.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     self.detailinfo.pic = imageUrl;
-    
-    [postV setInfoWithModel:self.detailinfo];
-    
-    UIImage *image =  [self getmakeImageWithView:postV andWithSize:CGSizeMake(SCREEN_WIDTH  , SCREEN_HEIGHT)];
-    return image;
+    [post setInfoWithModel:self.detailinfo];
+    [post layoutIfNeeded];
+    sleep(0.2);
+    UIImage * image =  [self getmakeImageWithView:post andWithSize:CGSizeMake(SCREEN_WIDTH  , SCREEN_HEIGHT)];
+   return image;
 }
 
 

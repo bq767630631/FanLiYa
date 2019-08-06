@@ -268,6 +268,8 @@
 		C2ADD8BB227055C1000ED616 /* CouponListBlankView.m in Sources */ = {isa = PBXBuildFile; fileRef = C2ADD8B8227055C1000ED616 /* CouponListBlankView.m */; };
 		C2ADD8BC227055C1000ED616 /* CouponListBlankView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2ADD8B9227055C1000ED616 /* CouponListBlankView.xib */; };
 		C2AE4AFB229B925900967D63 /* yw_1222.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C2AE4AFA229B925900967D63 /* yw_1222.jpg */; };
+		C2B7602022F816D40099B6B3 /* ShareNewPosterV.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B7601F22F816D40099B6B3 /* ShareNewPosterV.m */; };
+		C2B7602222F816DF0099B6B3 /* ShareNewPosterV.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2B7602122F816DF0099B6B3 /* ShareNewPosterV.xib */; };
 		C2B8905522A6040A0005AAD5 /* SGQRCode.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C2B8904722A604090005AAD5 /* SGQRCode.bundle */; };
 		C2B8905622A6040A0005AAD5 /* UIImage+ImageSize.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B8904A22A604090005AAD5 /* UIImage+ImageSize.m */; };
 		C2B8905722A6040A0005AAD5 /* SGQRCodeHelperTool.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B8904B22A604090005AAD5 /* SGQRCodeHelperTool.m */; };
@@ -806,6 +808,9 @@
 		C2ADD8B9227055C1000ED616 /* CouponListBlankView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CouponListBlankView.xib; sourceTree = "<group>"; };
 		C2ADD8BA227055C1000ED616 /* CouponListBlankView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CouponListBlankView.h; sourceTree = "<group>"; };
 		C2AE4AFA229B925900967D63 /* yw_1222.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = yw_1222.jpg; sourceTree = "<group>"; };
+		C2B7601E22F816D40099B6B3 /* ShareNewPosterV.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShareNewPosterV.h; sourceTree = "<group>"; };
+		C2B7601F22F816D40099B6B3 /* ShareNewPosterV.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShareNewPosterV.m; sourceTree = "<group>"; };
+		C2B7602122F816DF0099B6B3 /* ShareNewPosterV.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShareNewPosterV.xib; sourceTree = "<group>"; };
 		C2B8904622A604090005AAD5 /* SGQRCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGQRCode.h; sourceTree = "<group>"; };
 		C2B8904722A604090005AAD5 /* SGQRCode.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SGQRCode.bundle; sourceTree = "<group>"; };
 		C2B8904922A604090005AAD5 /* UIImage+ImageSize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageSize.h"; sourceTree = "<group>"; };
@@ -2776,6 +2781,9 @@
 				C2218C61228968BA0097F8F7 /* CreateshareCollectionCell.xib */,
 				C2B8905C22A6080F0005AAD5 /* Share_PosterView.h */,
 				C2B8905D22A6080F0005AAD5 /* Share_PosterView.m */,
+				C2B7601E22F816D40099B6B3 /* ShareNewPosterV.h */,
+				C2B7601F22F816D40099B6B3 /* ShareNewPosterV.m */,
+				C2B7602122F816DF0099B6B3 /* ShareNewPosterV.xib */,
 				C2DBC943228957D700CFAE29 /* CreateshareBottom.h */,
 				C2DBC944228957D700CFAE29 /* CreateshareBottom.m */,
 				C2DBC9462289582000CFAE29 /* CreateshareBottom.xib */,
@@ -3187,6 +3195,7 @@
 				C27993A122C376EC004C0B4C /* ChangePersonContrl.xib in Resources */,
 				C271BF0622B230C700A94014 /* Home_FlashTimeStaCell.xib in Resources */,
 				C2F1E06B22C9F80100CD354E /* MyCombat_Bottom.xib in Resources */,
+				C2B7602222F816DF0099B6B3 /* ShareNewPosterV.xib in Resources */,
 				C27993A322C376EC004C0B4C /* PrersonInfoContrl.xib in Resources */,
 				C27CD56B22C082A100852FE0 /* Home_Com_Group_Cell.xib in Resources */,
 				C2C1A5DF22BDF48600D5F297 /* NewPeo_shareContentV.xib in Resources */,
@@ -3495,6 +3504,7 @@
 				C2210C402248CD7F00C1C765 /* TYBaseAnimation.m in Sources */,
 				C201424B2266F366004353DC /* CategoryHeadView.m in Sources */,
 				C21C72EF22C6254A009F3199 /* UIView+SDExtension.m in Sources */,
+				C2B7602022F816D40099B6B3 /* ShareNewPosterV.m in Sources */,
 				C2F7D88822BB1E5700D6D02A /* PlayVideoContrl.m in Sources */,
 				C21C72D822C616BE009F3199 /* UIView+DKSBadge.m in Sources */,
 				C2EFFAEF229402080051781F /* DBZJ_ScanContrl.m in Sources */,

@@ -55,6 +55,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    if (self.codeStr) {
+        self.invatationCode.text = self.codeStr;
+    }
     [self setUp];
 }
 - (void)setUp{

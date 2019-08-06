@@ -39,18 +39,6 @@
     CGFloat gap = ( SCREEN_WIDTH - wd*5 - 10*2) /4;
 
     self.btn3LeadCons.constant =  self.btn3LeadCons.constant = gap;
-   /* if (![JSHAREService isWeChatInstalled]) {
-        self.wxLb.hidden = YES;
-        self.wxBtn.hidden = YES;
-        self.frendLb.hidden = YES;
-        self.frendBtn.hidden = YES;
-    }
-    if (![JSHAREService isQQInstalled]) {
-        self.qqLb.hidden = YES;
-        self.qqBtn.hidden = YES;
-        self.qZonBtn.hidden = YES;
-        self.qzLb.hidden = YES;
-    }*/
 }
 
 - (IBAction)wxChatAction:(UIButton *)sender {
@@ -64,7 +52,6 @@
 }
 
 - (IBAction)wxSession:(UIButton *)sender {
-
     if (self.isFrom_sheQu) {
         [self handelSheQuShareWithtype:JSHAREPlatformWechatTimeLine];
     }else if (self.isFrom_haiBao){
@@ -97,7 +84,7 @@
 
 - (IBAction)saveMesAction:(UIButton *)sender {
     if (self.isFrom_sheQu) {
-        [self handleSheQu_SaveImages];
+        [self handleSheQu_SaveImagesWiPisArr:self.comInfo.pics];
     }else if(self.isFrom_haiBao){
         [self handleHaiPaoSave_image];
     }else{
@@ -151,19 +138,13 @@
     }];
 }
 
-//保存创建分享的图片（一张）
+#pragma mark - 保存创建分享的图片（海报和网络图片）
+//保存创建分享的图片
 - (void)handleCreateShareSaveImage{
-    if (self.selectedInfo == nil||[self.selectedInfo isKindOfClass:[NSNull class]]) {
-        [YJProgressHUD showMsgWithoutView:@"请选中一张图片"];
-        return;
-    }
-    UIImage *saveImage = nil;
-    if (self.selectedInfo.isPoster) {//保存的是文案
-        saveImage = self.selectedInfo.image;
-         UIImageWriteToSavedPhotosAlbum(saveImage, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
-    }else{
+    UIImageWriteToSavedPhotosAlbum(self.postImage, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
+    for (NSString *url in self.pics) {
         UIImageView *tempIV = [UIImageView new];
-        [tempIV sd_setImageWithURL:[NSURL URLWithString:self.selectedInfo.imageStr] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+        [tempIV sd_setImageWithURL:[NSURL URLWithString:url] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
             if (image) {
                 // 保存图片
                 UIImageWriteToSavedPhotosAlbum(image, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
@@ -184,9 +165,9 @@
     }];
 }
 
-//保存多张图片(社区)
-- (void)handleSheQu_SaveImages{
-    for (NSString *imageUrl in self.comInfo.pics) {
+//保存多张图片(社区和分享)
+- (void)handleSheQu_SaveImagesWiPisArr:(NSArray*)pics{
+    for (NSString *imageUrl in pics) {
         UIImageView *tempIV = [UIImageView new];
         [tempIV sd_setImageWithURL:[NSURL URLWithString:imageUrl] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
             if (image) {

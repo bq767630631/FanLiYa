@@ -8,6 +8,7 @@
 
 #import "AppDelegate+privates.h"
 #import "IntelligenceSearchView.h"
+#import "RegisterContrl.h"
 //#import <objc/runtime.h>
 
 #define QQShare_AppID @"1109202625"
@@ -260,7 +261,20 @@ fetchCompletionHandler:
 
 - (void)applicationDidBecomeActive:(UIApplication *)application{
     UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
+    
     if (pasteboard.string && pasteboard.string.length>0) {
+        NSString *token = ToKen;
+        if (pasteboard.string.length == 6 &&User_ID ==0 && token.length ==0) { //6位邀请码并且未登录
+              NSLog(@"%@",self.window);
+              NSLog(@"keyWindow %@",[UIApplication sharedApplication].keyWindow);
+            UINavigationController *navi = self.window.rootViewController.childViewControllers.firstObject;
+            RegisterContrl *vc = [RegisterContrl new];
+            vc.codeStr = pasteboard.string;
+            [navi pushViewController:vc animated:YES];
+            pasteboard.string = @""; //使用完之后清空
+            return;
+        }
+        
             IntelligenceSearchView *insear  = [IntelligenceSearchView viewFromXib];
             insear.contentStr = pasteboard.string;
             [insear showInWindow];

@@ -11,7 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface RegisterContrl : MPZG_BaseContrl
-
+@property (nonatomic, copy) NSString *codeStr;
 @end
 
 NS_ASSUME_NONNULL_END

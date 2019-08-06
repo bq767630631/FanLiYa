@@ -53,7 +53,7 @@
     
     viewCtrl = [DBZJ_IncomeContrl new];
   [self addChildViewController:viewCtrl
-                           title:@"赚收益"
+                           title:@"赚钱鸭"
                        imageName:@"icon_zhuanshouyi"
                selectedImageName:@"icon_zhuanshouyi"];
     

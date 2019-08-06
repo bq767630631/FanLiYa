@@ -13,6 +13,7 @@
 #import "PrersonInfoModel.h"
 #define Bottom_H 130.f
 #define  SelectedInfo_Key   @"selectedInfo"
+#define  Post_Image_Key   @"postImage"
 #define  DetailInfo_Key   @"detailinfo.shareContent_H"
 @interface CreateShareContrl ()
 @property (nonatomic, strong) UIScrollView *scroView;
@@ -50,6 +51,7 @@
     }];
     
    [self.contentView addObserver:self forKeyPath:SelectedInfo_Key options:NSKeyValueObservingOptionNew context:nil];
+    [self.contentView addObserver:self forKeyPath:Post_Image_Key options:NSKeyValueObservingOptionNew context:nil];
    [self addObserver:self forKeyPath:DetailInfo_Key options:NSKeyValueObservingOptionNew context:nil];
 }
 
@@ -60,12 +62,14 @@
         self.detailinfo.shorturl = shorturl;
         [CreateShare_Model geneRateWenanWithDetail:self.detailinfo isAdd:YES isDown:NO isRegisCode:YES isTkl:NO];
         [self.contentView setInfoWithModel:self.detailinfo];
+        self.bottom.pics =   self.detailinfo.pics;
     }];
 }
 
 - (void)viewDidDisappear:(BOOL)animated{
      [super viewDidDisappear:animated];
      [self.contentView removeObserver:self forKeyPath:SelectedInfo_Key];
+      [self.contentView removeObserver:self forKeyPath:Post_Image_Key];
      [self removeObserver:self forKeyPath:DetailInfo_Key];
 }
 
@@ -75,11 +79,13 @@
     if ([keyPath isEqualToString:SelectedInfo_Key]) {
         CreateShare_CellInfo *info = change[@"new"];
         self.bottom.selectedInfo = info;
-       // NSLog(@"change %@",change);
+    }
+    if ([keyPath isEqualToString:Post_Image_Key]) {
+        UIImage *image = change[@"new"];
+        self.bottom.postImage = image;
     }
     
     if ([keyPath isEqualToString:DetailInfo_Key]) {
-        NSLog(@"change =%@",change);
         CGFloat het = [change[@"new"] floatValue];
         self.scroView.contentSize = CGSizeMake(0, het);
         self.contentView.height = het;
