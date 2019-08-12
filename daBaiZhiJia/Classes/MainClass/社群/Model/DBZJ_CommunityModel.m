@@ -48,8 +48,8 @@
             [self noticeNoreMoreDataWithType:type];
             return;
         }
-        NSDictionary *dict = @{@"page":@(self.pageNum_Rec),@"token":ToKen};
-        NSLog(@"dict1 %@",dict);
+        NSDictionary *dict = @{@"page":@(self.pageNum_Rec),@"token":ToKen,@"v":APP_Version};
+      //  NSLog(@"dict1 %@",dict);
         [PPNetworkHelper POST:URL_Add(@"/v.php/goods.share/getGoodsList") parameters:dict success:^(id responseObject) {
             
             NSInteger code = [responseObject[@"code"] integerValue];
@@ -99,8 +99,8 @@
             [self noticeNoreMoreDataWithType:type];
             return;
         }
-          NSDictionary *dict = @{@"page":@(self.pageNum_Marketing),@"token":ToKen};
-         NSLog(@"dict2 %@",dict);
+          NSDictionary *dict = @{@"page":@(self.pageNum_Marketing),@"token":ToKen,@"v":APP_Version};
+       //  NSLog(@"dict2 %@",dict);
         [PPNetworkHelper POST:URL_Add(@"/v.php/goods.share/getMarketList") parameters:dict success:^(id responseObject) {
             NSLog(@"营销素材responseObject %@",responseObject);
             NSInteger code = [responseObject[@"code"] integerValue];

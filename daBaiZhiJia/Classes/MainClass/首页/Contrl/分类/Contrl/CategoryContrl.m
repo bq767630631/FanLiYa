@@ -101,7 +101,7 @@ static NSString *tableCellId = @"tableCellId";
 
 - (void)query2thedCate{
     //查询二级分类
-      NSDictionary *dict = @{@"cid":self.cid,@"token":ToKen};
+      NSDictionary *dict = @{@"cid":self.cid,@"token":ToKen,@"v":APP_Version};
     NSLog(@"查询二级分类dict %@",dict);
      [PPNetworkHelper GET:URL_Add(@"/v.php/goods.goods/getCateList") parameters:dict success:^(id responseObject) {
      NSLog(@"查询二级分类 =%@",responseObject);
@@ -119,7 +119,7 @@ static NSString *tableCellId = @"tableCellId";
 
 - (void)queryData{
  
-    NSDictionary *para = @{@"cid":self.cid, @"page":@(self.page),@"sort":self.sort,@"token":ToKen};
+    NSDictionary *para = @{@"cid":self.cid, @"page":@(self.page),@"sort":self.sort,@"token":ToKen,@"v":APP_Version};
     
     NSLog(@"para =%@", para);
     @weakify(self);

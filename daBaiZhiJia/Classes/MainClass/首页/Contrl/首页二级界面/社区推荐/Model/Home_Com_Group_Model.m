@@ -26,11 +26,11 @@
         block(self.goodArr,self.imageStr,nil);
         return;
     }
-    NSDictionary *para = @{@"page":@(self.page), @"token":ToKen};
-    NSLog(@"para %@",para);
+    NSDictionary *para = @{@"page":@(self.page), @"token":ToKen,@"v":APP_Version};
+  //  NSLog(@"para %@",para);
     
     [PPNetworkHelper POST:URL_Add(@"/v.php/goods.share/getShequList") parameters:para success:^(id responseObject) {
-        NSLog(@"社群推荐 :%@",responseObject);
+        //NSLog(@"社群推荐 :%@",responseObject);
         NSInteger code = [responseObject[@"code"] integerValue];
         if (code == SucCode) {
             self.imageStr = responseObject[@"data"][@"logo"];

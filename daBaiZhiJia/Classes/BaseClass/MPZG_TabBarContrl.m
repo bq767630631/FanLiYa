@@ -16,9 +16,10 @@
 #import "BillBoard_Contrl.h"
 #import <objc/runtime.h>
 #import "MessageManger.h"
-
+#import "Home_Com_Group_Recom.h"
+#import "Brand_Showcontrl.h"
 #define IOS7 [[[UIDevice currentDevice] systemVersion]floatValue]>=7.0
-@interface MPZG_TabBarContrl ()
+@interface MPZG_TabBarContrl ()<UITabBarControllerDelegate>
 
 @end
 
@@ -26,9 +27,33 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self tabBarInitialise];
+  
     self.tabBar.backgroundColor = [UIColor whiteColor];///不透明
+     [self tabBarInitialise];
+    self.delegate = self;
 }
+#pragma mark - UITabBarControllerDelegate
+- (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController{
+   /* if (tabBarController.selectedIndex == 2) {
+        MPZG_NavigationContrl *navi  =  (MPZG_NavigationContrl*)viewController;
+        NSMutableArray *temp = [NSMutableArray arrayWithArray:navi.viewControllers];
+        UIViewController *first = navi.viewControllers.firstObject;
+        if (!Is_Show_Info &&temp.count == 1 &&![first isKindOfClass:[Brand_Showcontrl class]]) {
+            [temp removeFirstObject];
+            Brand_Showcontrl *vc = [Brand_Showcontrl new];
+            vc.isFromTabContrl = YES;
+            vc.tabBarItem.image = [[UIImage imageNamed:@"icon_zhuanshouyi"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+            vc.tabBarItem.selectedImage = [[UIImage imageNamed:@"icon_zhuanshouyi"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+            NSMutableDictionary *selectedTextAttrs = [NSMutableDictionary dictionary];
+            selectedTextAttrs[NSForegroundColorAttributeName] = RGBA(51, 51, 51, 1);
+            selectedTextAttrs[NSFontAttributeName] = [UIFont systemFontOfSize:10.f];
+            [vc.tabBarItem setTitleTextAttributes:selectedTextAttrs forState:UIControlStateSelected];
+            [temp addObject:vc];
+            navi.viewControllers = temp;
+        }
+    }*/
+}
+
 
 - (void)viewWillLayoutSubviews{
     [super viewWillLayoutSubviews];
@@ -52,8 +77,9 @@
                selectedImageName:@"icon_toped_select"];
     
     viewCtrl = [DBZJ_IncomeContrl new];
+    NSString *title = @"赚钱鸭";
   [self addChildViewController:viewCtrl
-                           title:@"赚钱鸭"
+                           title:title
                        imageName:@"icon_zhuanshouyi"
                selectedImageName:@"icon_zhuanshouyi"];
     

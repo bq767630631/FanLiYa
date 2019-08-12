@@ -26,7 +26,7 @@
         block(self.goodArr,nil);
         return;
     }
-    NSDictionary *para = @{@"page":@(self.page),@"pagesize":@(10),@"brandcat":self.brandcat,@"token":ToKen};
+    NSDictionary *para = @{@"page":@(self.page),@"pagesize":@(10),@"brandcat":self.brandcat,@"token":ToKen,@"v":APP_Version};
     NSLog(@"para %@",para);
     
     [PPNetworkHelper POST:URL_Add(@"/v.php/goods.goods/brand") parameters:para success:^(id responseObject) {
@@ -69,7 +69,7 @@
 }
 
 + (void)quedyBrandDetailBrandId:(NSString*)brandId WickBloc:(Brand_Detailblock)block{
-    NSDictionary *para = @{@"id":brandId,@"token":ToKen};
+    NSDictionary *para = @{@"id":brandId,@"token":ToKen,@"v":APP_Version};
     [PPNetworkHelper POST:URL_Add(@"/v.php/goods.goods/branddetail") parameters:para success:^(id responseObject) {
         //NSLog(@"branddetail :%@",responseObject);
         NSInteger code = [responseObject[@"code"] integerValue];

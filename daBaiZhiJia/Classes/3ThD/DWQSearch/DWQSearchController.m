@@ -55,7 +55,7 @@ static NSString *const HistoryCellID = @"HistoryCellID";
     /**
      * 热门搜索的假数据
      */
-    [PPNetworkHelper GET:URL_Add(@"/v.php/goods.share/keyword") parameters:@{@"token":ToKen} success:^(id responseObject) {
+    [PPNetworkHelper GET:URL_Add(@"/v.php/goods.share/keyword") parameters:@{@"token":ToKen,@"v":APP_Version} success:^(id responseObject) {
          NSInteger code = [responseObject[@"code"] integerValue];
         if (code == SucCode) {
              self.HotArr = [NSString mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];

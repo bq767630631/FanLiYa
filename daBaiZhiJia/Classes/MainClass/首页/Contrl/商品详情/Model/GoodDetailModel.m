@@ -29,7 +29,7 @@
 
 - (void)queryData{
       
-    NSDictionary *dic = @{@"sku":self.sku, @"token":ToKen};
+    NSDictionary *dic = @{@"sku":self.sku, @"token":ToKen,@"v":APP_Version};
     NSLog(@"para:%@",dic);
        //商品详情
      @weakify(self);
@@ -66,7 +66,7 @@
 }
 
 - (void)queryTuiJianGood{
-    NSDictionary *dic = @{@"cateid":self.detailinfo.cateid, @"token":ToKen};
+    NSDictionary *dic = @{@"cateid":self.detailinfo.cateid, @"token":ToKen,@"v":APP_Version};
     [PPNetworkHelper POST:URL_Add(@"/v.php/goods.goods/getGoodsTuijianNew") parameters:dic success:^(id responseObject) {
         
         // NSLog(@"推荐商品responseObject  %@",responseObject);
@@ -91,7 +91,7 @@
 
 
 - (void)queryViewPeople{
-    NSDictionary *para = @{@"sku":self.sku, @"token":ToKen};
+    NSDictionary *para = @{@"sku":self.sku, @"token":ToKen,@"v":APP_Version};
     [PPNetworkHelper POST:URL_Add(@"/v.php/goods.goods/getGoodsShow") parameters:para success:^(id responseObject) {
         NSInteger code = [responseObject[@"code"] integerValue];
 //        NSLog(@"弹幕 %@",responseObject);

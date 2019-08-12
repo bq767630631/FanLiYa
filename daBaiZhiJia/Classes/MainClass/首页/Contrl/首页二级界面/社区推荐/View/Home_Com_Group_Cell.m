@@ -148,7 +148,7 @@ static NSString *cellid=  @"cellid";
 
 - (IBAction)goTobuy:(UIButton *)sender {
     if ([self judgeisLogin]) {
-        NSDictionary *dict = @{@"sku":self.info.sku,@"token":ToKen};
+        NSDictionary *dict = @{@"sku":self.info.sku,@"token":ToKen,@"v":APP_Version};
         @weakify(self);
         [PPNetworkHelper POST:URL_Add(@"/v.php/goods.goods/getCoupon") parameters:dict success:^(id responseObject) {
             @strongify(self);

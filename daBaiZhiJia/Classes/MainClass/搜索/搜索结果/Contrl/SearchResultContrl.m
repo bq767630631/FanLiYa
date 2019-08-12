@@ -88,7 +88,7 @@ static NSString *tableCellId = @"tableCellId";
 }
 
 - (void)questData{
-    NSDictionary *dict = @{@"kw":self.searchStr,@"page":@(self.page),@"sort":self.sort,@"has_coupon":self.has_coupon,@"token":ToKen};
+    NSDictionary *dict = @{@"kw":self.searchStr,@"page":@(self.page),@"sort":self.sort,@"has_coupon":self.has_coupon,@"token":ToKen,@"v":APP_Version};
      NSLog(@"dict =%@",dict.mj_keyValues);
     if (self.haveNoMoreData) {
         [self.scroview.mj_footer endRefreshing];

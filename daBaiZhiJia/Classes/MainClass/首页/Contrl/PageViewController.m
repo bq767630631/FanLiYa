@@ -162,8 +162,8 @@
 
 //查询每日精选
 - (void)queryEveryDataWithGroup:(dispatch_group_t)group{
-    NSDictionary *dict = @{@"page":@(self.page),@"token":ToKen};
-  //  NSLog(@"dict =%@",dict.mj_keyValues);
+    NSDictionary *dict = @{@"page":@(self.page),@"token":ToKen,@"v":APP_Version};
+    NSLog(@"每日精选 dict =%@",dict.mj_keyValues);
     if (self.haveNoMoreData) {
         [self.scroView.mj_footer endRefreshing];
         [self.scroView.mj_header endRefreshing];

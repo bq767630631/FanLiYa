@@ -19,7 +19,7 @@
 
 
 + (void)queryCateInfoWithBlock:(BillBoard_CatBloock)block{
-    [PPNetworkHelper GET:URL_Add(@"/v.php/goods.goods/getRankCate") parameters:@{@"token":ToKen} success:^(id responseObject) {
+    [PPNetworkHelper GET:URL_Add(@"/v.php/goods.goods/getRankCate") parameters:@{@"token":ToKen,@"v":APP_Version} success:^(id responseObject) {
        // NSLog(@"分类responseObject %@",responseObject);
         NSInteger code = [responseObject[@"code"] integerValue];
         if (code == SucCode) {
@@ -40,7 +40,7 @@
 }
 
 + (void)queryGoodRankType:(NSInteger)type cid:(NSInteger)cid WithBlock:(BillBoard_CatBloock)block{
-    NSDictionary *dic = @{@"rankType":@(type),@"cid":@(cid),@"token":ToKen};
+    NSDictionary *dic = @{@"rankType":@(type),@"cid":@(cid),@"token":ToKen,@"v":APP_Version};
     
     [PPNetworkHelper POST:URL_Add(@"/v.php/goods.goods/getRankList") parameters:dic success:^(id responseObject) {
         // NSLog(@"getRankListresponseObject %@",responseObject);
@@ -64,7 +64,7 @@
         block(self.goodArr,nil);
         return;
     }
-       NSDictionary *dic = @{@"rankType":@(type),@"cid":@(cid),@"page":@(self.page), @"token":ToKen};
+       NSDictionary *dic = @{@"rankType":@(type),@"cid":@(cid),@"page":@(self.page), @"token":ToKen,@"v":APP_Version};
     NSLog(@"dict =%@",dic);
     [PPNetworkHelper POST:URL_Add(@"/v.php/goods.goods/getRankListNew") parameters:dic success:^(id responseObject) {
         

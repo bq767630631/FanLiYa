@@ -132,7 +132,7 @@ CGRectGetHeight([UIApplication sharedApplication].statusBarFrame)
 #define iOS8_AND_LATEST ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0 ? YES : NO)
 #define iOS11_AND_LATEST ([[[UIDevice currentDevice] systemVersion] floatValue] >= 11.0 ? YES : NO)
 
-#define IOS_APP_Version [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]
+#define APP_Version [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]
 
 #pragma mark - view
 ////////////////////

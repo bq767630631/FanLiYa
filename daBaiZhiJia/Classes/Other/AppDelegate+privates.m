@@ -9,6 +9,7 @@
 #import "AppDelegate+privates.h"
 #import "IntelligenceSearchView.h"
 #import "RegisterContrl.h"
+#import "MyInvitation_CodeContrl.h"
 //#import <objc/runtime.h>
 
 #define QQShare_AppID @"1109202625"
@@ -265,9 +266,17 @@ fetchCompletionHandler:
     if (pasteboard.string && pasteboard.string.length>0) {
         NSString *token = ToKen;
         if (pasteboard.string.length == 6 &&User_ID ==0 && token.length ==0) { //6位邀请码并且未登录
-              NSLog(@"%@",self.window);
-              NSLog(@"keyWindow %@",[UIApplication sharedApplication].keyWindow);
+//              NSLog(@"%@",self.window);
+            
             UINavigationController *navi = self.window.rootViewController.childViewControllers.firstObject;
+            UIViewController *cu_vc = [self getCurrentVC];
+            if ([cu_vc isKindOfClass:[MyInvitation_CodeContrl class]]) {
+                MyInvitation_CodeContrl *codeVc  = (MyInvitation_CodeContrl*)cu_vc;
+                codeVc.code = pasteboard.string;
+                pasteboard.string = @""; //使用完之后清空
+                return;
+            }
+            
             RegisterContrl *vc = [RegisterContrl new];
             vc.codeStr = pasteboard.string;
             [navi pushViewController:vc animated:YES];

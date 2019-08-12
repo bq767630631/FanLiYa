@@ -178,7 +178,7 @@ static NSString *cellid=  @"cellid";
     if (![self judgeisLogin]) {
         return;
     }
-    NSDictionary *para = @{@"sku":self.comInfo.sku,@"token":ToKen};
+    NSDictionary *para = @{@"sku":self.comInfo.sku,@"token":ToKen,@"v":APP_Version};
     NSLog(@"para =%@",para);
     [PPNetworkHelper POST:URL_Add(@"/v.php/goods.goods/getTao") parameters:para success:^(id responseObject) {
 //          NSLog(@"tkl res=%@", responseObject);

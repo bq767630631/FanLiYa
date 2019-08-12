@@ -110,8 +110,6 @@
 #pragma mark - SDCycleScrollViewDelegate
 /** 点击图片回调 */
 - (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index{
-    NSLog(@"");
-    
     HomePage_bg_bannernfo*info = self.bannerArr[index];
     if ([NSString stringIsNullOrEmptry:info.url].length>0) {
         [self handleBannerDetailWithType:info.url_type info:info];

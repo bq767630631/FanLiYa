@@ -10,6 +10,7 @@
 #import "DBZJ_IncomeModel.h"
 #import "DBZJ_Income_ProView.h"
 #import "NewPeople_EnjoyContrl.h"
+#import "UIButton+WebCache.h"
 
 @interface DBZJ_Income_First ()
 @property (weak, nonatomic) IBOutlet UIImageView *personImag;
@@ -53,12 +54,18 @@
 @property (weak, nonatomic) IBOutlet UIView *pro2_v1;
 @property (weak, nonatomic) IBOutlet UIView *pro2_v2;
 
+@property (weak, nonatomic) IBOutlet UIButton *yaoQingBtn;
+@property (weak, nonatomic) IBOutlet UIImageView *moshiImageV;
+@property (weak, nonatomic) IBOutlet UIImageView *teQuanImageV;
 
 @property (nonatomic, strong) DBZJ_Income_ProView *firstPro;
 @property (nonatomic, strong) DBZJ_Income_ProView *secPro;
 @property (nonatomic, strong) DBZJ_Income_ProView *thirdPro;
 
 @property (weak, nonatomic) IBOutlet UIImageView *tuanznhangImage;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *moshi_aspec;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *tequan_aspec;
+@property (weak, nonatomic) IBOutlet UIView *contantTuanV;
 
 @end
 @implementation DBZJ_Income_First
@@ -138,14 +145,19 @@
         self.leadProV.hidden = YES;
     }
   
-     [self layoutIfNeeded];//必须调用
-    NSLog(@"tuanznhangImage.bottom =%.f",self.tuanznhangImage.bottom);
-    NSLog(@"self.height =%.f",self.height);
+    [self.yaoQingBtn sd_setImageWithURL:[NSURL URLWithString:info.yaoqing] forState:UIControlStateNormal];
+    [self.moshiImageV setDefultPlaceholderWithFullPath:info.moshi];
+    [self.teQuanImageV setDefultPlaceholderWithFullPath:info.tequan];
+    if (!info.moshi.length &&!info.tequan.length) {
+        self.height = self.contantTuanV.bottom;
+    }else{
+        self.height = self.tuanznhangImage.bottom;
+    }
+    [self layoutIfNeeded];//必须调用
 }
 
 - (void)layoutSubviews{
     [super layoutSubviews];
-     self.height = self.tuanznhangImage.bottom;
 }
 
 #pragma mark - private
@@ -200,7 +212,7 @@
 
 - (IBAction)shenQingTuanZhang:(UIButton *)sender {
     if ([self isSatisfyCondition]) {
-        [PPNetworkHelper POST:URL_Add(@"/v.php/user.user/setUserLevel") parameters:@{@"token":ToKen} success:^(id responseObject) {
+        [PPNetworkHelper POST:URL_Add(@"/v.php/user.user/setUserLevel") parameters:@{@"token":ToKen,@"v":APP_Version} success:^(id responseObject) {
             NSLog(@" shenQingTuanZhang responseObject =%@",responseObject);
 //            NSInteger code = [responseObject[@"code"] integerValue];
 //            if (code == SucCode) {

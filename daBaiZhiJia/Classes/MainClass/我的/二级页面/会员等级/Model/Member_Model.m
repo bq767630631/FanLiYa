@@ -11,7 +11,7 @@
 @implementation Member_Model
 
 + (void)queryMemSetInfoWithBlock:(leverSetBlock)block{
-    NSDictionary *dic = @{@"token":ToKen};
+    NSDictionary *dic = @{@"token":ToKen,@"v":APP_Version};
     [PPNetworkHelper POST:URL_Add(@"/v.php/user.user/getLevel") parameters:dic success:^(id responseObject) {
           NSLog(@"MemSetInfo %@",responseObject);
         NSInteger code = [responseObject[@"code"] integerValue];
@@ -40,7 +40,7 @@
 }
 
 + (void)queryMemCurInfoWithBlock:(curMemInfoBlock)block{
-    NSDictionary *dic = @{@"token":ToKen};
+    NSDictionary *dic = @{@"token":ToKen,@"v":APP_Version};
     [PPNetworkHelper POST:URL_Add(@"/v.php/user.user/getUserLevel") parameters:dic success:^(id responseObject) {
         NSLog(@"MemCurInfo %@",responseObject);
         NSInteger code = [responseObject[@"code"] integerValue];

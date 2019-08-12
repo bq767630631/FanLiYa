@@ -85,7 +85,7 @@
         return;
     }
     NSLog(@"");
-    NSDictionary *para = @{@"sku":self.info.sku,@"token":ToKen};
+    NSDictionary *para = @{@"sku":self.info.sku,@"token":ToKen,@"v":APP_Version};
     NSLog(@"para =%@",para);
     [PPNetworkHelper POST:URL_Add(@"/v.php/goods.goods/getTao") parameters:para success:^(id responseObject) {
         NSLog(@"tkl res=%@", responseObject);
@@ -134,7 +134,7 @@
 
 - (IBAction)gotoBuy:(UIButton *)sender {
     if ([self judgeisLogin]) {
-        NSDictionary *dict = @{@"sku":self.info.sku,@"token":ToKen};
+        NSDictionary *dict = @{@"sku":self.info.sku,@"token":ToKen,@"v":APP_Version};
         @weakify(self);
         [PPNetworkHelper POST:URL_Add(@"/v.php/goods.goods/getCoupon") parameters:dict success:^(id responseObject) {
             @strongify(self);

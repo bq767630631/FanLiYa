@@ -34,6 +34,10 @@ typedef void(^DBZJ_IncomBlock)(DBZJ_Zqy_Info *info, NSError *error, NSInteger co
 @property (nonatomic, copy) NSString *next_relation_number; //下一级需达到邀请关联人数
 @property (nonatomic, copy) NSString *next_order_number; //下一级需达到单数
 @property (nonatomic, copy) NSString *percent;
+
+@property (nonatomic, copy) NSString *yaoqing;
+@property (nonatomic, copy) NSString *tequan;
+@property (nonatomic, copy) NSString *moshi;
 //@property (nonatomic, copy) NSString *level; //单前用户的等级
 
 @property (nonatomic, copy) NSString *curStr;

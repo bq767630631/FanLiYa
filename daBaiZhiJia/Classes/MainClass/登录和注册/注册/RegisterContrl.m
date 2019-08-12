@@ -158,7 +158,7 @@
         [YJProgressHUD showMsgWithoutView:@"手机号格式不对"];
         return ;
     }
-    NSDictionary *dict = @{@"phone":self.countTf.text,@"token":ToKen};
+    NSDictionary *dict = @{@"phone":self.countTf.text,@"token":ToKen,@"v":APP_Version};
     [PPNetworkHelper POST:URL_Add(@"/v.php/user.login/sendmsg") parameters:dict success:^(id responseObject) {
         NSLog(@"responseObject %@",responseObject);
         NSInteger code = [responseObject[@"code"]integerValue];
@@ -216,7 +216,7 @@
         return;
     }
     
-    NSDictionary *dict = @{@"phone":self.countTf.text,@"password":self.pwdTf.text,@"code":self.codeTf.text,@"invite_sn":self.invatationCode.text,@"token":ToKen};
+    NSDictionary *dict = @{@"phone":self.countTf.text,@"password":self.pwdTf.text,@"code":self.codeTf.text,@"invite_sn":self.invatationCode.text,@"token":ToKen,@"v":APP_Version};
     NSLog(@"dict =%@",dict);
     [PPNetworkHelper POST:URL_Add(@"/v.php/user.login/register") parameters:dict success:^(id responseObject) {
         NSLog(@"responseObject %@",responseObject);

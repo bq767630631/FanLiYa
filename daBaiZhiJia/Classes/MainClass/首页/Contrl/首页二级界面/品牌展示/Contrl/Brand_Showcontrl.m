@@ -36,6 +36,9 @@ static NSString *collecTioncellId = @"collecTioncellId";
     [self.view addSubview:self.listContainerView];
     self.categoryView.contentScrollView = self.listContainerView.scrollView;
     [self.view addSubview:self.collcetion];
+    if (self.isFromTabContrl) {
+        self.navigationItem.leftBarButtonItem = [UIBarButtonItem new];
+    }
     
     [Home_SecHasCatModel  querySecCateWithType:SecHasCatType_BrandShow Block:^(NSMutableArray *cateTitleArr, NSMutableArray *cateIdArr, NSString *msg) {
         if (cateTitleArr) {

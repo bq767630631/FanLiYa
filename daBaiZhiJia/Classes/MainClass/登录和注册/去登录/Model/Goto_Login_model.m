@@ -10,7 +10,7 @@
 
 @implementation Goto_Login_model
 + (void)postValiteCodeWithStr:(NSString*)str block:(postCode_block)block{
-    NSDictionary *dict = @{@"phone":str,@"token":ToKen};
+    NSDictionary *dict = @{@"phone":str,@"token":ToKen,@"v":APP_Version};
     [PPNetworkHelper POST:URL_Add(@"/v.php/user.login/sendmsg") parameters:dict success:^(id responseObject) {
         NSLog(@"responseObject %@",responseObject);
         NSInteger code = [responseObject[@"code"]integerValue];
@@ -29,7 +29,7 @@
 }
 
 + (void)codeloginWithPhone:(NSString *)phone code:(NSString *)code block:(postCode_block)block{
-     NSDictionary *para = @{@"phone":phone, @"code":code,@"uuid":DeviceToken,@"token":ToKen};
+     NSDictionary *para = @{@"phone":phone, @"code":code,@"uuid":DeviceToken,@"token":ToKen,@"v":APP_Version};
     
     [PPNetworkHelper POST:URL_Add(@"/v.php/user.login/loginByCode") parameters:para success:^(id responseObject) {
         NSLog(@"responseObject =%@",responseObject);
@@ -104,7 +104,7 @@
 
 
 + (void)wxLoginWithcallBack:(wxLogin_Block)block{
-    NSDictionary *dict = @{@"openid":WX_open_ID,@"unionid":WX_unionid,@"nickname":WX_nick_name, @"headimgurl":WX_headimg_url,@"token":ToKen,@"uuid":DeviceToken };
+    NSDictionary *dict = @{@"openid":WX_open_ID,@"unionid":WX_unionid,@"nickname":WX_nick_name, @"headimgurl":WX_headimg_url,@"token":ToKen,@"uuid":DeviceToken ,@"v":APP_Version};
     NSLog(@"wxLogin dict =%@",dict);
     [PPNetworkHelper POST:URL_Add(@"/v.php/user.login/wechat") parameters:dict success:^(id responseObject) {
         NSLog(@"wechat responseObject %@",responseObject);

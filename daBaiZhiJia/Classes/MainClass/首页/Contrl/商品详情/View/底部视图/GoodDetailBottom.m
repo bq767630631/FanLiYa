@@ -80,7 +80,7 @@
 
 - (IBAction)buyAction:(UIButton *)sender {
     if ([self judgeisLogin]) {
-        NSDictionary *dict = @{@"sku":self.sku,@"token":ToKen};
+        NSDictionary *dict = @{@"sku":self.sku,@"token":ToKen,@"v":APP_Version};
         @weakify(self);
         [PPNetworkHelper POST:URL_Add(@"/v.php/goods.goods/getCoupon") parameters:dict success:^(id responseObject) {
             @strongify(self);
@@ -120,7 +120,7 @@
 
 //加入收藏
 - (void)shouCangReuest{
-    NSDictionary *para = @{@"sku":self.detailInfo.sku, @"token":ToKen, @"pt":@(1), @"title":self.detailInfo.title, @"pic":self.detailInfo.pic, @"market_price":self.detailInfo.market_price, @"price":self.detailInfo.price, @"commission_money":self.detailInfo.commission_money};
+    NSDictionary *para = @{@"sku":self.detailInfo.sku, @"token":ToKen, @"pt":@(1), @"title":self.detailInfo.title, @"pic":self.detailInfo.pic, @"market_price":self.detailInfo.market_price, @"price":self.detailInfo.price, @"commission_money":self.detailInfo.commission_money,@"v":APP_Version};
     [PPNetworkHelper POST:URL_Add(@"/v.php/goods.goods/addFavorite") parameters:para success:^(id responseObject) {
         NSLog(@"responseObject %@",responseObject);
           NSInteger code = [responseObject[@"code"] integerValue];
@@ -137,7 +137,7 @@
 }
 
 - (void)cancleCollection{
-    NSDictionary *para = @{@"skus":self.detailInfo.sku , @"token":ToKen};
+    NSDictionary *para = @{@"skus":self.detailInfo.sku , @"token":ToKen,@"v":APP_Version};
     [PPNetworkHelper POST:URL_Add(@"/v.php/goods.goods/updateFavorite") parameters:para success:^(id responseObject) {
         NSLog(@"cancleCollection rs= %@",responseObject);
         NSInteger code = [responseObject[@"code"] integerValue];

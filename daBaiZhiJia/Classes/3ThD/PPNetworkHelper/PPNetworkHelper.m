@@ -120,8 +120,6 @@ static AFHTTPSessionManager *_sessionManager;
                   failure:(PPHttpRequestFailed)failure {
     //读取缓存
     responseCache!=nil ? responseCache([PPNetworkCache httpCacheForURL:URL parameters:parameters]) : nil;
-     // UIWindow *keyWin =[UIApplication sharedApplication].delegate.window;
-    // [YJProgressHUD show:@"正在加载..." inView:keyWin mode:YJProgressModeLoading];
      [SVProgressHUD show];
     NSURLSessionTask *sessionTask = [_sessionManager GET:URL parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
         

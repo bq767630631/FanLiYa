@@ -87,7 +87,7 @@
 }
 
 - (void)queryPersonInfo{
-    [PPNetworkHelper POST:URL_Add(@"/v.php/user.user/getuserinfo") parameters:@{@"token":ToKen} success:^(id responseObject) {
+    [PPNetworkHelper POST:URL_Add(@"/v.php/user.user/getuserinfo") parameters:@{@"token":ToKen,@"v":APP_Version} success:^(id responseObject) {
         NSLog(@"responseObject  %@",responseObject);
         NSInteger code = [responseObject[@"code"] integerValue];
         if (code == SucCode) {

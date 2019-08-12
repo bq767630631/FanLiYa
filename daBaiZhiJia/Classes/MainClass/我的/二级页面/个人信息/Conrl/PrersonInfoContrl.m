@@ -259,7 +259,7 @@
 
 #pragma mark - private
 - (void)modifySex:(NSInteger)sex{
-    NSDictionary *para =  @{@"token":ToKen, @"sex":@(sex)};
+    NSDictionary *para =  @{@"token":ToKen, @"sex":@(sex),@"v":APP_Version};
     
     [PPNetworkHelper POST:URL_Add(@"/v.php/user.user/updUser")    parameters:para success:^(id responseObject) {
         NSLog(@"responseObject  %@",responseObject);

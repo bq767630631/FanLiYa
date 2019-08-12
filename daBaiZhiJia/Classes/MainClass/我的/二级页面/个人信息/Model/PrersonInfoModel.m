@@ -11,7 +11,7 @@
 @implementation PrersonInfoModel
 + (void)queryPersonWithBlock:(prersonInfoBlock)block{
     
-    [PPNetworkHelper POST:URL_Add(@"/v.php/user.user/getuserinfo") parameters:@{@"token":ToKen} success:^(id responseObject) {
+    [PPNetworkHelper POST:URL_Add(@"/v.php/user.user/getuserinfo") parameters:@{@"token":ToKen,@"v":APP_Version} success:^(id responseObject) {
         //NSLog(@"responseObject  %@",responseObject);
         NSInteger code = [responseObject[@"code"] integerValue];
         if (code == SucCode) {
@@ -34,7 +34,7 @@
    
      NSData *imgData = UIImageJPEGRepresentation(image, 0.1f);
      NSString *encodedImageStr = [imgData base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
-    NSDictionary *para = @{@"token":ToKen,@"wechat_image":encodedImageStr};
+    NSDictionary *para = @{@"token":ToKen,@"wechat_image":encodedImageStr,@"v":APP_Version};
     [PPNetworkHelper POST:URL_Add(@"/v.php/user.user/updUserImg") parameters:para success:^(id responseObject) {
         NSLog(@"responseObject  %@",responseObject);
         NSInteger code = [responseObject[@"code"] integerValue];
@@ -54,7 +54,7 @@
 }
 
 + (void)taobaoAuthBindWithOpenId:(NSString *)openId callBack:(void (^)(BOOL))block{
-    NSDictionary *para = @{@"token":ToKen, @"openId":openId};
+    NSDictionary *para = @{@"token":ToKen, @"openId":openId,@"v":APP_Version};
     [PPNetworkHelper GET:URL_Add(@"/v.php/user.user/bindtaoopenid") parameters:para success:^(id responseObject) {
         NSLog(@"responseObject  %@",responseObject);
         NSInteger code = [responseObject[@"code"] integerValue];
@@ -83,7 +83,7 @@
 
 + (void)queryTaboBaoAuthUrlWithCallBack:(void (^)(NSString * ))block{
     
-    [PPNetworkHelper GET:URL_Add(@"/v.php/index.index/getAuthUrl") parameters:@{@"token":ToKen} success:^(id responseObject) {
+    [PPNetworkHelper GET:URL_Add(@"/v.php/index.index/getAuthUrl") parameters:@{@"token":ToKen,@"v":APP_Version} success:^(id responseObject) {
           NSLog(@"获取 淘宝授权URL res =%@",responseObject);
         NSInteger code = [responseObject[@"code"] integerValue];
         if (code == SucCode) {
@@ -98,8 +98,8 @@
     }];
 }
 + (void)queryPersonRevenueWithBlcok:(prersonRevenueBlock)block{
-    NSLog(@"ToKen = %@",ToKen);
-    [PPNetworkHelper POST:URL_Add(@"/v.php/user.profit/usercentprofit") parameters:@{@"token":ToKen} success:^(id responseObject) {
+    
+    [PPNetworkHelper POST:URL_Add(@"/v.php/user.profit/usercentprofit") parameters:@{@"token":ToKen,@"v":APP_Version} success:^(id responseObject) {
         NSLog(@"个人收益 responseObject  %@",responseObject);
         NSInteger code = [responseObject[@"code"] integerValue];
         if (code == SucCode) {
@@ -126,7 +126,7 @@
 }
 
 + (void)queryMyMidddleWithblock:(PPHttpRequestCallBack)callBack{
-    [PPNetworkHelper POST:URL_Add(@"/v.php/index.index/getAppUserSide") parameters:nil success:^(id responseObject) {
+    [PPNetworkHelper POST:URL_Add(@"/v.php/index.index/getAppUserSide") parameters:@{@"token":ToKen,@"v":APP_Version} success:^(id responseObject) {
         NSLog(@"queryMyMidddleWithblock URL res =%@",responseObject);
         NSInteger code = [responseObject[@"code"] integerValue];
         if (code == SucCode) {

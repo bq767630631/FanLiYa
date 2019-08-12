@@ -110,7 +110,7 @@
         [YJProgressHUD showMsgWithoutView:@"手机号格式不对"];
         return ;
     }
-    NSDictionary *dict = @{@"phone":self.countTf.text,@"token":ToKen};
+    NSDictionary *dict = @{@"phone":self.countTf.text,@"token":ToKen,@"v":APP_Version};
     [PPNetworkHelper POST:URL_Add(@"/v.php/user.login/sendmsg") parameters:dict success:^(id responseObject) {
         NSLog(@"responseObject %@",responseObject);
         NSInteger code = [responseObject[@"code"]integerValue];
@@ -152,8 +152,8 @@
         [YJProgressHUD showMsgWithoutView:@"两次输入的密码不一样"];
         return;
     }
-    NSDictionary *dict = @{@"phone":self.countTf.text,@"password":self.pwdTf.text,@"code":self.codeTf.text,@"token":ToKen};
-    NSLog(@"dict =%@",dict);
+    NSDictionary *dict = @{@"phone":self.countTf.text,@"password":self.pwdTf.text,@"code":self.codeTf.text,@"token":ToKen,@"v":APP_Version};
+//    NSLog(@"dict =%@",dict);
     [PPNetworkHelper POST:URL_Add(@"/v.php/user.login/resetpassword") parameters:dict success:^(id responseObject) {
           NSInteger code = [responseObject[@"code"]integerValue];
         if (code == SucCode) {

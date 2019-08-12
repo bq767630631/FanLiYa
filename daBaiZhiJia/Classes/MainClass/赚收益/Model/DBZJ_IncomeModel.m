@@ -13,7 +13,7 @@
 
 
 + (void)queryZqyDataWickBlock:(DBZJ_IncomBlock)block{
-    NSDictionary *dick = @{@"token":ToKen};
+    NSDictionary *dick = @{@"token":ToKen,@"v":APP_Version};
     [PPNetworkHelper POST:URL_Add(@"/v.php/user.user/getUserLevel") parameters:dick success:^(id responseObject) {
         NSLog(@"queryZqyData =%@",responseObject);
         NSInteger code = [responseObject[@"code"] integerValue];

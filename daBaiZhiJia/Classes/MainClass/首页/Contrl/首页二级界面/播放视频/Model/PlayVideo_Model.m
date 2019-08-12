@@ -29,7 +29,7 @@
         return;
     }
  
-    NSDictionary *para = @{@"page":@(self.page),@"token":ToKen};
+    NSDictionary *para = @{@"page":@(self.page),@"token":ToKen,@"v":APP_Version};
     NSLog(@"para %@",para);
     [PPNetworkHelper POST:URL_Add(@"/v.php/goods.goods/zhiboList") parameters:para success:^(id responseObject) {
           NSLog(@"zby res:%@",responseObject);
@@ -101,7 +101,7 @@
 }
 
 + (void)queryBarragewithsku:(NSString *)sku callBack:(barrageInfoBlock)block{
-    NSDictionary *para = @{@"sku":sku, @"token":ToKen};
+    NSDictionary *para = @{@"sku":sku, @"token":ToKen,@"v":APP_Version};
     [PPNetworkHelper POST:URL_Add(@"/v.php/goods.goods/getGoodsShow") parameters:para success:^(id responseObject) {
         NSInteger code = [responseObject[@"code"] integerValue];
        // NSLog(@"弹幕 %@",responseObject);

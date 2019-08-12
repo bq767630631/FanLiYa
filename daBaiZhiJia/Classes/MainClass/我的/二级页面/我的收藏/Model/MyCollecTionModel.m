@@ -30,7 +30,7 @@
         [self noticeNoMoreData];
         return;
     }
-    NSDictionary *para = @{@"token":ToKen,@"page":@(self.pageNum)};
+    NSDictionary *para = @{@"token":ToKen,@"page":@(self.pageNum),@"v":APP_Version};
     [PPNetworkHelper POST:URL_Add(@"/v.php/goods.goods/favoriteList") parameters:para success:^(id responseObject) {
         NSLog(@"我的收藏responseObject %@",responseObject);
            NSInteger code = [responseObject[@"code"] integerValue];
@@ -81,7 +81,7 @@
         return;
     }
     skuStr = [skus componentsJoinedByString:@","];
-    NSDictionary *para = @{@"skus":skuStr,@"token":ToKen};
+    NSDictionary *para = @{@"skus":skuStr,@"token":ToKen,@"v":APP_Version};
     [PPNetworkHelper POST:URL_Add(@"/v.php/goods.goods/updateFavorite") parameters:para success:^(id responseObject) {
           NSInteger code = [responseObject[@"code"] integerValue];
         if (code == SucCode) {

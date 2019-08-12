@@ -41,7 +41,7 @@
         [YJProgressHUD showMsgWithoutView:@"请输入内容"];
         return;
     }
-    NSDictionary *para = self.type ==ChangeInfoType_niChen ? @{@"token":ToKen, @"wechat_name":self.customTf.text}: @{@"token":ToKen, @"wechat_account":self.customTf.text};
+    NSDictionary *para = self.type ==ChangeInfoType_niChen ? @{@"token":ToKen, @"wechat_name":self.customTf.text}: @{@"token":ToKen, @"wechat_account":self.customTf.text,@"v":APP_Version};
     
     [PPNetworkHelper POST:URL_Add(@"/v.php/user.user/updUser")    parameters:para success:^(id responseObject) {
         NSLog(@"responseObject  %@",responseObject);

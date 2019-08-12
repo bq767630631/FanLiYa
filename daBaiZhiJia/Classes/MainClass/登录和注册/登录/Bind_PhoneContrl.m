@@ -89,7 +89,7 @@
         [YJProgressHUD showMsgWithoutView:@"手机号格式不对"];
         return ;
     }
-    NSDictionary *dict = @{@"phone":self.phoneTf.text,@"token":ToKen};
+    NSDictionary *dict = @{@"phone":self.phoneTf.text,@"token":ToKen,@"v":APP_Version};
     [PPNetworkHelper POST:URL_Add(@"/v.php/user.login/sendmsg") parameters:dict success:^(id responseObject) {
         NSLog(@"responseObject %@",responseObject);
         NSInteger code = [responseObject[@"code"]integerValue];
@@ -120,7 +120,7 @@
         return;
     }
     
-    NSDictionary *dict = @{@"openid":WX_open_ID,@"unionid":WX_unionid,@"nickname":WX_nick_name, @"headimgurl":WX_headimg_url,@"token":ToKen,@"uuid":DeviceToken, @"phone":self.phoneTf.text,  @"code":self.codeTF.text};
+    NSDictionary *dict = @{@"openid":WX_open_ID,@"unionid":WX_unionid,@"nickname":WX_nick_name, @"headimgurl":WX_headimg_url,@"token":ToKen,@"uuid":DeviceToken, @"phone":self.phoneTf.text,  @"code":self.codeTF.text,@"v":APP_Version};
     NSLog(@"dict %@",dict);
     [PPNetworkHelper POST:URL_Add(@"/v.php/user.login/wechatPhone") parameters:dict success:^(id responseObject) {
         NSLog(@"responseObject %@",responseObject);

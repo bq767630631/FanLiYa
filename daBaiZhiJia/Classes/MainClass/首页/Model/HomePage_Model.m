@@ -10,7 +10,7 @@
 #import "NSString+URLErrorString.h"
 @implementation HomePage_Model
 + (void)queryVerson:(void (^)(void))callBlock{
-    [PPNetworkHelper GET:URL_Add(@"/v.php/index.index/getAppShow") parameters:nil success:^(id responseObject) {
+    [PPNetworkHelper GET:URL_Add(@"/v.php/index.index/getAppShow") parameters:@{@"token":ToKen,@"v":APP_Version} success:^(id responseObject) {
 //         NSLog(@"responseObject %@",responseObject);
         NSInteger code = [responseObject[@"code"] integerValue];
         NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
@@ -41,8 +41,8 @@
 }
 
 + (void)queryBrandinfoArrWithBlock:(zbyGoods_Block)block{
-    [PPNetworkHelper POST:URL_Add(@"/v.php/goods.goods/brand") parameters:@{@"pagesize":@(3),@"token":ToKen} success:^(id responseObject) {
-          NSLog(@"Brandinfo responseObject =%@",responseObject);
+    [PPNetworkHelper POST:URL_Add(@"/v.php/goods.goods/brand") parameters:@{@"pagesize":@(3),@"token":ToKen,@"v":APP_Version} success:^(id responseObject) {
+         // NSLog(@"Brandinfo responseObject =%@",responseObject);
           NSInteger code = [responseObject[@"code"] integerValue];
         if (code == SucCode) {
             NSMutableArray *list = [BrandCat_info mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"list"]];
@@ -56,8 +56,8 @@
 
 + (void)queryCateInfoWithBlock:(HomePage_ModelBlock)block{
     
-    [PPNetworkHelper GET:URL_Add(@"/v.php/index.index/getCateList") parameters:nil success:^(id responseObject) {
-        NSLog(@"分类 %@",responseObject);
+    [PPNetworkHelper GET:URL_Add(@"/v.php/index.index/getCateList") parameters:@{@"token":ToKen,@"v":APP_Version} success:^(id responseObject) {
+       // NSLog(@"分类 %@",responseObject);
         
         NSInteger code = [responseObject[@"code"] integerValue];
         if (code == SucCode) {
@@ -85,7 +85,8 @@
 }
 
 + (void)queryHomeBannerImagesBlcok:(hm_bg_bannerBlock)block{
-      NSDictionary *dict = @{@"token":ToKen};
+
+    NSDictionary *dict = @{@"token":ToKen,@"v":APP_Version};
     [PPNetworkHelper GET:URL_Add(@"/v.php/index.index/getAppBanner") parameters:dict success:^(id responseObject) {
         NSLog(@"queryHomeBanner");
         //NSLog(@"queryHomeBanner %@",responseObject);
@@ -105,7 +106,7 @@
 }
 
 + (void)queryBroadCastWithBlock:(broadCast_Block)block{
-      NSDictionary *dict = @{@"token":ToKen};
+      NSDictionary *dict = @{@"token":ToKen,@"v":APP_Version};
     [PPNetworkHelper POST:URL_Add(@"/v.php/index.index/bobao") parameters:dict success:^(id responseObject) {
         NSLog(@"queryBroad");
        // NSLog(@"BroadCast responseObject %@",responseObject);
@@ -124,7 +125,7 @@
 
 
 + (void)queryMiddleAdverseWithBlock:(midadver_Block)block{
-      NSDictionary *dict = @{@"token":ToKen};
+      NSDictionary *dict = @{@"token":ToKen,@"v":APP_Version};
     [PPNetworkHelper GET:URL_Add(@"/v.php/index.index/getAppBannerSide") parameters:dict success:^(id responseObject) {
         NSLog(@"queryMiddleAdverse");
          //NSLog(@"MiddleAdverse responseObject %@",responseObject);
@@ -142,7 +143,7 @@
 }
 
 + (void)queryZbyGoodWithBlock:(zbyGoods_Block)block{
-    NSDictionary *dict = @{@"token":ToKen};
+    NSDictionary *dict = @{@"token":ToKen,@"v":APP_Version};
     [PPNetworkHelper POST:URL_Add(@"/v.php/goods.goods/zhiboList") parameters:dict success:^(id responseObject) {
         NSLog(@"queryZbyGood");
        // NSLog(@"ZbyGood responseObject =%@",responseObject);
@@ -166,7 +167,7 @@
 
 
 + (void)queryFlashSaleWithBlock:(flashSale_Block)block{
-       NSDictionary *dict = @{@"token":ToKen};
+       NSDictionary *dict = @{@"token":ToKen,@"v":APP_Version};
     [PPNetworkHelper POST:URL_Add(@"/v.php/index.index/xianshi") parameters:dict success:^(id responseObject) {
         NSLog(@"queryFlashSale");
         // NSLog(@"FlashSale responseObject =%@",responseObject);
@@ -187,7 +188,7 @@
 
 + (void)queryTianMaoUrlWithBlock:(tmUrl_Block)block{
   
-    [PPNetworkHelper POST:URL_Add(@"/v.php/index.index/getTMurl") parameters:@{@"token":ToKen} success:^(id responseObject) {
+    [PPNetworkHelper POST:URL_Add(@"/v.php/index.index/getTMurl") parameters:@{@"token":ToKen,@"v":APP_Version} success:^(id responseObject) {
           NSLog(@"queryTianMaoUrl");
         NSInteger code = [responseObject[@"code"] integerValue];
         if (code == SucCode) {

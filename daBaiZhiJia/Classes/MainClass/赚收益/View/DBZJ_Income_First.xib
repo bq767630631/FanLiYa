@@ -402,6 +402,7 @@
             <connections>
                 <outlet property="addHaoyouBtn" destination="PwQ-yF-zMF" id="dZx-tO-PCK"/>
                 <outlet property="codNum" destination="8Ri-mz-Dxu" id="Uhe-HN-U3p"/>
+                <outlet property="contantTuanV" destination="fcS-4Z-CfC" id="8ml-cx-QcZ"/>
                 <outlet property="curLable" destination="Li3-Vb-UVp" id="gjX-3g-fZG"/>
                 <outlet property="cur_lev" destination="YcD-7h-yWh" id="std-m6-sKu"/>
                 <outlet property="leadCode" destination="bD1-7R-VTX" id="Rlc-pv-25f"/>
@@ -409,6 +410,8 @@
                 <outlet property="leadImage" destination="ce6-ci-hZT" id="g0q-kk-2Iv"/>
                 <outlet property="leadName" destination="aAx-TE-1Nl" id="27w-dE-ggx"/>
                 <outlet property="leadProV" destination="zXg-Aq-bmq" id="fZN-8F-SDD"/>
+                <outlet property="moshiImageV" destination="7ab-LQ-dia" id="T3G-aZ-Bx1"/>
+                <outlet property="moshi_aspec" destination="qdg-xX-54H" id="a17-V7-s7S"/>
                 <outlet property="perName" destination="z2d-XY-Xat" id="2ln-s4-gjz"/>
                 <outlet property="personImag" destination="0fO-hC-wGP" id="0FE-60-wPz"/>
                 <outlet property="pro1" destination="iez-eN-SUd" id="W0B-XF-vhk"/>
@@ -420,8 +423,11 @@
                 <outlet property="pro2_v2" destination="QTf-LZ-en6" id="TRl-Sj-3xW"/>
                 <outlet property="retPro" destination="x6R-gt-kE4" id="DiU-yW-v7L"/>
                 <outlet property="shenQingAction" destination="2TS-eZ-MU6" id="aPI-vF-AZF"/>
+                <outlet property="teQuanImageV" destination="xQX-HS-PHP" id="rcy-fQ-Rhj"/>
+                <outlet property="tequan_aspec" destination="4CI-gi-XdV" id="7qi-u2-GYt"/>
                 <outlet property="tuanZhangPro" destination="f7L-Ez-ZxK" id="Hzs-XE-9nR"/>
                 <outlet property="tuanznhangImage" destination="xQX-HS-PHP" id="gEq-nG-c87"/>
+                <outlet property="yaoQingBtn" destination="g4Q-og-soJ" id="blD-sa-lx1"/>
                 <outlet property="ziXunBtn" destination="yhn-9r-Nty" id="zVL-qD-c0g"/>
                 <outlet property="ziXunImagLead" destination="mzM-MH-FWF" id="7lC-iC-Ark"/>
             </connections>

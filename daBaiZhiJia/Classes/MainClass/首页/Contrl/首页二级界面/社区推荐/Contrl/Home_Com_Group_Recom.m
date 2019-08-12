@@ -28,9 +28,12 @@ static NSString *cellId = @"cellId";
 - (void)viewDidLoad {
     [super viewDidLoad];
      self.title = @"社群推荐";
+    
     UIBarButtonItem *leftBar = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_retBlack"] style:UIBarButtonItemStylePlain target:self action:@selector(leftBarButtonItemClick)];
     self.navigationItem.leftBarButtonItem = leftBar;
-  
+    if (self.isFromTabContrl) {
+        self.navigationItem.leftBarButtonItem = [UIBarButtonItem new];
+    }
     
     [self handleTableView];
     [self queryData];

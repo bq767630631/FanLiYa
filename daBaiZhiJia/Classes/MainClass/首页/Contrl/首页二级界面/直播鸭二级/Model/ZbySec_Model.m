@@ -26,7 +26,7 @@
         block(self.goodArr,nil);
         return;
     }
-    NSDictionary *para = @{@"page":@(self.page), @"cid":@(self.cid),@"token":ToKen};
+    NSDictionary *para = @{@"page":@(self.page), @"cid":@(self.cid),@"token":ToKen,@"v":APP_Version};
     NSLog(@"para %@",para);
     
     [PPNetworkHelper POST:URL_Add(@"/v.php/goods.goods/zhiboList") parameters:para success:^(id responseObject) {

@@ -13,7 +13,7 @@
 #import <IQKeyboardManager/IQKeyboardManager.h>
 #import "WXApi.h"
 
-
+#import "HomePage_Model.h"
 @interface AppDelegate ()
 
 @end
@@ -22,13 +22,12 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    
     [NSThread sleepForTimeInterval:0.8];
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     MPZG_TabBarContrl *tabVc = [[MPZG_TabBarContrl alloc] init];
-    
     self.window.rootViewController = tabVc;
     [self.window makeKeyAndVisible];
+   
     [self setUpGuidView];
     [self setUpJpushWithOptions:launchOptions];
     [self setUpAliSdk];

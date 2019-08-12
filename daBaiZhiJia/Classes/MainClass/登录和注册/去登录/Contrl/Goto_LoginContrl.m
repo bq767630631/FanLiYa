@@ -221,7 +221,7 @@
 #pragma mark
 - (void)handleLoginAction{
     
-    NSDictionary *para = @{@"phone":self.count_TF.text, @"password":self.psd_codeTF.text,@"uuid":DeviceToken,@"token":ToKen};
+    NSDictionary *para = @{@"phone":self.count_TF.text, @"password":self.psd_codeTF.text,@"uuid":DeviceToken,@"token":ToKen,@"v":APP_Version};
     [PPNetworkHelper POST:URL_Add(@"/v.php/user.login/login") parameters:para success:^(id responseObject) {
         NSLog(@"responseObject =%@",responseObject);
         NSInteger code = [responseObject[@"code"]integerValue];

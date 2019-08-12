@@ -260,7 +260,7 @@ static NSString *KbannerId = @"KbannerId";
 - (IBAction)getQuan:(UIButton *)sender {
      NSLog(@"领取优惠券");
     if ([self judgeisLogin]) {
-        NSDictionary *dict = @{@"sku":self.sku,@"token":ToKen};
+        NSDictionary *dict = @{@"sku":self.sku,@"token":ToKen,@"v":APP_Version};
         @weakify(self);
         [PPNetworkHelper POST:URL_Add(@"/v.php/goods.goods/getCoupon") parameters:dict success:^(id responseObject) {
             @strongify(self);

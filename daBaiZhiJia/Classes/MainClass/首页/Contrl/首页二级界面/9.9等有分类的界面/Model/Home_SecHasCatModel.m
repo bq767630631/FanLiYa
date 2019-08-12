@@ -21,7 +21,7 @@
     return model;
 }
 + (void)querySecCateWithType:(SecHasCatType)type Block:(HomePage_ModelBlock)block {
-    [PPNetworkHelper GET:URL_Add(@"/v.php/index.index/getListCate") parameters:@{@"token":ToKen} success:^(id responseObject) {
+    [PPNetworkHelper GET:URL_Add(@"/v.php/index.index/getListCate") parameters:@{@"token":ToKen,@"v":APP_Version} success:^(id responseObject) {
         //NSLog(@"二级分类responseObject %@",responseObject);
         NSInteger code = [responseObject[@"code"] integerValue];
         if (code == SucCode) {
@@ -51,7 +51,7 @@
         block([Home_SecHasCatModel shareInstance].goodArr,nil);
         return;
     }
-    NSDictionary *dic = @{@"page":@(page),@"cid":@(cid),@"sort":sort, @"token":ToKen};
+    NSDictionary *dic = @{@"page":@(page),@"cid":@(cid),@"sort":sort, @"token":ToKen,@"v":APP_Version};
     NSLog(@"para =%@",dic);
     NSString *url = [self goodUrlWithType:type];
     

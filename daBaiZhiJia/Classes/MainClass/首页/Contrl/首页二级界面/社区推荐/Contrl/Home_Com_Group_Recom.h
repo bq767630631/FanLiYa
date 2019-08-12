@@ -9,7 +9,7 @@
 #import "MPZG_BaseContrl.h"
 
 @interface Home_Com_Group_Recom : MPZG_BaseContrl
-
+@property (nonatomic, assign) BOOL  isFromTabContrl; //从tabContrl添加的
 @end
 
 

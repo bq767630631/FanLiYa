@@ -32,7 +32,7 @@
 #pragma mark - action
 
 - (IBAction)checkAction:(UIButton *)sender {
-     NSDictionary *dic = @{@"sku":self.sku,@"token":ToKen};
+     NSDictionary *dic = @{@"sku":self.sku,@"token":ToKen,@"v":APP_Version};
     [PPNetworkHelper POST:URL_Add(@"/v.php/goods.goods/getGoodsDetail") parameters:dic success:^(id responseObject) {
         NSInteger code = [responseObject[@"code"] integerValue];
         if (code == SucCode) {  //
@@ -60,7 +60,7 @@
 
 - (IBAction)buyAction:(UIButton *)sender {
     if ([self judgeisLogin]) {
-        NSDictionary *dict = @{@"sku":self.sku,@"token":ToKen};
+        NSDictionary *dict = @{@"sku":self.sku,@"token":ToKen,@"v":APP_Version};
         @weakify(self);
         [PPNetworkHelper POST:URL_Add(@"/v.php/goods.goods/getCoupon") parameters:dict success:^(id responseObject) {
             @strongify(self);

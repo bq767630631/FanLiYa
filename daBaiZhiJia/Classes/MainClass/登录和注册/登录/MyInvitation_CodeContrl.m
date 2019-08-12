@@ -32,6 +32,13 @@
     self.inva_codeTF.delegate  = self;
 }
 
+- (void)setCode:(NSString *)code{
+    _code = code;
+    if (code) {
+        self.inva_codeTF.text = _code;
+    }
+}
+
 #pragma mark - UITextFieldDelegate
 - (void)textFieldDidBeginEditing:(UITextField *)textField{
     if (textField == self.inva_codeTF) {
@@ -57,8 +64,8 @@
         return;
     }
     
-    NSDictionary *dict = @{@"openid":WX_open_ID,@"unionid":WX_unionid,@"nickname":WX_nick_name, @"headimgurl":WX_headimg_url,@"token":ToKen,@"uuid":DeviceToken, @"phone":self.phone,  @"invite_sn":self.inva_codeTF.text};
-    NSLog(@"dict %@",dict);
+    NSDictionary *dict = @{@"openid":WX_open_ID,@"unionid":WX_unionid,@"nickname":WX_nick_name, @"headimgurl":WX_headimg_url,@"token":ToKen,@"uuid":DeviceToken, @"phone":self.phone,  @"invite_sn":self.inva_codeTF.text,@"v":APP_Version};
+//    NSLog(@"dict %@",dict);
     [PPNetworkHelper POST:URL_Add(@"/v.php/user.login/wechatPhoneTo") parameters:dict success:^(id responseObject) {
         NSLog(@"responseObject %@",responseObject);
         NSInteger code = [responseObject[@"code"]integerValue];

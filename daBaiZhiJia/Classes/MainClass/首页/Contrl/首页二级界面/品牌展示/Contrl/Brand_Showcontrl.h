@@ -11,7 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 //品牌列表
 @interface Brand_Showcontrl : MPZG_BaseContrl
-
+@property (nonatomic, assign) BOOL  isFromTabContrl; //从tabContrl添加的
 @end
 
 NS_ASSUME_NONNULL_END

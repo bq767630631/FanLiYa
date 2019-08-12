@@ -49,7 +49,7 @@ static NSString *collecTioncellId = @"collecTioncellId";
 }
 
 - (void)queryData{
-    NSDictionary *dict = @{@"page":@(self.page),@"token":ToKen};
+    NSDictionary *dict = @{@"page":@(self.page),@"token":ToKen,@"v":APP_Version};
     NSLog(@"dict =%@",dict.mj_keyValues);
     if (self.haveNoMoreData) {
         [self collecViewEndRefresh];

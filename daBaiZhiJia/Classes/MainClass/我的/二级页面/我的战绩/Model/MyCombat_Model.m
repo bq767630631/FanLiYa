@@ -11,7 +11,7 @@
 @implementation MyCombat_Model
 + (void)queryDataWithBlock:(MyCombat_Block)bock{
     
-    NSDictionary *dict = @{@"token":ToKen};
+    NSDictionary *dict = @{@"token":ToKen,@"v":APP_Version};
     [PPNetworkHelper POST:URL_Add(@"/v.php/goods.share/getTodayShare") parameters:dict success:^(id responseObject) {
         NSLog(@"今日战绩 responseObject  %@",responseObject);
         NSInteger code = [responseObject[@"code"] integerValue];
