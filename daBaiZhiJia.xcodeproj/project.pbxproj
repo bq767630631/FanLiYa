@@ -310,6 +310,9 @@
 		C2DBC9422289540A00CFAE29 /* CreateshareContent.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2DBC9412289540A00CFAE29 /* CreateshareContent.xib */; };
 		C2DBC945228957D700CFAE29 /* CreateshareBottom.m in Sources */ = {isa = PBXBuildFile; fileRef = C2DBC944228957D700CFAE29 /* CreateshareBottom.m */; };
 		C2DBC9472289582000CFAE29 /* CreateshareBottom.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2DBC9462289582000CFAE29 /* CreateshareBottom.xib */; };
+		C2E227EF230690C800741CD3 /* HSSessionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C2E227E8230690C800741CD3 /* HSSessionModel.m */; };
+		C2E227F0230690C800741CD3 /* NSString+Hash.m in Sources */ = {isa = PBXBuildFile; fileRef = C2E227EA230690C800741CD3 /* NSString+Hash.m */; };
+		C2E227F1230690C800741CD3 /* HSDownloadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C2E227EE230690C800741CD3 /* HSDownloadManager.m */; };
 		C2EE9B1222C70637002775A4 /* GoToAuth_View.m in Sources */ = {isa = PBXBuildFile; fileRef = C2EE9B1122C70637002775A4 /* GoToAuth_View.m */; };
 		C2EE9B1422C70642002775A4 /* GoToAuth_View.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2EE9B1322C70642002775A4 /* GoToAuth_View.xib */; };
 		C2EE9B1922C73D0A002775A4 /* ContactKefuContrl.m in Sources */ = {isa = PBXBuildFile; fileRef = C2EE9B1722C73D0A002775A4 /* ContactKefuContrl.m */; };
@@ -877,6 +880,12 @@
 		C2DBC943228957D700CFAE29 /* CreateshareBottom.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CreateshareBottom.h; sourceTree = "<group>"; };
 		C2DBC944228957D700CFAE29 /* CreateshareBottom.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CreateshareBottom.m; sourceTree = "<group>"; };
 		C2DBC9462289582000CFAE29 /* CreateshareBottom.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateshareBottom.xib; sourceTree = "<group>"; };
+		C2E227E8230690C800741CD3 /* HSSessionModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HSSessionModel.m; sourceTree = "<group>"; };
+		C2E227EA230690C800741CD3 /* NSString+Hash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Hash.m"; sourceTree = "<group>"; };
+		C2E227EB230690C800741CD3 /* NSString+Hash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Hash.h"; sourceTree = "<group>"; };
+		C2E227EC230690C800741CD3 /* HSDownloadManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HSDownloadManager.h; sourceTree = "<group>"; };
+		C2E227ED230690C800741CD3 /* HSSessionModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HSSessionModel.h; sourceTree = "<group>"; };
+		C2E227EE230690C800741CD3 /* HSDownloadManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HSDownloadManager.m; sourceTree = "<group>"; };
 		C2EE9B1022C70637002775A4 /* GoToAuth_View.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GoToAuth_View.h; sourceTree = "<group>"; };
 		C2EE9B1122C70637002775A4 /* GoToAuth_View.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GoToAuth_View.m; sourceTree = "<group>"; };
 		C2EE9B1322C70642002775A4 /* GoToAuth_View.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GoToAuth_View.xib; sourceTree = "<group>"; };
@@ -1326,6 +1335,7 @@
 		C2210B9F2248BEA600C1C765 /* 3ThD */ = {
 			isa = PBXGroup;
 			children = (
+				C2E227E7230690C800741CD3 /* HSDownloadManager */,
 				C20E313622DC4F32009FB418 /* MSLaunchView(引导页) */,
 				C21C72DE22C62549009F3199 /* SDCycleScrollView */,
 				C21C72CF22C616BE009F3199 /* DKSBadge */,
@@ -2791,6 +2801,27 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		C2E227E7230690C800741CD3 /* HSDownloadManager */ = {
+			isa = PBXGroup;
+			children = (
+				C2E227E9230690C800741CD3 /* MD5 */,
+				C2E227ED230690C800741CD3 /* HSSessionModel.h */,
+				C2E227E8230690C800741CD3 /* HSSessionModel.m */,
+				C2E227EC230690C800741CD3 /* HSDownloadManager.h */,
+				C2E227EE230690C800741CD3 /* HSDownloadManager.m */,
+			);
+			path = HSDownloadManager;
+			sourceTree = "<group>";
+		};
+		C2E227E9230690C800741CD3 /* MD5 */ = {
+			isa = PBXGroup;
+			children = (
+				C2E227EA230690C800741CD3 /* NSString+Hash.m */,
+				C2E227EB230690C800741CD3 /* NSString+Hash.h */,
+			);
+			path = MD5;
+			sourceTree = "<group>";
+		};
 		C2EE9B1522C73CD1002775A4 /* 联系客服 */ = {
 			isa = PBXGroup;
 			children = (
@@ -3466,6 +3497,7 @@
 				C2F00C9C22C0EC2F0020738A /* Goto_Login_model.m in Sources */,
 				C2210B872248B85300C1C765 /* AppDelegate.m in Sources */,
 				C2DBC9402289540200CFAE29 /* CreateshareContent.m in Sources */,
+				C2E227F1230690C800741CD3 /* HSDownloadManager.m in Sources */,
 				C27CD56A22C082A100852FE0 /* Home_Com_Group_Cell.m in Sources */,
 				C2B8905E22A6080F0005AAD5 /* Share_PosterView.m in Sources */,
 				C271BEF422B1F54800A94014 /* Home_zbyView.m in Sources */,
@@ -3495,6 +3527,7 @@
 				C2384F9D2249F30B0070CFFE /* HomeSearchView.m in Sources */,
 				C2210C412248CD7F00C1C765 /* TYAlertController+TransitionAnimate.m in Sources */,
 				C2210C442248CD7F00C1C765 /* UIView+TYAutoLayout.m in Sources */,
+				C2E227F0230690C800741CD3 /* NSString+Hash.m in Sources */,
 				C27CD56622C0827C00852FE0 /* Home_Com_Group_Model.m in Sources */,
 				C2210C362248CD7F00C1C765 /* CustomDatePickerDialog.m in Sources */,
 				C279939722C376EC004C0B4C /* MyCollecTionBottom.m in Sources */,
@@ -3542,6 +3575,7 @@
 				C267C84722534F7500FE6488 /* ForeGetPwdcontrl.m in Sources */,
 				C279937E22C376EB004C0B4C /* MySpreadContrl.m in Sources */,
 				C2EE9B1222C70637002775A4 /* GoToAuth_View.m in Sources */,
+				C2E227EF230690C800741CD3 /* HSSessionModel.m in Sources */,
 				C2EFFAE02293E0F80051781F /* DBZJ_ComNewHandCell.m in Sources */,
 				C21A1F1A2251B6D800480EAE /* PageViewController.m in Sources */,
 				C2F8964722B38D6C00DA02EC /* BillBoard_Contrl.m in Sources */,

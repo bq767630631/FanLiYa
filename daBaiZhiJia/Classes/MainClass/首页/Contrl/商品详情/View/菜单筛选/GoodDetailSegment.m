@@ -64,8 +64,6 @@
     self.tuijian.selected = NO;
     [UIView animateWithDuration:0.2 animations:^{
         self.line.frame = CGRectMake(sender.left, sender.bottom+1, self.line.width, 2);
-//        self.line.centerX = sender.centerX;
-       
     }];
     if (self.typeBlock) {
         self.typeBlock(0);
@@ -82,7 +80,7 @@
           self.line.frame = CGRectMake(sender.left, sender.bottom+1, self.line.width, 2);
     }];
     if (self.typeBlock) {
-        self.typeBlock(1);
+        self.typeBlock(2);
     }
 }
 
@@ -95,7 +93,7 @@
            self.line.frame = CGRectMake(sender.left, sender.bottom+1, self.line.width, 2);
     }];
     if (self.typeBlock) {
-        self.typeBlock(2);
+        self.typeBlock(1);
     }
 }
 

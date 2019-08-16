@@ -24,9 +24,18 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [NSThread sleepForTimeInterval:0.8];
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    MPZG_TabBarContrl *tabVc = [[MPZG_TabBarContrl alloc] init];
-    self.window.rootViewController = tabVc;
+    UIImageView *tempImageV = [[UIImageView alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    tempImageV.image = ZDBImage(@"750&13342");
+    UIViewController *tempVc = [[UIViewController alloc] init];
+    [tempVc.view addSubview:tempImageV];
+    [self.window addSubview:tempImageV];
+    self.window.rootViewController = tempVc;
     [self.window makeKeyAndVisible];
+    [HomePage_Model queryVerson:^{
+        [tempImageV removeFromSuperview];
+        MPZG_TabBarContrl *tabVc = [[MPZG_TabBarContrl alloc] init];
+        self.window.rootViewController = tabVc;
+    }];
    
     [self setUpGuidView];
     [self setUpJpushWithOptions:launchOptions];

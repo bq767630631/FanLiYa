@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 
-typedef void(^goodDetailSegmentBlock)(NSInteger type);
+typedef void(^goodDetailSegmentBlock)(NSInteger type);//012
 @interface GoodDetailSegment : UIView
 
 @property (nonatomic, copy) goodDetailSegmentBlock typeBlock;

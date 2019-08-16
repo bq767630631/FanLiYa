@@ -30,6 +30,8 @@ typedef void(^prersonRevenueBlock)(PersonRevenue*  reve, NSInteger code);
  个人中心-中间广告位
  */
 + (void)queryMyMidddleWithblock:(PPHttpRequestCallBack)callBack;
+
++ (void)queryTaoBaoTklWithCallBack:(void (^)(NSString*url))block;
 @end
 
 @interface PrersonInfoMsg : NSObject
@@ -41,6 +43,7 @@ typedef void(^prersonRevenueBlock)(PersonRevenue*  reve, NSInteger code);
 @property (nonatomic, assign) NSInteger sex;
 @property (nonatomic, assign) NSInteger level; //会员等级1白银2黄金3合伙人
 @property (nonatomic, assign) NSInteger relation_id; //是否授权绑定过淘宝账号0否 不为0绑定过
+@property (nonatomic, copy) NSString *is_tkl; //用于商品详情页自购省逻辑处理
 @end
 
 //个人收益

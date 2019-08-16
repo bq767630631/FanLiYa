@@ -18,7 +18,7 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    ViewBorderRadius(self.image, 3, UIColor.clearColor);
+    ViewBorderRadius(self, 5, UIColor.clearColor);
 }
 - (void)setInfo:(id)model{
     SearchResulGoodInfo *info = model;

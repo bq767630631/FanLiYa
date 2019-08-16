@@ -11,6 +11,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PrersonInfoContrl">
             <connections>
+                <outlet property="authV_H" destination="caL-6i-5xF" id="NwU-4F-U5g"/>
+                <outlet property="canNotAuthBtn" destination="Oap-Jw-gNG" id="V0S-0G-ZJi"/>
                 <outlet property="containTop" destination="hif-bD-U37" id="gPw-nc-gEL"/>
                 <outlet property="headimageView" destination="pEq-rC-8jL" id="8vw-x8-gpc"/>
                 <outlet property="loginBtn" destination="o2V-Tn-n0X" id="aLk-VS-fMD"/>
@@ -275,7 +277,7 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OPm-da-Bsk" userLabel="授权">
-                            <rect key="frame" x="0.0" y="260" width="414" height="50"/>
+                            <rect key="frame" x="0.0" y="260" width="414" height="70"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="淘宝授权" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a9p-lZ-Qfu">
                                     <rect key="frame" x="15" y="16" width="57.5" height="17"/>
@@ -284,52 +286,65 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1hg-I9-RoM" userLabel="lineView">
-                                    <rect key="frame" x="0.0" y="49" width="414" height="1"/>
+                                    <rect key="frame" x="0.0" y="69" width="414" height="1"/>
                                     <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="1" id="XRh-rN-vs6"/>
                                     </constraints>
                                 </view>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ppY-Ja-bVR">
-                                    <rect key="frame" x="329" y="1" width="70" height="48"/>
+                                    <rect key="frame" x="329" y="11" width="70" height="48"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="48" id="g3a-ii-hkb"/>
                                         <constraint firstAttribute="width" constant="70" id="t2s-qc-WRV"/>
                                     </constraints>
                                 </button>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="访问淘宝页面无需输入账号密码" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vY1-0F-mNu">
-                                    <rect key="frame" x="82.5" y="18" width="172" height="14.5"/>
+                                    <rect key="frame" x="82.5" y="17.5" width="172" height="14.5"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                     <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ePy-Yq-DEU" customClass="KLSwitch">
-                                    <rect key="frame" x="354" y="12.5" width="45" height="25"/>
+                                    <rect key="frame" x="354" y="12" width="45" height="25"/>
                                     <color key="backgroundColor" red="0.66666668650000005" green="0.66666668650000005" blue="0.66666668650000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="25" id="3Uc-3X-a1t"/>
                                         <constraint firstAttribute="width" constant="45" id="fp0-4o-QAK"/>
                                     </constraints>
                                 </view>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oap-Jw-gNG">
+                                    <rect key="frame" x="328" y="37" width="71" height="32"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                    <state key="normal" title=" 无法授权" image="icon_helpmy">
+                                        <color key="titleColor" red="0.99607843137254903" green="0.66274509803921566" blue="0.18431372549019609" alpha="1" colorSpace="calibratedRGB"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="cannotAuthAction:" destination="-1" eventType="touchUpInside" id="HiO-2r-9uw"/>
+                                    </connections>
+                                </button>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="trailing" secondItem="ppY-Ja-bVR" secondAttribute="trailing" constant="15" id="1rq-zF-iCx"/>
+                                <constraint firstItem="Oap-Jw-gNG" firstAttribute="trailing" secondItem="ePy-Yq-DEU" secondAttribute="trailing" id="4VH-nl-1w7"/>
                                 <constraint firstAttribute="trailing" secondItem="ePy-Yq-DEU" secondAttribute="trailing" constant="15" id="590-ei-gWT"/>
                                 <constraint firstItem="a9p-lZ-Qfu" firstAttribute="top" secondItem="OPm-da-Bsk" secondAttribute="top" constant="16" id="9mF-rX-Xk1"/>
                                 <constraint firstAttribute="bottom" secondItem="1hg-I9-RoM" secondAttribute="bottom" id="L0N-NS-ZNJ"/>
                                 <constraint firstItem="vY1-0F-mNu" firstAttribute="leading" secondItem="a9p-lZ-Qfu" secondAttribute="trailing" constant="10" id="OmE-he-QCf"/>
-                                <constraint firstAttribute="height" constant="50" id="caL-6i-5xF"/>
-                                <constraint firstItem="vY1-0F-mNu" firstAttribute="centerY" secondItem="OPm-da-Bsk" secondAttribute="centerY" id="efc-wL-e4w"/>
+                                <constraint firstItem="ePy-Yq-DEU" firstAttribute="centerY" secondItem="vY1-0F-mNu" secondAttribute="centerY" id="Wc6-Nd-BFa"/>
+                                <constraint firstAttribute="height" constant="70" id="caL-6i-5xF"/>
                                 <constraint firstItem="a9p-lZ-Qfu" firstAttribute="leading" secondItem="OPm-da-Bsk" secondAttribute="leading" constant="15" id="grV-ca-QF6"/>
                                 <constraint firstItem="1hg-I9-RoM" firstAttribute="leading" secondItem="OPm-da-Bsk" secondAttribute="leading" id="gyn-L6-gS7"/>
-                                <constraint firstItem="ePy-Yq-DEU" firstAttribute="centerY" secondItem="OPm-da-Bsk" secondAttribute="centerY" id="mWY-Hw-uuB"/>
+                                <constraint firstItem="vY1-0F-mNu" firstAttribute="centerY" secondItem="a9p-lZ-Qfu" secondAttribute="centerY" id="qtc-v7-aih"/>
+                                <constraint firstItem="Oap-Jw-gNG" firstAttribute="top" secondItem="ePy-Yq-DEU" secondAttribute="bottom" id="uuH-5K-Af3"/>
                                 <constraint firstItem="ppY-Ja-bVR" firstAttribute="centerY" secondItem="OPm-da-Bsk" secondAttribute="centerY" id="yU4-Hy-ybv"/>
                                 <constraint firstAttribute="trailing" secondItem="1hg-I9-RoM" secondAttribute="trailing" id="yqA-ou-EEs"/>
+                                <constraint firstItem="1hg-I9-RoM" firstAttribute="top" secondItem="Oap-Jw-gNG" secondAttribute="bottom" id="zsG-ao-iNz"/>
                             </constraints>
                         </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o2V-Tn-n0X">
-                            <rect key="frame" x="69.5" y="370" width="275" height="40"/>
+                            <rect key="frame" x="69.5" y="390" width="275" height="40"/>
                             <color key="backgroundColor" red="0.76470588240000004" green="0.59607843140000005" blue="0.30196078430000001" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" id="pE0-xl-G3B"/>
@@ -382,6 +397,7 @@
         </view>
     </objects>
     <resources>
+        <image name="icon_helpmy" width="14" height="14"/>
         <image name="icon_personnext" width="8" height="14"/>
         <image name="img_head_moren" width="67.5" height="68"/>
     </resources>

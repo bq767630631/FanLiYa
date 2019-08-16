@@ -7,6 +7,9 @@
 //
 
 #import "GoodDetailModel.h"
+#import "HSDownloadManager.h"
+#import "UIImageView+WebCache.h"
+#import "AFHTTPSessionManager.h"
 
 @interface GoodDetailModel ()
 @property (nonatomic, copy) NSString *sku;
@@ -44,13 +47,6 @@
             info.market_price = [NSString stringRoundingTwoDigitWithNumber:info.market_price.doubleValue];
             info.profit = [NSString stringRoundingTwoDigitWithNumber:info.profit.doubleValue];
             info.share_profit = [NSString stringRoundingTwoDigitWithNumber:info.share_profit.doubleValue];
-
-//            NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-//            [dateFormatter setDateFormat:@"yyyy.MM.dd"];
-//            NSDate *startDate =  [dateFormatter dateFromString:info.coupon_start_time];
-//            info.coupon_start_time = [dateFormatter stringFromDate:startDate];
-//            NSDate *endDate =  [dateFormatter dateFromString:info.coupon_end_time];
-//            info.coupon_end_time = [dateFormatter stringFromDate:endDate];
            
              self.detailinfo = info;
             [self queryTuiJianGood];
@@ -107,6 +103,58 @@
     } failure:^(NSError *error) {
         NSLog(@"error %@",error);
     }];
+}
+
+
++ (void)handleDownloadActionWith:(GoodDetailBannerInfo *)info{
+    if (info.videoUrl) {
+        AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+        NSURL *urlNew = [NSURL URLWithString:info.videoUrl];
+        NSURLRequest *request = [NSURLRequest requestWithURL:urlNew];
+       NSURLSessionDownloadTask *task  =  [manager downloadTaskWithRequest:request progress:nil destination:^NSURL * _Nonnull(NSURL * _Nonnull targetPath, NSURLResponse * _Nonnull response) {
+         //设置下载路径，并将文件写入沙盒，最后返回NSURL对象
+          NSString *cachesPath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject];
+          NSString *path = [cachesPath stringByAppendingPathComponent:response.suggestedFilename];
+           
+          return [NSURL fileURLWithPath:path];
+        } completionHandler:^(NSURLResponse * _Nonnull response, NSURL * _Nullable filePath, NSError * _Nullable error) {
+            BOOL compatible = UIVideoAtPathIsCompatibleWithSavedPhotosAlbum([filePath path]);
+            NSLog(@"下载视频 %d",compatible);
+            if (compatible) {
+                UISaveVideoAtPathToSavedPhotosAlbum([filePath path], self, @selector(video:didFinishSavingWithError:contextInfo:), nil);
+            }
+        }];
+        [task resume];
+    }
+    if (info.pic) {
+         NSLog(@"下载图片");
+        UIImageView *tempIV = [UIImageView new];
+        [tempIV sd_setImageWithURL:[NSURL URLWithString:info.pic] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+            if (image) {
+                // 保存图片
+                UIImageWriteToSavedPhotosAlbum(image, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
+            }
+        }];
+    }
+}
+
+#pragma mark - private
++ (void)video:(NSString *)videoPath didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo{
+    if(error) {
+        NSLog(@"保存视频失败%@", error.localizedDescription);
+    }else{
+         [YJProgressHUD showMsgWithoutView:@"视频保存成功"];
+    }
+}
+
++ (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo {
+    NSString *msg = nil ;
+    if(error){
+        msg = @"图片保存失败";
+    }else{
+        msg = @"图片保存成功";
+    }
+     [YJProgressHUD showMsgWithoutView:msg];
 }
 
 

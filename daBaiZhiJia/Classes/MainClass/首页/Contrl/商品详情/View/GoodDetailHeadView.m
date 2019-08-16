@@ -50,6 +50,11 @@ static NSString *KbannerId = @"KbannerId";
 @property (weak, nonatomic) IBOutlet UILabel *tuiJianContent;
 
 @property (weak, nonatomic) IBOutlet UILabel *soldNum;
+@property (weak, nonatomic) IBOutlet UILabel *shengJiZhuan;
+
+@property (weak, nonatomic) IBOutlet UIButton *shengJizhuanBtn;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *shengJiV_H;
 
 @property (weak, nonatomic) IBOutlet UILabel *tuiJianLb;
 
@@ -60,8 +65,11 @@ static NSString *KbannerId = @"KbannerId";
 
 @property (weak, nonatomic) IBOutlet UIView *likeView;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *collecTion_H;
+
 @property (nonatomic, strong) UICollectionViewFlowLayout *doubleLayout;//一排两个视图
 
+@property (weak, nonatomic) IBOutlet UIView *detailV;
 @property (weak, nonatomic) IBOutlet UIImageView *zhanKaiImage;
 
 @property (nonatomic, strong) NSArray *goodArr;//推荐商品
@@ -78,22 +86,28 @@ static NSString *KbannerId = @"KbannerId";
 - (void)awakeFromNib{
     [super awakeFromNib];
 
-    ViewBorderRadius(self.limiteBuyBtn, self.limiteBuyBtn.height*0.5, UIColor.clearColor);
+    ViewBorderRadius(self.shengJizhuanBtn, self.shengJizhuanBtn.height*0.5, UIColor.clearColor);
     ViewBorderRadius(self.tuiJianLb, 2, UIColor.clearColor);
-    ViewBorderRadius(self.soldNum, self.soldNum.height*0.5, RGBColor(195, 152, 77));
     [self addSubview:self.bannerV];
     [self addSubview:self.webView];
     [self.webView.scrollView addObserver:self forKeyPath:@"contentSize" options:NSKeyValueObservingOptionNew context:nil];
     
     self.collection.delegate = self;
     self.collection.dataSource = self;
+    self.collection.scrollEnabled = NO;
     [self.collection registerNib:[UINib nibWithNibName:@"GoodDetailTuiJianCell" bundle:nil] forCellWithReuseIdentifier:collecTioncellId];
     self.collection.collectionViewLayout = self.doubleLayout;
     self.collection.showsHorizontalScrollIndicator = NO;
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(downLoadAction) name:@"GoodDetailDownLoadNotification" object:nil];
 }
 
 - (void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
     [self.webView.scrollView removeObserver:self forKeyPath:@"contentSize"];
+}
+
+- (void)downLoadAction{
+    [GoodDetailModel handleDownloadActionWith:self.bannerArr[self.bannerV.pageIndex]];
 }
 
 #pragma mark ------ < KVO > ------
@@ -101,22 +115,13 @@ static NSString *KbannerId = @"KbannerId";
 {
     if ([keyPath isEqualToString:@"contentSize"]) {
 //        NSLog(@"change %@",change);
-    
-        self.web_H = self.webView.scrollView.contentSize.height;
+        self.webView.height = self.webView.scrollView.contentSize.height;
         [self layoutIfNeeded];
-      
-        if (self.iszhankai) {
-            self.webView.height = self.web_H;
-        }
+        self.height = self.webView.bottom;
         self.heightBlock(self.webView.bottom,NO);
-//        NSLog(@"isLoading %d",self.webView.isLoading);
-//          NSLog(@"%d",self.webView.com);
     }
 }
 
-- (void)willChangeValueForKey:(NSString *)key{
-    NSLog(@"key %@",key);
-}
 
 - (void)setInfo:(id)detailinfo tuijianArr:(NSMutableArray *)goodArray{
     GoodDetailInfo *info = detailinfo;
@@ -128,10 +133,13 @@ static NSString *KbannerId = @"KbannerId";
     self.price.attributedText = [self priceWithStr1:@"券后 " str2:@"¥" str3:[NSString stringWithFormat:@"%@  ",info.price] str4:[NSString stringWithFormat:@"¥%@",info.market_price]];
     self.shoptitle.text = info.shop_title;
     self.shopPt.image = (info.pt == 1)?ZDBImage(@"img_tianm_detail"):ZDBImage(@"img_taobao_detail");
-    
     self.soldNum.text = [NSString stringWithFormat:@"%@件已售",info.sold_num];
-    CGFloat wd = [self.soldNum.text textWidthWithFont: self.soldNum.font maxHeight: self.soldNum.height];
-    self.soldNum_W.constant = wd + 16*2;
+    if (Level != 3) {//团长的时候不用显示
+        self.shengJiV_H.constant = 36;
+        self.shengJiZhuan.text = [NSString stringWithFormat:@"升级赚%@元",info.profit_up];
+    }else{
+        self.shengJiV_H.constant = 0;
+    }
     
     for (int i = 0; i < info.pics.count; i ++) {
         GoodDetailBannerInfo *banner = [GoodDetailBannerInfo new];
@@ -142,30 +150,44 @@ static NSString *KbannerId = @"KbannerId";
         [self.bannerArr addObject:banner];
     }
     [self.bannerV reloadData];
+    if (info.coupon_amount.doubleValue == 0) {//优惠券=0隐藏
+        self.quanHeightCons.constant = 0;
+        self.limiteBuyBtn.hidden = YES;
+    }
     
-    self.discountLb.text = [NSString stringWithFormat:@"%@",info.coupon_amount];
+    self.discountLb.text = [NSString stringWithFormat:@"￥%@",info.coupon_amount];
     self.tuiJianContent.text = info.desc;
     self.goodArr = goodArray;
     [self.collection reloadData];
     
     [self layoutIfNeeded];
     
+  
+     NSURLRequest *req = [NSURLRequest requestWithURL:[NSURL URLWithString:info.detail]];
+    [self.webView loadRequest:req];
     
-    NSURLRequest *req = [NSURLRequest requestWithURL:[NSURL URLWithString:info.detail]];
-      [self.webView loadRequest:req];
-     self.webView.height = 0.f; //默认0
-
-    if (info.coupon_amount.doubleValue == 0) {//优惠券=0隐藏
-        self.quanHeightCons.constant = 0;
-        self.limiteBuyBtn.hidden = YES;
-    }
-
+   
 }
 
 - (void)layoutSubviews{
     [super layoutSubviews];
-    self.webView.top = self.line3.bottom;
-    self.likeVTop    = self.likeView.top;
+    
+    self.webView.top = self.detailV.bottom;
+    CGFloat itemH = self.doubleLayout.itemSize.height + 10;
+    CGFloat contentH =  0.f;
+    if (self.goodArr.count %2 ==0) { //偶数
+        contentH += itemH * self.goodArr.count/2;
+    }else{//奇数
+        contentH += itemH * (self.goodArr.count/2 + 1);
+    }
+    NSLog(@"contentH  %.f",contentH);
+    self.collecTion_H.constant = contentH;
+    CGRect frame  = self.collection.frame;
+    frame.size.height = contentH;
+    self.collection.frame = frame;
+    
+    self.likeVTop = self.likeView.top - 100;
+    self.webTop  = self.detailV.top - 100;
 }
 
 #pragma mark - WKNavigationDelegate
@@ -174,11 +196,6 @@ static NSString *KbannerId = @"KbannerId";
     NSLog(@"加载完成之后调用");
 }
 
-- (void)webView:(WKWebView *)webView didFailProvisionalNavigation:(null_unspecified WKNavigation *)navigation withError:(NSError *)error{
-}
-
-- (void)webView:(WKWebView *)webView didFailNavigation:(null_unspecified WKNavigation *)navigation withError:(NSError *)error{
-}
 
 #pragma mark - ZKCycleScrollViewDataSource &ZKCycleScrollViewDelegate
 - (NSInteger)numberOfItemsInCycleScrollView:(ZKCycleScrollView *)cycleScrollView{
@@ -193,6 +210,7 @@ static NSString *KbannerId = @"KbannerId";
 }
 
 - (void)cycleScrollView:(ZKCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index{
+    NSLog(@"pageIndex %zd", cycleScrollView.pageIndex);
      GoodDetailBannerInfo *banner = self.bannerArr[index];
     if (banner.videoUrl.length) { //视频
         NSString *webVideoPath = banner.videoUrl;
@@ -233,7 +251,7 @@ static NSString *KbannerId = @"KbannerId";
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    NSLog(@" indexPath =%@",indexPath);
+    NSLog(@"");
     SearchResulGoodInfo *info = self.goodArr[indexPath.row];
     GoodDetailContrl *detail = [[GoodDetailContrl alloc] initWithSku:info.sku];
     [self.viewController.navigationController pushViewController:detail animated:YES];
@@ -268,7 +286,12 @@ static NSString *KbannerId = @"KbannerId";
             NSInteger code = [responseObject[@"code"] integerValue];
             if (code == SucCode) {
                 NSString *url = responseObject[@"data"];
-                [self openTbWithUrl:url];
+                if ([url containsString:@"http"]) {
+                     [self openTbWithUrl:url];
+                }else{
+                    [UIPasteboard generalPasteboard].string = url;
+                    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"taobao://m.taobao.com/"]];
+                }
             }
             
             if (code == UnauthCode) {
@@ -287,6 +310,13 @@ static NSString *KbannerId = @"KbannerId";
 - (void)openTbWithUrl:(NSString *)url{
      [HandelTaoBaoTradeManager openTaoBaoAndTraWithUrl:url navi:self.viewController.navigationController];
 }
+
+- (IBAction)shengJiAction:(UIButton *)sender {
+    self.viewController.navigationController.tabBarController.hidesBottomBarWhenPushed = NO;
+    self.viewController.navigationController.tabBarController.selectedIndex = 2;
+    [self.viewController.navigationController popToRootViewControllerAnimated:YES];
+}
+
 
 #pragma mark - private
 - (NSMutableAttributedString *)priceWithStr1:(NSString *)str1 str2:(NSString *)str2  str3:(NSString *)str3  str4:(NSString *)str4{
@@ -344,10 +374,11 @@ static NSString *KbannerId = @"KbannerId";
 - (UICollectionViewFlowLayout *)doubleLayout{
     if (!_doubleLayout) {
         _doubleLayout = [[UICollectionViewFlowLayout alloc] init];
-        _doubleLayout.minimumInteritemSpacing = 10;;
-        _doubleLayout.sectionInset = UIEdgeInsetsMake(0, 10, 0, 10);
-        _doubleLayout.itemSize = CGSizeMake(90, 129);
-        _doubleLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
+        _doubleLayout.minimumLineSpacing = 10;
+        _doubleLayout.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10);
+        CGFloat itemW = (SCREEN_WIDTH - 30)/2;
+        CGFloat itemH = (230.f/173) *itemW;
+        _doubleLayout.itemSize = CGSizeMake(itemW, itemH);
     }
     return _doubleLayout;
 }

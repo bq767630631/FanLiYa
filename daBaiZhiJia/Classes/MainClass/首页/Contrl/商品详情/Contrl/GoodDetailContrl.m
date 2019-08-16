@@ -9,14 +9,14 @@
 #import "GoodDetailContrl.h"
 #import "GoodDetailModel.h"
 #import "GoodDetailHeadView.h"
-//#import "HMSegmentedControl.h"
+
 #import "GoodDetailSegment.h"
 #import "GoodDetailBottom.h"
 #import "GoodDetailTop.h"
 #import "GoodDetail_Barrage.h"
 #import "MJProxy.h"
 #import "GoodDetail_ShengjiV.h"
-
+#import "MyCollecTionContrl.h"
 
 @interface GoodDetailContrl ()<UIScrollViewDelegate,GoodDetailModelDelegate>
 
@@ -74,6 +74,11 @@
 //    [self.model queryIsCollection];
     [self.model queryViewPeople];
     self.navigationItem.titleView = self.segMenu;
+    [self initRightBarButtonWithImage:@"icon_like_top"];
+}
+
+- (void)onTapRightBarButton{
+    [self.navigationController pushViewController:[MyCollecTionContrl new] animated:YES];
 }
 
 
@@ -105,7 +110,7 @@
     [self.view addSubview:self.topView];
     [self.view addSubview:self.barRage];
     if (Level != 3) {//团长的时候不用显示
-        [self.view addSubview:self.shenJiV];
+     //   [self.view addSubview:self.shenJiV];
     }
     self.goodArr = arr;
     [self.headView setInfo:info tuijianArr:arr];
@@ -171,16 +176,15 @@
     self.navigationController.navigationBarHidden = offy < bottom;
     self.scroTopBtn.hidden = offy < self.headView.webTop;
     
-    if (!self.segMenu.selfIsClick) {
-        if (offy >= self.headView.webTop&&offy<self.headView.likeVTop) {
-           // [self.segMenu setSegmentToDetail];
-        }else if (offy >= self.headView.likeVTop ){
-            [self.segMenu setSegmentToTuiJian];
-        }else if (offy ==0 ){
-            [self.segMenu setSegmentToDetailToBaobei];
-        }
-    }
-    
+//    if (!self.segMenu.selfIsClick) {
+//        if (offy >= self.headView.webTop&&offy<self.headView.likeVTop) {
+//           // [self.segMenu setSegmentToDetail];
+//        }else if (offy >= self.headView.likeVTop ){
+//            [self.segMenu setSegmentToTuiJian];
+//        }else if (offy ==0 ){
+//            [self.segMenu setSegmentToDetailToBaobei];
+//        }
+//    }
 }
 
 #pragma mark - getter
@@ -211,21 +215,14 @@
         CGRect frame = CGRectMake(0, 0, SCREEN_WIDTH,height);
         _scroView = [[UIScrollView alloc] initWithFrame:frame];
         _scroView.delegate = self;
-
         [_scroView addSubview:self.headView];
          _scroView.showsVerticalScrollIndicator = NO;
         _scroView.contentSize = CGSizeMake(0, 3000);
         @weakify(self);
         self.headView.heightBlock = ^(CGFloat height ,BOOL isSelected) {
             @strongify(self);
-            NSLog(@"contentSize.height =%.f",height);
+//            NSLog(@"contentSize.height =%.f",height);
             self.scroView.contentSize = CGSizeMake(0, height);
-            if (isSelected) {
-              
-            self.scroView.contentOffset= CGPointMake(0, self.headView.collection.bottom - 40);
-    
-            }
-
         };
         
     }
@@ -243,21 +240,18 @@
                 [self.scroView scrollToTop];
             }else if (type ==1){
                 CGPoint offset = self.scroView.contentOffset;
-                offset.y = self.headView.webTop;
-                [self.scroView setContentOffset:offset animated:YES];
-            }else{
-                
-                CGPoint offset = self.scroView.contentOffset;
                 offset.y = self.headView.likeVTop;
-                NSLog(@"likeVTop %.f", self.headView.likeVTop);
-                if (self.headView.iszhankai) {
-                      [self.scroView setContentOffset:offset animated:YES];
-                }
-              
+                   NSLog(@"y = %.f",offset.y);
+                [self.scroView setContentOffset:offset animated:YES];
+            }else if (type == 2){
+                CGPoint offset = self.scroView.contentOffset;
+                offset.y = self.headView.webTop;
+                NSLog(@"y = %.f",offset.y);
+                [self.scroView setContentOffset:offset animated:YES];
             }
-            [self delayDoWork:1 WithBlock:^{
-                 self.segMenu.selfIsClick = NO;
-            }];
+//            [self delayDoWork:1 WithBlock:^{
+//                 self.segMenu.selfIsClick = NO;
+//            }];
         };
     }
     return _segMenu;

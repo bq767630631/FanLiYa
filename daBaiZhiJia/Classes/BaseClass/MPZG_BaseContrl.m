@@ -41,11 +41,25 @@
     return UIStatusBarStyleLightContent;
 }
 
+- (void)initRightBarButtonWithImage:(NSString *)imageName {
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    button.frame = CGRectMake(0, 0, 44, 44);
+    [button setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
+    button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
+    [button addTarget:self action:@selector(onTapRightBarButton) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *barButtonitem = [[UIBarButtonItem alloc] initWithCustomView:button];
+    self.navigationItem.rightBarButtonItem = barButtonitem;
+}
+
 #pragma mark - event response
 - (void)tapGestureAction:(UITapGestureRecognizer *)tap {
     
     [self clickToHideKeyboard];
 }
+
+- (void)onTapRightBarButton {
+}
+
 
 #pragma mark - public method
 - (void)clickToHideKeyboard {

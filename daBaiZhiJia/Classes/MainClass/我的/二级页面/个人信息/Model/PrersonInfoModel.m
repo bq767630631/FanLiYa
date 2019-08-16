@@ -97,6 +97,23 @@
         NSLog(@"获取 淘宝授权URL%@",error);
     }];
 }
+
++ (void)queryTaoBaoTklWithCallBack:(void (^)(NSString *))block{
+    [PPNetworkHelper GET:URL_Add(@"/v.php/index.index/getAuthTkl") parameters:@{@"token":ToKen,@"v":APP_Version} success:^(id responseObject) {
+        NSLog(@"获取 getAuthTkl res =%@",responseObject);
+        NSInteger code = [responseObject[@"code"] integerValue];
+        if (code == SucCode) {
+            NSString *url = responseObject[@"data"];
+            block(url);
+        }else{
+            [YJProgressHUD showMsgWithoutView:responseObject[@"msg"]];
+        }
+    } failure:^(NSError *error) {
+        block(nil);
+        NSLog(@"获取 淘宝授权URL%@",error);
+    }];
+}
+
 + (void)queryPersonRevenueWithBlcok:(prersonRevenueBlock)block{
     
     [PPNetworkHelper POST:URL_Add(@"/v.php/user.profit/usercentprofit") parameters:@{@"token":ToKen,@"v":APP_Version} success:^(id responseObject) {

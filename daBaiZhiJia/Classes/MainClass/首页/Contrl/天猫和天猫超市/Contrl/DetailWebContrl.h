@@ -12,5 +12,6 @@
 
 - (instancetype)initWithUrl:(NSString*)url title:(NSString*)title para:(NSDictionary*)para;
 
+@property (nonatomic, assign) BOOL  isFromhomeTab;
 @end
 

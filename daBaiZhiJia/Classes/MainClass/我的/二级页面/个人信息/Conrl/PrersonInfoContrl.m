@@ -28,9 +28,14 @@
 @property (weak, nonatomic) IBOutlet UILabel *phoneNum;
 @property (weak, nonatomic) IBOutlet KLSwitch *switchBtn;
 @property (weak, nonatomic) IBOutlet UIButton *loginBtn;
+
+@property (weak, nonatomic) IBOutlet UIButton *canNotAuthBtn;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *authV_H;
+
 @property (nonatomic, assign) BOOL  isAuthFail; //是否 是授权失败 默认no
 @property (nonatomic, strong) PrersonInfoMsg *info;
 @property (nonatomic, copy) NSString *authUrl;
+@property (nonatomic, copy) NSString *authTKL;
 @end
 
 @implementation PrersonInfoContrl
@@ -93,11 +98,22 @@
             self.wxNum.text = info.wechat_account;
             self.phoneNum.text = info.phone;
             self.switchBtn.on = !(info.relation_id == 0);
+            if (info.relation_id==0) { //未授权
+                self.authV_H.constant = 70;
+                self.canNotAuthBtn.hidden = NO;
+            }else{
+                self.authV_H.constant = 50;
+                self.canNotAuthBtn.hidden = YES;
+            }
         }
     }];
     
     [PrersonInfoModel queryTaboBaoAuthUrlWithCallBack:^(NSString *url) {
         self.authUrl = url;
+    }];
+    
+    [PrersonInfoModel queryTaoBaoTklWithCallBack:^(NSString *url) {
+        self.authTKL = url;
     }];
 }
 
@@ -255,6 +271,11 @@
             [self.navigationController popToRootViewControllerAnimated:YES];
         }
     }];
+}
+
+- (IBAction)cannotAuthAction:(UIButton *)sender {
+    [UIPasteboard generalPasteboard].string = self.authTKL;
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"taobao://m.taobao.com/"]];
 }
 
 #pragma mark - private

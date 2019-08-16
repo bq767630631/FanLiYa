@@ -23,17 +23,32 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GYo-QT-Wer">
-                    <rect key="frame" x="288" y="5" width="18" height="22"/>
-                    <state key="normal" image="icon_detail_share"/>
+                    <rect key="frame" x="285" y="5" width="22" height="22"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="22" id="hkF-WP-tqn"/>
+                    </constraints>
+                    <state key="normal" image="icon_like_top"/>
                     <connections>
-                        <action selector="shareAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="lmh-Zy-QCZ"/>
+                        <action selector="goToMyCollection:" destination="iN0-l3-epB" eventType="touchUpInside" id="vTV-O2-QsT"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gYR-L1-gAH">
+                    <rect key="frame" x="245" y="5" width="22" height="22"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="22" id="es2-SQ-A8W"/>
+                    </constraints>
+                    <state key="normal" image="downLoad"/>
+                    <connections>
+                        <action selector="downAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="P2E-56-UHX"/>
                     </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
+                <constraint firstItem="GYo-QT-Wer" firstAttribute="leading" secondItem="gYR-L1-gAH" secondAttribute="trailing" constant="18" id="GQL-Wm-3GI"/>
+                <constraint firstItem="gYR-L1-gAH" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="KOv-FI-xCU"/>
                 <constraint firstItem="JLa-0M-wws" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="aOF-Ua-9tw"/>
-                <constraint firstAttribute="trailing" secondItem="GYo-QT-Wer" secondAttribute="trailing" constant="14" id="dq9-7E-cwO"/>
+                <constraint firstAttribute="trailing" secondItem="GYo-QT-Wer" secondAttribute="trailing" constant="13" id="dq9-7E-cwO"/>
                 <constraint firstItem="JLa-0M-wws" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="14" id="o9d-3U-cD7"/>
                 <constraint firstItem="GYo-QT-Wer" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="vu3-Ks-mr8"/>
             </constraints>
@@ -41,7 +56,8 @@
         </view>
     </objects>
     <resources>
-        <image name="icon_detail_share" width="17.5" height="17.5"/>
+        <image name="downLoad" width="19" height="18"/>
         <image name="icon_goodback" width="32" height="32"/>
+        <image name="icon_like_top" width="18.5" height="17.5"/>
     </resources>
 </document>

@@ -156,7 +156,12 @@ static NSString *cellid=  @"cellid";
             NSInteger code = [responseObject[@"code"] integerValue];
             if (code == SucCode) {
                 NSString *url = responseObject[@"data"];
-                [self openTbWithUrl:url];
+                if ([url containsString:@"http"]) {
+                      [self openTbWithUrl:url];
+                }else{
+                    [UIPasteboard generalPasteboard].string = url;
+                    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"taobao://m.taobao.com/"]];
+                }
             }else  if (code == UnauthCode) {
                 GoToAuth_View *auth = [GoToAuth_View viewFromXib];
                 [auth setAuthInfo];

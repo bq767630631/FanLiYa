@@ -12,7 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="GoToAuth_View">
-            <rect key="frame" x="0.0" y="0.0" width="270" height="270"/>
+            <rect key="frame" x="0.0" y="0.0" width="270" height="282"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qgR-rn-mGo">
@@ -55,22 +55,38 @@
                         <action selector="handleAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="nQy-o6-3Zs"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fKV-Q4-0HU">
+                    <rect key="frame" x="104" y="188.5" width="62" height="12"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="12" id="oy9-mn-uXz"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <state key="normal" title="无法授权？">
+                        <color key="titleColor" red="0.99607843139999996" green="0.66274509800000003" blue="0.1843137255" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="acnNotAuthAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="ZGC-sL-Uhi"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="qgR-rn-mGo" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="7Ws-jZ-aSC"/>
                 <constraint firstItem="yOI-2Y-U9K" firstAttribute="top" secondItem="cd0-rI-f3l" secondAttribute="bottom" constant="21" id="Lyu-9a-041"/>
+                <constraint firstItem="fKV-Q4-0HU" firstAttribute="centerX" secondItem="0c3-xa-Qat" secondAttribute="centerX" id="Mch-k0-fo2"/>
                 <constraint firstItem="0c3-xa-Qat" firstAttribute="top" secondItem="5f4-fD-1LM" secondAttribute="bottom" constant="22" id="Piu-LI-mLt"/>
                 <constraint firstItem="5f4-fD-1LM" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Who-ek-gLU"/>
                 <constraint firstItem="cd0-rI-f3l" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="az1-lQ-orp"/>
                 <constraint firstItem="5f4-fD-1LM" firstAttribute="top" secondItem="yOI-2Y-U9K" secondAttribute="bottom" constant="17" id="uZ1-mn-2EF"/>
                 <constraint firstItem="cd0-rI-f3l" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="37" id="v7M-Wv-WUt"/>
                 <constraint firstItem="0c3-xa-Qat" firstAttribute="centerX" secondItem="5f4-fD-1LM" secondAttribute="centerX" id="vMh-Hv-U3N"/>
+                <constraint firstItem="fKV-Q4-0HU" firstAttribute="top" secondItem="0c3-xa-Qat" secondAttribute="bottom" constant="10" id="xad-Zt-WiZ"/>
                 <constraint firstAttribute="trailing" secondItem="qgR-rn-mGo" secondAttribute="trailing" constant="10" id="yAH-zb-7Vx"/>
                 <constraint firstItem="yOI-2Y-U9K" firstAttribute="centerX" secondItem="cd0-rI-f3l" secondAttribute="centerX" id="yzL-tW-8sL"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="canNotAuthBtn" destination="fKV-Q4-0HU" id="hew-9e-k6W"/>
                 <outlet property="content" destination="5f4-fD-1LM" id="ehS-6M-6R1"/>
                 <outlet property="handleBtn" destination="0c3-xa-Qat" id="SN9-I0-CXX"/>
                 <outlet property="imageV" destination="cd0-rI-f3l" id="ptj-q5-eM8"/>

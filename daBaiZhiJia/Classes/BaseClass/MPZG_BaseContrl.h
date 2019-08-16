@@ -13,6 +13,16 @@ NS_ASSUME_NONNULL_BEGIN
 @interface MPZG_BaseContrl : UIViewController
 
 - (void)clickToHideKeyboard;
+
+
+/**
+ *  生成导航栏右侧图片按钮
+ *
+ *  @param imageName 图片名称
+ */
+- (void)initRightBarButtonWithImage:(NSString *)imageName;
+
+- (void)onTapRightBarButton;
 @end
 
 NS_ASSUME_NONNULL_END

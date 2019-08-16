@@ -14,6 +14,7 @@ typedef void(^couponSearchBlock)(BOOL isOn);
 
 @property (nonatomic, copy) couponSearchBlock block;
 
+@property (nonatomic, copy) VEBlockInteger typeblock;//1全网, 2app
 @end
 
 NS_ASSUME_NONNULL_END

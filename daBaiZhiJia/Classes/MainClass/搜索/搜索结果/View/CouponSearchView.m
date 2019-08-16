@@ -11,6 +11,8 @@
 @interface CouponSearchView ()
 
 @property (weak, nonatomic) IBOutlet KLSwitch *customSwitch;
+@property (weak, nonatomic) IBOutlet UIButton *quanzhan;
+@property (weak, nonatomic) IBOutlet UIButton *app;
 
 @end
 @implementation CouponSearchView
@@ -26,6 +28,24 @@
         }
     }];
 }
+
+- (IBAction)quanzhanAction:(UIButton *)sender {
+    self.app.selected = NO;
+    sender.selected = YES;
+    if (self.typeblock) {
+        self.typeblock(1);
+    }
+}
+
+
+- (IBAction)appAction:(UIButton *)sender {
+     self.quanzhan.selected = NO;
+     sender.selected = YES;
+    if (self.typeblock) {
+        self.typeblock(2);
+    }
+}
+
 
 
 @end

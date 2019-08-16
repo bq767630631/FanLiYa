@@ -11,6 +11,7 @@
 
 #pragma mark - log
 ///////////////////
+#import <Foundation/Foundation.h>
 
 #ifdef DEBUG
 #define ZDBLog(...) NSLog(@"%s[%d] %@", __PRETTY_FUNCTION__, __LINE__, [NSString stringWithFormat:__VA_ARGS__])
@@ -91,12 +92,13 @@ CGRectGetHeight([UIApplication sharedApplication].statusBarFrame)
 #define kServerReturnFailed    (@"emptyTips_returnFailedIcon")    // 服务器返回失败
 #define kNetworkTimedOut       (@"emptyTips_timeOutIcon") // 网络请求超时
 
-// 提示语
-#define kNetworkErrorTips   (@"网络连接失败，请检查网络")
-#define kNetworkTimeOutTips (@"网络数据请求超时")
-#define kWithoutDataTips    (@"抱歉，没有找到符合条件的商品")
-#define kReturnFailedTips   (@"有网络，服务器返回失败")
-
+//快速block
+typedef void(^VEBlockVoid)(void);
+typedef void(^VEBlockInteger)(NSUInteger x);
+typedef void(^VEBlock)(id x);
+typedef void(^VEBlock1)(id x, id y);
+typedef void(^VEMultipleBlock)(id x,id y,id z);
+typedef void(^VEMultipleTagBlock)(id x,id y,id z,id h);
 #pragma mark - color
 ////////////////////
 

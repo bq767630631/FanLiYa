@@ -43,7 +43,7 @@
 @property (nonatomic,assign) NSInteger page;
 
 @property (nonatomic,copy) NSString *has_coupon; //true表示该商品有优惠券，false或不设置表示不限
-
+@property (nonatomic,copy) NSString *from; // all;app
 @property (nonatomic,copy) NSString *sort;//取值：sales/ratio/price/stoptime
 
 @property (nonatomic,strong) NSMutableArray *searchGoodsArr;//搜索的商品
@@ -66,6 +66,7 @@ static NSString *tableCellId = @"tableCellId";
     self.page = 1;
     self.sort = @"";
     self.has_coupon = @"false";
+    self.from = @"app";
     return self;
 }
 
@@ -88,7 +89,7 @@ static NSString *tableCellId = @"tableCellId";
 }
 
 - (void)questData{
-    NSDictionary *dict = @{@"kw":self.searchStr,@"page":@(self.page),@"sort":self.sort,@"has_coupon":self.has_coupon,@"token":ToKen,@"v":APP_Version};
+    NSDictionary *dict = @{@"kw":self.searchStr,@"page":@(self.page),@"sort":self.sort,@"has_coupon":self.has_coupon,@"token":ToKen,@"v":APP_Version,@"from":self.from};
      NSLog(@"dict =%@",dict.mj_keyValues);
     if (self.haveNoMoreData) {
         [self.scroview.mj_footer endRefreshing];
@@ -324,7 +325,7 @@ static NSString *tableCellId = @"tableCellId";
 - (CouponSearchView *)couponSear{
     if (!_couponSear) {
         _couponSear = [CouponSearchView viewFromXib];
-        _couponSear.frame = CGRectMake(0, self.menu.bottom, SCREEN_WIDTH, 45);
+        _couponSear.frame = CGRectMake(0, self.menu.bottom, SCREEN_WIDTH, 85);
         @weakify(self);
         _couponSear.block = ^(BOOL isOn) {
             @strongify(self);
@@ -333,6 +334,15 @@ static NSString *tableCellId = @"tableCellId";
             self.haveNoMoreData = NO;
             [self questData];
         };
+        
+        _couponSear.typeblock = ^(NSUInteger x) {
+              @strongify(self);
+              self.page = 1;
+              self.haveNoMoreData = NO;
+              self.from = x ==1 ?@"all":@"app";
+              [self questData];
+        };
+        
     }
     return _couponSear;
 }

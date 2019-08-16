@@ -45,15 +45,20 @@
     [self.view addSubview:self.webView];
     [SVProgressHUD show];
     
+    if (!self.isFromhomeTab) {
+        [self setUpNaviGaItem];
+    }
+    UIBarButtonItem *rightBar = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_refresh"] style:UIBarButtonItemStylePlain target:self action:@selector(rightButtonItemClick:)];
+    self.navigationItem.rightBarButtonItem = rightBar;
+}
+
+- (void)setUpNaviGaItem{
     UIBarButtonItem *barButtonItem1 = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_back_white"] style:UIBarButtonItemStylePlain target:self action:@selector(leftBarButtonItem1Click:)];
     //间隙
     UIBarButtonItem *fixedSpaceBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
     fixedSpaceBarButtonItem.width = 10;
     UIBarButtonItem *barButtonItem2 = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_tm_close"] style:UIBarButtonItemStylePlain target:self action:@selector(leftBarButtonIte2Click:)];
     self.navigationItem.leftBarButtonItems = @[barButtonItem1,fixedSpaceBarButtonItem,barButtonItem2];
-    
-    UIBarButtonItem *rightBar = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_refresh"] style:UIBarButtonItemStylePlain target:self action:@selector(rightButtonItemClick:)];
-    self.navigationItem.rightBarButtonItem = rightBar;
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -84,8 +89,7 @@
     NSLog(@"absoluteString= %@",webView.URL.absoluteString);
     NSString *urlStr = webView.URL.absoluteString;
     NSLog(@"title =%@",webView.title);
-    self.title = webView.title;
-    
+    self.navigationItem.title = webView.title;
     if ([urlStr containsString:@"item.htm"]) {
         self.topLb.hidden = NO;
         self.bottomV.hidden = NO;

@@ -18,6 +18,9 @@
 #import "MessageManger.h"
 #import "Home_Com_Group_Recom.h"
 #import "Brand_Showcontrl.h"
+#import "DetailWebContrl.h"
+#import "HomePage_Model.h"
+
 #define IOS7 [[[UIDevice currentDevice] systemVersion]floatValue]>=7.0
 @interface MPZG_TabBarContrl ()<UITabBarControllerDelegate>
 
@@ -25,13 +28,14 @@
 
 @implementation MPZG_TabBarContrl
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-  
     self.tabBar.backgroundColor = [UIColor whiteColor];///不透明
-     [self tabBarInitialise];
     self.delegate = self;
+    [self tabBarInitialise];
 }
+
 #pragma mark - UITabBarControllerDelegate
 - (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController{
    /* if (tabBarController.selectedIndex == 2) {
@@ -63,27 +67,56 @@
 
 
 - (void)tabBarInitialise {
-    UIViewController *viewCtrl = [[DBZJ_HomeViewContrl alloc] init];
+    UIViewController *viewCtrl = nil;//[[DBZJ_HomeViewContrl alloc] init];
      self.delegate = (DBZJ_HomeViewContrl*)viewCtrl;
+    if (Is_Show_Info) {
+        viewCtrl =    [[DBZJ_HomeViewContrl alloc] init];
+    }else{//[NSString stringWithFormat:@"%@%@?token=%@",BASE_WEB_URL,@"businessSchool.html",ToKen]
+ NSString *url = [NSString stringWithFormat:@"http://app.dabaihong.com/dabaihome/user/index.html"];
+        viewCtrl = [[DetailWebContrl alloc] initWithUrl:url title:nil para:nil];
+       DetailWebContrl *web = (DetailWebContrl *)viewCtrl;
+        web.isFromhomeTab = YES;
+    }
     [self addChildViewController:viewCtrl
                            title:@"首页"
                        imageName:@"homePage_default"
                selectedImageName:@"homePage_hight"];
     
-    viewCtrl = [BillBoard_Contrl new];
+    if (Is_Show_Info) {
+          viewCtrl = [BillBoard_Contrl new];
+    }else{
+        NSString *url = [NSString stringWithFormat:@"http://app.dabaihong.com/dabaihome/user/taobao-rank.html?token=%@",ToKen];
+        viewCtrl = [[DetailWebContrl alloc] initWithUrl:url title:nil para:nil];
+        DetailWebContrl *web = (DetailWebContrl *)viewCtrl;
+        web.isFromhomeTab = YES;
+    }
     [self addChildViewController:viewCtrl
                            title:@"榜单"
                        imageName:@"icon_toped_unselect"
                selectedImageName:@"icon_toped_select"];
     
-    viewCtrl = [DBZJ_IncomeContrl new];
-    NSString *title = @"赚钱鸭";
+  
+    if (Is_Show_Info) {
+          viewCtrl = [DBZJ_IncomeContrl new];
+    }else{
+        NSString *url = [NSString stringWithFormat:@"http://app.dabaihong.com/dabaihome/user/taobao-sqzq.html?token=%@",ToKen];
+        viewCtrl = [[DetailWebContrl alloc] initWithUrl:url title:nil para:nil];
+        DetailWebContrl *web = (DetailWebContrl *)viewCtrl;
+        web.isFromhomeTab = YES;
+    }
   [self addChildViewController:viewCtrl
-                           title:title
+                           title: @"赚钱鸭"
                        imageName:@"icon_zhuanshouyi"
                selectedImageName:@"icon_zhuanshouyi"];
-    
-    viewCtrl = [DBZJ_CommunityContrl new];
+    if (Is_Show_Info) {
+          viewCtrl = [DBZJ_CommunityContrl new];
+    }else{
+        NSString *url = [NSString stringWithFormat:@"http://app.dabaihong.com/dabaihome/user/taobao-sssx.html?token=%@",ToKen];
+        viewCtrl = [[DetailWebContrl alloc] initWithUrl:url title:nil para:nil];
+        DetailWebContrl *web = (DetailWebContrl *)viewCtrl;
+        web.isFromhomeTab = YES;
+    }
+  
     [self addChildViewController:viewCtrl
                            title:@"社区"
                        imageName:@"icon_shequn_unselect"

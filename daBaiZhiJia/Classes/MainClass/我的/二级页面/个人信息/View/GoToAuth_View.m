@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *title;
 @property (weak, nonatomic) IBOutlet UILabel *content;
 @property (weak, nonatomic) IBOutlet UIButton *handleBtn;
+@property (weak, nonatomic) IBOutlet UIButton *canNotAuthBtn;
 
 @end
 @implementation GoToAuth_View
@@ -50,6 +51,13 @@
     }];
 }
 
+- (IBAction)acnNotAuthAction:(UIButton *)sender {
+      self.superview.hidden = YES;
+    [PrersonInfoModel queryTaoBaoTklWithCallBack:^(NSString *url) {
+        [UIPasteboard generalPasteboard].string = url;
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"taobao://m.taobao.com/"]];
+    }];
+}
 
 #pragma mark - private
 - (void)authWithUrl:(NSString *)url{

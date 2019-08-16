@@ -48,7 +48,12 @@
             NSInteger code = [responseObject[@"code"] integerValue];
             if (code == SucCode) {
                 NSString *url = responseObject[@"data"];
-                [HandelTaoBaoTradeManager openTaoBaoAndTraWithUrl:url navi:self.viewController.navigationController];
+                if ([url containsString:@"http"]) {//url
+                     [HandelTaoBaoTradeManager openTaoBaoAndTraWithUrl:url navi:self.viewController.navigationController];
+                }else{//tkl
+                    [UIPasteboard generalPasteboard].string = url;
+                    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"taobao://m.taobao.com/"]];
+                }
             }
             if (code == UnauthCode) {
                 GoToAuth_View *auth = [GoToAuth_View viewFromXib];

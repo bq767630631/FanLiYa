@@ -9,7 +9,7 @@
 #import "SearchResulModel.h"
 
 @protocol GoodDetailModelDelegate;
-@class GoodDetailInfo;
+@class GoodDetailInfo,GoodDetailBannerInfo;
 @interface GoodDetailModel : NSObject
 
 - (instancetype)initWithSku:(NSString* )sku;
@@ -23,6 +23,9 @@
 //- (void)queryIsCollection;
 
 - (void)queryViewPeople;
+
+//保存视频和图片到本地相册
++ (void)handleDownloadActionWith:(GoodDetailBannerInfo*)info;
 @end
 
 

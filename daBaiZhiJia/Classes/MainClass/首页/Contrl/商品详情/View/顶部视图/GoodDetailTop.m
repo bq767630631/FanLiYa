@@ -10,6 +10,8 @@
 #import "CreateShareContrl.h"
 #import "LoginContrl.h"
 #import "CreateShare_Model.h"
+#import "MyCollecTionContrl.h"
+
 
 @interface GoodDetailTop ()
 
@@ -19,6 +21,17 @@
 - (IBAction)returnAction:(UIButton *)sender {
     [self.viewController.navigationController popViewControllerAnimated:YES];
 }
+
+- (IBAction)downAction:(UIButton *)sender {
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"GoodDetailDownLoadNotification" object:nil];
+}
+
+
+- (IBAction)goToMyCollection:(UIButton *)sender {
+    [self.viewController.navigationController pushViewController:[MyCollecTionContrl new] animated:YES];
+}
+
+
 
 - (IBAction)shareAction:(UIButton *)sender {
     if ([self judgeisLogin]) {
