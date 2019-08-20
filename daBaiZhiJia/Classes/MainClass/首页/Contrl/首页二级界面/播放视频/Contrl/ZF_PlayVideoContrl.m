@@ -234,13 +234,13 @@ static NSString *collecTioncellId = @"collecTioncellId";
         [_collection registerNib:[UINib nibWithNibName:cellStr bundle:nil] forCellWithReuseIdentifier:collecTioncellId];
         
           @weakify(self)
-        MJRefreshBackNormalFooter *footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
+        MJRefreshAutoNormalFooter *footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
             @strongify(self);
             NSLog(@" 加载更多数据");
             [self.player stopCurrentPlayingCell];
             [self queryGoodData];
         }];
-        [footer setTitle:@"没有更多数据" forState:MJRefreshStateNoMoreData];
+        
         _collection.mj_footer = footer;
         
         /// 停止的时候找出最合适的播放

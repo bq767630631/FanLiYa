@@ -64,8 +64,8 @@ NSMutableString *wenanStr= [NSMutableString stringWithFormat:@"%@\n【原价】%
     NSLog(@"wenanStr =%@",wenanStr);
     info.wenAnStr = wenanStr;
     CGFloat maxW = SCREEN_WIDTH - 22*2;
-    CGFloat  strH = [wenanStr textHeightWithFont:[UIFont systemFontOfSize:12] maxWidth:maxW];
-    info.shareContent_H = strH + 35 + 165 + 83 + (40 + 48 +10 ) + 83 + 20;
+    CGFloat  strH = [wenanStr textHeightWithFont:[UIFont systemFontOfSize:13] maxWidth:maxW];
+    info.shareContent_H = strH + 35 + 132 + 83 + (40 + 45 + 50) + 83 + 40;
     NSLog(@"shareContent_H =%.f",info.shareContent_H);
     return wenanStr;
 }

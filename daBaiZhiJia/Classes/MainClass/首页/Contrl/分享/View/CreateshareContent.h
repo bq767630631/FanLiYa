@@ -14,6 +14,7 @@
 @interface CreateshareContent : UIView
 
 @property (nonatomic, strong) CreateShare_CellInfo *selectedInfo;
+@property (nonatomic, strong) NSMutableArray *seletedArr;
 
 @property (nonatomic, strong) UIImage *postImage;
 

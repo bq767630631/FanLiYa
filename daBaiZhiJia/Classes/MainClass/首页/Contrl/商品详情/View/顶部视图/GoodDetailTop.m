@@ -28,7 +28,9 @@
 
 
 - (IBAction)goToMyCollection:(UIButton *)sender {
-    [self.viewController.navigationController pushViewController:[MyCollecTionContrl new] animated:YES];
+    if ([self judgeisLogin]) {
+         [self.viewController.navigationController pushViewController:[MyCollecTionContrl new] animated:YES];
+    }
 }
 
 

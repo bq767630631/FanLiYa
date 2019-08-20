@@ -69,6 +69,7 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="collectionV" destination="K7h-Tq-K0S" id="4Ye-Ww-PSf"/>
+                <outlet property="collectionV_H" destination="dzn-fZ-aBt" id="NEm-jT-0wc"/>
             </connections>
         </view>
     </objects>

@@ -17,6 +17,7 @@
 #import "MJProxy.h"
 #import "GoodDetail_ShengjiV.h"
 #import "MyCollecTionContrl.h"
+#import "LoginContrl.h"
 
 @interface GoodDetailContrl ()<UIScrollViewDelegate,GoodDetailModelDelegate>
 
@@ -78,9 +79,20 @@
 }
 
 - (void)onTapRightBarButton{
-    [self.navigationController pushViewController:[MyCollecTionContrl new] animated:YES];
+    if ([self judgeisLogin]) {
+          [self.navigationController pushViewController:[MyCollecTionContrl new] animated:YES];
+    }
 }
 
+- (BOOL)judgeisLogin{
+    NSString *token = ToKen;
+    if (User_ID >0&&token.length >0) {
+        return YES;
+    }else{
+        [self.navigationController pushViewController:[LoginContrl new] animated:YES];
+        return NO;
+    }
+}
 
 - (void)dealloc{
     NSLog(@"");

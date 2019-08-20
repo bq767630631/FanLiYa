@@ -310,6 +310,8 @@
 		C2DBC9422289540A00CFAE29 /* CreateshareContent.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2DBC9412289540A00CFAE29 /* CreateshareContent.xib */; };
 		C2DBC945228957D700CFAE29 /* CreateshareBottom.m in Sources */ = {isa = PBXBuildFile; fileRef = C2DBC944228957D700CFAE29 /* CreateshareBottom.m */; };
 		C2DBC9472289582000CFAE29 /* CreateshareBottom.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2DBC9462289582000CFAE29 /* CreateshareBottom.xib */; };
+		C2DBD33223079F290037D42B /* ShareEditeContrl.m in Sources */ = {isa = PBXBuildFile; fileRef = C2DBD33023079F290037D42B /* ShareEditeContrl.m */; };
+		C2DBD33323079F290037D42B /* ShareEditeContrl.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2DBD33123079F290037D42B /* ShareEditeContrl.xib */; };
 		C2E227EF230690C800741CD3 /* HSSessionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C2E227E8230690C800741CD3 /* HSSessionModel.m */; };
 		C2E227F0230690C800741CD3 /* NSString+Hash.m in Sources */ = {isa = PBXBuildFile; fileRef = C2E227EA230690C800741CD3 /* NSString+Hash.m */; };
 		C2E227F1230690C800741CD3 /* HSDownloadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C2E227EE230690C800741CD3 /* HSDownloadManager.m */; };
@@ -880,6 +882,9 @@
 		C2DBC943228957D700CFAE29 /* CreateshareBottom.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CreateshareBottom.h; sourceTree = "<group>"; };
 		C2DBC944228957D700CFAE29 /* CreateshareBottom.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CreateshareBottom.m; sourceTree = "<group>"; };
 		C2DBC9462289582000CFAE29 /* CreateshareBottom.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateshareBottom.xib; sourceTree = "<group>"; };
+		C2DBD32F23079F290037D42B /* ShareEditeContrl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShareEditeContrl.h; sourceTree = "<group>"; };
+		C2DBD33023079F290037D42B /* ShareEditeContrl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShareEditeContrl.m; sourceTree = "<group>"; };
+		C2DBD33123079F290037D42B /* ShareEditeContrl.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShareEditeContrl.xib; sourceTree = "<group>"; };
 		C2E227E8230690C800741CD3 /* HSSessionModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HSSessionModel.m; sourceTree = "<group>"; };
 		C2E227EA230690C800741CD3 /* NSString+Hash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Hash.m"; sourceTree = "<group>"; };
 		C2E227EB230690C800741CD3 /* NSString+Hash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Hash.h"; sourceTree = "<group>"; };
@@ -2767,6 +2772,9 @@
 			children = (
 				C2DBC93922894CB200CFAE29 /* CreateShareContrl.h */,
 				C2DBC93A22894CB200CFAE29 /* CreateShareContrl.m */,
+				C2DBD32F23079F290037D42B /* ShareEditeContrl.h */,
+				C2DBD33023079F290037D42B /* ShareEditeContrl.m */,
+				C2DBD33123079F290037D42B /* ShareEditeContrl.xib */,
 			);
 			path = Contrl;
 			sourceTree = "<group>";
@@ -3196,6 +3204,7 @@
 				C2218C68228972BC0097F8F7 /* IntelligenceSearchView.xib in Resources */,
 				C2CA66C522715B9500CC361F /* DBZJ_CommunityCell.xib in Resources */,
 				C203F27B2255FF3B009D73CD /* NBResource.bundle in Resources */,
+				C2DBD33323079F290037D42B /* ShareEditeContrl.xib in Resources */,
 				C279939B22C376EC004C0B4C /* Member_LevContrl.xib in Resources */,
 				C2A70BD822B8772B007B0022 /* GoodDetail_Barrage.xib in Resources */,
 				C289C9D622BDFBC10031F21A /* NewPeo_timeView.xib in Resources */,
@@ -3526,6 +3535,7 @@
 				C2A70BD922B8772B007B0022 /* GoodDetail_Barrage.m in Sources */,
 				C2384F9D2249F30B0070CFFE /* HomeSearchView.m in Sources */,
 				C2210C412248CD7F00C1C765 /* TYAlertController+TransitionAnimate.m in Sources */,
+				C2DBD33223079F290037D42B /* ShareEditeContrl.m in Sources */,
 				C2210C442248CD7F00C1C765 /* UIView+TYAutoLayout.m in Sources */,
 				C2E227F0230690C800741CD3 /* NSString+Hash.m in Sources */,
 				C27CD56622C0827C00852FE0 /* Home_Com_Group_Model.m in Sources */,

@@ -19,8 +19,9 @@ typedef void(^activityVCShowBlock)(void);
 
 #pragma mark - 分享
 @property (nonatomic, strong) CreateShare_CellInfo *selectedInfo;
+@property (nonatomic, strong) NSMutableArray *seletedArr;
 @property (nonatomic, strong) UIImage *postImage;
-@property (nonatomic, strong) NSArray<NSString*>*pics;
+//@property (nonatomic, strong) NSArray<NSString*>*pics;
 
 #pragma mark - 社区
 @property (nonatomic, assign) BOOL  isFrom_sheQu;//是否来自社区

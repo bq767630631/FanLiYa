@@ -374,6 +374,7 @@
                 <outlet property="pt" destination="6Vm-Kh-pgu" id="x30-hi-uAv"/>
                 <outlet property="quanHeightCons" destination="8rV-xQ-2Fp" id="I7s-u3-Hrn"/>
                 <outlet property="quanView" destination="Tsn-V5-hJY" id="Bul-Y0-Wsm"/>
+                <outlet property="shengJiV" destination="1Xf-ha-nmj" id="TcF-4y-O1n"/>
                 <outlet property="shengJiV_H" destination="14v-cy-nQZ" id="rjR-8a-OKz"/>
                 <outlet property="shengJiZhuan" destination="8U0-0C-ciU" id="0ts-5e-9qn"/>
                 <outlet property="shengJizhuanBtn" destination="UI3-n1-OEA" id="JYY-tR-q6b"/>

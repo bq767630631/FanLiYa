@@ -300,7 +300,7 @@ static NSString *tableCellId = @"tableCellId";
             [_scroview addSubview:self.collectionView];
         }
         @weakify(self);
-        MJRefreshBackNormalFooter *footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
+        MJRefreshAutoNormalFooter *footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
             @strongify(self);
             NSLog(@" 加载更多数据");
             [self queryData];

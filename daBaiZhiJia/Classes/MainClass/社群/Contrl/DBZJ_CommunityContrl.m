@@ -211,7 +211,7 @@ static NSString *newHandCell = @"newHandCell";
         _tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 0.1f)];
         ViewBorderRadius(_tableView, 7, UIColor.clearColor);
         @weakify(self);
-        MJRefreshBackNormalFooter *footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
+        MJRefreshAutoNormalFooter *footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
             @strongify(self);
             NSLog(@" 加载更多数据");
             [self.model queryRecommendWithType:self.type];
@@ -249,7 +249,7 @@ static NSString *newHandCell = @"newHandCell";
         ViewBorderRadius(_tableView2, 7, UIColor.clearColor);
         _tableView2.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 0.1f)];
         @weakify(self);
-        MJRefreshBackNormalFooter *footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
+        MJRefreshAutoNormalFooter *footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
             @strongify(self);
             NSLog(@" 加载更多数据");
             [self.model queryRecommendWithType:self.type];
@@ -285,7 +285,7 @@ static NSString *newHandCell = @"newHandCell";
         _tableView3.separatorStyle = UITableViewCellSeparatorStyleNone;
         _tableView3.backgroundColor = UIColor.whiteColor;
         @weakify(self);
-        MJRefreshBackNormalFooter *footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
+        MJRefreshAutoNormalFooter *footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
             @strongify(self);
             NSLog(@" 加载更多数据");
             [self.model queryRecommendWithType:self.type];

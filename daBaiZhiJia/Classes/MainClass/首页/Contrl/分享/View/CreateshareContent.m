@@ -13,7 +13,9 @@
 #import "GKPhotoBrowser.h"
 #import "Share_PosterView.h"
 #import "ShareNewPosterV.h"
+#import "ShareEditeContrl.h"
 
+#define ShareActionToCopyWenAnNoti @"ShareActionToCopyWenAnNoti"  //点击分享然后复制文案
 static NSString *cellId = @"cellId";
 @interface CreateshareContent ()<UICollectionViewDelegate, UICollectionViewDataSource>
 @property (weak, nonatomic) IBOutlet UILabel *yujiMoney;
@@ -26,9 +28,11 @@ static NSString *cellId = @"cellId";
 @property (weak, nonatomic) IBOutlet UIButton *taokoulingBtn;
 @property (weak, nonatomic) IBOutlet UILabel *tklLB;
 @property (weak, nonatomic) IBOutlet UILabel *wenAnLb;
+@property (weak, nonatomic) IBOutlet UITextView *wenAnTextV;
 
 @property (weak, nonatomic) IBOutlet UIButton *tklBtn;
 
+@property (weak, nonatomic) IBOutlet UIButton *editeBtn;
 
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *tklLeadcons;
@@ -66,6 +70,7 @@ static NSString *cellId = @"cellId";
 
 - (void)awakeFromNib{
     [super awakeFromNib];
+    ViewBorderRadius(self.editeBtn, self.editeBtn.height*0.5, UIColor.clearColor);
     ViewBorderRadius(self.haiBaoV, 4, UIColor.clearColor);
     ViewBorderRadius(self.wenAnV, 4, UIColor.clearColor);
     ViewBorderRadius(self.taokaoulin, 4, UIColor.clearColor);
@@ -87,6 +92,7 @@ static NSString *cellId = @"cellId";
     self.orderLead.constant = gap;
     self.orderTrail.constant = gap;
     ViewBorderRadius(self.choseBtnView, 5, UIColor.clearColor);
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(wenanAction:) name:ShareActionToCopyWenAnNoti object:nil];
 }
 
 - (void)setInfoWithModel:(id)model{
@@ -94,6 +100,7 @@ static NSString *cellId = @"cellId";
     self.yujiMoney.text = [NSString stringWithFormat:@"您的奖励预计: ¥%@",self.detailinfo.profit];
     self.tklLB.text =  [NSString stringWithFormat:@"长按復至%@➡[掏✔寳]即可抢购",self.detailinfo.tkl];
     self.wenAnLb.text = self.detailinfo.wenAnStr;
+    self.wenAnTextV.text =  self.wenAnLb.text;
     self.xiaZaiLB.text =   [NSString stringWithFormat:@"下单地址: %@",self.detailinfo.shorturl]; 
     for (int i = 0; i < self.detailinfo.pics.count; i ++) {
         NSString*imageStr  = self.detailinfo.pics[i];
@@ -102,6 +109,7 @@ static NSString *cellId = @"cellId";
         [self.dataSource addObject:cellInfo];
     }
     
+    //用第一张图片生成海报并插入到第一个
     CreateShare_CellInfo *firstinfo = self.dataSource.firstObject;
     CreateShare_CellInfo *info  = [CreateShare_CellInfo new];
     info.isPoster = YES;
@@ -110,8 +118,9 @@ static NSString *cellId = @"cellId";
     [self.dataSource insertObject:info atIndex:0];
   
     [self.collectionView reloadData];
-    self.selectedInfo = self.dataSource.firstObject;
-    self.postImage = self.selectedInfo.image;
+  
+    [self.seletedArr addObject:self.dataSource.firstObject];
+    self.postImage =  info.image;
 }
 
 
@@ -129,31 +138,16 @@ static NSString *cellId = @"cellId";
     @weakify(self);
     cell.block = ^(NSIndexPath *path, BOOL isSelect) {
         @strongify(self);
-
-        for (NSInteger i = 0; i < self.dataSource.count; i++) {
-            CreateShare_CellInfo *itemInfo = self.dataSource[i];
-            if (isSelect) {
-                if (i == path.row) {
-                     itemInfo.isSelected = YES;
-                }else{
-                      itemInfo.isSelected = NO;
-                }
-            }else{
-                if (i == path.row) {
-                    itemInfo.isSelected = isSelect;
-                }
-            }
+         CreateShare_CellInfo *itemInfo = self.dataSource[path.row];
+           itemInfo.isSelected = isSelect;
+        if (isSelect &&![self.seletedArr containsObject:itemInfo]) {
+            [self.seletedArr addObject:itemInfo];
+        }else{
+            [self.seletedArr removeObject:itemInfo];
         }
-
-        [self.collectionView reloadData];
-        for ( CreateShare_CellInfo *itemInfo in self.dataSource) {
-            if (itemInfo.isSelected) {
-                self.selectedInfo = itemInfo;
-                break;
-            }else{
-                self.selectedInfo = nil;
-            }
-        }
+        [collectionView reloadData];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"ShareSelectedArrayNotification" object:nil userInfo:@{@"seletedArr":self.seletedArr}];
+    
     };
     return cell;
 }
@@ -221,7 +215,8 @@ static NSString *cellId = @"cellId";
 
 - (IBAction)wenanAction:(UIButton *)sender {
       NSLog(@"");
-    [UIPasteboard generalPasteboard].string = self.detailinfo.wenAnStr;
+    [UIPasteboard generalPasteboard].string =  self.wenAnTextV.text; //  self.wenAnLb.text;//
+    NSLog(@"%@", [UIPasteboard generalPasteboard].string );
     [YJProgressHUD showMsgWithoutView:@"文案复制成功"];
 }
 
@@ -237,6 +232,17 @@ static NSString *cellId = @"cellId";
 
 
 #pragma mark - WenAnbtnAction
+
+- (IBAction)editeAction:(UIButton *)sender {
+//    ShareEditeContrl *vc = [ShareEditeContrl new];
+//    vc.textStr = self.wenAnLb.text;
+//    [self.viewController.navigationController pushViewController:vc animated:YES];
+//    vc.callBack = ^(id x) {
+//        self.wenAnLb.text = x ;
+//    };
+}
+
+
 - (IBAction)tklAction:(UIButton *)sender {
     sender.selected = !sender.selected;
     [self setUpWenAnStr];
@@ -259,6 +265,7 @@ static NSString *cellId = @"cellId";
 - (void)setUpWenAnStr{
      [CreateShare_Model geneRateWenanWithDetail:self.detailinfo isAdd:self.downLoadOrdBtn.selected isDown:self.saveMoneyBtn.selected isRegisCode:self.codeBtn.selected isTkl:self.tklBtn.selected];
       self.wenAnLb.text = self.detailinfo.wenAnStr;
+      self.wenAnTextV.text = self.wenAnLb.text;
 }
 
 #pragma mark - getter
@@ -273,5 +280,10 @@ static NSString *cellId = @"cellId";
     return _layout;
 }
 
-
+- (NSMutableArray *)seletedArr{
+    if (!_seletedArr) {
+        _seletedArr = [NSMutableArray array];
+    }
+    return _seletedArr;
+}
 @end

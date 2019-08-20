@@ -197,12 +197,11 @@ static NSString *menuCellId = @"menuCellId";
         [_collcetion registerNib:[UINib nibWithNibName:cellStr bundle:nil] forCellWithReuseIdentifier:collecTioncellId];
         _collcetion.showsVerticalScrollIndicator = NO;
         @weakify(self);
-        MJRefreshBackNormalFooter *footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
+        MJRefreshAutoNormalFooter *footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
             @strongify(self);
             NSLog(@"加载更多数据");
             [self queryData];
         }];
-        [footer setTitle:@"没有更多数据" forState:MJRefreshStateNoMoreData];
         _collcetion.mj_footer = footer;
         MJRefreshStateHeader *head = [MJRefreshStateHeader headerWithRefreshingBlock:^{
             @strongify(self);

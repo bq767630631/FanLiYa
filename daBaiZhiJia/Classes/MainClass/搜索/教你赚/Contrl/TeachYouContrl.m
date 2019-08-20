@@ -75,13 +75,13 @@ static NSString *newHandCell = @"newHandCell";
         _tableView3.dataSource = self;
         _tableView3.rowHeight = 180 *SCREEN_WIDTH/375 + 45;
         @weakify(self);
-        MJRefreshBackNormalFooter *footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
+        MJRefreshAutoNormalFooter *footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
             @strongify(self);
             NSLog(@" 加载更多数据");
             [self.model queryRecommendWithType:3];
             
         }];
-        [footer setTitle:@"没有更多的数据" forState:MJRefreshStateNoMoreData];
+        
         _tableView3.mj_footer = footer;
         [self.view addSubview:_tableView3];
     }

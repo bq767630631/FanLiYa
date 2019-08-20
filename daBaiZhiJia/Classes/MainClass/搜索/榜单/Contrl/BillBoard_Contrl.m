@@ -326,12 +326,11 @@ static NSString *tableCellID3 = @"tableCellID3";
         _tableV.showsVerticalScrollIndicator = NO;
          [_tableV registerNib:[UINib nibWithNibName:NSStringFromClass([BillBoard_GoodCell class]) bundle:nil] forCellReuseIdentifier:tableCellID];
         @weakify(self);
-        MJRefreshBackNormalFooter *footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
+        MJRefreshAutoNormalFooter *footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
             @strongify(self);
             NSLog(@" 加载更多数据");
             [self queryGoodData];
         }];
-        [footer setTitle:@"没有更多的数据" forState:MJRefreshStateNoMoreData];
         _tableV.mj_footer = footer;
     }
     return _tableV;
@@ -352,12 +351,11 @@ static NSString *tableCellID3 = @"tableCellID3";
         _tableV2.showsVerticalScrollIndicator = NO;
         [_tableV2 registerNib:[UINib nibWithNibName:NSStringFromClass([BillBoard_GoodCell class]) bundle:nil] forCellReuseIdentifier:tableCellID2];
         @weakify(self);
-        MJRefreshBackNormalFooter *footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
+        MJRefreshAutoNormalFooter *footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
             @strongify(self);
             NSLog(@" 加载更多数据");
             [self queryGoodData];
         }];
-        [footer setTitle:@"没有更多的数据" forState:MJRefreshStateNoMoreData];
         _tableV2.mj_footer = footer;
     }
     return _tableV2;
@@ -378,12 +376,11 @@ static NSString *tableCellID3 = @"tableCellID3";
         _tableV3.showsVerticalScrollIndicator = NO;
         [_tableV3 registerNib:[UINib nibWithNibName:NSStringFromClass([BillBoard_GoodCell class]) bundle:nil] forCellReuseIdentifier:tableCellID3];
         @weakify(self);
-        MJRefreshBackNormalFooter *footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
+        MJRefreshAutoNormalFooter *footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
             @strongify(self);
             NSLog(@" 加载更多数据");
             [self queryGoodData];
         }];
-        [footer setTitle:@"没有更多的数据" forState:MJRefreshStateNoMoreData];
         _tableV3.mj_footer = footer;
     }
     return _tableV3;

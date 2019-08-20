@@ -264,13 +264,12 @@
         _scroView.showsVerticalScrollIndicator = NO;
         _scroView.delegate = self;
         @weakify(self);
-        MJRefreshBackNormalFooter *footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
+        MJRefreshAutoNormalFooter *footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
             @strongify(self);
             NSLog(@" 加载更多数据");
         
             [self queryEveryDataWithGroup:nil];
         }];
-        [footer setTitle:@"没有更多数据" forState:MJRefreshStateNoMoreData];
         _scroView.mj_footer = footer;
         MJRefreshStateHeader *head = [MJRefreshStateHeader headerWithRefreshingBlock:^{
             @strongify(self);

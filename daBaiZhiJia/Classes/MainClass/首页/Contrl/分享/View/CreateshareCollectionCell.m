@@ -13,7 +13,7 @@
 @interface CreateshareCollectionCell ()
 @property (weak, nonatomic) IBOutlet UIImageView *imageV;
 @property (weak, nonatomic) IBOutlet IndexButton *indexBtn;
-
+@property (nonatomic, strong) CreateShare_CellInfo *info;
 @end
 @implementation CreateshareCollectionCell
 
@@ -24,6 +24,7 @@
 
 - (void)setInfoWith:(id)model{
     CreateShare_CellInfo *info = model;
+    self.info = info;
     if (!info.isPoster) {
           [self.imageV setDefultPlaceholderWithFullPath:info.imageStr];
     }else{
@@ -36,9 +37,11 @@
 
 
 - (IBAction)bTnAction:(IndexButton *)sender {
-    sender.selected = !sender.selected;
-    if (self.block) {
-        self.block(sender.indexPath, sender.selected);
+    if (!self.info.isPoster) { //海报默认勾选，不能再操作
+        sender.selected = !sender.selected;
+        if (self.block) {
+            self.block(sender.indexPath, sender.selected);
+        }
     }
 }
 

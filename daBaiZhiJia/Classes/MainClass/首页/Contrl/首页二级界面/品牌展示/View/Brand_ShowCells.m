@@ -32,7 +32,7 @@
 - (void)setInfoWithModel:(id)model{
     BrandCat_info *info = model;
     [self.image setDefultPlaceholderWithFullPath:info.logo];
-    self.title.text = info.name;
-    self.content.text = info.introduce;
+  //  self.title.text = info.name;
+   // self.content.text = info.introduce;
 }
 @end

@@ -7,6 +7,7 @@
 #import "Brand_ShowCells.h"
 #import "Brand_ShowModel.h"
 #import "Brand_ShowDetail.h"
+#define Gap 14.f
 @interface Brand_Showcontrl ()<JXCategoryViewDelegate, JXCategoryListContainerViewDelegate,JXCategoryListContentViewDelegate,UICollectionViewDelegate,UICollectionViewDataSource>
 @property (nonatomic, strong) JXCategoryTitleView *categoryView;
 @property (nonatomic, strong) JXCategoryListContainerView *listContainerView;
@@ -177,13 +178,12 @@ static NSString *collecTioncellId = @"collecTioncellId";
         [_collcetion registerNib:[UINib nibWithNibName:cellStr bundle:nil] forCellWithReuseIdentifier:collecTioncellId];
     
         _collcetion.showsVerticalScrollIndicator = NO;
-        @weakify(self);
-        MJRefreshBackNormalFooter *footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
+        @weakify(self); 
+        MJRefreshAutoNormalFooter *footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
             @strongify(self);
             NSLog(@"加载更多数据");
             [self queryGoodData];
         }];
-        [footer setTitle:@"没有更多数据" forState:MJRefreshStateNoMoreData];
         _collcetion.mj_footer = footer;
         MJRefreshStateHeader *head = [MJRefreshStateHeader headerWithRefreshingBlock:^{
             @strongify(self);
@@ -200,9 +200,12 @@ static NSString *collecTioncellId = @"collecTioncellId";
 - (UICollectionViewFlowLayout *)singleLayout{
     if (!_singleLayout) {
         _singleLayout = [[UICollectionViewFlowLayout alloc] init];
-        _singleLayout.minimumLineSpacing = 10;
-        _singleLayout.sectionInset = UIEdgeInsetsMake(7, 15, 0, 15);
-        _singleLayout.itemSize = CGSizeMake(SCREEN_WIDTH - 15*2, 140);
+        _singleLayout.minimumLineSpacing = Gap;
+        _singleLayout.sectionInset = UIEdgeInsetsMake(Gap, Gap, 0, Gap);
+        CGFloat ratio = 112.f/168.f;
+        CGFloat itemW = (SCREEN_WIDTH - 3*Gap)/2;
+        CGFloat itemH = itemW*ratio;
+        _singleLayout.itemSize = CGSizeMake(itemW, itemH);
     }
     return _singleLayout;
 }

@@ -12,7 +12,7 @@
 #import "CreateShare_Model.h"
 #import "PrersonInfoModel.h"
 #define Bottom_H 130.f
-#define  SelectedInfo_Key   @"selectedInfo"
+
 #define  Post_Image_Key   @"postImage"
 #define  DetailInfo_Key   @"detailinfo.shareContent_H"
 @interface CreateShareContrl ()
@@ -50,7 +50,6 @@
         }
     }];
     
-   [self.contentView addObserver:self forKeyPath:SelectedInfo_Key options:NSKeyValueObservingOptionNew context:nil];
     [self.contentView addObserver:self forKeyPath:Post_Image_Key options:NSKeyValueObservingOptionNew context:nil];
    [self addObserver:self forKeyPath:DetailInfo_Key options:NSKeyValueObservingOptionNew context:nil];
 }
@@ -62,24 +61,18 @@
         self.detailinfo.shorturl = shorturl;
         [CreateShare_Model geneRateWenanWithDetail:self.detailinfo isAdd:YES isDown:NO isRegisCode:YES isTkl:NO];
         [self.contentView setInfoWithModel:self.detailinfo];
-        self.bottom.pics =   self.detailinfo.pics;
+        //self.bottom.pics =   self.detailinfo.pics;
     }];
 }
 
-- (void)viewDidDisappear:(BOOL)animated{
-     [super viewDidDisappear:animated];
-     [self.contentView removeObserver:self forKeyPath:SelectedInfo_Key];
-      [self.contentView removeObserver:self forKeyPath:Post_Image_Key];
-     [self removeObserver:self forKeyPath:DetailInfo_Key];
+- (void)dealloc{
+    [self.contentView removeObserver:self forKeyPath:Post_Image_Key];
+    [self removeObserver:self forKeyPath:DetailInfo_Key];
 }
-
 
 #pragma mark - kvo
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context{
-    if ([keyPath isEqualToString:SelectedInfo_Key]) {
-        CreateShare_CellInfo *info = change[@"new"];
-        self.bottom.selectedInfo = info;
-    }
+    
     if ([keyPath isEqualToString:Post_Image_Key]) {
         UIImage *image = change[@"new"];
         self.bottom.postImage = image;
@@ -98,7 +91,6 @@
         
          CGFloat orgy = NavigationBarBottom(self.navigationController.navigationBar);
          CGFloat height = SCREEN_HEIGHT - orgy - Bottom_H ;
-           NSLog(@"height = %.f",height);
         _scroView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, orgy, SCREEN_WIDTH,height)];
         [_scroView addSubview:self.contentView];
         _scroView.showsVerticalScrollIndicator = NO;

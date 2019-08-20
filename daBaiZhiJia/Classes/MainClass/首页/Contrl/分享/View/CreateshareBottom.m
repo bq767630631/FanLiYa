@@ -12,6 +12,7 @@
 #import "DBZJ_CommunityModel.h"
 #import "UIImageView+WebCache.h"
 
+#define ShareActionToCopyWenAnNoti @"ShareActionToCopyWenAnNoti"  //点击分享然后复制文案
 @interface CreateshareBottom ()
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *imageW;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *btn3LeadCons;
@@ -34,11 +35,17 @@
 - (void)awakeFromNib{
     [super awakeFromNib];
     CGFloat wd = 60 * SCREEN_WIDTH/375;
-    NSLog(@"wd %.f",wd);
     self.imageW.constant = wd;
     CGFloat gap = ( SCREEN_WIDTH - wd*5 - 10*2) /4;
-
     self.btn3LeadCons.constant =  self.btn3LeadCons.constant = gap;
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(ShareSelectedArrayAction:) name:@"ShareSelectedArrayNotification" object:nil];
+}
+
+
+#define mark - 通知
+- (void)ShareSelectedArrayAction:(NSNotification*)noti{
+    NSDictionary *info = noti.userInfo;
+    self.seletedArr = info[@"seletedArr"];
 }
 
 - (IBAction)wxChatAction:(UIButton *)sender {
@@ -49,6 +56,9 @@
     }else{
         [self shareWithPlatform:JSHAREPlatformWechatSession];
     }
+    if (self.postImage) {
+           [[NSNotificationCenter defaultCenter] postNotificationName:ShareActionToCopyWenAnNoti object:nil];
+    }
 }
 
 - (IBAction)wxSession:(UIButton *)sender {
@@ -58,6 +68,9 @@
         [self handleHaiBaoWithtype:JSHAREPlatformWechatTimeLine];
     }else{
         [self shareWithPlatform:JSHAREPlatformWechatTimeLine];
+    }
+    if (self.postImage) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:ShareActionToCopyWenAnNoti object:nil];
     }
 }
 
@@ -70,6 +83,9 @@
     }else{
         [self shareWithPlatform:JSHAREPlatformQQ];
     }
+    if (self.postImage) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:ShareActionToCopyWenAnNoti object:nil];
+    }
 }
 
 - (IBAction)qZoneAction:(UIButton *)sender {
@@ -79,6 +95,9 @@
         [self handleHaiBaoWithtype:JSHAREPlatformQzone];
     }else{
         [self shareWithPlatform:JSHAREPlatformQzone];
+    }
+    if (self.postImage) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:ShareActionToCopyWenAnNoti object:nil];
     }
 }
 
@@ -95,21 +114,23 @@
 #pragma mark - hanlde
 //创建分享
 - (void)shareWithPlatform:(JSHAREPlatform)platform{
-    if (self.selectedInfo == nil||[self.selectedInfo isKindOfClass:[NSNull class]]) {
-        [YJProgressHUD showMsgWithoutView:@"请选中一张图片"];
-        return;
-    }
+//    if (self.selectedInfo == nil||[self.selectedInfo isKindOfClass:[NSNull class]]) {
+//        [YJProgressHUD showMsgWithoutView:@"请选中一张图片"];
+//        return;
+//    }
     JSHAREMessage *message = [JSHAREMessage message];
     message.platform = platform;
     message.mediaType = JSHAREImage;
-    if (self.selectedInfo.isPoster) { //分享的是文案
-          NSData *data = UIImageJPEGRepresentation(self.selectedInfo.image, 1);
-        message.image = data;
-        NSLog(@" %lu",(unsigned long)data.length);
-    }else{//分享的是普通图片
-        NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:self.selectedInfo.imageStr]];
-        message.image = data;
-    }
+//    if (self.selectedInfo.isPoster) { //分享的是文案
+//          NSData *data = UIImageJPEGRepresentation(self.postImage, 1);
+//        message.image = data;
+//        NSLog(@" %lu",(unsigned long)data.length);
+//    }else{//分享的是普通图片
+//        NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:self.selectedInfo.imageStr]];
+//        message.image = data;
+//    }
+    NSData *data = UIImageJPEGRepresentation(self.postImage, 1);
+    message.image = data;
     [JSHAREService share:message handler:^(JSHAREState state, NSError *error) {
         NSLog(@"分享回调 state= %lu error =%@",(unsigned long)state, error);
     }];
@@ -141,16 +162,29 @@
 #pragma mark - 保存创建分享的图片（海报和网络图片）
 //保存创建分享的图片
 - (void)handleCreateShareSaveImage{
+    //保存海报
     UIImageWriteToSavedPhotosAlbum(self.postImage, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
-    for (NSString *url in self.pics) {
-        UIImageView *tempIV = [UIImageView new];
-        [tempIV sd_setImageWithURL:[NSURL URLWithString:url] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-            if (image) {
-                // 保存图片
-                UIImageWriteToSavedPhotosAlbum(image, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
-            }
-        }];
+    //保存选中的图片，该图片不是海报
+    for (CreateShare_CellInfo *info in self.seletedArr) {
+        if (!info.isPoster) {
+            UIImageView *tempIV = [UIImageView new];
+            [tempIV sd_setImageWithURL:[NSURL URLWithString:info.imageStr] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+                if (image) {
+                    // 保存图片
+                    UIImageWriteToSavedPhotosAlbum(image, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
+                }
+            }];
+        }
     }
+//    for (NSString *url in self.pics) {
+//        UIImageView *tempIV = [UIImageView new];
+//        [tempIV sd_setImageWithURL:[NSURL URLWithString:url] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+//            if (image) {
+//                // 保存图片
+//                UIImageWriteToSavedPhotosAlbum(image, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
+//            }
+//        }];
+//    }
    
 }
 

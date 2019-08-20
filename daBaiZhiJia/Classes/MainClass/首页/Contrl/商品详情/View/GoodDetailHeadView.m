@@ -55,13 +55,14 @@ static NSString *KbannerId = @"KbannerId";
 @property (weak, nonatomic) IBOutlet UIButton *shengJizhuanBtn;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *shengJiV_H;
+@property (weak, nonatomic) IBOutlet UIView *shengJiV;
 
 @property (weak, nonatomic) IBOutlet UILabel *tuiJianLb;
 
 @property (weak, nonatomic) IBOutlet UILabel *shoptitle;
 @property (weak, nonatomic) IBOutlet UIImageView *shopPt;
 
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *soldNum_W;
+
 
 @property (weak, nonatomic) IBOutlet UIView *likeView;
 
@@ -134,11 +135,13 @@ static NSString *KbannerId = @"KbannerId";
     self.shoptitle.text = info.shop_title;
     self.shopPt.image = (info.pt == 1)?ZDBImage(@"img_tianm_detail"):ZDBImage(@"img_taobao_detail");
     self.soldNum.text = [NSString stringWithFormat:@"%@件已售",info.sold_num];
+   
     if (Level != 3) {//团长的时候不用显示
         self.shengJiV_H.constant = 36;
         self.shengJiZhuan.text = [NSString stringWithFormat:@"升级赚%@元",info.profit_up];
     }else{
         self.shengJiV_H.constant = 0;
+        self.shengJiV.hidden = YES;
     }
     
     for (int i = 0; i < info.pics.count; i ++) {
@@ -150,9 +153,11 @@ static NSString *KbannerId = @"KbannerId";
         [self.bannerArr addObject:banner];
     }
     [self.bannerV reloadData];
+    
     if (info.coupon_amount.doubleValue == 0) {//优惠券=0隐藏
         self.quanHeightCons.constant = 0;
         self.limiteBuyBtn.hidden = YES;
+        self.quanView.hidden = YES;
     }
     
     self.discountLb.text = [NSString stringWithFormat:@"￥%@",info.coupon_amount];

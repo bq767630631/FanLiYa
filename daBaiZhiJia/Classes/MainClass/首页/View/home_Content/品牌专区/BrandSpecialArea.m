@@ -12,8 +12,11 @@
 #import "HomePage_Model.h"
 #import "Brand_Showcontrl.h"
 #import "Brand_ShowDetail.h"
+#define Gap 10.f
 @interface BrandSpecialArea ()<UICollectionViewDelegate,UICollectionViewDataSource>
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionV;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *collectionV_H;
+
 @property (nonatomic, strong) UICollectionViewFlowLayout *singleLayout;
 @property (nonatomic, strong) NSArray *dataSource;
 
@@ -28,13 +31,22 @@ static NSString *cellId = @"cellId";
     self.collectionV.collectionViewLayout = self.singleLayout;
     self.collectionV.showsVerticalScrollIndicator = NO;
     [self.collectionV registerNib:[UINib nibWithNibName:NSStringFromClass([BrandSpecialAreaCell class]) bundle:nil] forCellWithReuseIdentifier:cellId];
+    self.collectionV.scrollEnabled = NO;
 }
 
 
 - (void)setInfoWithModel:(id)model{
     self.dataSource = model;
     [self.collectionV reloadData];
+    [self layoutIfNeeded];
+    
+    CGRect frame = self.collectionV.frame;
+    CGFloat itemH = self.singleLayout.itemSize.height;
+    frame.size.height = itemH * self.dataSource.count + Gap*2;
+    self.collectionV_H.constant =  frame.size.height;
+    self.collectionV.frame = frame;
     self.height = self.collectionV.bottom;
+    NSLog(@"brandH =%.f",  self.height);
 }
 
 #pragma mark - UICollectionViewDataSource &UICollectionViewDelegate
@@ -45,6 +57,7 @@ static NSString *cellId = @"cellId";
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     BrandSpecialAreaCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellId forIndexPath:indexPath];
     BrandCat_info *info = self.dataSource[indexPath.row];
+    info.index = indexPath.row;
     [cell setInfoWithModel:info];
     return cell;
 }
@@ -58,7 +71,6 @@ static NSString *cellId = @"cellId";
 
 
 - (IBAction)moreAction:(UIButton *)sender {
-    NSLog(@"");
     PageViewController *page = (PageViewController *)self.viewController;
     [page.naviContrl pushViewController:[Brand_Showcontrl new] animated:YES];
 }
@@ -68,9 +80,11 @@ static NSString *cellId = @"cellId";
     if (!_singleLayout) {
         _singleLayout = [[UICollectionViewFlowLayout alloc] init];
 //        _singleLayout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0);
-        _singleLayout.scrollDirection = UICollectionViewScrollDirectionVertical;
-        _singleLayout.minimumLineSpacing = 10.f;
-        _singleLayout.itemSize = CGSizeMake(SCREEN_WIDTH, 87.f);
+        _singleLayout.minimumLineSpacing = Gap;
+        CGFloat ratio = 105.0f /347.0 ;
+        CGFloat itemH = (SCREEN_WIDTH - 28.f)*ratio;
+        NSLog(@"itemH =%.f",itemH);
+        _singleLayout.itemSize = CGSizeMake(SCREEN_WIDTH , itemH);
     }
     return _singleLayout;
 }

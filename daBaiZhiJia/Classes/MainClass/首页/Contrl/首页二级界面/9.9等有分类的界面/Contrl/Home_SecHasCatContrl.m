@@ -258,7 +258,7 @@ static NSString *tableCellId = @"tableCellId";
          [_collcetion registerNib:[UINib nibWithNibName:NSStringFromClass([Home_SecSingleCell class]) bundle:nil] forCellWithReuseIdentifier:tableCellId];
         _collcetion.showsVerticalScrollIndicator = NO;
         @weakify(self);
-        MJRefreshBackNormalFooter *footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
+        MJRefreshAutoNormalFooter *footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
             @strongify(self);
             NSLog(@"加载更多数据");
             [self queryGoodData];

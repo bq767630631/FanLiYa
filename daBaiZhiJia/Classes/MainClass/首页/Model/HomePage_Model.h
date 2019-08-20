@@ -96,4 +96,5 @@ typedef void(^tmUrl_Block)(NSString *tmCS,NSString *tmGJ);
 @property (nonatomic, copy) NSString *brandcat; //品牌分类
 @property (nonatomic, copy) NSString *brandid; //品牌分类id
 @property (nonatomic, copy) NSString *introduce; //品牌简介
+@property (nonatomic, assign) NSInteger  index;
 @end

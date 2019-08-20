@@ -286,14 +286,13 @@ static NSString *collecTioncellId = @"collecTioncellId";
         NSString *cellStr = NSStringFromClass([PlayVideo_Cell class]);
         [_collection registerNib:[UINib nibWithNibName:cellStr bundle:nil] forCellWithReuseIdentifier:collecTioncellId];
         @weakify(self);
-        MJRefreshBackNormalFooter *footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
+        MJRefreshAutoNormalFooter *footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
             @strongify(self);
             NSLog(@" 加载更多数据");
               self.is_loadMore = YES;
              [self.player removeVideo];
              [self queryGoodData];
         }];
-        [footer setTitle:@"没有更多数据" forState:MJRefreshStateNoMoreData];
         _collection.mj_footer = footer;
     }
     return _collection;

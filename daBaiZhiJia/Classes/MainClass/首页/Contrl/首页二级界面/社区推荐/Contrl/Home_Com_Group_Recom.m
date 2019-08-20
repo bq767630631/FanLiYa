@@ -105,11 +105,10 @@ static NSString *cellId = @"cellId";
     self.tableView.tableHeaderView =[[UIView alloc]initWithFrame:CGRectMake(0, 0, 0, 0.1f)];
     [self.tableView registerNib:[UINib nibWithNibName:@"Home_Com_Group_Cell" bundle:nil]  forCellReuseIdentifier:cellId];
     @weakify(self);
-    MJRefreshBackNormalFooter *footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
+    MJRefreshAutoNormalFooter *footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
         @strongify(self);
         [self queryData];
     }];
-    [footer setTitle:@"已经是最后一页了" forState:MJRefreshStateNoMoreData];
      self.tableView.mj_footer = footer;
     
     MJRefreshStateHeader *head = [MJRefreshStateHeader headerWithRefreshingBlock:^{
