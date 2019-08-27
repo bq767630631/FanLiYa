@@ -51,6 +51,9 @@ typedef void(^tmUrl_Block)(NSString *tmCS,NSString *tmGJ);
 + (void)queryTianMaoUrlWithBlock:(tmUrl_Block)block;
 ////查询每日精选
 //+ (void)queryEveryGoodWithBlock:(everyDayGood_Block)block page:(NSInteger)page haveNoMoreData:(BOOL)haveNoMoreData ;
+
+//首页漂浮广告位
++ (void)queryAppTopSideWithBlock:(PPHttpRequestCallBack)block;
 @end
 
 
@@ -64,7 +67,7 @@ typedef void(^tmUrl_Block)(NSString *tmCS,NSString *tmGJ);
 @property (nonatomic, copy) NSString *color;
 @property (nonatomic, copy) NSString *img;
 @property (nonatomic, copy) NSString *url;
-@property (nonatomic, assign) NSInteger  url_type;//1、单品详情；2、内部H5页面；3、淘宝H5页面；4、跳转打开手淘页
+@property (nonatomic, assign) NSInteger  url_type;//1、单品详情；2、内部H5页面；3、淘宝H5页面；4、跳转打开手淘页,5新人专享
 @property (nonatomic, copy) NSString *type;//广告位置：1上2中左3中右4下
 @end
 

@@ -44,7 +44,6 @@
 
 - (void)setSegmentToTuiJian{
     if (self.line.left!=self.tuijian.left) {
-          self.selfIsClick = YES;
         [UIView animateWithDuration:0.2 animations:^{
             self.line.frame = CGRectMake(self.tuijian.left, self.tuijian.bottom + 1, self.line.width, 2);
             self.detail.selected = NO;

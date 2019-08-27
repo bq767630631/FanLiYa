@@ -201,6 +201,21 @@
     }];
 }
 
++ (void)queryAppTopSideWithBlock:(PPHttpRequestCallBack)block{
+    NSDictionary *dict = @{@"token":ToKen,@"v":APP_Version};
+    [PPNetworkHelper GET:URL_Add(@"/v.php/index.index/getAppTopSide") parameters:dict success:^(id responseObject) {
+        NSLog(@"getAppTopSide responseObject %@",responseObject);
+        NSInteger code = [responseObject[@"code"] integerValue];
+        if (code == SucCode) {
+            NSMutableArray *InfoArr = [HomePage_bg_bannernfo mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
+            block(InfoArr.firstObject,nil);
+        }
+    } failure:^(NSError *error) {
+        NSLog(@"error =%@",error);
+        block(nil,error);
+    }];
+}
+
 #pragma mark - private
 
 + (NSMutableAttributedString*)broadCast_AttrStrWithStr1:(NSString*)str1 str2:(NSString*)str2 str3:(NSString*)str3{

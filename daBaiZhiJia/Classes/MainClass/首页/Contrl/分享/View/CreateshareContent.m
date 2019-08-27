@@ -15,7 +15,6 @@
 #import "ShareNewPosterV.h"
 #import "ShareEditeContrl.h"
 
-#define ShareActionToCopyWenAnNoti @"ShareActionToCopyWenAnNoti"  //点击分享然后复制文案
 static NSString *cellId = @"cellId";
 @interface CreateshareContent ()<UICollectionViewDelegate, UICollectionViewDataSource>
 @property (weak, nonatomic) IBOutlet UILabel *yujiMoney;
@@ -28,7 +27,7 @@ static NSString *cellId = @"cellId";
 @property (weak, nonatomic) IBOutlet UIButton *taokoulingBtn;
 @property (weak, nonatomic) IBOutlet UILabel *tklLB;
 @property (weak, nonatomic) IBOutlet UILabel *wenAnLb;
-@property (weak, nonatomic) IBOutlet UITextView *wenAnTextV;
+
 
 @property (weak, nonatomic) IBOutlet UIButton *tklBtn;
 
@@ -92,7 +91,6 @@ static NSString *cellId = @"cellId";
     self.orderLead.constant = gap;
     self.orderTrail.constant = gap;
     ViewBorderRadius(self.choseBtnView, 5, UIColor.clearColor);
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(wenanAction:) name:ShareActionToCopyWenAnNoti object:nil];
 }
 
 - (void)setInfoWithModel:(id)model{

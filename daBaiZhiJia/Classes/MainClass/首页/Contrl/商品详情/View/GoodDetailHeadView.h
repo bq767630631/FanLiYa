@@ -16,7 +16,8 @@ typedef void(^wkWebViewHeightBlock)(CGFloat  contentHeight, BOOL isSelected);//æ
 @property (weak, nonatomic) IBOutlet UIView *line3;
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collection;
-
+@property (weak, nonatomic) IBOutlet UIView *likeView;
+@property (weak, nonatomic) IBOutlet UIView *detailV;
 
 - (void)setInfo:(id)detailinfo tuijianArr:(NSMutableArray*)goodArray;
 

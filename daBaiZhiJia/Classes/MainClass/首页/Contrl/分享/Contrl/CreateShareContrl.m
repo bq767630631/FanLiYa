@@ -123,6 +123,7 @@
         }
         _bottom = [CreateshareBottom viewFromXib];
         _bottom.frame = CGRectMake(0, orgy, SCREEN_WIDTH, Bottom_H);
+        _bottom.contentV = self.contentView;
     }
     return _bottom;
 }

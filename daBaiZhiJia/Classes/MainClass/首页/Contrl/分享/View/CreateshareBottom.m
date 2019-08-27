@@ -56,9 +56,6 @@
     }else{
         [self shareWithPlatform:JSHAREPlatformWechatSession];
     }
-    if (self.postImage) {
-           [[NSNotificationCenter defaultCenter] postNotificationName:ShareActionToCopyWenAnNoti object:nil];
-    }
 }
 
 - (IBAction)wxSession:(UIButton *)sender {
@@ -68,9 +65,6 @@
         [self handleHaiBaoWithtype:JSHAREPlatformWechatTimeLine];
     }else{
         [self shareWithPlatform:JSHAREPlatformWechatTimeLine];
-    }
-    if (self.postImage) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:ShareActionToCopyWenAnNoti object:nil];
     }
 }
 
@@ -83,9 +77,6 @@
     }else{
         [self shareWithPlatform:JSHAREPlatformQQ];
     }
-    if (self.postImage) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:ShareActionToCopyWenAnNoti object:nil];
-    }
 }
 
 - (IBAction)qZoneAction:(UIButton *)sender {
@@ -95,9 +86,6 @@
         [self handleHaiBaoWithtype:JSHAREPlatformQzone];
     }else{
         [self shareWithPlatform:JSHAREPlatformQzone];
-    }
-    if (self.postImage) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:ShareActionToCopyWenAnNoti object:nil];
     }
 }
 
@@ -112,27 +100,20 @@
 }
 
 #pragma mark - hanlde
-//创建分享
+//创建分享  先复制文案在分享
 - (void)shareWithPlatform:(JSHAREPlatform)platform{
-//    if (self.selectedInfo == nil||[self.selectedInfo isKindOfClass:[NSNull class]]) {
-//        [YJProgressHUD showMsgWithoutView:@"请选中一张图片"];
-//        return;
-//    }
-    JSHAREMessage *message = [JSHAREMessage message];
-    message.platform = platform;
-    message.mediaType = JSHAREImage;
-//    if (self.selectedInfo.isPoster) { //分享的是文案
-//          NSData *data = UIImageJPEGRepresentation(self.postImage, 1);
-//        message.image = data;
-//        NSLog(@" %lu",(unsigned long)data.length);
-//    }else{//分享的是普通图片
-//        NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:self.selectedInfo.imageStr]];
-//        message.image = data;
-//    }
-    NSData *data = UIImageJPEGRepresentation(self.postImage, 1);
-    message.image = data;
-    [JSHAREService share:message handler:^(JSHAREState state, NSError *error) {
-        NSLog(@"分享回调 state= %lu error =%@",(unsigned long)state, error);
+    
+    [UIPasteboard generalPasteboard].string =  self.contentV.wenAnTextV.text; //
+    [YJProgressHUD showMsgWithoutView:@"文案复制成功"];
+    [self delayDoWork:0.2 WithBlock:^{
+        JSHAREMessage *message = [JSHAREMessage message];
+        message.platform = platform;
+        message.mediaType = JSHAREImage;
+        message.image =    UIImageJPEGRepresentation(self.postImage, .5);
+        [JSHAREService share:message handler:^(JSHAREState state, NSError *error) {
+            NSLog(@"分享回调 state= %lu error =%@",(unsigned long)state, error);
+            
+        }];
     }];
 }
 
@@ -193,7 +174,7 @@
     JSHAREMessage *message = [JSHAREMessage message];
     message.platform = platform;
     message.mediaType = JSHAREImage;
-    message.image =     UIImageJPEGRepresentation(self.model, .5);
+    message.image =    UIImageJPEGRepresentation(self.model, .5);
     [JSHAREService share:message handler:^(JSHAREState state, NSError *error) {
         NSLog(@"分享回调 state= %lu error =%@",(unsigned long)state, error);
     }];

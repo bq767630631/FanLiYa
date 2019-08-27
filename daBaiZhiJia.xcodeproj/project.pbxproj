@@ -284,6 +284,8 @@
 		C2B9DCAC22851B1A0018F27A /* MineFirstView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2B9DCAB22851B1A0018F27A /* MineFirstView.xib */; };
 		C2B9DCAF22851C300018F27A /* MineActiveAndTool.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B9DCAE22851C300018F27A /* MineActiveAndTool.m */; };
 		C2B9DCB122851C3B0018F27A /* MineActiveAndTool.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2B9DCB022851C3B0018F27A /* MineActiveAndTool.xib */; };
+		C2BBEC052313DB110015859F /* HomePage_NewPersonPopV.m in Sources */ = {isa = PBXBuildFile; fileRef = C2BBEC042313DB110015859F /* HomePage_NewPersonPopV.m */; };
+		C2BBEC072313DB1A0015859F /* HomePage_NewPersonPopV.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2BBEC062313DB1A0015859F /* HomePage_NewPersonPopV.xib */; };
 		C2C1A5DE22BDF48600D5F297 /* NewPeo_shareContrl.m in Sources */ = {isa = PBXBuildFile; fileRef = C2C1A5DC22BDF48600D5F297 /* NewPeo_shareContrl.m */; };
 		C2C1A5DF22BDF48600D5F297 /* NewPeo_shareContentV.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2C1A5DD22BDF48600D5F297 /* NewPeo_shareContentV.xib */; };
 		C2C401E422D87FF900290E73 /* GoodDetailTuiJianCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2C401E222D87FF900290E73 /* GoodDetailTuiJianCell.m */; };
@@ -841,6 +843,9 @@
 		C2B9DCAD22851C300018F27A /* MineActiveAndTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MineActiveAndTool.h; sourceTree = "<group>"; };
 		C2B9DCAE22851C300018F27A /* MineActiveAndTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MineActiveAndTool.m; sourceTree = "<group>"; };
 		C2B9DCB022851C3B0018F27A /* MineActiveAndTool.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MineActiveAndTool.xib; sourceTree = "<group>"; };
+		C2BBEC032313DB110015859F /* HomePage_NewPersonPopV.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomePage_NewPersonPopV.h; sourceTree = "<group>"; };
+		C2BBEC042313DB110015859F /* HomePage_NewPersonPopV.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomePage_NewPersonPopV.m; sourceTree = "<group>"; };
+		C2BBEC062313DB1A0015859F /* HomePage_NewPersonPopV.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomePage_NewPersonPopV.xib; sourceTree = "<group>"; };
 		C2C1A5DB22BDF48600D5F297 /* NewPeo_shareContrl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewPeo_shareContrl.h; sourceTree = "<group>"; };
 		C2C1A5DC22BDF48600D5F297 /* NewPeo_shareContrl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewPeo_shareContrl.m; sourceTree = "<group>"; };
 		C2C1A5DD22BDF48600D5F297 /* NewPeo_shareContentV.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewPeo_shareContentV.xib; sourceTree = "<group>"; };
@@ -1219,6 +1224,7 @@
 		C2165CCD22A2139500A58113 /* home_Content */ = {
 			isa = PBXGroup;
 			children = (
+				C2BBEC022313DACA0015859F /* 弹窗 */,
 				C25F5F2222D58888006C7C4D /* 品牌专区 */,
 				C271BEDC22B1F54700A94014 /* 头部视图 */,
 				C271BEE022B1F54700A94014 /* 广告 */,
@@ -2710,6 +2716,16 @@
 			path = shareView;
 			sourceTree = "<group>";
 		};
+		C2BBEC022313DACA0015859F /* 弹窗 */ = {
+			isa = PBXGroup;
+			children = (
+				C2BBEC032313DB110015859F /* HomePage_NewPersonPopV.h */,
+				C2BBEC042313DB110015859F /* HomePage_NewPersonPopV.m */,
+				C2BBEC062313DB1A0015859F /* HomePage_NewPersonPopV.xib */,
+			);
+			path = "弹窗";
+			sourceTree = "<group>";
+		};
 		C2C1A5D722BDD51200D5F297 /* 新人专享 */ = {
 			isa = PBXGroup;
 			children = (
@@ -3264,6 +3280,7 @@
 				C2B9DCB122851C3B0018F27A /* MineActiveAndTool.xib in Resources */,
 				C242382822927A3500CF0F5C /* DBZJ_ComCollectionCell.xib in Resources */,
 				C267C8BA225367C600FE6488 /* DWSearchHeadView.xib in Resources */,
+				C2BBEC072313DB1A0015859F /* HomePage_NewPersonPopV.xib in Resources */,
 				C2C75A4622B47B03009EA800 /* BillBoard_GoodCell.xib in Resources */,
 				C279939322C376EC004C0B4C /* MyGroupMemberContrl.xib in Resources */,
 				C271BEEF22B1F54800A94014 /* Home_headView.xib in Resources */,
@@ -3521,6 +3538,7 @@
 				C203F2542255A6F9009D73CD /* SearchResultContrl.m in Sources */,
 				C290240E228AC2FC00EFFFDC /* NSObject+ImpChangeTool.m in Sources */,
 				C21C72CE22C5BAAD009F3199 /* UIImage+MZImagepProcessing.m in Sources */,
+				C2BBEC052313DB110015859F /* HomePage_NewPersonPopV.m in Sources */,
 				C267C8B522535A5100FE6488 /* HotSerachCell.m in Sources */,
 				C203F2552255A6F9009D73CD /* SearchResultMenu.m in Sources */,
 				C2B9DCAA22851B0F0018F27A /* MineFirstView.m in Sources */,

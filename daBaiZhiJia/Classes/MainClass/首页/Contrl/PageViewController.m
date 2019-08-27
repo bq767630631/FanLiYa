@@ -18,7 +18,7 @@
 #import "Home_EveeChoiView.h"
 #import "New_HomeFlashSale.h"
 #import "BrandSpecialArea.h"
-
+#import "HomePage_NewPersonPopV.h"
 @interface PageViewController ()<UIScrollViewDelegate>
 @property (nonatomic, strong) UIScrollView *scroView;
 
@@ -122,6 +122,18 @@
             [self.brandView setInfoWithModel:list];
         }
     }];
+      dispatch_group_enter(group);
+    [HomePage_Model queryAppTopSideWithBlock:^(id res, NSError *error) {
+          dispatch_group_leave(group);
+        if (res) {
+            HomePage_NewPersonPopV *pop = [HomePage_NewPersonPopV viewFromXib];
+              pop.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+            pop.navi = self.naviContrl;
+            pop.info = res;
+            [pop show];
+        }
+    }];
+    
     
      dispatch_group_enter(group);
     [self queryEveryDataWithGroup:group];

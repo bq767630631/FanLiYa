@@ -12,11 +12,12 @@
 
 
 @interface CreateshareContent : UIView
-
+@property (weak, nonatomic) IBOutlet UITextView *wenAnTextV;
 @property (nonatomic, strong) CreateShare_CellInfo *selectedInfo;
 @property (nonatomic, strong) NSMutableArray *seletedArr;
 
 @property (nonatomic, strong) UIImage *postImage;
+
 
 - (void)setInfoWithModel:(id)model;
 

@@ -6,7 +6,7 @@
 //  Copyright © 2019 包强. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "CreateshareContent.h"
 
 typedef void(^activityVCShowBlock)(void);
 /**
@@ -21,6 +21,7 @@ typedef void(^activityVCShowBlock)(void);
 @property (nonatomic, strong) CreateShare_CellInfo *selectedInfo;
 @property (nonatomic, strong) NSMutableArray *seletedArr;
 @property (nonatomic, strong) UIImage *postImage;
+@property (nonatomic, strong) CreateshareContent *contentV;
 //@property (nonatomic, strong) NSArray<NSString*>*pics;
 
 #pragma mark - 社区

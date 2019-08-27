@@ -28,7 +28,7 @@
 //    _image.layer.shadowOpacity = 1;
 //    _image.layer.shadowRadius = 3;
 //    _image.clipsToBounds = NO;
-    ViewBorderRadius(self.image, self.image.height*0.5, UIColor.clearColor);
+    ViewBorderRadius(self.image, self.image.height*0.5, UIColor.whiteColor);
     ViewBorderRadius(self.titleV, 3, UIColor.clearColor);
 }
 

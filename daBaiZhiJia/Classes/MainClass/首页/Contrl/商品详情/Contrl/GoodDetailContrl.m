@@ -183,20 +183,24 @@
 #pragma mark - UIScrollViewDelegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
     CGFloat offy = scrollView.contentOffset.y;
-//    NSLog(@"offy =%.f",offy);
+    NSLog(@"offy =%.f",offy);
+    NSLog(@"likeView.top  %.f", self.headView.likeView.top);
+    NSLog(@"detailV.top %.f", self.headView.detailV.top);
+    NSLog(@"webTop %.f", self.headView.webTop);
+    NSLog(@"likeVTop %.f", self.headView.likeVTop);
     CGFloat bottom = NavigationBarBottom(self.navigationController.navigationBar);
     self.navigationController.navigationBarHidden = offy < bottom;
     self.scroTopBtn.hidden = offy < self.headView.webTop;
     
-//    if (!self.segMenu.selfIsClick) {
-//        if (offy >= self.headView.webTop&&offy<self.headView.likeVTop) {
-//           // [self.segMenu setSegmentToDetail];
-//        }else if (offy >= self.headView.likeVTop ){
-//            [self.segMenu setSegmentToTuiJian];
-//        }else if (offy ==0 ){
-//            [self.segMenu setSegmentToDetailToBaobei];
-//        }
-//    }
+    if (!self.segMenu.selfIsClick) {
+        if (offy <= self.headView.webTop&& offy>self.headView.likeVTop) {
+               [self.segMenu setSegmentToTuiJian];
+        }else if (offy >= self.headView.webTop ){
+              [self.segMenu setSegmentToDetail];
+        }else if (offy ==0 ){
+            [self.segMenu setSegmentToDetailToBaobei];
+        }
+    }
 }
 
 #pragma mark - getter
@@ -233,7 +237,6 @@
         @weakify(self);
         self.headView.heightBlock = ^(CGFloat height ,BOOL isSelected) {
             @strongify(self);
-//            NSLog(@"contentSize.height =%.f",height);
             self.scroView.contentSize = CGSizeMake(0, height);
         };
         
@@ -261,9 +264,9 @@
                 NSLog(@"y = %.f",offset.y);
                 [self.scroView setContentOffset:offset animated:YES];
             }
-//            [self delayDoWork:1 WithBlock:^{
-//                 self.segMenu.selfIsClick = NO;
-//            }];
+            [self delayDoWork:.5 WithBlock:^{
+                 self.segMenu.selfIsClick = NO;
+            }];
         };
     }
     return _segMenu;

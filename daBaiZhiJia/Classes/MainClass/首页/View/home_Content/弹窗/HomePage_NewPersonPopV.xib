@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="HomePage_NewPersonPopV">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cg7-Y4-RB8" userLabel="closeButton">
+                    <rect key="frame" x="187" y="661" width="40" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="40" id="fht-Dy-Vqq"/>
+                        <constraint firstAttribute="height" constant="40" id="whR-oY-qKi"/>
+                    </constraints>
+                    <state key="normal" image="icon_close_homeNew"/>
+                    <connections>
+                        <action selector="disMis:" destination="iN0-l3-epB" eventType="touchUpInside" id="0eg-cm-RzJ"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uus-Xh-DHa">
+                    <rect key="frame" x="81.5" y="305" width="251" height="286"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="251" id="3C3-kU-ORB"/>
+                        <constraint firstAttribute="height" constant="286" id="Wdt-sH-BED"/>
+                    </constraints>
+                    <connections>
+                        <action selector="jumpAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="Nwt-oX-4gE"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="Cg7-Y4-RB8" firstAttribute="centerX" secondItem="uus-Xh-DHa" secondAttribute="centerX" id="Pcn-T3-bAe"/>
+                <constraint firstItem="Cg7-Y4-RB8" firstAttribute="top" secondItem="uus-Xh-DHa" secondAttribute="bottom" constant="70" id="SD7-lP-aAz"/>
+                <constraint firstItem="uus-Xh-DHa" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Vpd-Oo-Zxw"/>
+                <constraint firstItem="uus-Xh-DHa" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="qPA-oI-dMp"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="bgBtn" destination="uus-Xh-DHa" id="1p4-KB-svJ"/>
+            </connections>
+            <point key="canvasLocation" x="131.8840579710145" y="81.696428571428569"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="icon_close_homeNew" width="31.5" height="31.5"/>
+    </resources>
+</document>

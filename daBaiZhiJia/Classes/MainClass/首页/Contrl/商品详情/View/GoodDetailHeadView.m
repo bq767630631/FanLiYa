@@ -64,13 +64,13 @@ static NSString *KbannerId = @"KbannerId";
 
 
 
-@property (weak, nonatomic) IBOutlet UIView *likeView;
+
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *collecTion_H;
 
 @property (nonatomic, strong) UICollectionViewFlowLayout *doubleLayout;//一排两个视图
 
-@property (weak, nonatomic) IBOutlet UIView *detailV;
+
 @property (weak, nonatomic) IBOutlet UIImageView *zhanKaiImage;
 
 @property (nonatomic, strong) NSArray *goodArr;//推荐商品
@@ -185,7 +185,6 @@ static NSString *KbannerId = @"KbannerId";
     }else{//奇数
         contentH += itemH * (self.goodArr.count/2 + 1);
     }
-    NSLog(@"contentH  %.f",contentH);
     self.collecTion_H.constant = contentH;
     CGRect frame  = self.collection.frame;
     frame.size.height = contentH;
