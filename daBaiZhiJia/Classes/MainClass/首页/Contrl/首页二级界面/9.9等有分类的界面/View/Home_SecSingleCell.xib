@@ -160,6 +160,7 @@
                 <outlet property="price" destination="8P8-mb-VIX" id="4Ik-AC-0mT"/>
                 <outlet property="pt" destination="vGC-gG-W4q" id="qpU-xh-htt"/>
                 <outlet property="quanBtn" destination="ptH-7I-V5n" id="YWp-aA-7nL"/>
+                <outlet property="quanBtn_W" destination="97g-Dd-eQB" id="UNF-kX-CdQ"/>
                 <outlet property="sharePro" destination="58q-u9-cPb" id="SGv-np-o6n"/>
                 <outlet property="sharebtn" destination="nDh-GJ-RWK" id="CLh-DK-Uj2"/>
                 <outlet property="shengjiPro" destination="Vqh-00-InQ" id="emw-DD-aQY"/>

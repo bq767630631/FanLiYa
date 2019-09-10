@@ -68,6 +68,7 @@
 - (void)dealloc{
     [self.contentView removeObserver:self forKeyPath:Post_Image_Key];
     [self removeObserver:self forKeyPath:DetailInfo_Key];
+    NSLog(@"");
 }
 
 #pragma mark - kvo

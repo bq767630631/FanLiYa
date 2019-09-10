@@ -16,7 +16,7 @@
 #import "PrersonInfoModel.h"
 #import "WXApi.h"
 #import "ContactKefuContrl.h"
-
+#import "DBZJ_FeedBack.h"
 @interface MineActiveAndTool ()
 @property (weak, nonatomic) IBOutlet UILabel *title;
 @property (weak, nonatomic) IBOutlet UIImageView *image1;
@@ -50,28 +50,6 @@
 }
 
 
-//- (void)setIsTool:(BOOL)isTool{
-//
-//     self.btn3.tag =  !isTool ? 13:17;
-//     self.btn4.tag =  !isTool ? 14:18;
-//}
-
-//- (IBAction)action15:(UIButton *)sender {
-//      UIViewController *vc = nil;
-//    if (sender.tag ==11) {
-//        NSString *url = [NSString stringWithFormat:@"%@%@",BASE_WEB_URL,@"myProfit.html"];
-//        vc = [[DetailWebContrl alloc] initWithUrl:url title:@"我的收益" para:@{@"token":ToKen}];
-//    }else{
-//        NSLog(@"体现");
-//    }
-//     [self.viewController.navigationController pushViewController:vc animated:YES];
-//}
-
-
-
-
-
-
 - (IBAction)action4And8:(UIButton *)sender {
     if (sender.tag ==14) {
         ShareCoffeeContrl *share = [ShareCoffeeContrl new];
@@ -96,21 +74,17 @@
     NSLog(@"tag =%zd",sender.tag);
     if (tag == 1) {
          vc = [[NewPeople_EnjoyContrl alloc] init];
-    }else if (tag == 6) {
+    }else if (tag == 9) {
        vc = [[MyCollecTionContrl alloc] init];
-    } else if (tag == 8) {
+    } else if (tag == 10) {
         vc = [[MyCombatContrl alloc] init];
     }else if (tag ==5){
-//        NSString *url = [NSString stringWithFormat:@"%@%@",BASE_WEB_URL,@"newCourseDetail.html?cid=1"];
            NSString *url =  [NSString stringWithFormat:@"%@%@?token=%@",BASE_WEB_URL,@"businessSchool.html",ToKen];
         vc = [[DetailWebContrl alloc] initWithUrl:url title:@"新手教程" para:nil];
     }else if (tag==2){
-        PersonRevenue *info = self.model;
-        if (info.openid.length) {
-            [YJProgressHUD showMsgWithoutView:@"您已经绑定微信了"];
-            return;
-        }
-        [self bindWeiXin];
+        NSLog(@"地推素材");
+  NSString *url = [NSString stringWithFormat:@"%@/commander/groundPush.html?token=%@",BASE_WEB_URL,ToKen];
+        vc = [[DetailWebContrl alloc] initWithUrl:url title:@"地推素材" para:nil];
     }else if (tag==4){
         if (Level !=3) {
             self.viewController.navigationController.tabBarController.hidesBottomBarWhenPushed = NO;
@@ -120,11 +94,25 @@
         }
         NSString *url = [NSString stringWithFormat:@"%@/commander/headCollege.html?token=%@",BASE_WEB_URL,ToKen];
           vc = [[DetailWebContrl alloc] initWithUrl:url title:@"团长系统" para:nil];
-    }else if (tag==3){
+    }else if (tag==6){
         NSString *url = [NSString stringWithFormat:@"%@/joinCommunity.html?token=%@",BASE_WEB_URL,ToKen];
         vc = [[DetailWebContrl alloc] initWithUrl:url title:@"加入社群" para:nil];
     }else if (tag ==7){
         vc = [ContactKefuContrl new];
+    }else if (tag==8){
+        [YJProgressHUD showMsgWithoutView:@"敬请期待"];
+    }else if (tag==3){
+        NSLog(@"自定义邀请码");
+        NSString *url = [NSString stringWithFormat:@"%@/duck/customInvitationCode.html?token=%@",BASE_WEB_URL,ToKen];
+        vc = [[DetailWebContrl alloc] initWithUrl:url title:@"自定义邀请码" para:nil];
+    }else if (tag==11){
+        if (self.model.openid &&self.model.openid.length>0) {
+             [YJProgressHUD showMsgWithoutView:@"您已经绑定过微信了"];
+            return;
+        }
+        [self bindWeiXin];
+    }else if (tag==12){
+        vc = [DBZJ_FeedBack new];
     }
     if (vc){
           [self.viewController.navigationController pushViewController:vc animated:YES];

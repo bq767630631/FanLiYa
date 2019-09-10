@@ -13,6 +13,7 @@
 #import "AppDelegate.h"
 #import "SVProgressHUD.h"
 #import "LoginContrl.h"
+#import "MPZG_TabBarContrl.h"
 #ifdef DEBUG
 #define PPLog(...) printf("[%s] %s [第%d行]: %s\n", __TIME__ ,__PRETTY_FUNCTION__ ,__LINE__, [[NSString stringWithFormat:__VA_ARGS__] UTF8String])
 #else
@@ -398,13 +399,17 @@ static AFHTTPSessionManager *_sessionManager;
     [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:@"token"];
     [[NSUserDefaults standardUserDefaults] setInteger:0 forKey:@"uid"];
     [[NSUserDefaults standardUserDefaults] synchronize];
-        NSLog(@"token失效请重新登录");
+    NSLog(@"token失效请重新登录");
 //    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//        UIWindow *keyWin =[UIApplication sharedApplication].delegate.window;
-//        UIViewController *vc = keyWin.rootViewController;
-//        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:[LoginContrl new]];
-//        [vc presentViewController:nav animated:YES completion:nil];
-//    });
+        UIWindow *keyWin = [UIApplication sharedApplication].delegate.window;
+           AppDelegate* delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+        UIViewController *vc = keyWin.rootViewController;
+        NSLog(@"rootvc  %@",vc);
+        LoginContrl *login = [LoginContrl new];
+        login.isFrom_homePage = YES;
+        
+        UINavigationController *nav = vc.childViewControllers[delegate.tabVc.selectedIndex];
+        [nav pushViewController:login animated:YES];
     }
 }
 

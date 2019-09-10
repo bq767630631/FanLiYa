@@ -61,12 +61,12 @@ NSMutableString *wenanStr= [NSMutableString stringWithFormat:@"%@\n【原价】%
         [wenanStr appendString:[NSString stringWithFormat:@"\n长按復至£%@£，➡[掏✔寳]即可抢购",info.tkl]];
     }
     
-    NSLog(@"wenanStr =%@",wenanStr);
+    //NSLog(@"wenanStr =%@",wenanStr);
     info.wenAnStr = wenanStr;
     CGFloat maxW = SCREEN_WIDTH - 22*2;
     CGFloat  strH = [wenanStr textHeightWithFont:[UIFont systemFontOfSize:13] maxWidth:maxW];
     info.shareContent_H = strH + 35 + 132 + 83 + (40 + 45 + 50) + 83 + 40;
-    NSLog(@"shareContent_H =%.f",info.shareContent_H);
+  //  NSLog(@"shareContent_H =%.f",info.shareContent_H);
     return wenanStr;
 }
 

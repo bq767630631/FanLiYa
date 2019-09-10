@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MPZG_TabBarContrl.h"
 static NSString *appKey = @"8887346d7e4430bee1ed8fc2"; //极光推送appkey 8887346d7e4430bee1ed8fc2
 
 static NSString *channel = @"App Store";
@@ -15,6 +16,6 @@ static BOOL isProduction = FALSE;
 
 @property (strong, nonatomic) UIWindow *window;
 
-
+@property (nonatomic, strong) MPZG_TabBarContrl *tabVc;
 @end
 

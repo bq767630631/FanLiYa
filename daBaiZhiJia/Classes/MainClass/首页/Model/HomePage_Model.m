@@ -33,7 +33,7 @@
         }
        
     } failure:^(NSError *error) {
-        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:IsShow_InfoKey];
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:IsShow_InfoKey];
         [[NSUserDefaults standardUserDefaults] synchronize];
           callBlock();
         NSLog(@"%@",error);

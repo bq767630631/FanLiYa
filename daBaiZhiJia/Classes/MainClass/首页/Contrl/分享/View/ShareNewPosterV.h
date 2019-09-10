@@ -11,7 +11,7 @@
 
 
 @interface ShareNewPosterV : UIView
-- (void)setInfoWithModel:(id)model;
+- (void)setInfoWithModel:(id)model callBack:(VEBlockVoid)callback;
 @end
 
 

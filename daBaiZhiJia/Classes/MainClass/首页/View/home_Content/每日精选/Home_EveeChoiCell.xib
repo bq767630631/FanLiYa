@@ -77,18 +77,18 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="11X-Rx-Uzt">
-                        <rect key="frame" x="126" y="204" width="35" height="18"/>
+                        <rect key="frame" x="116" y="204" width="45" height="18"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="35" id="3Fm-NB-vXY"/>
+                            <constraint firstAttribute="width" constant="45" id="3Fm-NB-vXY"/>
                             <constraint firstAttribute="height" constant="18" id="GXk-q9-khZ"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                        <state key="normal" title="200" backgroundImage="xsg_right">
+                        <state key="normal" title="80.00" backgroundImage="xsg_right">
                             <color key="titleColor" red="0.76470588240000004" green="0.59607843140000005" blue="0.30196078430000001" alpha="1" colorSpace="calibratedRGB"/>
                         </state>
                     </button>
                     <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Onw-HP-SEr">
-                        <rect key="frame" x="105" y="204" width="21" height="18"/>
+                        <rect key="frame" x="95" y="204" width="21" height="18"/>
                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                         <state key="normal" title="券" backgroundImage="xsg_lefe">
                             <color key="titleColor" red="0.76470588240000004" green="0.59607843140000005" blue="0.30196078430000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -182,6 +182,7 @@
                 <outlet property="pt" destination="uu0-A2-9ke" id="ALl-Rb-siy"/>
                 <outlet property="quanBtn" destination="11X-Rx-Uzt" id="UI7-59-KA7"/>
                 <outlet property="quanBtnTrail" destination="NLk-z9-6ht" id="gkE-PO-5lz"/>
+                <outlet property="quanBtn_W" destination="3Fm-NB-vXY" id="SRj-Iy-SSz"/>
                 <outlet property="sharePro" destination="0ap-j5-olY" id="2Zx-LY-mf3"/>
                 <outlet property="sharebtn" destination="h11-61-qJI" id="hMR-Yf-PqI"/>
                 <outlet property="shengjiPro" destination="LaQ-ql-IkT" id="k4J-en-ulz"/>

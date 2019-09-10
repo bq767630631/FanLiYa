@@ -8,7 +8,7 @@
 
 #import "SearchSaveManager.h"
 static NSString *arrayKey = @"arrayKey";
-static NSInteger maxLen = 5; //存储最大长度
+static NSInteger maxLen = 6; //存储最大长度
 @implementation SearchSaveManager
 
 + (void)saveArrWithArr:(NSArray *)array{

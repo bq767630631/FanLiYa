@@ -41,6 +41,7 @@
 //       NSLog(@"详情responseObject  %@",responseObject);
         NSLog(@"详情请求完毕");
          NSInteger code = [responseObject[@"code"] integerValue];
+//        code = 2;
         if (code == SucCode) {  //
            GoodDetailInfo *info = [GoodDetailInfo mj_objectWithKeyValues:responseObject[@"data"]];
             info.price = [NSString stringRoundingTwoDigitWithNumber:info.price.doubleValue];
@@ -50,6 +51,10 @@
            
              self.detailinfo = info;
             [self queryTuiJianGood];
+        }else{ //code!=2000 显示失效界面
+            if ([self.delegate respondsToSelector:@selector(detailModel:queryFail:)]) {
+                [self.delegate detailModel:self queryFail:responseObject];
+            }
         }
 
     } failure:^(NSError *error) {

@@ -19,6 +19,8 @@
 #import "New_HomeFlashSale.h"
 #import "BrandSpecialArea.h"
 #import "HomePage_NewPersonPopV.h"
+#import "MSLaunchView.h"
+
 @interface PageViewController ()<UIScrollViewDelegate>
 @property (nonatomic, strong) UIScrollView *scroView;
 
@@ -47,6 +49,8 @@
 @property (nonatomic, assign) CGFloat scro_ConteH; //scroViewn内容高度
 
 @property (nonatomic, assign) BOOL allRequestComp;  //所有请求完成
+
+@property (nonatomic, strong) HomePage_bg_bannernfo *popInfo;//弹窗模型
 @end
 
 @implementation PageViewController
@@ -126,14 +130,19 @@
     [HomePage_Model queryAppTopSideWithBlock:^(id res, NSError *error) {
           dispatch_group_leave(group);
         if (res) {
-            HomePage_NewPersonPopV *pop = [HomePage_NewPersonPopV viewFromXib];
-              pop.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
-            pop.navi = self.naviContrl;
-            pop.info = res;
-            [pop show];
+            self.popInfo = res;
+            BOOL isFirstLaunch = [[NSUserDefaults standardUserDefaults] boolForKey:@"isFirstLaunch"];
+            NSLog(@"isFirstLaunch %d",isFirstLaunch );
+            if (isFirstLaunch) {//如果有引导页
+                [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"isFirstLaunch"];
+                [[NSUserDefaults standardUserDefaults]  synchronize];
+                NSLog(@"如果有引导页");
+                [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(guideVLoadFinsh) name:GuideViewLoadFinishNotification object:nil];
+            }else{//
+                [self showPopV];
+            }
         }
     }];
-    
     
      dispatch_group_enter(group);
     [self queryEveryDataWithGroup:group];
@@ -166,7 +175,7 @@
         self.sec_flashSaView.top = self.zbyView.bottom;
         self.brandView.top = self.sec_flashSaView.bottom;
         self.evDayView.top = self.brandView.bottom;
-        NSLog(@"scro_ConteH ==%.f",self.scro_ConteH);
+        //NSLog(@"scro_ConteH ==%.f",self.scro_ConteH);
         self.scroView.contentSize = CGSizeMake(0,  self.scro_ConteH);
         self.scro_ConteH -=  self.evDayView.height;
     });
@@ -187,7 +196,7 @@
               dispatch_group_leave(group);
         }
       
-     //   NSLog(@"推荐 responseObject %@",responseObject);
+        //NSLog(@"推荐 responseObject %@",responseObject);
         NSInteger code = [responseObject[@"code"] integerValue];
         if (code == SucCode) {
             NSArray *listArray = [SearchResulGoodInfo mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"list"]];
@@ -259,6 +268,23 @@
 
 - (void)gotoTopAction{
     [self.scroView scrollToTop];
+}
+
+#pragma mark - 通知action
+- (void)guideVLoadFinsh{
+    [self showPopV];
+}
+
+#pragma mark - private
+//显示弹窗
+- (void)showPopV{
+    [self delayDoWork:0.5 WithBlock:^{
+        HomePage_NewPersonPopV *pop = [HomePage_NewPersonPopV viewFromXib];
+        pop.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+        pop.navi = self.naviContrl;
+        pop.info = self.popInfo;
+        [pop show];
+    }];
 }
 
 #pragma mark - getter

@@ -15,9 +15,11 @@
 #import <AlibabaAuthSDK/albbsdk.h>
 #import "DetailWebContrl.h"
 #import <AlibcTradeSDK/AlibcTradeSDK.h>
+#import "WXApi.h"
+#import "Goto_Login_model.h"
+#import "Bind_PhoneContrl.h"
 
-
-@interface PrersonInfoContrl ()<UIImagePickerControllerDelegate,UINavigationControllerDelegate>
+@interface PrersonInfoContrl ()<UIImagePickerControllerDelegate,UINavigationControllerDelegate,WXApiDelegate>
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *containTop;
 @property (weak, nonatomic) IBOutlet UIImageView *headimageView;
 
@@ -31,6 +33,10 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *canNotAuthBtn;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *authV_H;
+
+@property (weak, nonatomic) IBOutlet UIImageView *weixinAuthImage;
+
+@property (weak, nonatomic) IBOutlet UILabel *weixinauthState;
 
 @property (nonatomic, assign) BOOL  isAuthFail; //是否 是授权失败 默认no
 @property (nonatomic, strong) PrersonInfoMsg *info;
@@ -105,6 +111,13 @@
                 self.authV_H.constant = 50;
                 self.canNotAuthBtn.hidden = YES;
             }
+            if (info.openid&&info.openid.length >0) {
+                self.weixinauthState.text = @"已授权";
+                self.weixinAuthImage.hidden = YES;
+            }else{
+                self.weixinauthState.text = @"未授权";
+                self.weixinAuthImage.hidden = NO;
+            }
         }
     }];
     
@@ -118,15 +131,20 @@
 }
 
 - (void)openTbWithUrl:(NSString *)url{    
-    id<AlibcTradePage> page = [AlibcTradePageFactory page:url];
+    //id<AlibcTradePage> page = [AlibcTradePageFactory page:url];
     
     AlibcTradeShowParams* showParam = [[AlibcTradeShowParams alloc] init];
-    showParam.openType = AlibcOpenTypeH5;
+    showParam.openType = AlibcOpenTypeAuto;
     showParam.backUrl = @"tbopen27546131://";
-    [[AlibcTradeSDK sharedInstance].tradeService show:self page:page showParams:showParam taoKeParams:nil trackParam:nil tradeProcessSuccessCallback:^(AlibcTradeResult * _Nullable result) {
-        NSLog(@"result %@",result);
+//    [[AlibcTradeSDK sharedInstance].tradeService show:self page:page showParams:showParam taoKeParams:nil trackParam:nil tradeProcessSuccessCallback:^(AlibcTradeResult * _Nullable result) {
+//        NSLog(@"result %@",result);
+//    } tradeProcessFailedCallback:^(NSError * _Nullable error) {
+//        NSLog(@"error %@", error);
+//    }];
+    [[AlibcTradeSDK sharedInstance].tradeService openByUrl:url identity:@"trade" webView:nil parentController:self.navigationController showParams:showParam taoKeParams:nil trackParam:nil tradeProcessSuccessCallback:^(AlibcTradeResult * _Nullable result) {
+         NSLog(@"result %@",result);
     } tradeProcessFailedCallback:^(NSError * _Nullable error) {
-        NSLog(@"error %@", error);
+         NSLog(@"error %@", error);
     }];
 }
 
@@ -278,6 +296,18 @@
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"taobao://m.taobao.com/"]];
 }
 
+- (IBAction)weiXinauthAction:(UIButton *)sender {
+    if (self.info.openid &&self.info.openid.length>0) {//已授权
+        return;
+    }
+    SendAuthReq *request = [SendAuthReq new];
+    request.state  =  [NSString getRandomStr];
+    request.scope  = @"snsapi_userinfo";
+    BOOL res  = [WXApi sendReq:request];
+    NSLog(@"res %d",res);
+}
+
+
 #pragma mark - private
 - (void)modifySex:(NSInteger)sex{
     NSDictionary *para =  @{@"token":ToKen, @"sex":@(sex),@"v":APP_Version};
@@ -294,6 +324,29 @@
     } failure:^(NSError *error) {
         [YJProgressHUD showAlertTipsWithError:error];
     }];
+}
+
+#pragma mark - WXApiDelegate
+- (void)onResp:(BaseResp*)resp{
+    if ([resp isKindOfClass:[SendAuthResp class]]){
+        SendAuthResp *temp = (SendAuthResp *)resp;
+        NSString *accessUrlStr = [NSString stringWithFormat:@"%@/oauth2/access_token?appid=%@&secret=%@&code=%@&grant_type=authorization_code",WX_BASE_URL , WXAPPID, WXAPPSECRET, temp.code];
+        
+        [Goto_Login_model getWx_TokenWithUrl:accessUrlStr callBack:^(NSInteger code) {
+            if (code == 1004) { //下一步
+                [self.navigationController pushViewController:[Bind_PhoneContrl new] animated:YES];
+            }else if (code == SucCode){
+                [self delayDoWork:0.5 WithBlock:^{
+                    [YJProgressHUD showMsgWithoutView:@"登录成功!"];
+                }];
+                self.navigationController.tabBarController.hidesBottomBarWhenPushed = NO;
+                self.navigationController.tabBarController.selectedIndex = 4;
+                [self.navigationController popToRootViewControllerAnimated:YES];
+            }else if (code == 2068){
+                [YJProgressHUD showMsgWithoutView:@"你的微信号已经绑定过其他手机"];
+            }
+        }];
+    }
 }
 
 @end

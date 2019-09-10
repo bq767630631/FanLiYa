@@ -28,10 +28,17 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *retPro;
 
+@property (weak, nonatomic) IBOutlet UIImageView *yaoQinImage;
+@property (weak, nonatomic) IBOutlet UILabel *yaoqingName;
+@property (weak, nonatomic) IBOutlet UILabel *yaoQingCode;
+@property (weak, nonatomic) IBOutlet UIButton *yaoQingRenBtn;
+
+
 @property (weak, nonatomic) IBOutlet UIImageView *leadImage;
 
 @property (weak, nonatomic) IBOutlet UILabel *leadName;
 @property (weak, nonatomic) IBOutlet UILabel *leadCode;
+
 
 @property (weak, nonatomic) IBOutlet UILabel *codNum;
 
@@ -78,7 +85,7 @@
     self.personImag.layer.borderColor = RGBColor(215, 171, 58).CGColor;//颜色
     ViewBorderRadius(self.curLable, self.curLable.height*0.5, self.curLable.textColor);
     ViewBorderRadius(self.leadImage, self.leadImage.height*0.5, UIColor.clearColor);
-    
+    ViewBorderRadius(self.yaoQingRenBtn, self.yaoQingRenBtn.height*0.5, UIColor.clearColor);
     ViewBorderRadius(self.ziXunBtn, self.ziXunBtn.height*0.5, UIColor.clearColor);
     ViewBorderRadius(self.addHaoyouBtn, self.addHaoyouBtn.height*0.5, UIColor.clearColor);
       ViewBorderRadius(self.shenQingAction, self.shenQingAction.height*0.5, UIColor.clearColor);
@@ -93,7 +100,7 @@
     DBZJ_Zqy_Info *info = model;
     self.info = model;
     if ([NSString stringIsNullOrEmptry:info.wechat_image].length!=0) {
-           [self.personImag setDefultPlaceholderWithFullPath:info.wechat_image];
+        [self.personImag setPlaceholderImageWithFullPath:info.wechat_image placeholderImage:@"img_head_moren"];
     }
     self.perName.text = info.wechat_name;
     self.cur_lev.text = info.level_name;
@@ -102,7 +109,10 @@
     self.retPro.text = info.percent;
     self.leadName.text =  info.share_wechat_name;
     self.leadCode.text =  [NSString stringWithFormat:@"微信号: %@",info.share_wechat_account];
-    [self.leadImage setDefultPlaceholderWithFullPath:info.share_wechat_image];
+    [self.leadImage setPlaceholderImageWithFullPath:info.share_wechat_image placeholderImage:@"img_head_moren"];
+    self.yaoqingName.text =  info.shangji_wechat_name;
+    self.yaoQingCode.text =  [NSString stringWithFormat:@"微信号: %@",info.shangji_wechat_account];
+    [self.yaoQinImage setPlaceholderImageWithFullPath:info.shangji_wechat_image placeholderImage:@"img_head_moren"];
     
     
     if ([info.level isEqualToString:@"1"]) { //白银 2个
@@ -241,13 +251,19 @@
     }
 }
 
+- (IBAction)yaoQingRenAction:(UIButton *)sender {
+    if (self.info.share_wechat_account.length) {
+        [UIPasteboard generalPasteboard].string = self.info.shangji_wechat_account;
+        [YJProgressHUD showMsgWithoutView:@"复制成功"];
+    }
+}
+
+
 - (IBAction)addHaoyou:(UIButton *)sender {
-      NSLog(@"");
     if (self.info.share_wechat_account.length) {
         [UIPasteboard generalPasteboard].string = self.info.share_wechat_account;
          [YJProgressHUD showMsgWithoutView:@"复制成功"];
     }
-    
 }
 
 #pragma mark - getter

@@ -10,6 +10,15 @@
 #import "IntelligenceSearchView.h"
 #import "RegisterContrl.h"
 #import "MyInvitation_CodeContrl.h"
+
+#import "CreateShareContrl.h"
+#import "LoginContrl.h"
+#import "RegisterContrl.h"
+#import "Goto_LoginContrl.h"
+#import "Bind_PhoneContrl.h"
+#import "DetailWebContrl.h"
+#import "ForeGetPwdcontrl.h"
+
 //#import <objc/runtime.h>
 
 #define QQShare_AppID @"1109202625"
@@ -21,6 +30,7 @@
 - (void)setUpGuidView{
     
     if ([MSLaunchView isFirstLaunch]) {
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"isFirstLaunch"];
         NSArray *imageNameArray = @[@"welcom1",@"welcom2",@"welcom3",@"welcom4"];
          MSLaunchView *launchView = [MSLaunchView launchWithImages:imageNameArray isScrollOut:YES];
         launchView.showPageControl = YES;
@@ -36,6 +46,7 @@
         launchView.delegate = self;
         launchView.loadFinishBlock = ^(MSLaunchView * _Nonnull launchView) {
             NSLog(@"广告加载完成了loadFinishBlock ");
+            [[NSNotificationCenter defaultCenter] postNotificationName:GuideViewLoadFinishNotification object:nil];
         };
     }
 }
@@ -63,16 +74,12 @@
     [[AlibcTradeSDK sharedInstance] setDebugLogOpen:YES];//开发阶段打开日志开关，方便排查错误信息
     // 百川平台基础SDK初始化，加载并初始化各个业务能力插件
     [[AlibcTradeSDK sharedInstance] asyncInitWithSuccess:^{
-//        NSLog(@"asyncInitWithSuccess");
+          NSLog(@"百川SDK初始化成功");
     } failure:^(NSError *error) {
         NSLog(@"Init failed: %@", error.description);
     }];
     
-    // 配置全局的淘客参数
-    //如果没有阿里妈妈的淘客账号,setTaokeParams函数需要调用
-    // AlibcTradeTaokeParams *taokeParams = [[AlibcTradeTaokeParams alloc] init];
-    //taokeParams.pid = @"mm_XXXXX"; //mm_XXXXX为你自己申请的阿里妈妈淘客pid
-    [[AlibcTradeSDK sharedInstance] setTaokeParams:nil];
+ 
     
     //设置全局的app标识，在电商模块里等同于isv_code
     //没有申请过isv_code的接入方,默认不需要调用该函数
@@ -80,7 +87,7 @@
     
     //    [[AlibcTradeSDK sharedInstance] setEnv:AlibcEnvironmentRelease];
     // 设置全局配置，是否强制使用h5
-    [[AlibcTradeSDK sharedInstance] setIsForceH5:NO];
+    //[[AlibcTradeSDK sharedInstance] setIsForceH5:NO];
 }
 
 - (void)setUpJpushWithOptions:(NSDictionary *)launchOptions {
@@ -265,11 +272,11 @@ fetchCompletionHandler:
     
     if (pasteboard.string && pasteboard.string.length>0) {
         NSString *token = ToKen;
+          UIViewController *cu_vc = [self getCurrentVC];
         if (pasteboard.string.length == 6 &&User_ID ==0 && token.length ==0) { //6位邀请码并且未登录
 //              NSLog(@"%@",self.window);
             
-            UINavigationController *navi = self.window.rootViewController.childViewControllers.firstObject;
-            UIViewController *cu_vc = [self getCurrentVC];
+            UINavigationController *navi = self.window.rootViewController.childViewControllers[self.tabVc.selectedIndex];
             if ([cu_vc isKindOfClass:[MyInvitation_CodeContrl class]]) {
                 MyInvitation_CodeContrl *codeVc  = (MyInvitation_CodeContrl*)cu_vc;
                 codeVc.code = pasteboard.string;
@@ -284,12 +291,23 @@ fetchCompletionHandler:
             return;
         }
         
+        if (![self isJumpToSearchV]) {//特定场景下不弹出
+            return;
+        }
             IntelligenceSearchView *insear  = [IntelligenceSearchView viewFromXib];
             insear.contentStr = pasteboard.string;
             [insear showInWindow];
-            //使用完之后清空
-            pasteboard.string = @"";
     }
+}
+
+//yes:可以弹出搜索视图
+- (BOOL)isJumpToSearchV{
+    UIViewController *curVc = [self getCurrentVC];
+    if ([curVc isKindOfClass:[CreateShareContrl class]] || [curVc isKindOfClass:[LoginContrl class]] ||[curVc isKindOfClass:[RegisterContrl class]] || [curVc isKindOfClass:[Goto_LoginContrl class]]||[curVc isKindOfClass:[Bind_PhoneContrl class]]||[curVc isKindOfClass:[DetailWebContrl class]] ||[curVc isKindOfClass:[ForeGetPwdcontrl class]] ) {
+        //这些场景不用弹出搜索视图
+        return NO;
+    }
+    return YES;
 }
 
 #pragma mark -  MSLaunchViewDeleagte

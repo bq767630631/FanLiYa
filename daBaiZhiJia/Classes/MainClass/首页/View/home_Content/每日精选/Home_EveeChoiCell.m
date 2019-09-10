@@ -37,6 +37,7 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *price;
 @property (weak, nonatomic) IBOutlet UIButton *quanBtn;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *quanBtn_W;
 @property (weak, nonatomic) IBOutlet UILabel *sharePro;
 @property (weak, nonatomic) IBOutlet UILabel *shengjiPro;//IndexButton
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *quanBtnTrail;
@@ -69,6 +70,9 @@
     [self.goodimage setDefultPlaceholderWithFullPath:info.pic];
     self.pt.image = (info.pt == 1)?ZDBImage(@"icon_zbytianmao"):ZDBImage(@"img_zbytaobao");
     [self.quanBtn setTitle:[NSString stringWithFormat:@"¥%@",info.discount] forState:UIControlStateNormal];
+    
+    CGFloat wd = [[NSString stringWithFormat:@"¥%@",info.discount] textWidthWithFont:self.quanBtn.titleLabel.font maxHeight:18];
+    self.quanBtn_W.constant = wd + 5;
     self.title.text = [NSString stringWithFormat:@"%@",info.title];
     self.soldNum.text = [NSString stringWithFormat:@"已售%@件",info.sold_num];
     self.price.attributedText = [self priceAttr:@"¥" str2:[NSString stringWithFormat:@"%@  ",info.price] str3:[NSString stringWithFormat:@"¥%@",info.market_price]];

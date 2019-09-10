@@ -8,6 +8,8 @@
 
 #import "IntelligenceSearchView.h"
 #import "SearchResultContrl.h"
+#import "SearchSaveManager.h"
+
 @interface IntelligenceSearchView ()
 
 @property (weak, nonatomic) IBOutlet UILabel *content;
@@ -30,6 +32,11 @@
 
 - (IBAction)searchAction:(UIButton *)sender {
      [self hideView];
+    //保存在历史搜索里面
+    NSMutableArray *temp  = [SearchSaveManager getArray];
+    [temp insertObject:self.contentStr atIndex:0];
+    [SearchSaveManager saveArrWithArr:temp];
+    
     SearchResultContrl *sear = [[SearchResultContrl alloc] initWithSearchStr:self.contentStr];
    UIViewController *rootVc = [UIApplication sharedApplication].keyWindow.rootViewController;
     NSLog(@"rootVc  %@",rootVc);

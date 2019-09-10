@@ -79,17 +79,24 @@
 }
 
 - (void)openTbWithUrl:(NSString *)url{
-    id<AlibcTradePage> page = [AlibcTradePageFactory page:url];
+//    id<AlibcTradePage> page = [AlibcTradePageFactory page:url];
     
     AlibcTradeShowParams* showParam = [[AlibcTradeShowParams alloc] init];
-    showParam.openType = AlibcOpenTypeH5; //强制h5不能用淘宝打开
+    showParam.openType = AlibcOpenTypeAuto; //强制h5不能用淘宝打开
     showParam.backUrl = @"tbopen27546131://"; //tbopen27546131
-    [[AlibcTradeSDK sharedInstance].tradeService show:self.navi_vc page:page showParams:showParam taoKeParams:nil trackParam:nil tradeProcessSuccessCallback:^(AlibcTradeResult * _Nullable result) {
-        [self hideView];
+//    [[AlibcTradeSDK sharedInstance].tradeService show:self.navi_vc page:page showParams:showParam taoKeParams:nil trackParam:nil tradeProcessSuccessCallback:^(AlibcTradeResult * _Nullable result) {
+//        [self hideView];
+//        NSLog(@"result %@",result);
+//    } tradeProcessFailedCallback:^(NSError * _Nullable error) {
+//        //查询授权的状态 再判断
+//        [self queryPersonInfo];
+//        NSLog(@"error %@", error);
+//    }];
+    
+    
+    [[AlibcTradeSDK sharedInstance].tradeService openByUrl:url identity:@"trade" webView:nil parentController:self.navi_vc showParams:showParam taoKeParams:nil trackParam:nil tradeProcessSuccessCallback:^(AlibcTradeResult * _Nullable result) {
         NSLog(@"result %@",result);
     } tradeProcessFailedCallback:^(NSError * _Nullable error) {
-        //查询授权的状态 再判断
-        [self queryPersonInfo];
         NSLog(@"error %@", error);
     }];
 }

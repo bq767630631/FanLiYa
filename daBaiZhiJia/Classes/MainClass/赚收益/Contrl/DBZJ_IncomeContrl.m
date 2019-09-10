@@ -31,9 +31,9 @@
             [self.first setModel:info];
             self.scroView.contentSize = CGSizeMake(0,  self.first.height);
         }else if (code == Token_isInvalidCode ){
-            LoginContrl *login =  [LoginContrl new];
-            login.isFrom_homePage = YES;
-            [self.navigationController pushViewController:login animated:YES];
+//            LoginContrl *login =  [LoginContrl new];
+//            login.isFrom_homePage = YES;
+//            [self.navigationController pushViewController:login animated:YES];
         }
     }];
 }

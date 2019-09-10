@@ -57,16 +57,16 @@
 
             self.tool.top = self.first.bottom + 10;
             self.tool.model = reve;
-            self.scroview.contentSize = CGSizeMake(0,  self.tool.bottom);
+            self.scroview.contentSize = CGSizeMake(0,  self.tool.bottom + 15);
             [PrersonInfoModel queryMyMidddleWithblock:^(id res, NSError *error) {
                 if (res) {
                     [self.first setAddVerInfo:res];
                 }
             }];
         }else if (code == Token_isInvalidCode ){
-            LoginContrl *login  = [LoginContrl new];
-            login.isFrom_homePage = YES;
-            [self.navigationController pushViewController:login animated:YES];
+//            LoginContrl *login  = [LoginContrl new];
+//            login.isFrom_homePage = YES;
+//            [self.navigationController pushViewController:login animated:YES];
         }
     }];
 }
@@ -120,7 +120,7 @@
 - (MineActiveAndTool *)tool{
     if (!_tool) {
         _tool = [MineActiveAndTool viewFromXib];
-        _tool.frame = CGRectMake(10, self.first.bottom + 5, SCREEN_WIDTH - 20, 210);
+        _tool.frame = CGRectMake(10, self.first.bottom + 5, SCREEN_WIDTH - 20, 294);
     }
     return _tool;
 }

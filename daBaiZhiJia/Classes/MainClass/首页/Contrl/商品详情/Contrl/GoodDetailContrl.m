@@ -18,6 +18,7 @@
 #import "GoodDetail_ShengjiV.h"
 #import "MyCollecTionContrl.h"
 #import "LoginContrl.h"
+#import "GoodDetailInvalidV.h"
 
 @interface GoodDetailContrl ()<UIScrollViewDelegate,GoodDetailModelDelegate>
 
@@ -73,8 +74,8 @@
 
     [self.model queryData];
 //    [self.model queryIsCollection];
-    [self.model queryViewPeople];
-    self.navigationItem.titleView = self.segMenu;
+//    [self.model queryViewPeople];
+//    self.navigationItem.titleView = self.segMenu;
     [self initRightBarButtonWithImage:@"icon_like_top"];
 }
 
@@ -100,9 +101,7 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    self.navigationController.navigationBarHidden = YES;
     [self.navigationController.navigationBar navBarBackGroundColor:RGBColor(34, 34, 34) image:nil isOpaque:NO];
-    [self.timer fire];
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
@@ -116,14 +115,15 @@
 
 #pragma mark - GoodDetailModelDelegate
 - (void)detailModel:(GoodDetailModel *)model querySucWithDetailInfo:(GoodDetailInfo *)info tuiJianArr:(NSMutableArray *)arr{
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
+    self.navigationItem.titleView = self.segMenu;
+    [self.timer fire];
     [self.view addSubview:self.scroView];
     [self.view addSubview:self.boottom];
     [self.view addSubview:self.scroTopBtn];
     [self.view addSubview:self.topView];
     [self.view addSubview:self.barRage];
-    if (Level != 3) {//团长的时候不用显示
-     //   [self.view addSubview:self.shenJiV];
-    }
+   
     self.goodArr = arr;
     [self.headView setInfo:info tuijianArr:arr];
     [self.boottom setInfo:info];
@@ -131,6 +131,15 @@
     [self.boottom handleIsCollection:info.is_favorite];
      self.blankView.hidden = YES;
     self.topView.info = info;
+    [self.model queryViewPeople];
+}
+
+- (void)detailModel:(GoodDetailModel *)model queryFail:(id)res{
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
+    self.title = @"商品详情";
+    GoodDetailInvalidV *inaV = [GoodDetailInvalidV viewFromXib];
+    inaV.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+    [self.view addSubview:inaV];
 }
 
 - (void)detailModel:(GoodDetailModel *)model noticeError:(NSError *)error{
@@ -183,11 +192,11 @@
 #pragma mark - UIScrollViewDelegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
     CGFloat offy = scrollView.contentOffset.y;
-    NSLog(@"offy =%.f",offy);
-    NSLog(@"likeView.top  %.f", self.headView.likeView.top);
-    NSLog(@"detailV.top %.f", self.headView.detailV.top);
-    NSLog(@"webTop %.f", self.headView.webTop);
-    NSLog(@"likeVTop %.f", self.headView.likeVTop);
+//    NSLog(@"offy =%.f",offy);
+//    NSLog(@"likeView.top  %.f", self.headView.likeView.top);
+//    NSLog(@"detailV.top %.f", self.headView.detailV.top);
+//    NSLog(@"webTop %.f", self.headView.webTop);
+//    NSLog(@"likeVTop %.f", self.headView.likeVTop);
     CGFloat bottom = NavigationBarBottom(self.navigationController.navigationBar);
     self.navigationController.navigationBarHidden = offy < bottom;
     self.scroTopBtn.hidden = offy < self.headView.webTop;

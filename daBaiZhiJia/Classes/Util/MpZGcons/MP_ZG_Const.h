@@ -22,3 +22,7 @@ UIKIT_EXTERN NSString *const GetRemoteNotiFation;
 
 /*是否展示隐藏的信息 （首页广告，限时购二级，分类）*/
 UIKIT_EXTERN NSString *const IsShow_InfoKey;
+
+
+/* 引导页加载完的通知*/
+UIKIT_EXTERN NSString *const GuideViewLoadFinishNotification;

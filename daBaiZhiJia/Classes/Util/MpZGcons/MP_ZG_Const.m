@@ -17,3 +17,5 @@ NSString *const NewPeo_CountdownNotifation = @"NewPeo_CountdownNotifation";
 NSString *const GetRemoteNotiFation = @"GetRemoteNotiFation";
 
 NSString *const IsShow_InfoKey = @"IsShow_InfoKey";
+
+NSString *const GuideViewLoadFinishNotification = @"GuideViewLoadFinishNotification";

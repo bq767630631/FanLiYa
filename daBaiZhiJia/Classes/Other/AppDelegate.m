@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "MPZG_TabBarContrl.h"
+
 #import "iVersion.h"
 #import "AppDelegate+privates.h"
 #import <IQKeyboardManager/IQKeyboardManager.h>
@@ -35,9 +35,10 @@
         [tempImageV removeFromSuperview];
         MPZG_TabBarContrl *tabVc = [[MPZG_TabBarContrl alloc] init];
         self.window.rootViewController = tabVc;
+        self.tabVc = tabVc;
+        [self setUpGuidView];
     }];
    
-    [self setUpGuidView];
     [self setUpJpushWithOptions:launchOptions];
     [self setUpAliSdk];
     [self setUpJShare];
@@ -99,21 +100,13 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     NSLog(@"url =%@",url);
     [WXApi handleOpenURL:url delegate:(id<WXApiDelegate>)cuvc];
     
-    
-      [JSHAREService handleOpenUrl:url];
-    /* 老接口写法 已弃用，建议使用新接口
-     if (![[AlibcTradeSDK sharedInstance] handleOpenURL:url]) {
-     // 处理其他app跳转到自己的app
-     }
-     return YES;
-     */
-    
-    // 新接口写法
-    if (![[AlibcTradeSDK sharedInstance] application:application
-                                             openURL:url
-                                             options:options]) {
-        //处理其他app跳转到自己的app，如果百川处理过会返回YES
-    }
+    [JSHAREService handleOpenUrl:url];
+   
+    if (@available(iOS 9.0, *)) {
+        __unused BOOL isHandledByALBBSDK=[[AlibcTradeSDK sharedInstance] application:application openURL:url options:options];
+    } else {
+        // Fallback on earlier versions
+    }//处理其他app跳转到自己的app，如果百川处理过会返回YES
     return YES;
 }
 

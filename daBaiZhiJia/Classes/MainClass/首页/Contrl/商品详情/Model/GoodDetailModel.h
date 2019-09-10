@@ -33,6 +33,9 @@
 
 - (void)detailModel:(GoodDetailModel*)model querySucWithDetailInfo:(GoodDetailInfo*)info tuiJianArr:(NSMutableArray*)arr;
 
+- (void)detailModel:(GoodDetailModel*)model queryFail:(id)res;
+
+
 //在购买或者浏览的人数
 - (void)detailModel:(GoodDetailModel*)model viewPeople:(NSMutableArray*)arr;
 

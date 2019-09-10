@@ -29,6 +29,9 @@ typedef void(^DBZJ_IncomBlock)(DBZJ_Zqy_Info *info, NSError *error, NSInteger co
 @property (nonatomic, copy) NSString *share_wechat_name; //团长昵称
 @property (nonatomic, copy) NSString *share_wechat_account; //团长微信号
 @property (nonatomic, copy) NSString *share_wechat_image; //团长头像
+@property (nonatomic, copy) NSString *shangji_wechat_name; //上级昵称
+@property (nonatomic, copy) NSString *shangji_wechat_account; //上级微信号
+@property (nonatomic, copy) NSString *shangji_wechat_image; //上级头像
 @property (nonatomic, copy) NSString *kefu_wechat_account; //客服微信号
 @property (nonatomic, copy) NSString *next_share_number; //下一级需达到邀请直属人数
 @property (nonatomic, copy) NSString *next_relation_number; //下一级需达到邀请关联人数

@@ -112,11 +112,14 @@ static NSString *cellId = @"cellId";
     CreateShare_CellInfo *info  = [CreateShare_CellInfo new];
     info.isPoster = YES;
     info.isSelected = YES;
-    info.image = [self geneRatePostImageWithGoodImage:firstinfo.imageStr];
+    info.image = [self geneRatePostImageWithGoodImage:firstinfo.imageStr callBack:^{
+//        [self.dataSource insertObject:info atIndex:0];
+//        [self.collectionView reloadData];
+//        [self.seletedArr addObject:self.dataSource.firstObject];
+//        self.postImage =  info.image;
+    }];
     [self.dataSource insertObject:info atIndex:0];
-  
     [self.collectionView reloadData];
-  
     [self.seletedArr addObject:self.dataSource.firstObject];
     self.postImage =  info.image;
 }
@@ -171,39 +174,40 @@ static NSString *cellId = @"cellId";
 
 #pragma mark - action
 //生成海报
-- (IBAction)haibaoAction:(UIButton *)sender {
-    NSLog(@"%@",self.selectedInfo);
-    if (!self.selectedInfo) {
-        [YJProgressHUD showMsgWithoutView:@"请选中一张图片"];
-        return;
-    }
-    if (self.selectedInfo.isPoster) {
-          [YJProgressHUD showMsgWithoutView:@"请选择其他图片"];
-        return;
-    }
+//- (IBAction)haibaoAction:(UIButton *)sender {
+//    NSLog(@"%@",self.selectedInfo);
+//    if (!self.selectedInfo) {
+//        [YJProgressHUD showMsgWithoutView:@"请选中一张图片"];
+//        return;
+//    }
+//    if (self.selectedInfo.isPoster) {
+//          [YJProgressHUD showMsgWithoutView:@"请选择其他图片"];
+//        return;
+//    }
+//
+//    UIImage *image = [self geneRatePostImageWithGoodImage:self.selectedInfo.imageStr];
+//     CreateShare_CellInfo *item = [CreateShare_CellInfo new];
+//    item.isPoster = YES;
+//    item.image = image;
+//    item.isSelected = YES;
+//    self.postImage = image;
+//    self.selectedInfo = item;
+//    [self.dataSource removeFirstObject];  //干掉第一个
+//    [self.dataSource insertObject:item atIndex:0];//插入到第一个
+//    for ( CreateShare_CellInfo *info in self.dataSource) {
+//        if (!(info == item)) {
+//            info.isSelected = NO;
+//        }
+//    }
+//    [self.collectionView reloadData];
+//}
 
-    UIImage *image = [self geneRatePostImageWithGoodImage:self.selectedInfo.imageStr];
-     CreateShare_CellInfo *item = [CreateShare_CellInfo new];
-    item.isPoster = YES;
-    item.image = image;
-    item.isSelected = YES;
-    self.postImage = image;
-    self.selectedInfo = item;
-    [self.dataSource removeFirstObject];  //干掉第一个
-    [self.dataSource insertObject:item atIndex:0];//插入到第一个
-    for ( CreateShare_CellInfo *info in self.dataSource) {
-        if (!(info == item)) {
-            info.isSelected = NO;
-        }
-    }
-    [self.collectionView reloadData];
-}
-
-- (UIImage *)geneRatePostImageWithGoodImage:(NSString*)imageUrl{
+//callback:图片显示完的回调
+- (UIImage *)geneRatePostImageWithGoodImage:(NSString*)imageUrl callBack:(VEBlockVoid)callback{
     ShareNewPosterV *post = [ShareNewPosterV  viewFromXib];
     post.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     self.detailinfo.pic = imageUrl;
-    [post setInfoWithModel:self.detailinfo];
+    [post setInfoWithModel:self.detailinfo callBack:callback];
     [post layoutIfNeeded];
     sleep(0.2);
     UIImage * image =  [self getmakeImageWithView:post andWithSize:CGSizeMake(SCREEN_WIDTH  , SCREEN_HEIGHT)];

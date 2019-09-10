@@ -9,6 +9,8 @@
 #import "ShareNewPosterV.h"
 #import "GoodDetailModel.h"
 #import "SGQRCode.h"
+#import "UIImageView+WebCache.h"
+
 @interface ShareNewPosterV ()
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *ptTop;
@@ -42,7 +44,7 @@
         self.ptTop.constant = self.nameTop.constant += Height_StatusBar;
     }
 }
-- (void)setInfoWithModel:(id)model{
+- (void)setInfoWithModel:(id)model callBack:(VEBlockVoid)callback{
       GoodDetailInfo *info = model;
      self.pt.image = (info.pt == 1)?ZDBImage(@"icon_zbytianmao"):ZDBImage(@"img_zbytaobao");
     self.name.text = [NSString stringWithFormat:@"      %@",info.title];
@@ -54,7 +56,23 @@
     self.price.attributedText = [self priceAttwithStr1:@"¥" str2:info.price];
     self.marketPrice.attributedText = [self marketPriceWithStr1:@"原价: " str2:[NSString stringWithFormat:@"¥%@",info.market_price]];
     self.dicCount.attributedText = [self dicountPriceWithStr1:info.coupon_amount str2:@"元"];
-    [self.goodImage setDefultPlaceholderWithFullPath:info.pic];
+//    [self.goodImage setDefultPlaceholderWithFullPath:info.pic];
+//    [self.goodImage sd_setImageWithURL:[NSURL URLWithString:info.pic] completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
+//        if (callback) {
+//            callback();
+//        }
+//    }];
+    [self.goodImage sd_setImageWithURL:[NSURL URLWithString:info.pic] placeholderImage:nil options:0 progress:^(NSInteger receivedSize, NSInteger expectedSize, NSURL * _Nullable targetURL) {
+        NSLog(@"receivedSize  %zd",receivedSize);
+        NSLog(@"expectedSize  %zd",expectedSize);
+        NSLog(@"targetURL %@",targetURL);
+    } completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
+        NSLog(@"completed")
+        if (callback) {
+            callback();
+        }
+    }];
+    
     self.tuiJian.text = info.desc;
       self.codeImage.image = [SGQRCodeGenerateManager generateWithDefaultQRCodeData:info.shorturl imageViewWidth: 95];
 }

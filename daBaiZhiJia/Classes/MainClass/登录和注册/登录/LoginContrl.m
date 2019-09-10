@@ -63,7 +63,11 @@
         self.navigationController.tabBarController.selectedIndex = 0;
         [self.navigationController popToRootViewControllerAnimated:YES];
     }else{
-        [self.navigationController popViewControllerAnimated:YES];
+        if (self.navigationController) {
+             [self.navigationController popViewControllerAnimated:YES];
+        }else{
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }
     }
    
     if (self.closeblock) {

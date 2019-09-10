@@ -40,6 +40,7 @@ typedef void(^prersonRevenueBlock)(PersonRevenue*  reve, NSInteger code);
 @property (nonatomic, copy) NSString *wechat_account;
 @property (nonatomic, copy) NSString *wechat_image;
 @property (nonatomic, copy) NSString *code; //邀请码
+@property (nonatomic, copy) NSString *openid; //有值表示已经绑定微信
 @property (nonatomic, assign) NSInteger sex;
 @property (nonatomic, assign) NSInteger level; //会员等级1白银2黄金3合伙人
 @property (nonatomic, assign) NSInteger relation_id; //是否授权绑定过淘宝账号0否 不为0绑定过
