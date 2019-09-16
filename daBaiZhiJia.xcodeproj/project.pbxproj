@@ -324,6 +324,12 @@
 		C2E227EF230690C800741CD3 /* HSSessionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C2E227E8230690C800741CD3 /* HSSessionModel.m */; };
 		C2E227F0230690C800741CD3 /* NSString+Hash.m in Sources */ = {isa = PBXBuildFile; fileRef = C2E227EA230690C800741CD3 /* NSString+Hash.m */; };
 		C2E227F1230690C800741CD3 /* HSDownloadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C2E227EE230690C800741CD3 /* HSDownloadManager.m */; };
+		C2EDB81E232A18A80085B9D6 /* NewPeo_ShareGoodSecCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2EDB81C232A18A80085B9D6 /* NewPeo_ShareGoodSecCell.m */; };
+		C2EDB81F232A18A80085B9D6 /* NewPeo_ShareGoodSecCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2EDB81D232A18A80085B9D6 /* NewPeo_ShareGoodSecCell.xib */; };
+		C2EDB822232A38990085B9D6 /* NewPeo_RuleV.m in Sources */ = {isa = PBXBuildFile; fileRef = C2EDB821232A38990085B9D6 /* NewPeo_RuleV.m */; };
+		C2EDB826232A38D70085B9D6 /* NewPeo_RuleV.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2EDB825232A38D70085B9D6 /* NewPeo_RuleV.xib */; };
+		C2EDB829232A47E50085B9D6 /* NewPeo_DengjiV.m in Sources */ = {isa = PBXBuildFile; fileRef = C2EDB828232A47E50085B9D6 /* NewPeo_DengjiV.m */; };
+		C2EDB82B232A48140085B9D6 /* NewPeo_DengjiV.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2EDB82A232A48140085B9D6 /* NewPeo_DengjiV.xib */; };
 		C2EE9B1222C70637002775A4 /* GoToAuth_View.m in Sources */ = {isa = PBXBuildFile; fileRef = C2EE9B1122C70637002775A4 /* GoToAuth_View.m */; };
 		C2EE9B1422C70642002775A4 /* GoToAuth_View.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2EE9B1322C70642002775A4 /* GoToAuth_View.xib */; };
 		C2EE9B1922C73D0A002775A4 /* ContactKefuContrl.m in Sources */ = {isa = PBXBuildFile; fileRef = C2EE9B1722C73D0A002775A4 /* ContactKefuContrl.m */; };
@@ -913,6 +919,15 @@
 		C2E227EC230690C800741CD3 /* HSDownloadManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HSDownloadManager.h; sourceTree = "<group>"; };
 		C2E227ED230690C800741CD3 /* HSSessionModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HSSessionModel.h; sourceTree = "<group>"; };
 		C2E227EE230690C800741CD3 /* HSDownloadManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HSDownloadManager.m; sourceTree = "<group>"; };
+		C2EDB81B232A18A80085B9D6 /* NewPeo_ShareGoodSecCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewPeo_ShareGoodSecCell.h; sourceTree = "<group>"; };
+		C2EDB81C232A18A80085B9D6 /* NewPeo_ShareGoodSecCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewPeo_ShareGoodSecCell.m; sourceTree = "<group>"; };
+		C2EDB81D232A18A80085B9D6 /* NewPeo_ShareGoodSecCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewPeo_ShareGoodSecCell.xib; sourceTree = "<group>"; };
+		C2EDB820232A38990085B9D6 /* NewPeo_RuleV.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewPeo_RuleV.h; sourceTree = "<group>"; };
+		C2EDB821232A38990085B9D6 /* NewPeo_RuleV.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewPeo_RuleV.m; sourceTree = "<group>"; };
+		C2EDB825232A38D70085B9D6 /* NewPeo_RuleV.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewPeo_RuleV.xib; sourceTree = "<group>"; };
+		C2EDB827232A47E50085B9D6 /* NewPeo_DengjiV.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewPeo_DengjiV.h; sourceTree = "<group>"; };
+		C2EDB828232A47E50085B9D6 /* NewPeo_DengjiV.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewPeo_DengjiV.m; sourceTree = "<group>"; };
+		C2EDB82A232A48140085B9D6 /* NewPeo_DengjiV.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewPeo_DengjiV.xib; sourceTree = "<group>"; };
 		C2EE9B1022C70637002775A4 /* GoToAuth_View.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GoToAuth_View.h; sourceTree = "<group>"; };
 		C2EE9B1122C70637002775A4 /* GoToAuth_View.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GoToAuth_View.m; sourceTree = "<group>"; };
 		C2EE9B1322C70642002775A4 /* GoToAuth_View.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GoToAuth_View.xib; sourceTree = "<group>"; };
@@ -2823,12 +2838,21 @@
 				C289C9E222BE1DAB0031F21A /* NewPeo_ShareGoodCell.h */,
 				C289C9E322BE1DAB0031F21A /* NewPeo_ShareGoodCell.m */,
 				C289C9E422BE1DAB0031F21A /* NewPeo_ShareGoodCell.xib */,
+				C2EDB81B232A18A80085B9D6 /* NewPeo_ShareGoodSecCell.h */,
+				C2EDB81C232A18A80085B9D6 /* NewPeo_ShareGoodSecCell.m */,
+				C2EDB81D232A18A80085B9D6 /* NewPeo_ShareGoodSecCell.xib */,
 				C289C9DA22BE010F0031F21A /* NewPeo_shareBottomV.h */,
 				C289C9DB22BE010F0031F21A /* NewPeo_shareBottomV.m */,
 				C289C9DD22BE01190031F21A /* NewPeo_shareBottomV.xib */,
 				C289C9D222BDFB4A0031F21A /* NewPeo_timeView.h */,
 				C289C9D322BDFB4A0031F21A /* NewPeo_timeView.m */,
 				C289C9D522BDFBC10031F21A /* NewPeo_timeView.xib */,
+				C2EDB820232A38990085B9D6 /* NewPeo_RuleV.h */,
+				C2EDB821232A38990085B9D6 /* NewPeo_RuleV.m */,
+				C2EDB825232A38D70085B9D6 /* NewPeo_RuleV.xib */,
+				C2EDB827232A47E50085B9D6 /* NewPeo_DengjiV.h */,
+				C2EDB828232A47E50085B9D6 /* NewPeo_DengjiV.m */,
+				C2EDB82A232A48140085B9D6 /* NewPeo_DengjiV.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -3278,6 +3302,7 @@
 				C279938722C376EC004C0B4C /* RegisterDetailCell.xib in Resources */,
 				C236735F23233E7900BBF42B /* AlipaySDK.bundle in Resources */,
 				C289C9E622BE1DAB0031F21A /* NewPeo_ShareGoodCell.xib in Resources */,
+				C2EDB81F232A18A80085B9D6 /* NewPeo_ShareGoodSecCell.xib in Resources */,
 				C236737223233E7A00BBF42B /* mtopsdk_configuration.plist in Resources */,
 				C2218C68228972BC0097F8F7 /* IntelligenceSearchView.xib in Resources */,
 				C2CA66C522715B9500CC361F /* DBZJ_CommunityCell.xib in Resources */,
@@ -3318,6 +3343,7 @@
 				C27993A322C376EC004C0B4C /* PrersonInfoContrl.xib in Resources */,
 				C27CD56B22C082A100852FE0 /* Home_Com_Group_Cell.xib in Resources */,
 				C2C1A5DF22BDF48600D5F297 /* NewPeo_shareContentV.xib in Resources */,
+				C2EDB82B232A48140085B9D6 /* NewPeo_DengjiV.xib in Resources */,
 				C236736023233E7900BBF42B /* SmartLink.bundle in Resources */,
 				C2F8963422B32C1700DA02EC /* Home_EveeChoiCell.xib in Resources */,
 				C279939D22C376EC004C0B4C /* Member_LevCell.xib in Resources */,
@@ -3345,6 +3371,7 @@
 				C267C8BA225367C600FE6488 /* DWSearchHeadView.xib in Resources */,
 				C2BBEC072313DB1A0015859F /* HomePage_NewPersonPopV.xib in Resources */,
 				C2C75A4622B47B03009EA800 /* BillBoard_GoodCell.xib in Resources */,
+				C2EDB826232A38D70085B9D6 /* NewPeo_RuleV.xib in Resources */,
 				C279939322C376EC004C0B4C /* MyGroupMemberContrl.xib in Resources */,
 				C271BEEF22B1F54800A94014 /* Home_headView.xib in Resources */,
 				C26B3F1E232765B900DA7911 /* GoodDetailInvalidV.xib in Resources */,
@@ -3591,6 +3618,7 @@
 				C27CD56A22C082A100852FE0 /* Home_Com_Group_Cell.m in Sources */,
 				C2B8905E22A6080F0005AAD5 /* Share_PosterView.m in Sources */,
 				C271BEF422B1F54800A94014 /* Home_zbyView.m in Sources */,
+				C2EDB81E232A18A80085B9D6 /* NewPeo_ShareGoodSecCell.m in Sources */,
 				C2F00C9822C0CED10020738A /* Goto_LoginContrl.m in Sources */,
 				C21C72DC22C61CD0009F3199 /* Home_horseRacelpCell.m in Sources */,
 				C2210C3F2248CD7F00C1C765 /* TYAlertDropDownAnimation.m in Sources */,
@@ -3669,6 +3697,7 @@
 				C267C84722534F7500FE6488 /* ForeGetPwdcontrl.m in Sources */,
 				C279937E22C376EB004C0B4C /* MySpreadContrl.m in Sources */,
 				C2EE9B1222C70637002775A4 /* GoToAuth_View.m in Sources */,
+				C2EDB822232A38990085B9D6 /* NewPeo_RuleV.m in Sources */,
 				C2E227EF230690C800741CD3 /* HSSessionModel.m in Sources */,
 				C2EFFAE02293E0F80051781F /* DBZJ_ComNewHandCell.m in Sources */,
 				C21A1F1A2251B6D800480EAE /* PageViewController.m in Sources */,
@@ -3679,6 +3708,7 @@
 				C279939622C376EC004C0B4C /* MyCollecTionCell.m in Sources */,
 				C272610B22B090E30078FACA /* HomePage_Model.m in Sources */,
 				C25F5F3322D5D2AC006C7C4D /* Brand_Showcontrl.m in Sources */,
+				C2EDB829232A47E50085B9D6 /* NewPeo_DengjiV.m in Sources */,
 				C279938F22C376EC004C0B4C /* LearnKnowLedgeCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

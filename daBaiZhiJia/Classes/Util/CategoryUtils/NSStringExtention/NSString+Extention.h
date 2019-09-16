@@ -84,4 +84,8 @@
 
 + (NSString *)getRandomStr;
 
+/**
+ 获取年月日
+ */
++ (NSString*)getDateStrByDate:(NSDate*)date;
 @end

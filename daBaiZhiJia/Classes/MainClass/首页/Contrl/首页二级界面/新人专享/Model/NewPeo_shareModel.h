@@ -8,7 +8,7 @@
 
 #import "SearchResulModel.h"
 @class NewPeo_shareRuleInfo;
-typedef void(^NewPeo_shareBlock)(NSMutableArray *goodArr,NSInteger time, NewPeo_shareRuleInfo *rule,NSError *error);
+typedef void(^NewPeo_shareBlock)(NSMutableArray *goodArr,NSInteger time, NewPeo_shareRuleInfo *rule,NSMutableArray *tlj_list,NSError *error);
 @interface NewPeo_shareModel : NSObject
 
 + (void)queryNewPeoGoodWithBlock:(NewPeo_shareBlock)block;

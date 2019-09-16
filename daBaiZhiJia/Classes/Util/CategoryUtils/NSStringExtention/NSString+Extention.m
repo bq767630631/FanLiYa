@@ -135,5 +135,14 @@
     
 }
 
-
++ (NSString*)getDateStrByDate:(NSDate*)date{
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateStyle:NSDateFormatterMediumStyle];
+    [formatter setTimeStyle:NSDateFormatterShortStyle];
+    [formatter setDateFormat:@"yyyy-MM-dd"];
+    NSTimeZone *timeZ = [NSTimeZone timeZoneWithName:@"Asia/Shanghai"];
+    [formatter setTimeZone:timeZ];
+    return [formatter stringFromDate:date];
+}
 @end

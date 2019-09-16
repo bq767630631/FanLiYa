@@ -21,6 +21,7 @@
 #import "HomePage_NewPersonPopV.h"
 #import "MSLaunchView.h"
 
+#define DateKey  @"DateKey"
 @interface PageViewController ()<UIScrollViewDelegate>
 @property (nonatomic, strong) UIScrollView *scroView;
 
@@ -277,13 +278,26 @@
 
 #pragma mark - private
 //显示弹窗
-- (void)showPopV{
+- (void)showPopV{//
+    NSString *dateStr     =  [[NSUserDefaults standardUserDefaults]objectForKey:DateKey];
+    NSString *cur_datestr =  [NSString getDateStrByDate:[NSDate date]];
+   //  NSLog(@"dateStr1 %@",dateStr);
+    // NSLog(@"curDate %@",cur_datestr);
+    //如果当前年月日和本地的不一样就展示；
+    if ([dateStr isEqualToString:cur_datestr]) {
+        return;
+    }
     [self delayDoWork:0.5 WithBlock:^{
         HomePage_NewPersonPopV *pop = [HomePage_NewPersonPopV viewFromXib];
         pop.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
         pop.navi = self.naviContrl;
         pop.info = self.popInfo;
         [pop show];
+        
+        NSString *dateStr = [NSString getDateStrByDate:[NSDate date]];
+       // NSLog(@"dateStr2 %@",dateStr);
+        [[NSUserDefaults standardUserDefaults] setValue:dateStr forKey:DateKey];
+        [[NSUserDefaults standardUserDefaults]synchronize];
     }];
 }
 

@@ -40,7 +40,6 @@
     self.attition.attributedText = [[NSMutableAttributedString alloc] initWithString:info.action_content attributes:@{NSParagraphStyleAttributeName:paraStyle}];
     [self layoutIfNeeded];
     self.height = self.contentV.bottom;
-    self.width = SCREEN_WIDTH;
 }
 
 - (IBAction)shareAction:(UIButton *)sender {

@@ -46,7 +46,7 @@ NS_ASSUME_NONNULL_END
 
 @property (nonatomic,copy) NSString *shengji_str; //是升级赚还是自购省
 
-@property (nonatomic, assign) NSInteger  pt;//1天猫4淘宝
+@property (nonatomic, assign) NSInteger  pt;//1、天猫 2、京东 3、拼多多 4、淘宝 5、其他
 
 @property (nonatomic,copy) NSString *video; //视频地址 为空时没视频
 
@@ -54,6 +54,10 @@ NS_ASSUME_NONNULL_END
 
 @property (nonatomic, assign) NSInteger  rankType;//榜单查询排行 1.实时销量榜 2.全天销量榜 3.热推榜
 
+//淘礼金相关
+@property (nonatomic,copy) NSString *tlj; //淘礼金金额不等于0.00的时候为存在
+@property (nonatomic,copy) NSString *url; //点击立即购买需要打开的手淘地址
+@property (nonatomic,copy) NSString *tlj_number; //淘礼金数量
 
 @property (nonatomic, assign) BOOL isZby; //是否是直播鸭  只有直播鸭才显示播放量
 

@@ -18,7 +18,7 @@
 #import "Bind_PhoneContrl.h"
 #import "DetailWebContrl.h"
 #import "ForeGetPwdcontrl.h"
-
+#import "NewPeo_shareContrl.h"
 //#import <objc/runtime.h>
 
 #define QQShare_AppID @"1109202625"
@@ -303,7 +303,7 @@ fetchCompletionHandler:
 //yes:可以弹出搜索视图
 - (BOOL)isJumpToSearchV{
     UIViewController *curVc = [self getCurrentVC];
-    if ([curVc isKindOfClass:[CreateShareContrl class]] || [curVc isKindOfClass:[LoginContrl class]] ||[curVc isKindOfClass:[RegisterContrl class]] || [curVc isKindOfClass:[Goto_LoginContrl class]]||[curVc isKindOfClass:[Bind_PhoneContrl class]]||[curVc isKindOfClass:[DetailWebContrl class]] ||[curVc isKindOfClass:[ForeGetPwdcontrl class]] ) {
+    if ([curVc isKindOfClass:[CreateShareContrl class]] || [curVc isKindOfClass:[LoginContrl class]] ||[curVc isKindOfClass:[RegisterContrl class]] || [curVc isKindOfClass:[Goto_LoginContrl class]]||[curVc isKindOfClass:[Bind_PhoneContrl class]]||[curVc isKindOfClass:[DetailWebContrl class]] ||[curVc isKindOfClass:[ForeGetPwdcontrl class]] || [curVc isKindOfClass:[NewPeo_shareContrl class]] ) {
         //这些场景不用弹出搜索视图
         return NO;
     }

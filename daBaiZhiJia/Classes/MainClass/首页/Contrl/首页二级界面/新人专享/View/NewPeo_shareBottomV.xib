@@ -15,8 +15,11 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="410"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n9h-q5-S70">
-                    <rect key="frame" x="39.5" y="0.0" width="335" height="72"/>
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n9h-q5-S70">
+                    <rect key="frame" x="39.5" y="0.0" width="335" height="0.0"/>
+                    <constraints>
+                        <constraint firstAttribute="height" id="X2b-xP-bjG"/>
+                    </constraints>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                     <state key="normal" title="分享好友" backgroundImage="img_btn_newp_bg"/>
                     <connections>
@@ -24,7 +27,7 @@
                     </connections>
                 </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AYj-01-YOs" userLabel="contentView">
-                    <rect key="frame" x="15" y="92" width="384" height="304.5"/>
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="290"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="新人免单规则" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qgo-7R-Feq">
                             <rect key="frame" x="12" y="17" width="104" height="17"/>
@@ -45,7 +48,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="每天都有免单" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="94R-n8-P9K">
-                            <rect key="frame" x="12" y="74" width="372" height="12"/>
+                            <rect key="frame" x="12" y="74" width="402" height="12"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="12" id="flz-rb-h7O"/>
                             </constraints>
@@ -63,7 +66,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="即日起注册返利鸭新用户" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K2f-g1-6yb">
-                            <rect key="frame" x="12" y="126" width="372" height="12"/>
+                            <rect key="frame" x="12" y="126" width="402" height="12"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="12" id="RVo-7Q-qoi"/>
                             </constraints>
@@ -81,7 +84,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="领取优惠券 下单购买" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dng-wf-HWj">
-                            <rect key="frame" x="12" y="178" width="372" height="12"/>
+                            <rect key="frame" x="12" y="178" width="402" height="12"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="12" id="MCa-iU-k2O"/>
                             </constraints>
@@ -99,7 +102,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="免单商品静止使用积分免单商品静止使用积分免单商品静止使用积分免单商品静止使用积分静止使用积分免单商品静止使用积分免单商品静止使用积分静止使用积分免单商品静止使用积分免单商品静止使用积分" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3qV-vZ-4ss">
-                            <rect key="frame" x="12" y="230" width="360" height="57.5"/>
+                            <rect key="frame" x="12" y="230" width="390" height="43"/>
                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
                             <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
@@ -135,10 +138,10 @@
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="AYj-01-YOs" firstAttribute="top" secondItem="n9h-q5-S70" secondAttribute="bottom" constant="20" id="Aa1-2k-nPR"/>
+                <constraint firstItem="AYj-01-YOs" firstAttribute="top" secondItem="n9h-q5-S70" secondAttribute="bottom" id="Aa1-2k-nPR"/>
                 <constraint firstItem="n9h-q5-S70" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="J8a-jv-HiT"/>
-                <constraint firstAttribute="trailing" secondItem="AYj-01-YOs" secondAttribute="trailing" constant="15" id="MIl-l4-87H"/>
-                <constraint firstItem="AYj-01-YOs" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="OUZ-EO-hZz"/>
+                <constraint firstAttribute="trailing" secondItem="AYj-01-YOs" secondAttribute="trailing" id="MIl-l4-87H"/>
+                <constraint firstItem="AYj-01-YOs" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="OUZ-EO-hZz"/>
                 <constraint firstItem="n9h-q5-S70" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="eYi-3M-PGi"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

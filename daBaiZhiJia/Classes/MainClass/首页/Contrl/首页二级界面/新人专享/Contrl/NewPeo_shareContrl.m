@@ -9,7 +9,7 @@
 #import "NewPeo_shareContrl.h"
 #import "NewPeo_shareContentV.h"
 #import "NewPeo_shareModel.h"
-
+#import "NewPeople_EnjoyContrl.h"
 
 @interface NewPeo_shareContrl ()
 @property (nonatomic, strong) UIScrollView *scroView;
@@ -26,6 +26,7 @@
 
     [self.view addSubview:self.scroView];
     [self queryData];
+    [self initRightBarButtonWithImage:@"image_newpeo_share"];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(countDownEnd) name:NewPeo_CountdownNotifation object:nil];
 }
 
@@ -50,14 +51,15 @@
     [self queryData];
 }
 
+- (void)onTapRightBarButton{
+     [self.navigationController pushViewController:[NewPeople_EnjoyContrl new] animated:YES];
+}
+
 - (void)queryData{
-    [NewPeo_shareModel queryNewPeoGoodWithBlock:^(NSMutableArray *goodArr, NSInteger time, NewPeo_shareRuleInfo *rule, NSError *error) {
+    [NewPeo_shareModel queryNewPeoGoodWithBlock:^(NSMutableArray *goodArr, NSInteger time, NewPeo_shareRuleInfo *rule,NSMutableArray *tlj_list ,NSError *error) {
         if (goodArr) {
-            for (SearchResulGoodInfo *info in goodArr) {
-                info.countTime = time;
-            }
-            [self.contentV setInfoWith:goodArr time:time rule:rule];
-            
+           
+            [self.contentV setInfoWith:goodArr time:time rule:rule tljList:tlj_list];
             self.scroView.contentSize = CGSizeMake(0, self.contentV.height + 20);
         }
     }];
@@ -78,6 +80,7 @@
         _scroView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, height)];
         [_scroView addSubview:self.contentV];
         _scroView.contentSize = CGSizeMake(0,2000);
+        _scroView.showsVerticalScrollIndicator = NO;
     }
     return _scroView;
 }
@@ -89,6 +92,5 @@
     }
     return _contentV;
 }
-
 
 @end

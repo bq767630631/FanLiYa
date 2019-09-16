@@ -12,21 +12,28 @@
 + (void)queryNewPeoGoodWithBlock:(NewPeo_shareBlock)block{
     
     [PPNetworkHelper POST:URL_Add(@"/v.php/goods.share/getFreeList") parameters:@{@"token":ToKen,@"v":APP_Version} success:^(id responseObject) {
-      //  NSLog(@"%@",responseObject);
+        NSLog(@"%@",responseObject);
         NSInteger code = [responseObject[@"code"] integerValue];
         if (code == SucCode) {
             NSInteger time = [responseObject[@"data"][@"time"]integerValue];
-            
             NSMutableArray *list = [SearchResulGoodInfo mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"list"]];
+             NSMutableArray *tlj_list = [SearchResulGoodInfo mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"tlj"]];
             NewPeo_shareRuleInfo *rule = [NewPeo_shareRuleInfo mj_objectWithKeyValues:responseObject[@"data"][@"show"]];
-            block(list,time,rule,nil);
+            
+            for (SearchResulGoodInfo *info in list) {
+                info.countTime = time;
+            }
+            for (SearchResulGoodInfo *info in tlj_list) {
+                info.countTime = time;
+            }
+            block(list,time,rule,tlj_list,nil);
         }else{
             
             [YJProgressHUD showMsgWithoutView:responseObject[@"msg"]];
         }
         
     } failure:^(NSError *error) {
-        block(nil,0,nil,error);
+        block(nil,0,nil,nil,error);
     }];
 }
 @end

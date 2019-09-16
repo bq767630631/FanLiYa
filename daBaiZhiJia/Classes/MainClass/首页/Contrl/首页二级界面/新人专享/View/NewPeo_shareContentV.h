@@ -14,7 +14,7 @@
 @property (nonatomic, strong) NewPeo_timeView *timeV;
 
 
-- (void)setInfoWith:(NSMutableArray*)arr time:(NSInteger)time rule:(id)rule;
+- (void)setInfoWith:(NSMutableArray*)arr time:(NSInteger)time rule:(id)rule tljList:(NSMutableArray*)tljList;
 
 
 
