@@ -81,6 +81,7 @@
         [_scroView addSubview:self.contentV];
         _scroView.contentSize = CGSizeMake(0,2000);
         _scroView.showsVerticalScrollIndicator = NO;
+        _scroView.backgroundColor = RGBColor(255, 138, 0);
     }
     return _scroView;
 }

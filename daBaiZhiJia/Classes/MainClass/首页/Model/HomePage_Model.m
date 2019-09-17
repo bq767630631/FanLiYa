@@ -108,7 +108,7 @@
 + (void)queryBroadCastWithBlock:(broadCast_Block)block{
       NSDictionary *dict = @{@"token":ToKen,@"v":APP_Version};
     [PPNetworkHelper POST:URL_Add(@"/v.php/index.index/bobao") parameters:dict success:^(id responseObject) {
-        NSLog(@"queryBroad");
+        NSLog(@"queryBroadCast");
        // NSLog(@"BroadCast responseObject %@",responseObject);
         NSInteger code = [responseObject[@"code"] integerValue];
         if (code == SucCode) {
@@ -169,7 +169,7 @@
 + (void)queryFlashSaleWithBlock:(flashSale_Block)block{
        NSDictionary *dict = @{@"token":ToKen,@"v":APP_Version};
     [PPNetworkHelper POST:URL_Add(@"/v.php/index.index/xianshi") parameters:dict success:^(id responseObject) {
-        NSLog(@"queryFlashSale");
+       
         // NSLog(@"FlashSale responseObject =%@",responseObject);
         NSInteger code = [responseObject[@"code"] integerValue];
         if (code == SucCode) {
@@ -189,7 +189,7 @@
 + (void)queryTianMaoUrlWithBlock:(tmUrl_Block)block{
   
     [PPNetworkHelper POST:URL_Add(@"/v.php/index.index/getTMurl") parameters:@{@"token":ToKen,@"v":APP_Version} success:^(id responseObject) {
-          NSLog(@"queryTianMaoUrl");
+//          NSLog(@"queryTianMaoUrl");
         NSInteger code = [responseObject[@"code"] integerValue];
         if (code == SucCode) {
              NSString *str1 = responseObject[@"data"][@"tiaomaochaoshi"];
@@ -209,6 +209,8 @@
         if (code == SucCode) {
             NSMutableArray *InfoArr = [HomePage_bg_bannernfo mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
             block(InfoArr.firstObject,nil);
+        }else{
+            block(nil,nil);
         }
     } failure:^(NSError *error) {
         NSLog(@"error =%@",error);

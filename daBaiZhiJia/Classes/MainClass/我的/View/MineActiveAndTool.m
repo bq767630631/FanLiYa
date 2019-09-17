@@ -83,6 +83,8 @@
         vc = [[DetailWebContrl alloc] initWithUrl:url title:@"新手教程" para:nil];
     }else if (tag==2){
         NSLog(@"地推素材");
+        [YJProgressHUD showMsgWithoutView:@"敬请期待"];
+        return;
   NSString *url = [NSString stringWithFormat:@"%@/commander/groundPush.html?token=%@",BASE_WEB_URL,ToKen];
         vc = [[DetailWebContrl alloc] initWithUrl:url title:@"地推素材" para:nil];
     }else if (tag==4){
@@ -103,6 +105,8 @@
         [YJProgressHUD showMsgWithoutView:@"敬请期待"];
     }else if (tag==3){
         NSLog(@"自定义邀请码");
+         [YJProgressHUD showMsgWithoutView:@"敬请期待"];
+         return;
         NSString *url = [NSString stringWithFormat:@"%@/duck/customInvitationCode.html?token=%@",BASE_WEB_URL,ToKen];
         vc = [[DetailWebContrl alloc] initWithUrl:url title:@"自定义邀请码" para:nil];
     }else if (tag==11){

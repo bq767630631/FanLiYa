@@ -56,7 +56,6 @@
 }
 
 - (void)queryData{
-    
         [HomePage_Model queryCateInfoWithBlock:^(NSMutableArray*cateTitleArr, NSMutableArray*cateIdArr,NSString *msg) {
             
             if (cateTitleArr&&cateIdArr) {

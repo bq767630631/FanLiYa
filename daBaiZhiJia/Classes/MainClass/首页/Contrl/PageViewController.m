@@ -122,6 +122,7 @@
     
       dispatch_group_enter(group);
     [HomePage_Model queryBrandinfoArrWithBlock:^(NSMutableArray *list, NSError *error) {
+        NSLog(@"queryBrandinfoArr");
           dispatch_group_leave(group);
         if (list) {
             [self.brandView setInfoWithModel:list];
@@ -130,10 +131,10 @@
       dispatch_group_enter(group);
     [HomePage_Model queryAppTopSideWithBlock:^(id res, NSError *error) {
           dispatch_group_leave(group);
+        NSLog(@"queryAppTopSide");
         if (res) {
             self.popInfo = res;
             BOOL isFirstLaunch = [[NSUserDefaults standardUserDefaults] boolForKey:@"isFirstLaunch"];
-            NSLog(@"isFirstLaunch %d",isFirstLaunch );
             if (isFirstLaunch) {//如果有引导页
                 [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"isFirstLaunch"];
                 [[NSUserDefaults standardUserDefaults]  synchronize];
@@ -150,6 +151,7 @@
     
       dispatch_group_enter(group);
     [HomePage_Model queryTianMaoUrlWithBlock:^(NSString *tmCS, NSString *tmGJ) {
+        NSLog(@"queryTianMaoUrl");
            dispatch_group_leave(group);
         if (tmCS&&tmGJ) {
             self.head.tmcs = tmCS;
@@ -185,7 +187,7 @@
 //查询每日精选
 - (void)queryEveryDataWithGroup:(dispatch_group_t)group{
     NSDictionary *dict = @{@"page":@(self.page),@"token":ToKen,@"v":APP_Version};
-    NSLog(@"每日精选 dict =%@",dict.mj_keyValues);
+ //   NSLog(@"每日精选 dict =%@",dict.mj_keyValues);
     if (self.haveNoMoreData) {
         [self.scroView.mj_footer endRefreshing];
         [self.scroView.mj_header endRefreshing];

@@ -59,7 +59,7 @@ static NSString *cellId_sec = @"cellId_sec";
 - (void)awakeFromNib{
     [super awakeFromNib];
     [self.time_v addSubview:self.timeV];
-    
+   
     [self.tableView registerNib:[UINib nibWithNibName:@"NewPeo_ShareGoodCell" bundle:nil] forCellReuseIdentifier:cellId];
     self.tableView.dataSource  = self;
     self.tableView.delegate    = self;
@@ -94,16 +94,27 @@ static NSString *cellId_sec = @"cellId_sec";
         self.lj_H.constant = 0;
         self.lj_top.constant = -40;
     }
-    
+   
     self.table_H.constant   = self.tljList.count *Row_H;
     self.tableV2_H.constant = self.goodArr.count *Row_H;
     self.bottom_H.constant = self.bottom.height;
     self.bottom.width = self.bottom_contentV.width;
     
     [self layoutIfNeeded];
-    self.height = self.bottom_contentV.bottom + 60;
+    CGFloat height  = 0;
+    if (IS_X_Xr_Xs_XsMax) {
+       height =  self.bottom_contentV.bottom + 85;
+    }else{
+        height =  self.bottom_contentV.bottom + 70;
+    }
+    
+    self.height = height;
     self.contentV.height = self.height ;
     //NSLog(@"bottom_contentV.frame1 %@", NSStringFromCGRect(self.bottom_contentV.frame));
+    NSLog(@"contentVH  %.f",self.height);
+    NSLog(@"bottom_contentV.bottom%.f",self.bottom_contentV.bottom);
+    NSLog(@"bottom_H  %.f",self.bottom_H.constant);
+    NSLog(@"contentV %@", self.contentV);
 }
 
 #pragma mark - UITableViewDataSource
