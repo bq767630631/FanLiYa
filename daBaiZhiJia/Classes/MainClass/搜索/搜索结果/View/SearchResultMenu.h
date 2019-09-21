@@ -18,6 +18,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) SearchMenueBlock searchBlock;
 
 @property (nonatomic, copy) SearchSwitchBlock switchBlock;
+
+@property (nonatomic, assign) NSInteger  searchType;//1淘宝,2拼多多,3京东,默认1
 @end
 
 NS_ASSUME_NONNULL_END

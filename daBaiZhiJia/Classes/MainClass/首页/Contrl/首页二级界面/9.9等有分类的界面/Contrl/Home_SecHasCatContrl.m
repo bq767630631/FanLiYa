@@ -61,6 +61,10 @@ static NSString *tableCellId = @"tableCellId";
     [self.view addSubview:self.menu];
     [self.view addSubview:self.collcetion];
     
+    if (self.type == SecHasCatType_Tehui) {
+        [self queryGoodData];
+        return;
+    }
     [Home_SecHasCatModel  querySecCateWithType:self.type Block:^(NSMutableArray *cateTitleArr, NSMutableArray *cateIdArr, NSString *msg) {
         if (cateTitleArr) {
             self.cateTitleArr = cateTitleArr;
@@ -139,6 +143,7 @@ static NSString *tableCellId = @"tableCellId";
     NSLog(@" indexPath =%@",indexPath);
     SearchResulGoodInfo *info = self.goodArr[indexPath.row];
     GoodDetailContrl *detail = [[GoodDetailContrl alloc] initWithSku:info.sku];
+    detail.pt = info.pt;
     [self.navigationController pushViewController:detail animated:YES];
 }
 
@@ -188,7 +193,12 @@ static NSString *tableCellId = @"tableCellId";
 - (JXCategoryTitleView *)categoryView {
     if (!_categoryView) {
         _categoryView = [[JXCategoryTitleView alloc] init];
-        _categoryView.frame = CGRectMake(0,NavigationBarBottom(self.navigationController.navigationBar), SCREEN_WIDTH, 40.f);
+        CGFloat height = 40.f;
+        if (self.type == SecHasCatType_Tehui) {
+            height = 0;
+            _categoryView.hidden = YES;
+        }
+        _categoryView.frame = CGRectMake(0, NavigationBarBottom(self.navigationController.navigationBar), SCREEN_WIDTH, height);
         _categoryView.titleColorGradientEnabled = YES;
         _categoryView.titleColor = UIColor.whiteColor;
         _categoryView.titleSelectedColor = UIColor.whiteColor;
@@ -217,7 +227,13 @@ static NSString *tableCellId = @"tableCellId";
 - (SearchResultMenu *)menu{
     if (!_menu) {
         _menu = [SearchResultMenu viewFromXib];
-        _menu.frame = CGRectMake(0, self.categoryView.bottom, SCREEN_WIDTH, 47);
+        CGFloat height = 47.f;
+        if (self.type ==SecHasCatType_GaoYong||self.type ==SecHasCatType_MuYing||self.type ==SecHasCatType_Tehui) {
+            height = 0;
+            _menu.hidden = YES;
+            self.switchBtnSelect = YES;
+        }
+        _menu.frame = CGRectMake(0, self.categoryView.bottom, SCREEN_WIDTH, height);
         @weakify(self);
         _menu.searchBlock = ^(NSString *searchType) {
             @strongify(self);
@@ -249,7 +265,11 @@ static NSString *tableCellId = @"tableCellId";
                  height = SCREEN_HEIGHT  - self.menu.bottom -Bottom_Safe_AreaH;
         }
         CGRect frame = CGRectMake(0, self.menu.bottom, SCREEN_WIDTH, height);
-        _collcetion = [[UICollectionView alloc] initWithFrame:frame collectionViewLayout:self.doubleLayout];
+        UICollectionViewFlowLayout *layout = self.doubleLayout;
+        if (self.type ==SecHasCatType_GaoYong||self.type ==SecHasCatType_MuYing) {
+            layout = self.singleLayout;
+        }
+        _collcetion = [[UICollectionView alloc] initWithFrame:frame collectionViewLayout:layout];
         _collcetion.dataSource = self;
         _collcetion.delegate    = self;
         _collcetion.backgroundColor = RGBColor(242, 242, 242);

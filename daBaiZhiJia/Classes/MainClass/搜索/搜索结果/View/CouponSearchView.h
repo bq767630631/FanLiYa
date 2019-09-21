@@ -15,6 +15,8 @@ typedef void(^couponSearchBlock)(BOOL isOn);
 @property (nonatomic, copy) couponSearchBlock block;
 
 @property (nonatomic, copy) VEBlockInteger typeblock;//1全网, 2app
+
+@property (nonatomic, assign) NSInteger  searchType;//1淘宝,2拼多多,3京东
 @end
 
 NS_ASSUME_NONNULL_END

@@ -19,7 +19,6 @@
 
 -(void)awakeFromNib{
     [super awakeFromNib];
-
     self.customSwitch.tintColor = RGBColor(220, 220, 220);
     self.customSwitch.onTintColor = RGBColor(241, 152, 51);
     [self.customSwitch setDidChangeHandler:^(BOOL isOn) {
@@ -28,6 +27,16 @@
         }
     }];
 }
+
+- (void)setSearchType:(NSInteger)searchType{
+    _searchType = searchType;
+    if (_searchType!=1) {//拼多多，京东没有全网搜
+        self.quanzhan.hidden = YES;
+        self.app.hidden = YES;
+    }
+}
+
+
 
 - (IBAction)quanzhanAction:(UIButton *)sender {
     self.app.selected = NO;

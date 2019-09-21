@@ -90,13 +90,24 @@ static NSString *tableCellId = @"tableCellId";
 
 - (void)questData{
     NSDictionary *dict = @{@"kw":self.searchStr,@"page":@(self.page),@"sort":self.sort,@"has_coupon":self.has_coupon,@"token":ToKen,@"v":APP_Version,@"from":self.from};
+   
      NSLog(@"dict =%@",dict.mj_keyValues);
     if (self.haveNoMoreData) {
         [self.scroview.mj_footer endRefreshing];
         [self.scroview.mj_footer endRefreshingWithNoMoreData];
         return;
     }
-    [PPNetworkHelper POST:URL_Add(@"/v.php/goods.goods/getAllListByKeyword") parameters:dict success:^(id responseObject) {
+    NSString *url = @"";
+    if (self.searchType==1) {
+        url = @"/v.php/goods.goods/getAllListByKeyword";
+    }else if (self.searchType==2){
+         url = @"/v.php/goods.pdd/getAllListByKeyword";
+        dict = @{@"kw":self.searchStr,@"page":@(self.page),@"sort":self.sort,@"has_coupon":self.has_coupon,@"token":ToKen,@"v":APP_Version};
+    }else if (self.searchType==3){
+        url = @"/v.php/goods.jd/getAllListByKeyword";
+        dict = @{@"kw":self.searchStr,@"page":@(self.page),@"sort":self.sort,@"has_coupon":self.has_coupon,@"token":ToKen,@"v":APP_Version};
+    }
+    [PPNetworkHelper POST:URL_Add(url) parameters:dict success:^(id responseObject) {
          NSLog(@"responseObject %@",responseObject);
         NSInteger code = [responseObject[@"code"] integerValue];
         if (code == SucCode) {
@@ -238,6 +249,7 @@ static NSString *tableCellId = @"tableCellId";
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     SearchResulGoodInfo *info = self.searchGoodsArr[indexPath.row];
     GoodDetailContrl *detail = [[GoodDetailContrl alloc] initWithSku:info.sku];
+    detail.pt = info.pt;
     [self.navigationController pushViewController:detail animated:YES];
 }
 
@@ -325,7 +337,9 @@ static NSString *tableCellId = @"tableCellId";
 - (CouponSearchView *)couponSear{
     if (!_couponSear) {
         _couponSear = [CouponSearchView viewFromXib];
-        _couponSear.frame = CGRectMake(0, self.menu.bottom, SCREEN_WIDTH, 85);
+        _couponSear.searchType = self.searchType;
+        CGFloat height = self.searchType==1 ?85:41;
+        _couponSear.frame = CGRectMake(0, self.menu.bottom, SCREEN_WIDTH, height);
         @weakify(self);
         _couponSear.block = ^(BOOL isOn) {
             @strongify(self);

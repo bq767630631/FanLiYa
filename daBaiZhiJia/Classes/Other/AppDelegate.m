@@ -45,7 +45,7 @@
     //微信api注册
     [WXApi registerApp:WXAPPID];
     //setUpiVersion
-    [iVersion sharedInstance].applicationBundleID = [[NSBundle mainBundle] bundleIdentifier];
+ //   [iVersion sharedInstance].applicationBundleID = [[NSBundle mainBundle] bundleIdentifier];
     IQKeyboardManager *keyboardManager = [IQKeyboardManager sharedManager];
     keyboardManager.enable = YES; // 控制整个功能是否启用
     keyboardManager.shouldResignOnTouchOutside = YES; // 控制点击背景是否收起键盘

@@ -168,6 +168,7 @@ static NSString *cellid=  @"cellid";
 - (IBAction)gotoDetail:(UIButton *)sender {
     if (self.comInfo.type==1) {
         GoodDetailContrl *detail = [[GoodDetailContrl alloc] initWithSku:self.comInfo.sku];
+        detail.pt = self.comInfo.pt;
         [self.viewController.navigationController pushViewController:detail animated:YES];
     }else{
          [self handleshare];

@@ -6,7 +6,15 @@
 //  Copyright © 2019 包强. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+
+////1、天猫 2、京东 3、拼多多 4、淘宝 5、其他
+typedef NS_ENUM(NSInteger, FLYPT_Type) {
+    FLYPT_Type_TM = 1,
+    FLYPT_Type_JD  ,
+    FLYPT_Type_Pdd ,
+    FLYPT_Type_TB  ,
+};
+
 
 NS_ASSUME_NONNULL_BEGIN
 

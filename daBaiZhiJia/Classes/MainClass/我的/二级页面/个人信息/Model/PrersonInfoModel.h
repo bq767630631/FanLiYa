@@ -67,5 +67,7 @@ typedef void(^prersonRevenueBlock)(PersonRevenue*  reve, NSInteger code);
 @interface PersonMiddAdvInfo : NSObject
 @property (nonatomic, copy) NSString *img;
 @property (nonatomic, copy) NSString *url;
+@property (nonatomic, assign) NSInteger  url_type;
+@property (nonatomic, assign) NSInteger  pt;
 @end
 

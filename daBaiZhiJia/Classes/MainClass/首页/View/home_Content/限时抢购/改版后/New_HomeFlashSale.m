@@ -85,6 +85,7 @@ static NSString *cellId = @"cellId";
       SearchResulGoodInfo *info = self.dataSouce[indexPath.row];
      PageViewController *page  = (PageViewController *)self.viewController;
      GoodDetailContrl *detail = [[GoodDetailContrl alloc] initWithSku:info.sku];
+    detail.pt = info.pt;
      [page.naviContrl pushViewController:detail animated:YES];
 }
 

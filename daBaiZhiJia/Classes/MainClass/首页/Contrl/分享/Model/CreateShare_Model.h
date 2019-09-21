@@ -14,12 +14,15 @@ typedef void(^tklBlock)(NSString*tkl, NSString*code,NSString*shorturl);
 
 @interface CreateShare_Model : NSObject
 
-//查询商品详情
-+ (void)queryDetailInfoWithSku:(NSString *)sku Blcok:(detailInfo_Block)block;
+//查询商品详情(有的地方没有商品详情)
++ (void)queryDetailInfoWithSku:(NSString *)sku  pt:(FLYPT_Type)pt Blcok:(detailInfo_Block)block;
 
-+ (NSString*)geneRateWenanWithDetail:(GoodDetailInfo*)info isAdd:(BOOL)isAdd isDown:(BOOL)isDown isRegisCode:(BOOL)isRegisCode isTkl:(BOOL)isTkl;
++ (NSString*)geneRateWenanWithDetail:(GoodDetailInfo*)info isAdd:(BOOL)isAdd isDown:(BOOL)isDown isRegisCode:(BOOL)isRegisCode isTkl:(BOOL)isTkl pt:(FLYPT_Type)pt;
 //生成淘口令
 + (void)geneRateTaoKlWithSku:(NSString*)sku  vc:(UIViewController*)curVc navi_vc:(UINavigationController*)navi_vc  block:(tklBlock)block;
+
+//查询d拼多多京东优惠券
++(void)pddAndJdGetYouhuiQuanWithsku:(NSString*)sku pt:(FLYPT_Type)pt  couponUrl:(NSString*)couponUrl CallBack:(VEBlock)callBack;
 @end
 
 

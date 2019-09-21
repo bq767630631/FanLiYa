@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina5_9" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="PDDHotSaleMenu">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="41"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Db-Rc-TP5">
+                    <rect key="frame" x="67.666666666666671" y="10.666666666666664" width="72.000000000000014" height="14"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="14" id="Kzo-gU-oa5"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <state key="normal" title="实时热销榜">
+                        <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <state key="selected">
+                        <color key="titleColor" red="1" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="clickSale:" destination="iN0-l3-epB" eventType="touchUpInside" id="8bT-ke-92b"/>
+                    </connections>
+                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g3m-C4-yBC" userLabel="slider">
+                    <rect key="frame" x="94" y="30.666666666666668" width="19" height="2.0000000000000036"/>
+                    <color key="backgroundColor" red="1" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="19" id="M2A-pi-vyD"/>
+                        <constraint firstAttribute="height" constant="2" id="k4F-F6-q8l"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2iE-qT-HyE">
+                    <rect key="frame" x="274.66666666666669" y="10.666666666666664" width="72" height="14"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="14" id="lDw-zi-w8g"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <state key="normal" title="实时收益榜">
+                        <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <state key="selected">
+                        <color key="titleColor" red="1" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="clickShouyi:" destination="iN0-l3-epB" eventType="touchUpInside" id="DS3-Qf-RrQ"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="2iE-qT-HyE" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" multiplier="1.5" id="4Q2-JX-vIT"/>
+                <constraint firstItem="8Db-Rc-TP5" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" multiplier="1/2" id="DoA-1M-IPf"/>
+                <constraint firstItem="g3m-C4-yBC" firstAttribute="centerX" secondItem="8Db-Rc-TP5" secondAttribute="centerX" id="KRD-qt-j8j"/>
+                <constraint firstItem="g3m-C4-yBC" firstAttribute="top" secondItem="8Db-Rc-TP5" secondAttribute="bottom" constant="6" id="PlQ-Kf-EZg"/>
+                <constraint firstItem="8Db-Rc-TP5" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="-3" id="QYg-Th-OjN"/>
+                <constraint firstItem="2iE-qT-HyE" firstAttribute="centerY" secondItem="8Db-Rc-TP5" secondAttribute="centerY" id="YGh-r1-Obr"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="saleBtn" destination="8Db-Rc-TP5" id="TcO-0R-ybK"/>
+                <outlet property="shouYiBtn" destination="2iE-qT-HyE" id="Eav-5J-6ZS"/>
+                <outlet property="silder" destination="g3m-C4-yBC" id="A6c-Xu-wNw"/>
+            </connections>
+        </view>
+    </objects>
+</document>

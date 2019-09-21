@@ -14,6 +14,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (instancetype)initWithSearchStr:(NSString *)str;
 
+@property (nonatomic, assign) NSInteger  searchType;//1淘宝,2拼多多,3京东
+
 @end
 
 NS_ASSUME_NONNULL_END

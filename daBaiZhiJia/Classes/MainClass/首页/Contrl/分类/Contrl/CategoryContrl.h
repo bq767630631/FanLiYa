@@ -14,10 +14,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 //isSec:是否是二级分类界面 默认否
 - (instancetype)initWithCateId:(NSString*)cid isSec:(BOOL)isSec secTitle:(NSString*)secTitle;
-
+@property (nonatomic, assign) FLYPT_Type  pt; 
 @property (nonatomic, strong) UINavigationController*naviContrl;
 
 @property (nonatomic, strong) UITabBarController*tabBarContrl;
+
+- (void)refreshData;
 @end
 
 NS_ASSUME_NONNULL_END

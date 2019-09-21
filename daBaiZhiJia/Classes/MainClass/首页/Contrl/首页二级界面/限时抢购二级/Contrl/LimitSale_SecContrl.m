@@ -145,6 +145,7 @@ static NSString *menuCellId = @"menuCellId";
     }
     SearchResulGoodInfo *info = self.goodArr[indexPath.row];
     GoodDetailContrl *detail = [[GoodDetailContrl alloc] initWithSku:info.sku];
+    detail.pt = info.pt;
     [self.navigationController pushViewController:detail animated:YES];
 }
 

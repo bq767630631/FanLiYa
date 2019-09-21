@@ -14,6 +14,7 @@
 #import "LoginContrl.h"
 #import "PageViewController.h"
 #import "CategoryContrl.h"
+#import "PingDuoduoPageHomecontrl.h"
 
 @interface Home_SecSingleCell ()
 @property (weak, nonatomic) IBOutlet UIImageView *goodimage;
@@ -51,7 +52,19 @@
     self.sharebtn.indexPath=  info.indexPath;
     [self.goodimage setDefultPlaceholderWithFullPath:info.pic];
     self.playImagV.hidden = !info.video.length;
-    self.pt.image = (info.pt == 1)?ZDBImage(@"icon_zbytianmao"):ZDBImage(@"img_zbytaobao");
+    
+    //1、天猫 2、京东 3、拼多多 4、淘宝 5、其他
+    NSString *imageStr = @"";
+    if (info.pt==1) {
+        imageStr = @"icon_zbytianmao";
+    }else if (info.pt==3){
+        imageStr = @"icon_pinduoduo";
+    }else if (info.pt==4){
+        imageStr = @"img_zbytaobao";
+    }else if (info.pt==2){
+        imageStr = @"icon_jd";
+    }
+    self.pt.image  = ZDBImage(imageStr);
     [self.quanBtn setTitle:[NSString stringWithFormat:@"¥%@",info.discount] forState:UIControlStateNormal];
     CGFloat wd = [[NSString stringWithFormat:@"¥%@",info.discount] textWidthWithFont:self.quanBtn.titleLabel.font maxHeight:18];
     self.quanBtn_W.constant = wd + 5;
@@ -79,10 +92,20 @@
             navi = self.viewController.navigationController;
         }
         
+        if (self.info.pt == FLYPT_Type_Pdd||self.info.pt == FLYPT_Type_JD) {
+            CreateShareContrl *share = [[CreateShareContrl alloc] initWithSku:self.info.sku];
+            share.pt = self.info.pt;
+            PingDuoduoPageHomecontrl *vc = (PingDuoduoPageHomecontrl*)self.viewController;
+            [vc.naviContrl pushViewController:share animated:YES];
+            return;
+        }
+        
+        
         [CreateShare_Model geneRateTaoKlWithSku:self.info.sku vc:self.viewController navi_vc:navi  block:^(NSString *tkl, NSString *code, NSString *shorturl) {
             if (tkl) {
                 
                 CreateShareContrl *share = [[CreateShareContrl alloc] initWithSku:self.info.sku ];
+                share.pt = self.info.pt;
                 if (self.info.is_From_page) {
                     PageViewController *page  = (PageViewController *)self.viewController;
                     [page.naviContrl pushViewController:share animated:YES];

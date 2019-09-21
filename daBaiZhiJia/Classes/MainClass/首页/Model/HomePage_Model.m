@@ -7,7 +7,7 @@
 //
 
 #import "HomePage_Model.h"
-#import "NSString+URLErrorString.h"
+
 @implementation HomePage_Model
 + (void)queryVerson:(void (^)(void))callBlock{
     [PPNetworkHelper GET:URL_Add(@"/v.php/index.index/getAppShow") parameters:@{@"token":ToKen,@"v":APP_Version} success:^(id responseObject) {
@@ -15,7 +15,7 @@
         NSInteger code = [responseObject[@"code"] integerValue];
         NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
         NSString *cur_ver = [infoDictionary objectForKey:@"CFBundleShortVersionString"];
-        NSLog(@"app_Version =%@",cur_ver);
+       // NSLog(@"app_Version =%@",cur_ver);
         if (code == SucCode) {
             NSMutableArray *arr = [Version_info mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"list"]];
             BOOL isShow = YES;
@@ -25,7 +25,7 @@
                     NSLog(@"正在审核的版本");
                 }
             }
-            
+           
             [[NSUserDefaults standardUserDefaults] setBool:isShow forKey:IsShow_InfoKey];
             [[NSUserDefaults standardUserDefaults] synchronize];
             NSLog(@"isShow %d",[[[NSUserDefaults standardUserDefaults] objectForKey:IsShow_InfoKey] boolValue]);
@@ -127,7 +127,7 @@
 + (void)queryMiddleAdverseWithBlock:(midadver_Block)block{
       NSDictionary *dict = @{@"token":ToKen,@"v":APP_Version};
     [PPNetworkHelper GET:URL_Add(@"/v.php/index.index/getAppBannerSide") parameters:dict success:^(id responseObject) {
-        NSLog(@"queryMiddleAdverse");
+//        NSLog(@"queryMiddleAdverse");
          //NSLog(@"MiddleAdverse responseObject %@",responseObject);
         NSInteger code = [responseObject[@"code"] integerValue];
         if (code == SucCode) {
@@ -215,6 +215,28 @@
     } failure:^(NSError *error) {
         NSLog(@"error =%@",error);
         block(nil,error);
+    }];
+}
+
++ (void)queryAppSoreInfoWithCallBack:(VEBlockInteger)callBack{
+    NSString *url = @"http://itunes.apple.com/cn/lookup?id=1459203610";
+    [PPNetworkHelper GET:url parameters:nil success:^(id responseObject) {
+       NSArray *list = responseObject[@"results"];
+        NSString *storeVerson = list.firstObject[@"version"];
+        NSString *cur_v = [UIApplication sharedApplication].appVersion;
+        NSLog(@"storeVerson %@",storeVerson);
+        NSLog(@"cur_Version %@", [UIApplication sharedApplication].appVersion);
+        NSLog(@"Is_Show_Info %d", Is_Show_Info);
+       // NSLog(@"%@",responseObject);
+        NSInteger isShowUpDate = 0;
+        if (Is_Show_Info && ![cur_v isEqualToString:storeVerson]) {//非审核状态并且当地版本和线上版本不一样
+            isShowUpDate = 1;
+        }
+        
+        callBack(isShowUpDate);
+    } failure:^(NSError *error) {
+        callBack(0);
+        NSLog(@"%@",error);
     }];
 }
 

@@ -16,6 +16,9 @@ typedef NS_ENUM(NSInteger, SecHasCatType) {
     SecHasCatType_JHS , //聚划算类目
     SecHasCatType_HTG ,  //海淘购类目
     SecHasCatType_BrandShow ,  //品牌展示
+    SecHasCatType_GaoYong,   //高佣推荐
+    SecHasCatType_MuYing,  //母婴类目
+    SecHasCatType_Tehui,  //特惠专区
 };
 
 typedef void(^Home_SecHaBlock)(NSMutableArray *goodArr,NSError *error);

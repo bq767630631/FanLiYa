@@ -68,9 +68,18 @@
 - (IBAction)shengjiAction:(UIButton *)sender {
     
     if ([self judgeisLogin]) {
+        if (self.detailInfo.pt == FLYPT_Type_Pdd||self.detailInfo.pt == FLYPT_Type_JD) {
+            CreateShareContrl *share = [[CreateShareContrl alloc] initWithSku:self.detailInfo.sku];
+            share.pt = self.detailInfo.pt;
+            [self.viewController.navigationController pushViewController:share animated:YES];
+            return;
+        }
+        
+        //淘宝和天猫
         [CreateShare_Model geneRateTaoKlWithSku:self.detailInfo.sku vc:self.viewController  navi_vc:self.viewController.navigationController  block:^(NSString *tkl, NSString *code, NSString *shorturl) {
             if (tkl) {
                 CreateShareContrl *share = [[CreateShareContrl alloc] initWithSku:self.detailInfo.sku];
+                share.pt = self.detailInfo.pt;
                 [self.viewController.navigationController pushViewController:share animated:YES];
             }
         }];
@@ -80,6 +89,21 @@
 
 - (IBAction)buyAction:(UIButton *)sender {
     if ([self judgeisLogin]) {
+        if (self.detailInfo.pt == FLYPT_Type_Pdd) {
+            [GoodDetailModel pddGetYouhuiQuanWithsku:self.detailInfo.sku CallBack:^(NSDictionary *dict) {
+                if (dict) {
+                    NSString *app = dict[@"app"];//如果没下app,safari自动跳转
+                    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:app]];
+                }
+            }];
+            return;
+        }else if (self.detailInfo.pt == FLYPT_Type_JD){
+            
+            
+            return;
+        }
+        
+        
         NSDictionary *dict = @{@"sku":self.sku,@"token":ToKen,@"v":APP_Version};
         @weakify(self);
         [PPNetworkHelper POST:URL_Add(@"/v.php/goods.goods/getCoupon") parameters:dict success:^(id responseObject) {
@@ -125,7 +149,7 @@
 
 //加入收藏
 - (void)shouCangReuest{
-    NSDictionary *para = @{@"sku":self.detailInfo.sku, @"token":ToKen, @"pt":@(1), @"title":self.detailInfo.title, @"pic":self.detailInfo.pic, @"market_price":self.detailInfo.market_price, @"price":self.detailInfo.price, @"commission_money":self.detailInfo.commission_money,@"v":APP_Version};
+    NSDictionary *para = @{@"sku":self.detailInfo.sku, @"token":ToKen, @"pt":@(self.detailInfo.pt), @"title":self.detailInfo.title, @"pic":self.detailInfo.pic, @"market_price":self.detailInfo.market_price, @"price":self.detailInfo.price, @"commission_money":self.detailInfo.commission_money,@"v":APP_Version};
     [PPNetworkHelper POST:URL_Add(@"/v.php/goods.goods/addFavorite") parameters:para success:^(id responseObject) {
         NSLog(@"responseObject %@",responseObject);
           NSInteger code = [responseObject[@"code"] integerValue];

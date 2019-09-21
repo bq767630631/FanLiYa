@@ -43,7 +43,18 @@
     SearchResulGoodInfo *info = model;
     [self.goodImage setDefultPlaceholderWithFullPath:info.pic];
     self.title.text = info.title;
-    self.pt.image = (info.pt == 1)?ZDBImage(@"icon_zbytianmao"):ZDBImage(@"img_zbytaobao");
+    NSString *imageStr = @"";
+    if (info.pt==1) {
+        imageStr = @"icon_zbytianmao";
+    }else if (info.pt==3){
+        imageStr = @"icon_pinduoduo";
+    }else if (info.pt==4){
+        imageStr = @"img_zbytaobao";
+    }else if (info.pt==2){
+        imageStr = @"icon_jd";
+    }
+    self.pt.image  = ZDBImage(imageStr);
+    
     self.soldNum.text = info.playNum;
     [self.yuguZhuan setTitle:[NSString stringWithFormat:@"预估赚¥%@",info.profit] forState:UIControlStateNormal];
      [self.quanBtn setTitle:[NSString stringWithFormat:@"¥%@",info.discount] forState:UIControlStateNormal];

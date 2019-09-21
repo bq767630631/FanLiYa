@@ -16,7 +16,7 @@ typedef void(^goodDetailSegmentBlock)(NSInteger type);//012
 
 @property (nonatomic, assign) BOOL selfIsClick; //自己是否在点击防止卡顿
 
-
+@property (nonatomic, assign) FLYPT_Type  pt;
 - (void)setSegmentToDetailToBaobei;
 
 - (void)setSegmentToDetail;

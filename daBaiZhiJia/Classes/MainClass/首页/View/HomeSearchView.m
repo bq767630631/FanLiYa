@@ -29,6 +29,7 @@
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
     NSLog(@"开始编辑");
     DWQSearchController *search = [DWQSearchController new];
+    search.searchType = 1;
     [self.viewController.navigationController pushViewController:search animated:YES];
     return NO;
 }

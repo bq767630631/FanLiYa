@@ -7,6 +7,7 @@
 //
 
 #import "SearchResulModel.h"
+#import "NSString+URLErrorString.h"
 
 @class HomePage_CateInfo,HomePage_bg_bannernfo,HomePage_BroadCastInfo;
 @class HomePage_FlashSaleInfo,BrandCat_info;
@@ -54,6 +55,9 @@ typedef void(^tmUrl_Block)(NSString *tmCS,NSString *tmGJ);
 
 //首页漂浮广告位
 + (void)queryAppTopSideWithBlock:(PPHttpRequestCallBack)block;
+
+//app信息
++ (void)queryAppSoreInfoWithCallBack:(VEBlockInteger)callBack;
 @end
 
 
@@ -69,6 +73,7 @@ typedef void(^tmUrl_Block)(NSString *tmCS,NSString *tmGJ);
 @property (nonatomic, copy) NSString *url;
 @property (nonatomic, assign) NSInteger  url_type;//1、单品详情；2、内部H5页面；3、淘宝H5页面；4、跳转打开手淘页,5新人专享
 @property (nonatomic, copy) NSString *type;//广告位置：1上2中左3中右4下
+@property (nonatomic, assign) NSInteger  pt;
 @end
 
 @interface HomePage_BroadCastInfo : NSObject

@@ -10,7 +10,7 @@
 @interface GoodDetailContrl : MPZG_BaseContrl
 
 - (instancetype)initWithSku:(NSString *)sku;
-
+@property (nonatomic, assign) FLYPT_Type  pt;
 @end
 
 

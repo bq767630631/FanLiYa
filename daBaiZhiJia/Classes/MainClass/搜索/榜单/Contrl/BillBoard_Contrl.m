@@ -186,6 +186,7 @@ static NSString *tableCellID3 = @"tableCellID3";
         info = self.goodArr3[indexPath.row];
     }
     GoodDetailContrl *detail = [[GoodDetailContrl alloc] initWithSku:info.sku];
+    detail.pt = info.pt;
     [self.navigationController pushViewController:detail animated:YES];
 }
 

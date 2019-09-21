@@ -77,7 +77,17 @@ static NSString *cellid=  @"cellid";
     self.minute.text  =[NSString stringWithFormat:@"%@同步",info.time];
     self.soldNum.text = info.sold_num;
     [self.smallImage setDefultPlaceholderWithFullPath:info.pic];
-    self.pt.image = (info.pt == 1)?ZDBImage(@"icon_zbytianmao"):ZDBImage(@"img_zbytaobao");
+    NSString *imageStr = @"";
+    if (info.pt==1) {
+        imageStr = @"icon_zbytianmao";
+    }else if (info.pt==3){
+        imageStr = @"icon_pinduoduo";
+    }else if (info.pt==4){
+        imageStr = @"img_zbytaobao";
+    }else if (info.pt==2){
+        imageStr = @"icon_jd";
+    }
+    self.pt.image  = ZDBImage(imageStr);
     self.title.text = info.title;
     self.soldNum.text = [NSString stringWithFormat:@"%@人购买",info.sold_num];
    
@@ -143,6 +153,7 @@ static NSString *cellid=  @"cellid";
 #pragma mark  - action
 - (IBAction)gotoGoodDetail:(UIButton *)sender {
     GoodDetailContrl *detail = [[GoodDetailContrl alloc] initWithSku:self.info.sku];
+    detail.pt = self.info.pt;
     [self.viewController.navigationController pushViewController:detail animated:YES];
 }
 

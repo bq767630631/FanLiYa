@@ -22,6 +22,15 @@
     [super awakeFromNib];
 }
 
+- (void)setPt:(FLYPT_Type)pt{
+    _pt = pt;
+    if (pt == FLYPT_Type_Pdd ||pt == FLYPT_Type_JD) {
+        self.tuijian.hidden = YES;
+    }else{
+        self.tuijian.hidden = NO;
+    }
+}
+
 - (void)setSegmentToDetailToBaobei{
     [UIView animateWithDuration:0.2 animations:^{
         self.line.frame = CGRectMake(self.baoBei.left, self.baoBei.bottom+1, self.line.width, 2);

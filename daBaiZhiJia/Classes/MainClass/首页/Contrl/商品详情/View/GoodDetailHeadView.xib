@@ -312,9 +312,17 @@
                         <constraint firstItem="H9a-p6-Cey" firstAttribute="centerY" secondItem="Sil-36-XYr" secondAttribute="centerY" id="zDM-Ax-f4H"/>
                     </constraints>
                 </view>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ge4-ls-6f9">
+                    <rect key="frame" x="0.0" y="999.66666666666652" width="414" height="100"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="100" id="0ml-eS-0VK"/>
+                    </constraints>
+                </tableView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
+                <constraint firstAttribute="trailing" secondItem="Ge4-ls-6f9" secondAttribute="trailing" id="2bf-3K-0AS"/>
                 <constraint firstAttribute="trailing" secondItem="KGW-2f-Das" secondAttribute="trailing" id="3cH-pZ-feb"/>
                 <constraint firstItem="ZIM-4l-1pF" firstAttribute="centerY" secondItem="Qz0-VH-lMH" secondAttribute="centerY" id="3w7-Mo-up4"/>
                 <constraint firstItem="Qiy-8N-u3n" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="6py-RS-XDB"/>
@@ -337,6 +345,7 @@
                 <constraint firstItem="Qz0-VH-lMH" firstAttribute="top" secondItem="5uX-a1-cER" secondAttribute="bottom" constant="10" id="Qdx-0k-WOc"/>
                 <constraint firstItem="Sil-36-XYr" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="RQ2-sL-ys7"/>
                 <constraint firstItem="EMy-sW-jFF" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Tbw-C6-jw4"/>
+                <constraint firstItem="Ge4-ls-6f9" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="VIN-SQ-W9B"/>
                 <constraint firstAttribute="trailing" secondItem="iuA-BK-wE0" secondAttribute="trailing" id="XDf-Or-Iog"/>
                 <constraint firstItem="KGW-2f-Das" firstAttribute="top" secondItem="iuA-BK-wE0" secondAttribute="bottom" id="XmE-Xy-sAE"/>
                 <constraint firstItem="EMy-sW-jFF" firstAttribute="top" secondItem="elD-D9-oWe" secondAttribute="bottom" id="Ypj-QI-h4y"/>
@@ -356,6 +365,7 @@
                 <constraint firstItem="5uX-a1-cER" firstAttribute="leading" secondItem="6Vm-Kh-pgu" secondAttribute="leading" id="snH-8i-q2f"/>
                 <constraint firstItem="FKW-4j-WVb" firstAttribute="top" secondItem="Au3-u5-Lok" secondAttribute="bottom" constant="13" id="tDC-1H-ZNA"/>
                 <constraint firstAttribute="trailing" secondItem="EMy-sW-jFF" secondAttribute="trailing" id="uRW-fD-Pbu"/>
+                <constraint firstItem="Ge4-ls-6f9" firstAttribute="top" secondItem="Sil-36-XYr" secondAttribute="bottom" id="uXp-7t-zOi"/>
                 <constraint firstItem="Tsn-V5-hJY" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="x7w-Oq-HbY"/>
                 <constraint firstAttribute="trailing" secondItem="Tsn-V5-hJY" secondAttribute="trailing" constant="10" id="yYA-mL-GSr"/>
                 <constraint firstAttribute="trailing" secondItem="1Xf-ha-nmj" secondAttribute="trailing" id="zM1-wJ-sqo"/>
@@ -365,8 +375,11 @@
                 <outlet property="bannerView" destination="Hhf-qc-kpI" id="i8a-wD-0pf"/>
                 <outlet property="collecTion_H" destination="aEi-5C-LWq" id="6ec-qK-XPM"/>
                 <outlet property="collection" destination="KGW-2f-Das" id="Fgj-cx-cKe"/>
+                <outlet property="detailTableV" destination="Ge4-ls-6f9" id="fmg-R4-oLK"/>
+                <outlet property="detailTableV_H" destination="0ml-eS-0VK" id="CAO-OH-7yA"/>
                 <outlet property="detailV" destination="Sil-36-XYr" id="cMD-Cc-Zx6"/>
                 <outlet property="discountLb" destination="VIz-0g-x6p" id="F5r-PO-jiP"/>
+                <outlet property="likeV_H" destination="bNq-t8-XF9" id="YSZ-L8-Lbi"/>
                 <outlet property="likeView" destination="iuA-BK-wE0" id="Psc-AM-5qd"/>
                 <outlet property="limiteBuyBtn" destination="NBy-un-l7L" id="xFc-dG-59U"/>
                 <outlet property="line3" destination="Qiy-8N-u3n" id="6Go-VW-zCn"/>

@@ -61,6 +61,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, assign) NSInteger imageLeadCons;//商品图片距左边的距离 默认11 编辑状态43
 
+@property (nonatomic, assign) NSInteger  pingtai;
+
 @property (nonatomic, assign) BOOL isSelected;
 @end
 

@@ -30,5 +30,5 @@
 #import "NSString+FontSize.h"
 #import "MP_ZG_Const.h"
 #import "HandelTaoBaoTradeManager.h"
-
+#import "SearchResulModel.h"
 #endif /* PrefixHeader_pch */

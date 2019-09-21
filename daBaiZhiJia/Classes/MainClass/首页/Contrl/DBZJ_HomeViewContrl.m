@@ -158,6 +158,7 @@
         CategoryContrl *cate =  [[CategoryContrl alloc] initWithCateId:cid isSec:NO secTitle:@""];
         cate.naviContrl = self.navigationController;
         cate.tabBarContrl = self.tabBarController;
+        cate.pt = FLYPT_Type_TB;
         list =  cate;
     }
     return list;

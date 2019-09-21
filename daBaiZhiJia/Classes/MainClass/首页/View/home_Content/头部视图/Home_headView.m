@@ -16,9 +16,11 @@
 #import "NewPeo_shareContrl.h"
 #import "Home_Com_Group_Recom.h"
 #import "GoodDetailContrl.h"
+#import "Home_HeadDotV.h"
+#import "Home_headMenuFirst.h"
+#import "Home_headMenuSec.h"
 
-
-@interface Home_headView ()<SDCycleScrollViewDelegate>
+@interface Home_headView ()<SDCycleScrollViewDelegate,UIScrollViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIImageView *banner;
 
@@ -27,7 +29,12 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *view4Trail;
 
 @property (weak, nonatomic) IBOutlet UIView *line;
+@property (weak, nonatomic) IBOutlet UIView *bannerContentV;
 
+@property (nonatomic, strong) UIScrollView *scroView;
+@property (nonatomic, strong) Home_HeadDotV *dotV;
+@property (nonatomic, strong) Home_headMenuFirst *menuFirst;
+@property (nonatomic, strong) Home_headMenuSec *menuSec;
 @end
 @implementation Home_headView
 
@@ -38,6 +45,8 @@
     self.view2Lead.constant = gap;
     self.view4Trail.constant = gap;
     [self addSubview:self.myScroview];
+    [self.bannerContentV addSubview:self.scroView];
+    [self.bannerContentV addSubview:self.dotV];
 }
 
 - (void)setBannerArr:(NSMutableArray *)bannerArr{
@@ -49,12 +58,24 @@
     self.myScroview.imageURLStringsGroup = banImageArr;
 }
 
+- (void)setTmcs:(NSString *)tmcs{
+    _tmcs = tmcs;
+    self.menuFirst.tmcs = tmcs;
+}
+
+- (void)setTmgj:(NSString *)tmgj{
+    _tmgj = tmgj;
+    self.menuSec.tmgj = tmgj;
+}
+
 - (void)layoutSubviews{
     [super layoutSubviews];
     self.myScroview.frame = self.banner.frame;
     self.height = self.line.bottom;
         //NSLog(@"myScroview.frame=@",NSStringFromCGRect( self.myScroview.frame));
        // NSLog(@"headHeight =%.f",self.height);
+    self.scroView.frame = self.bannerContentV.bounds;
+    self.dotV.frame = CGRectMake(0, self.bannerContentV.height-23, SCREEN_WIDTH, 23);
 }
 
 
@@ -120,12 +141,20 @@
       PageViewController *page = (PageViewController*)self.viewController;
     if (type ==1) {
         GoodDetailContrl *detail = [[GoodDetailContrl alloc] initWithSku:info.url];
+        detail.pt = info.pt;
         [page.naviContrl pushViewController:detail animated:YES];
     }else if (type ==2||type ==3){
         DetailWebContrl *detailweb = [[DetailWebContrl alloc] initWithUrl:[NSString stringWithFormat:@"%@&token=%@",info.url,ToKen] title:@"" para:nil];
         [page.naviContrl pushViewController:detailweb animated:YES];
     }else if (type==4){
-         [HandelTaoBaoTradeManager openTaoBaoAndTraWithUrl:info.url navi:page.naviContrl];
+        if (info.pt==FLYPT_Type_TM ||info.pt==FLYPT_Type_TB) {
+            [HandelTaoBaoTradeManager openTaoBaoAndTraWithUrl:info.url navi:page.naviContrl];
+        }else if (info.pt==FLYPT_Type_Pdd){
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:info.url]];
+        }else if (info.pt==FLYPT_Type_JD){
+            //todo
+        }
+        
     }
 }
 
@@ -136,6 +165,17 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:Home_pageScro_ChangeBgNoti object:nil userInfo:info];
 }
 
+#pragma mark -
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
+    CGFloat offx = scrollView.contentOffset.x;
+    if (offx==0) {
+        [self.dotV setDotColorWithLeft:RGBColor(255,208,153) right:RGBColor(51,51,51)];
+    }else{
+        [self.dotV setDotColorWithLeft:RGBColor(51,51,51) right:RGBColor(255,208,153)];
+    }
+    NSLog(@"contentOffset2 %@", NSStringFromCGPoint(scrollView.contentOffset));
+}
 #pragma mark - getter
 - (SDCycleScrollView *)myScroview{
     if (!_myScroview) {
@@ -150,4 +190,39 @@
     return _myScroview;
 }
 
+- (UIScrollView *)scroView{
+    if (!_scroView) {
+        _scroView = [[UIScrollView alloc] init];
+        _scroView.contentSize = CGSizeMake(SCREEN_WIDTH*2, 0);
+        _scroView.pagingEnabled = YES;
+        _scroView.delegate = self;
+        [_scroView addSubview:self.menuFirst];
+        [_scroView addSubview:self.menuSec];
+    }
+    return _scroView;
+}
+
+- (Home_HeadDotV *)dotV{
+    if (!_dotV) {
+        _dotV = [Home_HeadDotV viewFromXib];
+        
+    }
+    return _dotV;
+}
+
+- (Home_headMenuFirst *)menuFirst{
+    if (!_menuFirst) {
+        _menuFirst = [Home_headMenuFirst viewFromXib];
+        _menuFirst.frame = CGRectMake(0, 0, SCREEN_WIDTH, 175);
+    }
+    return _menuFirst;
+}
+
+- (Home_headMenuSec *)menuSec{
+    if (!_menuSec) {
+        _menuSec = [Home_headMenuSec viewFromXib];
+        _menuSec.frame = CGRectMake(SCREEN_WIDTH, 0, SCREEN_WIDTH, 175);
+    }
+    return _menuSec;
+}
 @end

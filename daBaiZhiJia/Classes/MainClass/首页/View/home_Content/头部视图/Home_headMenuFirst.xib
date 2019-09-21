@@ -1,0 +1,383 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="d0P-H5-PCW" userLabel="conView" customClass="Home_headMenuFirst">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="175"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3xj-gY-wIq" userLabel="View2">
+                    <rect key="frame" x="89" y="14" width="42" height="63"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="img_002" translatesAutoresizingMaskIntoConstraints="NO" id="Ewf-yL-dQw">
+                            <rect key="frame" x="0.0" y="0.0" width="42" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="今日疯抢" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Lr-TF-uaw">
+                            <rect key="frame" x="-4" y="48" width="50" height="15"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <color key="textColor" red="0.12941176469999999" green="0.12941176469999999" blue="0.12941176469999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" tag="201" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dCc-xK-Krt" customClass="IndexButton">
+                            <rect key="frame" x="0.0" y="0.0" width="40" height="63"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" title="今日疯抢">
+                                <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <connections>
+                                <action selector="clickAction:" destination="d0P-H5-PCW" eventType="touchUpInside" id="sNy-HD-lhq"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <gestureRecognizers/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="42" id="99V-Sr-ecw"/>
+                        <constraint firstAttribute="height" constant="63" id="xFs-tw-qF4"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Keb-DM-Sj1" userLabel="View3">
+                    <rect key="frame" x="186" y="14" width="42" height="63"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="img_003" translatesAutoresizingMaskIntoConstraints="NO" id="ZCK-Ir-Y2b">
+                            <rect key="frame" x="0.0" y="0.0" width="42" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="高佣推荐" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uwz-Z3-ge8">
+                            <rect key="frame" x="-4" y="48" width="50" height="15"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <color key="textColor" red="0.12941176469999999" green="0.12941176469999999" blue="0.12941176469999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" tag="202" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SNN-Tg-WS8" customClass="IndexButton">
+                            <rect key="frame" x="0.0" y="0.0" width="40" height="63"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" title="聚划算">
+                                <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <connections>
+                                <action selector="clickAction:" destination="d0P-H5-PCW" eventType="touchUpInside" id="2Xs-ee-8mT"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <gestureRecognizers/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="42" id="8Aw-Si-tbb"/>
+                        <constraint firstAttribute="height" constant="63" id="rnD-xu-4fz"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fSB-Ab-BF3" userLabel="View4">
+                    <rect key="frame" x="284" y="14" width="42" height="63"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="img_004" translatesAutoresizingMaskIntoConstraints="NO" id="dm3-c5-bwK">
+                            <rect key="frame" x="0.0" y="0.0" width="42" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="新人专享" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cob-06-ygr">
+                            <rect key="frame" x="-4" y="48" width="50" height="15"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <color key="textColor" red="0.12941176469999999" green="0.12941176469999999" blue="0.12941176469999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" tag="203" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G3T-LZ-FO5" customClass="IndexButton">
+                            <rect key="frame" x="0.0" y="0.0" width="40" height="63"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" title="淘抢购">
+                                <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <connections>
+                                <action selector="clickAction:" destination="d0P-H5-PCW" eventType="touchUpInside" id="KuK-WO-8bK"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <gestureRecognizers/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="42" id="6NU-QO-eOL"/>
+                        <constraint firstAttribute="height" constant="63" id="j57-Me-Yoz"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F3Q-zu-oMP" userLabel="View1">
+                    <rect key="frame" x="15" y="14" width="43" height="63"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="img_9.9" translatesAutoresizingMaskIntoConstraints="NO" id="yeN-lH-NJK">
+                            <rect key="frame" x="0.0" y="0.0" width="42" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="9.9包邮" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YWm-De-9cV">
+                            <rect key="frame" x="-1" y="48" width="45" height="15"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <color key="textColor" red="0.12941176469999999" green="0.12941176469999999" blue="0.12941176469999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" tag="200" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kMS-cW-WWB" customClass="IndexButton">
+                            <rect key="frame" x="0.0" y="0.0" width="40" height="63"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" title="9.9包邮">
+                                <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <connections>
+                                <action selector="clickAction:" destination="d0P-H5-PCW" eventType="touchUpInside" id="14y-di-0HK"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <gestureRecognizers/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="43" id="BCr-i5-cEs"/>
+                        <constraint firstAttribute="height" constant="63" id="UNI-BU-zpS"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="geN-4a-1j0" userLabel="View5">
+                    <rect key="frame" x="357" y="14" width="42" height="63"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="img_005" translatesAutoresizingMaskIntoConstraints="NO" id="Ofu-AQ-9lR">
+                            <rect key="frame" x="0.0" y="0.0" width="42" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="邀请好友" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fxd-R1-Jus">
+                            <rect key="frame" x="-4" y="48" width="50" height="15"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <color key="textColor" red="0.12941176469999999" green="0.12941176469999999" blue="0.12941176469999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" tag="204" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QST-5F-DFa" customClass="IndexButton">
+                            <rect key="frame" x="0.0" y="0.0" width="40" height="63"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" title="今日推荐">
+                                <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <connections>
+                                <action selector="clickAction:" destination="d0P-H5-PCW" eventType="touchUpInside" id="CT1-pt-kh7"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <gestureRecognizers/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="42" id="1L1-4T-SLg"/>
+                        <constraint firstAttribute="height" constant="63" id="pKl-Od-GgD"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ALL-33-Pva" userLabel="View6">
+                    <rect key="frame" x="15" y="97" width="42" height="63"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="img_006" translatesAutoresizingMaskIntoConstraints="NO" id="3Ql-8D-LtK">
+                            <rect key="frame" x="0.0" y="0.0" width="42" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="品牌精选" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wd0-Da-a5t">
+                            <rect key="frame" x="-4" y="48" width="50" height="15"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <color key="textColor" red="0.12941176469999999" green="0.12941176469999999" blue="0.12941176469999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" tag="205" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YTp-xe-uRz" customClass="IndexButton">
+                            <rect key="frame" x="0.0" y="0.0" width="40" height="63"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" title="大额券">
+                                <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <connections>
+                                <action selector="clickAction:" destination="d0P-H5-PCW" eventType="touchUpInside" id="ZQ6-yE-4Qv"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <gestureRecognizers/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="42" id="cta-DC-4dU"/>
+                        <constraint firstAttribute="height" constant="63" id="jn5-Mb-ldo"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jpd-RC-nbQ" userLabel="View7">
+                    <rect key="frame" x="89" y="97" width="42" height="63"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="img_007" translatesAutoresizingMaskIntoConstraints="NO" id="IZZ-uB-JU9">
+                            <rect key="frame" x="0.0" y="0.0" width="42" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="母婴专区" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IsB-M6-0s7">
+                            <rect key="frame" x="-4" y="48" width="50" height="15"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <color key="textColor" red="0.12941176469999999" green="0.12941176469999999" blue="0.12941176469999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" tag="206" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qzX-Yp-FKJ" customClass="IndexButton">
+                            <rect key="frame" x="0.0" y="0.0" width="40" height="63"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" title="疯抢排行">
+                                <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <connections>
+                                <action selector="clickAction:" destination="d0P-H5-PCW" eventType="touchUpInside" id="9pN-B0-CmK"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <gestureRecognizers/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="63" id="DiB-n6-evx"/>
+                        <constraint firstAttribute="width" constant="42" id="sH9-3P-WsM"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xYX-Qg-Riv" userLabel="View8">
+                    <rect key="frame" x="186" y="97" width="42" height="63"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="img_008" translatesAutoresizingMaskIntoConstraints="NO" id="H5c-Ue-KrS">
+                            <rect key="frame" x="0.0" y="0.0" width="42" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="天猫超市" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LQQ-ux-mhI">
+                            <rect key="frame" x="-4" y="48" width="50" height="15"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <color key="textColor" red="0.12941176469999999" green="0.12941176469999999" blue="0.12941176469999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" tag="207" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R8c-h3-L01" customClass="IndexButton">
+                            <rect key="frame" x="0.0" y="0.0" width="40" height="63"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" title="分享赚钱">
+                                <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <connections>
+                                <action selector="clickAction:" destination="d0P-H5-PCW" eventType="touchUpInside" id="1of-Vc-BAl"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <gestureRecognizers/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="63" id="FI7-OD-JsR"/>
+                        <constraint firstAttribute="width" constant="42" id="dhX-rJ-wB3"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wWL-Ce-AgU" userLabel="View9">
+                    <rect key="frame" x="284" y="97" width="42" height="63"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="img_009" translatesAutoresizingMaskIntoConstraints="NO" id="Nja-en-HNU">
+                            <rect key="frame" x="0.0" y="0.0" width="42" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="拼多多" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d1s-8e-klc">
+                            <rect key="frame" x="3" y="48" width="37" height="15"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <color key="textColor" red="0.12941176469999999" green="0.12941176469999999" blue="0.12941176469999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" tag="208" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tGF-it-P8B" customClass="IndexButton">
+                            <rect key="frame" x="0.0" y="0.0" width="40" height="63"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" title="好货">
+                                <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <connections>
+                                <action selector="clickAction:" destination="d0P-H5-PCW" eventType="touchUpInside" id="cHJ-48-xpb"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <gestureRecognizers/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="42" id="2Nh-pS-Av3"/>
+                        <constraint firstAttribute="height" constant="63" id="DbP-P6-fIR"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ucs-VJ-Rre" userLabel="View10">
+                    <rect key="frame" x="357" y="97" width="42" height="63"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="img_010" translatesAutoresizingMaskIntoConstraints="NO" id="Yft-Gf-IMJ">
+                            <rect key="frame" x="0.0" y="0.0" width="42" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="京东" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QDz-he-ktE">
+                            <rect key="frame" x="9" y="48" width="25" height="15"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <color key="textColor" red="0.12941176469999999" green="0.12941176469999999" blue="0.12941176469999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" tag="209" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nY8-bu-EQT" customClass="IndexButton">
+                            <rect key="frame" x="0.0" y="0.0" width="40" height="63"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" title="推广素材">
+                                <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <connections>
+                                <action selector="clickAction:" destination="d0P-H5-PCW" eventType="touchUpInside" id="1zs-Nx-OA3"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <gestureRecognizers/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="42" id="D0T-Vj-NoO"/>
+                        <constraint firstAttribute="height" constant="63" id="QVO-9d-OJX"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="Jpd-RC-nbQ" firstAttribute="top" secondItem="ALL-33-Pva" secondAttribute="top" id="245-5u-tGg"/>
+                <constraint firstItem="F3Q-zu-oMP" firstAttribute="top" secondItem="d0P-H5-PCW" secondAttribute="top" constant="14" id="6Vd-Cy-AJT"/>
+                <constraint firstItem="xYX-Qg-Riv" firstAttribute="centerX" secondItem="d0P-H5-PCW" secondAttribute="centerX" id="9H7-vC-qu0"/>
+                <constraint firstItem="geN-4a-1j0" firstAttribute="top" secondItem="F3Q-zu-oMP" secondAttribute="top" id="OtZ-ck-Nru"/>
+                <constraint firstItem="Keb-DM-Sj1" firstAttribute="top" secondItem="F3Q-zu-oMP" secondAttribute="top" id="PJU-Uw-PdK"/>
+                <constraint firstItem="F3Q-zu-oMP" firstAttribute="leading" secondItem="d0P-H5-PCW" secondAttribute="leading" constant="15" id="Pjp-Fg-7Mk"/>
+                <constraint firstItem="Keb-DM-Sj1" firstAttribute="centerX" secondItem="d0P-H5-PCW" secondAttribute="centerX" id="Ucg-hl-q1c"/>
+                <constraint firstItem="xYX-Qg-Riv" firstAttribute="top" secondItem="Keb-DM-Sj1" secondAttribute="bottom" constant="20" id="WMD-jc-SOC"/>
+                <constraint firstItem="fSB-Ab-BF3" firstAttribute="top" secondItem="F3Q-zu-oMP" secondAttribute="top" id="b4w-fn-rPE"/>
+                <constraint firstAttribute="bottom" secondItem="Ucs-VJ-Rre" secondAttribute="bottom" constant="15" id="baX-vy-11e"/>
+                <constraint firstItem="fSB-Ab-BF3" firstAttribute="leading" secondItem="wWL-Ce-AgU" secondAttribute="leading" id="cym-2C-LkX"/>
+                <constraint firstItem="3xj-gY-wIq" firstAttribute="top" secondItem="F3Q-zu-oMP" secondAttribute="top" id="fMN-sI-NiX"/>
+                <constraint firstAttribute="trailing" secondItem="Ucs-VJ-Rre" secondAttribute="trailing" constant="15" id="gMC-CB-HBz"/>
+                <constraint firstItem="ALL-33-Pva" firstAttribute="top" secondItem="F3Q-zu-oMP" secondAttribute="bottom" constant="20" id="iET-4R-EdZ"/>
+                <constraint firstItem="wWL-Ce-AgU" firstAttribute="top" secondItem="ALL-33-Pva" secondAttribute="top" id="kzx-Y0-Pow"/>
+                <constraint firstItem="xYX-Qg-Riv" firstAttribute="top" secondItem="ALL-33-Pva" secondAttribute="top" id="llL-nA-Tnr"/>
+                <constraint firstItem="3xj-gY-wIq" firstAttribute="leading" secondItem="F3Q-zu-oMP" secondAttribute="trailing" constant="31" id="lvs-jC-aoZ"/>
+                <constraint firstAttribute="trailing" secondItem="geN-4a-1j0" secondAttribute="trailing" constant="15" id="mMd-JO-FMI"/>
+                <constraint firstItem="Jpd-RC-nbQ" firstAttribute="leading" secondItem="3xj-gY-wIq" secondAttribute="leading" id="rlm-Q0-zNg"/>
+                <constraint firstItem="Ucs-VJ-Rre" firstAttribute="top" secondItem="ALL-33-Pva" secondAttribute="top" id="tLD-he-umy"/>
+                <constraint firstItem="geN-4a-1j0" firstAttribute="leading" secondItem="fSB-Ab-BF3" secondAttribute="trailing" constant="31" id="xAK-OV-mvd"/>
+                <constraint firstItem="ALL-33-Pva" firstAttribute="leading" secondItem="d0P-H5-PCW" secondAttribute="leading" constant="15" id="ygs-4g-jNv"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="view2Lead" destination="lvs-jC-aoZ" id="qL0-pf-YAN"/>
+                <outlet property="view4Trail" destination="xAK-OV-mvd" id="tEO-87-2Vc"/>
+            </connections>
+        </view>
+    </objects>
+    <resources>
+        <image name="img_002" width="44" height="44"/>
+        <image name="img_003" width="44" height="44"/>
+        <image name="img_004" width="44" height="44"/>
+        <image name="img_005" width="44" height="44"/>
+        <image name="img_006" width="44" height="44"/>
+        <image name="img_007" width="44" height="44"/>
+        <image name="img_008" width="44" height="44"/>
+        <image name="img_009" width="44" height="44"/>
+        <image name="img_010" width="44" height="44"/>
+        <image name="img_9.9" width="44" height="44"/>
+    </resources>
+</document>

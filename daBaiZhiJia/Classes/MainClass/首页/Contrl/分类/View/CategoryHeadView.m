@@ -125,6 +125,7 @@
 - (void)jumpToSecInterfaceWithIndex:(NSInteger)index{
     CategoryInfo *info = self.cateArr[index];
     CategoryContrl *cat = [[CategoryContrl alloc] initWithCateId:info.cid isSec:YES secTitle:info.title];
+    cat.pt = FLYPT_Type_TB;
     CategoryContrl *vc = (CategoryContrl *)self.viewController;
     [vc.naviContrl pushViewController:cat animated:YES];
 }

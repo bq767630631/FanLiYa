@@ -16,6 +16,7 @@
 #import "DWSearchHeadView.h"
 #import "SearchSaveManager.h"
 #import "SearchResultContrl.h"
+#import "DWSearchTableHeadV.h"
 static NSString *const HotCellID = @"HotCellID";
 static NSString *const HistoryCellID = @"HistoryCellID";
 
@@ -64,7 +65,6 @@ static NSString *const HistoryCellID = @"HistoryCellID";
     } failure:^(NSError *error) {
         NSLog(@"error %@",error);
     }];
-    //self.HotArr = [NSMutableArray arrayWithObjects:@"你想要搜索什么呢",@"web编程",@"JAVA8",@"JAVAVEE",@"Objective-c",@"SWift",@"iOS分享之路",@"MacBokPro",@"iOS直播",@"APPLE", nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -97,6 +97,7 @@ static NSString *const HistoryCellID = @"HistoryCellID";
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
     NSLog(@"搜索了什么：%@",textField.text);
     SearchResultContrl *searR = [[SearchResultContrl alloc] initWithSearchStr:textField.text];
+    searR.searchType = self.searchType;
     [self.navigationController pushViewController:searR animated:YES];
     if (![self.historyArr containsObject:textField.text] &&textField.text.length >0) {
         [self.historyArr insertObject:textField.text atIndex:0];
@@ -210,6 +211,7 @@ static NSString *const HistoryCellID = @"HistoryCellID";
 {
     NSLog(@"点击了%@",KeyWord);
     SearchResultContrl *searR = [[SearchResultContrl alloc] initWithSearchStr:KeyWord];
+    searR.searchType = self.searchType;
     [self.navigationController pushViewController:searR animated:YES];
     if (![self.historyArr containsObject:KeyWord]&& KeyWord.length >0) {
          [self.historyArr insertObject:KeyWord atIndex:0];
@@ -237,12 +239,16 @@ static NSString *const HistoryCellID = @"HistoryCellID";
 {
     if (!_tableview) {
         self.automaticallyAdjustsScrollViewInsets = NO;
-        _tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, NavigationBarBottom(self.navigationController.navigationBar) + 20, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height) style:UITableViewStylePlain];
+        _tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, NavigationBarBottom(self.navigationController.navigationBar), [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height) style:UITableViewStylePlain];
         _tableview.delegate = self;
         _tableview.dataSource = self;
         _tableview.separatorStyle = UITableViewCellSeparatorStyleNone;
         [_tableview registerClass:[HotSerachCell class] forCellReuseIdentifier:HotCellID];
         _tableview.backgroundColor = [UIColor whiteColor];
+        DWSearchTableHeadV *tableHead = [DWSearchTableHeadV viewFromXib];
+        tableHead.frame = CGRectMake(0, 0, SCREEN_WIDTH, 72);
+        [tableHead selectBtnWiThType:self.searchType];
+        _tableview.tableHeaderView = tableHead;
     }
     return _tableview;
 }

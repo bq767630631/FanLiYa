@@ -43,10 +43,14 @@
     [self.view addSubview:self.scroView];
     [self.view addSubview:self.bottom];
     
-    [CreateShare_Model queryDetailInfoWithSku:self.sku Blcok:^(GoodDetailInfo *info, NSError *error) {
+    [CreateShare_Model queryDetailInfoWithSku:self.sku pt:self.pt  Blcok:^(GoodDetailInfo *info, NSError *error) {
         if (info) {
             self.detailinfo = info;
-            [self queryTkl];
+            if (self.pt == FLYPT_Type_TB || self.pt == FLYPT_Type_TM) {
+                 [self queryTkl];
+            }else  {
+                [self queryPddAndJd];
+            }
         }
     }];
     
@@ -59,16 +63,26 @@
         self.detailinfo.tkl = tkl;
         self.detailinfo.code = code;
         self.detailinfo.shorturl = shorturl;
-        [CreateShare_Model geneRateWenanWithDetail:self.detailinfo isAdd:YES isDown:NO isRegisCode:YES isTkl:NO];
+        [CreateShare_Model geneRateWenanWithDetail:self.detailinfo isAdd:YES isDown:NO isRegisCode:YES isTkl:NO pt:self.pt];
         [self.contentView setInfoWithModel:self.detailinfo];
-        //self.bottom.pics =   self.detailinfo.pics;
+    }];
+}
+
+- (void)queryPddAndJd{
+    [CreateShare_Model pddAndJdGetYouhuiQuanWithsku:self.sku pt:self.pt couponUrl:self.detailinfo.couponUrl  CallBack:^(NSDictionary *dict) {
+        if (dict) {
+            self.detailinfo.shorturl = dict[@"url"];
+            self.detailinfo.downurl = dict[@"downurl"];
+            self.detailinfo.code     = dict[@"code"];
+            [CreateShare_Model geneRateWenanWithDetail:self.detailinfo isAdd:YES isDown:NO isRegisCode:YES isTkl:NO pt:self.pt];
+            [self.contentView setInfoWithModel:self.detailinfo];
+        }
     }];
 }
 
 - (void)dealloc{
     [self.contentView removeObserver:self forKeyPath:Post_Image_Key];
     [self removeObserver:self forKeyPath:DetailInfo_Key];
-    NSLog(@"");
 }
 
 #pragma mark - kvo
@@ -105,11 +119,11 @@
         _contentView = [CreateshareContent viewFromXib];
         CGFloat height = SCREEN_HEIGHT - NavigationBarBottom(self.navigationController.navigationBar) - Bottom_H;
        
-//        NSLog(@"Bottom_H = %.f",Bottom_H);
         if (IS_X_Xr_Xs_XsMax) {
             height -=  Bottom_Safe_AreaH ;
         }
         _contentView.frame = CGRectMake(0, 0, SCREEN_WIDTH, height);
+        _contentView.pt = self.pt;
     }
     return _contentView;
 }

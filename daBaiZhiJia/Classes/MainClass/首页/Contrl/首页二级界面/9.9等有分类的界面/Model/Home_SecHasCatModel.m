@@ -52,6 +52,11 @@
         return;
     }
     NSDictionary *dic = @{@"page":@(page),@"cid":@(cid),@"sort":sort, @"token":ToKen,@"v":APP_Version};
+    if (type==SecHasCatType_GaoYong||type==SecHasCatType_MuYing ) { //高佣和母婴没有筛选
+       dic = @{@"page":@(page),@"cid":@(cid), @"token":ToKen,@"v":APP_Version};
+    }else if (type == SecHasCatType_Tehui){ //特惠专区
+         dic = @{@"page":@(page), @"token":ToKen,@"v":APP_Version};
+    }
     NSLog(@"para =%@",dic);
     NSString *url = [self goodUrlWithType:type];
     
@@ -64,7 +69,7 @@
                 info.shengji_str = (info.profit == info.profit_up)?@"自购省":@"升级赚";
             }
             if (listArray.count ||page != 1) {
-                NSInteger totalPage = [responseObject[@"data"][@"totalpage"] integerValue];
+                NSInteger totalPage = [responseObject[@"data"][@"totalPage"] integerValue];
                 NSInteger currPage = [responseObject[@"data"][@"page"] integerValue];
               
                 if (currPage >= totalPage) { // 当前页数大于等于最大页数 提示没有更多数据
@@ -125,6 +130,12 @@
         case SecHasCatType_BrandShow:
             cateStr = @"brandcat";
             break;
+        case SecHasCatType_GaoYong:
+            cateStr = @"gaoyong";
+            break;
+        case SecHasCatType_MuYing:
+            cateStr = @"muying";
+            break;
         default:
             break;
     }
@@ -151,6 +162,15 @@
             break;
         case SecHasCatType_HTG:
             url = @"/v.php/goods.goods/getTqgList";
+            break;
+        case SecHasCatType_GaoYong:
+            url = @"/v.php/goods.goods/gaoyong";
+            break;
+        case SecHasCatType_MuYing:
+            url = @"/v.php/goods.goods/muying";
+            break;
+        case SecHasCatType_Tehui:
+            url = @"/v.php/goods.goods/tehui";
             break;
         default:
             break;

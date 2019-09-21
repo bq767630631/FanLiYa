@@ -13,6 +13,7 @@
 @interface GoodDetailModel : NSObject
 
 - (instancetype)initWithSku:(NSString* )sku;
+@property (nonatomic, assign) FLYPT_Type  pt;
 
 @property (nonatomic, weak) id<GoodDetailModelDelegate> delegate;
 
@@ -26,6 +27,9 @@
 
 //保存视频和图片到本地相册
 + (void)handleDownloadActionWith:(GoodDetailBannerInfo*)info;
+
+//拼多多优惠券
++ (void)pddGetYouhuiQuanWithsku:(NSString*)sku CallBack:(VEBlock)callBack;
 @end
 
 
@@ -49,7 +53,8 @@
 
 @property (nonatomic, copy) NSString *sku;//id
 @property (nonatomic, copy) NSString *title;//标题
-@property (nonatomic, copy) NSString *detail;//商品详情
+@property (nonatomic, copy) NSString *detail;//商品详情url
+@property (nonatomic, strong) NSArray *content;//商品详情url
 @property (nonatomic, copy) NSString *pic;//
 @property (nonatomic, copy) NSArray *pics;//多张大图
 @property (nonatomic, copy) NSString *market_price;//原价
@@ -62,7 +67,7 @@
 @property (nonatomic, copy) NSString *coupon_end_time;//优惠券有限期
 @property (nonatomic, copy) NSString *coupon_total_count;//优惠券数量
 @property (nonatomic, copy) NSString *commission_money;//
-
+@property (nonatomic, copy) NSString *couponUrl;//优惠券链接
 @property (nonatomic, copy) NSString *cateid;// 类别ID用于推荐接口的参数
 
 @property (nonatomic, copy) NSString *video; //视频地址 为空标识没有视频
@@ -74,7 +79,8 @@
 @property (nonatomic,copy) NSString *sold_num;
 @property (nonatomic, copy) NSString *tkl;//淘口令
 @property (nonatomic, copy) NSString *code;//邀请码
-@property (nonatomic, copy) NSString *shorturl;//下载地址
+@property (nonatomic, copy) NSString *shorturl;//下单地址
+@property (nonatomic, copy) NSString *downurl;//返利鸭APP下载地址
 @property (nonatomic, copy) NSString *shop_title; //店铺标题
 @property (nonatomic, copy) NSString *short_title; //短标题
 @property (nonatomic, copy) NSString *descScore; //描述分
@@ -93,6 +99,8 @@
 @property (nonatomic, copy) NSString *pic;
 @property (nonatomic, copy) NSString *videoUrl;
 @property (nonatomic, copy) NSString *url;
+@property (nonatomic, assign) NSInteger  url_type;
+@property (nonatomic, assign) NSInteger  pt;
 @end
 
 @interface GoodDetailViewInfo : NSObject

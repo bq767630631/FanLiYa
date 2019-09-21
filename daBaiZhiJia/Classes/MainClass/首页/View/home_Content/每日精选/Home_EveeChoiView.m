@@ -77,6 +77,7 @@ static NSString *everyDaycellId = @"everyDaycellId";
     SearchResulGoodInfo *info = self.everyDayArry[indexPath.row];
     PageViewController *page  = (PageViewController *)self.viewController;
     GoodDetailContrl *detail = [[GoodDetailContrl alloc] initWithSku:info.sku];
+    detail.pt = info.pt;
     [page.naviContrl pushViewController:detail animated:YES];
 }
 

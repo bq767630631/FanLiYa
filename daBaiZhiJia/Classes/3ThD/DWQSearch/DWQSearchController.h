@@ -10,4 +10,5 @@
 
 @interface DWQSearchController : MPZG_BaseContrl
 
+@property (nonatomic, assign) NSInteger  searchType;//1淘宝,2拼多多,3京东
 @end

@@ -8,6 +8,7 @@
 
 #import "ContactKefuContrl.h"
 #import "DBZJ_IncomeModel.h"
+#import "WXApi.h"
 @interface ContactKefuContrl ()
 @property (weak, nonatomic) IBOutlet UIView *view1;
 @property (weak, nonatomic) IBOutlet UIView *view2;
@@ -46,6 +47,21 @@
     }
     [UIPasteboard generalPasteboard].string = self.wxstr;
     [YJProgressHUD showMsgWithoutView:@"微信号复制成功"];
+    [self delayDoWork:1.0 WithBlock:^{
+         [self openWechat];
+    }];
+}
+
+- (void)openWechat{
+    NSURL *url = [NSURL URLWithString:@"weixin://"];
+    BOOL canOpen = [[UIApplication sharedApplication] canOpenURL:url];
+    //先判断是否能打开该url
+    if (canOpen)
+    {   //打开微信
+        [[UIApplication sharedApplication] openURL:url];
+    }else{
+        NSLog(@"wei  anzhung weixin");
+    }
 }
 
 @end

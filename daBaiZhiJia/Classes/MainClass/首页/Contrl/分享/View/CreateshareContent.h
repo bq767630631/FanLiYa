@@ -18,6 +18,7 @@
 
 @property (nonatomic, strong) UIImage *postImage;
 
+@property (nonatomic, assign) FLYPT_Type  pt;
 
 - (void)setInfoWithModel:(id)model;
 

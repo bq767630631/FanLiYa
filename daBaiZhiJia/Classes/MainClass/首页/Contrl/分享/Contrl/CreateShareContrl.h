@@ -13,7 +13,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface CreateShareContrl : MPZG_BaseContrl
 
-- (instancetype) initWithSku:(NSString *)sku;
+- (instancetype)initWithSku:(NSString *)sku;
+
+@property (nonatomic, assign) FLYPT_Type  pt;
 @end
 
 NS_ASSUME_NONNULL_END

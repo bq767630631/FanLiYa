@@ -77,6 +77,7 @@ static NSString *cellId = @"cellId";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     SearchResulGoodInfo *info = self.dataSource[indexPath.row];
     GoodDetailContrl *detail = [[GoodDetailContrl alloc] initWithSku:info.sku];
+    detail.pt = info.pt;
     [self.navigationController pushViewController:detail animated:YES];
 }
 

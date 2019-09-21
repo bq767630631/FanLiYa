@@ -115,7 +115,7 @@
 
 #pragma mark - GoodDetailModelDelegate
 - (void)detailModel:(GoodDetailModel *)model querySucWithDetailInfo:(GoodDetailInfo *)info tuiJianArr:(NSMutableArray *)arr{
-    [self.navigationController setNavigationBarHidden:YES animated:YES];
+    [self.navigationController setNavigationBarHidden:YES animated:NO];
     self.navigationItem.titleView = self.segMenu;
     [self.timer fire];
     [self.view addSubview:self.scroView];
@@ -203,11 +203,13 @@
     
     if (!self.segMenu.selfIsClick) {
         if (offy <= self.headView.webTop&& offy>self.headView.likeVTop) {
-               [self.segMenu setSegmentToTuiJian];
+            if (self.pt!=FLYPT_Type_JD && self.pt != FLYPT_Type_Pdd) {
+                 [self.segMenu setSegmentToTuiJian];
+            }
         }else if (offy >= self.headView.webTop ){
               [self.segMenu setSegmentToDetail];
         }else if (offy ==0 ){
-            [self.segMenu setSegmentToDetailToBaobei];
+             [self.segMenu setSegmentToDetailToBaobei];
         }
     }
 }
@@ -256,6 +258,7 @@
 - (GoodDetailSegment *)segMenu{
     if (!_segMenu) {
         _segMenu = [GoodDetailSegment viewFromXib];
+        _segMenu.pt = self.pt;
         _segMenu.frame = CGRectMake(0,0, SCREEN_WIDTH, 40.f);
          @weakify(self);
         _segMenu.typeBlock = ^(NSInteger type) {
@@ -373,6 +376,7 @@
     if (!_model) {
         _model = [[GoodDetailModel alloc] initWithSku:self.sku];
         _model.delegate  = self;
+        _model.pt = self.pt;
     }
     return _model;
 }

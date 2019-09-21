@@ -34,23 +34,37 @@
       
     NSDictionary *dic = @{@"sku":self.sku, @"token":ToKen,@"v":APP_Version};
     NSLog(@"para:%@",dic);
+    NSString *url  = @"/v.php/goods.goods/getGoodsDetailNew";
+    if (self.pt == FLYPT_Type_Pdd) {
+        url = @"/v.php/goods.pdd/getGoodsDetail";
+    }else if (self.pt == FLYPT_Type_JD){
+        url = @"/v.php/goods.jd/getGoodsDetail";
+    }
        //商品详情
      @weakify(self);
-    [PPNetworkHelper POST:URL_Add(@"/v.php/goods.goods/getGoodsDetailNew") parameters:dic success:^(id responseObject) {
+    [PPNetworkHelper POST:URL_Add(url) parameters:dic success:^(id responseObject) {
          @strongify(self);
-//       NSLog(@"详情responseObject  %@",responseObject);
-        NSLog(@"详情请求完毕");
+       NSLog(@"详情responseObject  %@",responseObject);
+//        NSLog(@"详情请求完毕");
          NSInteger code = [responseObject[@"code"] integerValue];
-//        code = 2;
+
         if (code == SucCode) {  //
            GoodDetailInfo *info = [GoodDetailInfo mj_objectWithKeyValues:responseObject[@"data"]];
             info.price = [NSString stringRoundingTwoDigitWithNumber:info.price.doubleValue];
             info.market_price = [NSString stringRoundingTwoDigitWithNumber:info.market_price.doubleValue];
             info.profit = [NSString stringRoundingTwoDigitWithNumber:info.profit.doubleValue];
             info.share_profit = [NSString stringRoundingTwoDigitWithNumber:info.share_profit.doubleValue];
-           
+            
              self.detailinfo = info;
-            [self queryTuiJianGood];
+            if (self.pt!= FLYPT_Type_Pdd && self.pt!= FLYPT_Type_JD) {//查询推荐商品
+                  [self queryTuiJianGood];
+            }else{//pdd ,jd
+                
+                if ([self.delegate respondsToSelector:@selector(detailModel:querySucWithDetailInfo:tuiJianArr:)]) {
+                    [self.delegate detailModel:self querySucWithDetailInfo:self.detailinfo tuiJianArr: @[].mutableCopy];
+                }
+            }
+          
         }else{ //code!=2000 显示失效界面
             if ([self.delegate respondsToSelector:@selector(detailModel:queryFail:)]) {
                 [self.delegate detailModel:self queryFail:responseObject];
@@ -141,6 +155,23 @@
             }
         }];
     }
+}
+
++(void)pddGetYouhuiQuanWithsku:(NSString*)sku CallBack:(VEBlock)callBack{
+    NSDictionary *para = @{@"sku":sku,@"token":ToKen,@"v":APP_Version};
+    [PPNetworkHelper GET:URL_Add(@"/v.php/goods.pdd/getCoupon") parameters:para success:^(id responseObject) {
+        NSLog(@".pdd/getCoupon %@",responseObject);
+          NSInteger code = [responseObject[@"code"] integerValue];
+        if (code == SucCode && ![responseObject[@"data"] isKindOfClass:[NSNull class]]) {
+            NSDictionary *dic = responseObject[@"data"];
+            callBack(dic);
+        }else{
+            [YJProgressHUD showMsgWithoutView:responseObject[@"msg"]];
+        }
+    } failure:^(NSError *error) {
+        callBack(nil);
+        [YJProgressHUD showAlertTipsWithError:error];
+    }];
 }
 
 #pragma mark - private

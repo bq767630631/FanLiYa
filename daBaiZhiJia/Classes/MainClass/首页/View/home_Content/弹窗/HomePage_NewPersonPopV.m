@@ -57,6 +57,7 @@
 - (void)handleAction{
     if (self.info.url_type ==1) {
         GoodDetailContrl *detail = [[GoodDetailContrl alloc] initWithSku:self.info.url];
+        detail.pt = self.info.pt;
         [self.navi pushViewController:detail animated:YES];
     }else if (self.info.url_type ==2||self.info.url_type ==3){
         DetailWebContrl *detailweb = [[DetailWebContrl alloc] initWithUrl:[NSString stringWithFormat:@"%@&token=%@",self.info.url,ToKen] title:@"" para:nil];

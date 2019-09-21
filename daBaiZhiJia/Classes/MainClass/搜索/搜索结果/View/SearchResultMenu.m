@@ -47,6 +47,16 @@
     self.priceTrailCon.constant = consW;
 }
 
+- (void)setSearchType:(NSInteger)searchType{
+    _searchType = searchType;
+    if (searchType==2) {
+        [self.comprehenBtn setTitleColor:RGBColor(255, 102, 102) forState:UIControlStateSelected];
+        [self.saleBtn setTitleColor:RGBColor(255, 102, 102) forState:UIControlStateSelected];
+        [self.priceBtn setTitleColor:RGBColor(255, 102, 102) forState:UIControlStateSelected];
+        [self.comprehenBtn setTitleColor:RGBColor(255, 102, 102) forState:UIControlStateSelected];
+    }
+}
+
 - (IBAction)zongheAction:(UIButton *)sender {
     NSLog(@"zongheAction");
     
@@ -78,9 +88,21 @@
     self.saleBtn.selected = NO;
     sender.selected = YES;
     if (self.price_sort %2 ==0 ) { //偶数
-        [self.priceBtn setImage:ZDBImage(@"icon_select_down") forState:UIControlStateSelected ];
-        self.searchStr = @"price_desself.navigationItem.titleView";
+        NSString *imageStr = @"";
+        if (self.searchType==2) {
+            imageStr = @"icon_select_down_pdd";
+        }else{
+            imageStr = @"icon_select_down";
+        }
+        [self.priceBtn setImage:ZDBImage(imageStr) forState:UIControlStateSelected ];
+        self.searchStr = @"price_des";
     }else{
+        NSString *imageStr = @"";
+        if (self.searchType==2) {
+            imageStr = @"icon_select_up_pdd";
+        }else{
+            imageStr = @"icon_select_height";
+        }
         [self.priceBtn setImage:ZDBImage(@"icon_select_height") forState:UIControlStateSelected ];
         self.searchStr = @"price_asc";
     }

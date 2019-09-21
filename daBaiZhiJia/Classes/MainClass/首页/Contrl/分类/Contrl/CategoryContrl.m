@@ -79,7 +79,7 @@ static NSString *tableCellId = @"tableCellId";
 - (void)viewDidLoad {
     [super viewDidLoad];
     NSLog(@"cid =%@",self.cid);
-    if (!self.isSec) {
+    if (!self.isSec&&(self.pt ==FLYPT_Type_TB||self.pt ==FLYPT_Type_TM)) {
          [self query2thedCate];
     }else{ //二级界面
        self.title = self.secTitle;
@@ -122,10 +122,16 @@ static NSString *tableCellId = @"tableCellId";
     NSDictionary *para = @{@"cid":self.cid, @"page":@(self.page),@"sort":self.sort,@"token":ToKen,@"v":APP_Version};
     
     NSLog(@"para =%@", para);
+    NSString *url = @"/v.php/goods.goods/getGoodsList";
+    if (self.pt==FLYPT_Type_Pdd) {
+        url = @"/v.php/goods.pdd/getGoodsList";
+    }else if (self.pt==FLYPT_Type_JD){
+         url = @"/v.php/goods.jd/getGoodsList";
+    }
     @weakify(self);
-    [PPNetworkHelper POST:URL_Add(@"/v.php/goods.goods/getGoodsList") parameters:para success:^(id responseObject) {
+    [PPNetworkHelper POST:URL_Add(url) parameters:para success:^(id responseObject) {
         @strongify(self);
-      //  NSLog(@"responseObject %@",responseObject);
+        NSLog(@"responseObject %@",responseObject);
          NSInteger code = [responseObject[@"code"] integerValue];
         [self.scroview.mj_header endRefreshing];
         if (code == SucCode) {
@@ -243,9 +249,9 @@ static NSString *tableCellId = @"tableCellId";
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     SearchResulGoodInfo *info = self.searchGoodsArr[indexPath.row];
+    
     GoodDetailContrl *detail = [[GoodDetailContrl alloc] initWithSku:info.sku];
-    NSLog(@"naviContrl  %@",self.naviContrl);
-      NSLog(@"navigationController  %@",self.navigationController);
+    detail.pt = info.pt;
     if (self.isSec) {
          [self.navigationController pushViewController:detail animated:YES];
     }else{
@@ -255,6 +261,11 @@ static NSString *tableCellId = @"tableCellId";
 
 - (void)gotoTopAction{
     [self.scroview scrollToTop];
+}
+
+- (void)refreshData{
+    self.page = 1;
+    [self queryData];
 }
 
 #pragma mark - UIScrollViewDelegate
@@ -310,8 +321,7 @@ static NSString *tableCellId = @"tableCellId";
         
         MJRefreshStateHeader *head = [MJRefreshStateHeader headerWithRefreshingBlock:^{
              @strongify(self);
-             self.page = 1;
-             [self queryData];
+            [self refreshData];
         }];
         [head setTitle:@"正在刷新" forState:MJRefreshStateRefreshing];
         _scroview.mj_header = head;

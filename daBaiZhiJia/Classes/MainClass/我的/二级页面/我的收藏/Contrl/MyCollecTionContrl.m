@@ -54,8 +54,9 @@ static NSString *cellId = @"cellId";
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-     MyCollecTionGoodInfo *info = self.dataSource[indexPath.row];
+    MyCollecTionGoodInfo *info = self.dataSource[indexPath.row];
     GoodDetailContrl *detail = [[GoodDetailContrl alloc] initWithSku:info.sku];
+    detail.pt = info.pingtai;
     [self.navigationController pushViewController:detail animated:YES];
 }
 

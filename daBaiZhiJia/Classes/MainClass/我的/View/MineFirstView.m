@@ -14,6 +14,8 @@
 #import "ZKCycleScrollView.h"
 #import "GoodDetailCustomCell.h"
 #import "GoodDetailModel.h"
+#import "GoodDetailContrl.h"
+#import "HandelTaoBaoTradeManager.h"
 
 @interface MineFirstView ()<ZKCycleScrollViewDelegate,ZKCycleScrollViewDataSource>
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *hedimageTop;
@@ -101,6 +103,8 @@ static NSString *KbannerId = @"KbannerId";
         banner.videoUrl = @"";
         banner.pic = info.img;
         banner.url = info.url;
+        banner.pt = info.pt;
+        banner.url_type = info.url_type;
         [temp addObject:banner];
     }
     self.bannerArr = temp;
@@ -120,12 +124,35 @@ static NSString *KbannerId = @"KbannerId";
 }
 
 - (void)cycleScrollView:(ZKCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index{
-     GoodDetailBannerInfo *banner=  self.bannerArr[index];
-    NSString *url = [NSString stringWithFormat:@"%@&token=%@", banner.url,ToKen];
-    [self gotoSecVWithUrl:url title:nil];
+     GoodDetailBannerInfo *info =  self.bannerArr[index];
+    if ([NSString stringIsNullOrEmptry:info.url].length>0) {
+        [self handleBannerDetailWithType:info.url_type info:info];
+    }
 }
 
 #pragma mark - private
+
+- (void)handleBannerDetailWithType:(NSInteger)type info:(GoodDetailBannerInfo*)info{
+    UINavigationController *navi = self.viewController.navigationController;
+    if (type ==1) {
+        GoodDetailContrl *detail = [[GoodDetailContrl alloc] initWithSku:info.url];
+        detail.pt = info.pt;
+        [navi pushViewController:detail animated:YES];
+    }else if (type ==2||type ==3){
+        DetailWebContrl *detailweb = [[DetailWebContrl alloc] initWithUrl:[NSString stringWithFormat:@"%@&token=%@",info.url,ToKen] title:@"" para:nil];
+        [navi pushViewController:detailweb animated:YES];
+    }else if (type==4){
+        if (info.pt==FLYPT_Type_TM ||info.pt==FLYPT_Type_TB) {
+            [HandelTaoBaoTradeManager openTaoBaoAndTraWithUrl:info.url navi:navi];
+        }else if (info.pt==FLYPT_Type_Pdd){
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:info.url]];
+        }else if (info.pt==FLYPT_Type_JD){
+            //todo
+        }
+        
+    }
+}
+
 - (void)setHuiYuanViewWithInfo:(NSString*)name  huiYuanimage:(UIImage*)image color:(UIColor *)color{
     self.huiyuanName.text = name;
     self.huiYuanImage.image = image;

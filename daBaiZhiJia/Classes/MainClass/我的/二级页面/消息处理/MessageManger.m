@@ -24,6 +24,10 @@
 + (void)handleMessageWithInfo:(NSDictionary *)dict{
     NSInteger type = [dict[@"type"] integerValue];
     NSInteger scene = [dict[@"scene"] integerValue];
+    NSInteger pt = 0;
+    if (![dict[@"pt"] isKindOfClass:[NSNull class]]) {
+        pt = [dict[@"pt"] integerValue];
+    }
     NSString * txt = dict[@"txt"] ;
      NSLog(@"type =%zd scene=%zd  txt =%@",type,scene,txt);
      UIViewController *rootVc  =  [UIApplication sharedApplication].keyWindow.rootViewController;
@@ -40,6 +44,7 @@
                 [cur_vc.navigationController popToRootViewControllerAnimated:YES];
             }else if (scene ==2){
                 GoodDetailContrl *detail = [[GoodDetailContrl alloc] initWithSku:txt];
+                detail.pt = pt;
                 [navi pushViewController:detail animated:YES];
                 NSLog(@"商品详情");
             }else if (scene ==3){

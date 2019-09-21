@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina5_9" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.70"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="Home_HeadDotV">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="24"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3l1-9f-My6">
+                    <rect key="frame" x="204.66666666666666" y="0.0" width="5" height="24"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="5" id="X88-nc-6v9"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l5V-5k-b4K" userLabel="leftdot">
+                    <rect key="frame" x="194" y="9" width="6" height="6"/>
+                    <color key="backgroundColor" red="1" green="0.81568627450980391" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="6" id="UNI-Uw-S5I"/>
+                        <constraint firstAttribute="width" constant="6" id="wgQ-oE-qXT"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xsh-yQ-BAc" userLabel="rightdot">
+                    <rect key="frame" x="214" y="9" width="6" height="6"/>
+                    <color key="backgroundColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="6" id="B66-WC-sMt"/>
+                        <constraint firstAttribute="height" constant="6" id="yE3-ta-cm8"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="3l1-9f-My6" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Br4-3q-ZNk"/>
+                <constraint firstItem="xsh-yQ-BAc" firstAttribute="leading" secondItem="3l1-9f-My6" secondAttribute="trailing" constant="4.5" id="MQH-XW-08I"/>
+                <constraint firstItem="3l1-9f-My6" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="N6i-u1-2z5"/>
+                <constraint firstAttribute="bottom" secondItem="3l1-9f-My6" secondAttribute="bottom" id="PbP-k8-gXL"/>
+                <constraint firstItem="xsh-yQ-BAc" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="QZR-ca-w7A"/>
+                <constraint firstItem="3l1-9f-My6" firstAttribute="leading" secondItem="l5V-5k-b4K" secondAttribute="trailing" constant="4.5" id="acX-nX-rdq"/>
+                <constraint firstItem="l5V-5k-b4K" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="sbl-9d-ihh"/>
+                <constraint firstItem="3l1-9f-My6" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="tXc-Zu-nUc"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="leftDot" destination="l5V-5k-b4K" id="3qR-5T-ZGa"/>
+                <outlet property="rightDot" destination="xsh-yQ-BAc" id="t4F-OS-kMf"/>
+            </connections>
+            <point key="canvasLocation" x="131.19999999999999" y="85.714285714285722"/>
+        </view>
+    </objects>
+</document>

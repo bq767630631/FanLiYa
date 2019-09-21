@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="HomePage_UpdateV">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="08s-Ml-1c6">
+                    <rect key="frame" x="52" y="295" width="310" height="306"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_bg_update" translatesAutoresizingMaskIntoConstraints="NO" id="GmZ-q2-D6c">
+                            <rect key="frame" x="0.0" y="0.0" width="310" height="306"/>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="版本更新啦！" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dbo-Px-8eK">
+                            <rect key="frame" x="103" y="182" width="104" height="17"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="17" id="jkW-dv-597"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f96-PV-pBx">
+                            <rect key="frame" x="17" y="239" width="131" height="34"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="34" id="h51-uv-vFf"/>
+                                <constraint firstAttribute="width" constant="131" id="hP2-28-5Sh"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <state key="normal" title="稍后再说">
+                                <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="shaoHouAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="KLy-l4-ACJ"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ti0-nV-8Zp">
+                            <rect key="frame" x="162" y="239" width="131" height="34"/>
+                            <color key="backgroundColor" red="1" green="0.79215686269999996" blue="0.035294117649999998" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="34" id="Hcg-bB-P54"/>
+                                <constraint firstAttribute="width" constant="131" id="sdm-9d-Df4"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <state key="normal" title="立即更新">
+                                <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="genXinAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="Pok-Zv-maQ"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="ti0-nV-8Zp" secondAttribute="trailing" constant="17" id="2Xw-99-AnQ"/>
+                        <constraint firstItem="ti0-nV-8Zp" firstAttribute="centerY" secondItem="f96-PV-pBx" secondAttribute="centerY" id="3uU-eb-m06"/>
+                        <constraint firstItem="GmZ-q2-D6c" firstAttribute="top" secondItem="08s-Ml-1c6" secondAttribute="top" id="5J2-dD-P3i"/>
+                        <constraint firstAttribute="trailing" secondItem="GmZ-q2-D6c" secondAttribute="trailing" id="7sK-hs-i9m"/>
+                        <constraint firstItem="f96-PV-pBx" firstAttribute="leading" secondItem="08s-Ml-1c6" secondAttribute="leading" constant="17" id="AZm-Uc-Ny3"/>
+                        <constraint firstAttribute="bottom" secondItem="GmZ-q2-D6c" secondAttribute="bottom" id="DS7-kU-Xse"/>
+                        <constraint firstItem="dbo-Px-8eK" firstAttribute="centerX" secondItem="08s-Ml-1c6" secondAttribute="centerX" id="Jve-2s-WHP"/>
+                        <constraint firstItem="GmZ-q2-D6c" firstAttribute="leading" secondItem="08s-Ml-1c6" secondAttribute="leading" id="RSi-Ia-UEf"/>
+                        <constraint firstAttribute="bottom" secondItem="dbo-Px-8eK" secondAttribute="bottom" constant="107" id="ShW-17-sOR"/>
+                        <constraint firstAttribute="height" constant="306" id="oW7-91-gtA"/>
+                        <constraint firstAttribute="width" constant="310" id="ris-jO-VpQ"/>
+                        <constraint firstAttribute="bottom" secondItem="f96-PV-pBx" secondAttribute="bottom" constant="33" id="sIz-KR-CHF"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="08s-Ml-1c6" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="1LK-C5-peg"/>
+                <constraint firstItem="08s-Ml-1c6" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="gq8-ab-NCT"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="gengXinBtn" destination="ti0-nV-8Zp" id="wvN-Vp-mVP"/>
+                <outlet property="shaoHouBtn" destination="f96-PV-pBx" id="4SP-w9-8v4"/>
+            </connections>
+        </view>
+    </objects>
+    <resources>
+        <image name="img_bg_update" width="309.5" height="306"/>
+    </resources>
+</document>

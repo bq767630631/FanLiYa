@@ -50,7 +50,17 @@
     self.sharebtn.indexPath=  info.indexPath;
     [self.goodimage setDefultPlaceholderWithFullPath:info.img];
     self.playImagV.hidden = !info.video.length;
-     self.pt.image = (info.pt == 1)?ZDBImage(@"icon_zbytianmao"):ZDBImage(@"img_zbytaobao");
+    NSString *imageStr = @"";
+    if (info.pt==1) {
+        imageStr = @"icon_zbytianmao";
+    }else if (info.pt==3){
+        imageStr = @"icon_pinduoduo";
+    }else if (info.pt==4){
+        imageStr = @"img_zbytaobao";
+    }else if (info.pt==2){
+        imageStr = @"icon_jd";
+    }
+    self.pt.image  = ZDBImage(imageStr);
      [self.quanBtn setTitle:[NSString stringWithFormat:@"¥%@",info.discount] forState:UIControlStateNormal];
     self.title.text = [NSString stringWithFormat:@"     %@",info.title];
     self.soldNum.text = [NSString stringWithFormat:@"%@人已买",info.sold_num];

@@ -48,8 +48,17 @@
     self.info = info;
     self.sharebtn.indexPath = info.indexPath;
     [self.goodimage setDefultPlaceholderWithFullPath:info.img];
-    
-    self.pt.image = (info.pt == 1)?ZDBImage(@"icon_zbytianmao"):ZDBImage(@"img_zbytaobao");
+    NSString *imageStr = @"";
+    if (info.pt==1) {
+        imageStr = @"icon_zbytianmao";
+    }else if (info.pt==3){
+        imageStr = @"icon_pinduoduo";
+    }else if (info.pt==4){
+        imageStr = @"img_zbytaobao";
+    }else if (info.pt==2){
+        imageStr = @"icon_jd";
+    }
+    self.pt.image  = ZDBImage(imageStr);
     [self.quanBtn setTitle:[NSString stringWithFormat:@"¥%@",info.discount] forState:UIControlStateNormal];
     CGFloat wd = [[NSString stringWithFormat:@"¥%@",info.discount] textWidthWithFont:self.quanBtn.titleLabel.font maxHeight:18];
     self.quanBtn_W.constant = wd + 5;
@@ -73,9 +82,18 @@
 - (IBAction)shareAction:(IndexButton *)sender {
     NSLog(@"");
     if ([self judgeisLogin]) {
+        if (self.info.pt == FLYPT_Type_Pdd||self.info.pt == FLYPT_Type_JD) {
+            CreateShareContrl *share = [[CreateShareContrl alloc] initWithSku:self.info.sku];
+            share.pt = self.info.pt;
+            [self.viewController.navigationController pushViewController:share animated:YES];
+            return;
+        }
+        
+        
         [CreateShare_Model geneRateTaoKlWithSku:self.info.sku vc:self.viewController navi_vc:self.viewController.navigationController  block:^(NSString *tkl, NSString *code, NSString *shorturl) {
             if (tkl) {
                 CreateShareContrl *share = [[CreateShareContrl alloc] initWithSku:self.info.sku ];
+                share.pt = self.info.pt;
                 [self.viewController.navigationController pushViewController:share animated:YES];
             }
         }];

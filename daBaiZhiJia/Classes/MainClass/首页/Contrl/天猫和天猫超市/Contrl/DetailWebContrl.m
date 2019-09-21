@@ -128,7 +128,7 @@
     NSLog(@"message.body %@",message.body);
     NSLog(@"message.name %@",message.name);
     if ([message.name isEqualToString:naviToGoodDetail]) {
-        NSString *sku = message.body ;
+        NSString *sku = message.body;
         GoodDetailContrl *detail = [[GoodDetailContrl alloc] initWithSku:sku];
         [self.navigationController pushViewController:detail animated:YES];
     }

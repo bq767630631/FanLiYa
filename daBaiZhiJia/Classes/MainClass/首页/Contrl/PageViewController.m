@@ -21,6 +21,8 @@
 #import "HomePage_NewPersonPopV.h"
 #import "MSLaunchView.h"
 
+#import "HomePage_UpdateV.h"
+
 #define DateKey  @"DateKey"
 @interface PageViewController ()<UIScrollViewDelegate>
 @property (nonatomic, strong) UIScrollView *scroView;
@@ -156,6 +158,16 @@
         if (tmCS&&tmGJ) {
             self.head.tmcs = tmCS;
             self.head.tmgj = tmGJ;
+        }
+    }];
+      dispatch_group_enter(group);
+    [HomePage_Model queryAppSoreInfoWithCallBack:^(NSUInteger res) {
+          dispatch_group_leave(group);
+        NSLog(@"queryAppSoreInf0 %zd", res);
+        if (res ==1) {
+            HomePage_UpdateV *up = [HomePage_UpdateV viewFromXib];
+            up.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+            [up show];
         }
     }];
     
@@ -320,8 +332,6 @@
         @weakify(self);
         MJRefreshAutoNormalFooter *footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
             @strongify(self);
-            NSLog(@" 加载更多数据");
-        
             [self queryEveryDataWithGroup:nil];
         }];
         _scroView.mj_footer = footer;

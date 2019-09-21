@@ -22,6 +22,8 @@ static NSString *cellId = @"cellId";
 @property (weak, nonatomic) IBOutlet UIView *haiBaoV;
 @property (weak, nonatomic) IBOutlet UIView *wenAnV;
 @property (weak, nonatomic) IBOutlet UIView *taokaoulin;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *tklV_H;
+
 @property (weak, nonatomic) IBOutlet UIButton *haibaoBtn;
 @property (weak, nonatomic) IBOutlet UIButton *wenanBtn;
 @property (weak, nonatomic) IBOutlet UIButton *taokoulingBtn;
@@ -30,6 +32,7 @@ static NSString *cellId = @"cellId";
 
 
 @property (weak, nonatomic) IBOutlet UIButton *tklBtn;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *tklBtn_W;
 
 @property (weak, nonatomic) IBOutlet UIButton *editeBtn;
 
@@ -77,23 +80,17 @@ static NSString *cellId = @"cellId";
     ViewBorderRadius(self.wenanBtn, self.wenanBtn.height/2, UIColor.clearColor);
     ViewBorderRadius(self.taokoulingBtn, self.taokoulingBtn.height/2, UIColor.clearColor); //: 888
      ViewBorderRadius(self.xiaZaiLianjieBtn,self.xiaZaiLianjieBtn.height/2,UIColor.clearColor);
-
+     ViewBorderRadius(self.choseBtnView, 5, UIColor.clearColor);
     self.collectionView.dataSource = self;
     self.collectionView.delegate = self;
     self.collectionView.collectionViewLayout = self.layout;
     self.collectionView.showsHorizontalScrollIndicator = NO;
     [self.collectionView registerNib:[UINib nibWithNibName:@"CreateshareCollectionCell" bundle:nil] forCellWithReuseIdentifier:cellId];
     self.dataSource = @[].mutableCopy;
-      CGFloat w1 = self.tklBtn.width;
-      CGFloat w2 = self.downLoadOrdBtn.width;
-    CGFloat gap = (SCREEN_WIDTH - (w1+w2)*2 - 30*2) /3;
-
-    self.orderLead.constant = gap;
-    self.orderTrail.constant = gap;
-    ViewBorderRadius(self.choseBtnView, 5, UIColor.clearColor);
+    self.wenAnTextV.scrollEnabled = NO;
 }
 
-- (void)setInfoWithModel:(id)model{
+- (void)setInfoWithModel:(GoodDetailInfo *)model{
     self.detailinfo = model;
     self.yujiMoney.text = [NSString stringWithFormat:@"您的奖励预计: ¥%@",self.detailinfo.profit];
     self.tklLB.text =  [NSString stringWithFormat:@"长按復至%@➡[掏✔寳]即可抢购",self.detailinfo.tkl];
@@ -113,15 +110,34 @@ static NSString *cellId = @"cellId";
     info.isPoster = YES;
     info.isSelected = YES;
     info.image = [self geneRatePostImageWithGoodImage:firstinfo.imageStr callBack:^{
-//        [self.dataSource insertObject:info atIndex:0];
-//        [self.collectionView reloadData];
-//        [self.seletedArr addObject:self.dataSource.firstObject];
-//        self.postImage =  info.image;
     }];
     [self.dataSource insertObject:info atIndex:0];
     [self.collectionView reloadData];
     [self.seletedArr addObject:self.dataSource.firstObject];
     self.postImage =  info.image;
+    
+    if (model.pt == FLYPT_Type_TB|| model.pt == FLYPT_Type_TM) {
+        CGFloat w1 = self.tklBtn.width;
+        CGFloat w2 = self.downLoadOrdBtn.width;
+        CGFloat gap = (SCREEN_WIDTH - (w1+w2)*2 - 30*2) /3;
+        
+        self.orderLead.constant = gap;
+        self.orderTrail.constant = gap;
+    }else{
+        self.tklV_H.constant = 0;
+        self.tklBtn.hidden = YES;
+        self.taokaoulin.hidden = YES;
+      
+        CGRect frame  = self.downLoadOrdBtn.frame;
+        frame.origin.x = 10;
+        self.downLoadOrdBtn.frame = frame;
+        
+        frame = self.saveMoneyBtn.frame;
+        frame.origin.x = self.choseBtnView.width*0.5 - self.saveMoneyBtn.width*0.5;
+        self.saveMoneyBtn.frame = frame;
+        [self layoutIfNeeded];
+    }
+    
 }
 
 
@@ -173,34 +189,7 @@ static NSString *cellId = @"cellId";
 }
 
 #pragma mark - action
-//生成海报
-//- (IBAction)haibaoAction:(UIButton *)sender {
-//    NSLog(@"%@",self.selectedInfo);
-//    if (!self.selectedInfo) {
-//        [YJProgressHUD showMsgWithoutView:@"请选中一张图片"];
-//        return;
-//    }
-//    if (self.selectedInfo.isPoster) {
-//          [YJProgressHUD showMsgWithoutView:@"请选择其他图片"];
-//        return;
-//    }
-//
-//    UIImage *image = [self geneRatePostImageWithGoodImage:self.selectedInfo.imageStr];
-//     CreateShare_CellInfo *item = [CreateShare_CellInfo new];
-//    item.isPoster = YES;
-//    item.image = image;
-//    item.isSelected = YES;
-//    self.postImage = image;
-//    self.selectedInfo = item;
-//    [self.dataSource removeFirstObject];  //干掉第一个
-//    [self.dataSource insertObject:item atIndex:0];//插入到第一个
-//    for ( CreateShare_CellInfo *info in self.dataSource) {
-//        if (!(info == item)) {
-//            info.isSelected = NO;
-//        }
-//    }
-//    [self.collectionView reloadData];
-//}
+
 
 //callback:图片显示完的回调
 - (UIImage *)geneRatePostImageWithGoodImage:(NSString*)imageUrl callBack:(VEBlockVoid)callback{
@@ -265,7 +254,7 @@ static NSString *cellId = @"cellId";
 }
 
 - (void)setUpWenAnStr{
-     [CreateShare_Model geneRateWenanWithDetail:self.detailinfo isAdd:self.downLoadOrdBtn.selected isDown:self.saveMoneyBtn.selected isRegisCode:self.codeBtn.selected isTkl:self.tklBtn.selected];
+     [CreateShare_Model geneRateWenanWithDetail:self.detailinfo isAdd:self.downLoadOrdBtn.selected isDown:self.saveMoneyBtn.selected isRegisCode:self.codeBtn.selected isTkl:self.tklBtn.selected pt:self.pt];
       self.wenAnLb.text = self.detailinfo.wenAnStr;
       self.wenAnTextV.text = self.wenAnLb.text;
 }
