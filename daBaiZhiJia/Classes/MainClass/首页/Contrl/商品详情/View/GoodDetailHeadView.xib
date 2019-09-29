@@ -397,7 +397,10 @@
                 <outlet property="soldNum" destination="ZIM-4l-1pF" id="SaV-xj-IhU"/>
                 <outlet property="title" destination="5uX-a1-cER" id="hNE-7Z-Ku1"/>
                 <outlet property="tuiJianContent" destination="FKW-4j-WVb" id="Ugh-aa-1i5"/>
+                <outlet property="tuiJianContent_Bottom" destination="Bo2-XK-XB6" id="mOM-6W-WpV"/>
+                <outlet property="tuiJianContent_Top" destination="tDC-1H-ZNA" id="KqZ-IH-otd"/>
                 <outlet property="tuiJianLb" destination="Au3-u5-Lok" id="mgA-e6-vCk"/>
+                <outlet property="tuiJianLb_H" destination="esK-hj-fwb" id="jTq-US-brR"/>
             </connections>
             <point key="canvasLocation" x="165.21739130434784" y="182.60869565217394"/>
         </view>

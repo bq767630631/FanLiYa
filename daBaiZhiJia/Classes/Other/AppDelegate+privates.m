@@ -23,6 +23,8 @@
 
 #define QQShare_AppID @"1109202625"
 #define QQShare_AppSecret @"3YCNoE9R8HIihBGY"
+#define JD_KEY   @"b93c8303e7a76e0b718fffb410bbb0d2"
+#define JD_Secret @"f0e73ec02d024eda93750e8497808b9b"
 
 @implementation AppDelegate (privates)
 
@@ -111,14 +113,20 @@
     // apn 内容获取：
     NSDictionary *remoteNotification = [launchOptions objectForKey: UIApplicationLaunchOptionsRemoteNotificationKey];
     NSLog(@"remoteNotification %@",remoteNotification);
-    if (remoteNotification) {
-        //启动的时候获取消息，但是会再调用didReceiveRemoteNotification，所以会导致重复
-        
-        //        [[NSNotificationCenter defaultCenter] postNotificationName:GetRemoteNotiFation object:nil userInfo:remoteNotification];
-        //        [self delayDoWork:0.3 WithBlock:^{
-        //             [MessageManger handleMessageWithInfo:remoteNotification];
-        //        }];
+    if (remoteNotification!=nil) {
+        self.isLaunchedByNotification = YES;
+    }else{
+        self.isLaunchedByNotification = NO;
     }
+}
+
+
+- (void)setUpJD{
+    [[KeplerApiManager sharedKPService] asyncInitSdk:JD_KEY secretKey:JD_Secret sucessCallback:^{
+        NSLog(@"setUpJD  sucessCallback");
+    } failedCallback:^(NSError *error) {
+        NSLog(@"setUpJD failedCallback  %@",error);
+    }];
 }
 
 #pragma mark - 消息处理
@@ -138,12 +146,17 @@ fetchCompletionHandler:
         //[rootViewController addNotificationCount];
     }
     UIApplicationState state = [UIApplication sharedApplication].applicationState;
-    if (state ==UIApplicationStateActive) {
-        NSLog(@"前台 收到通知");
+    if (self.isLaunchedByNotification) {
+         [MessageManger handleMessageWithInfo:userInfo];
     }else{
-        NSLog(@"后台 处理通知");
-        [MessageManger handleMessageWithInfo:userInfo];
+        if (state ==UIApplicationStateActive) {
+            NSLog(@"前台 收到通知");
+        }else{
+            NSLog(@"后台 处理通知");
+            [MessageManger handleMessageWithInfo:userInfo];
+        }
     }
+   
     
     completionHandler(UIBackgroundFetchResultNewData);
 }
@@ -162,12 +175,17 @@ fetchCompletionHandler:
     NSString *subtitle = content.subtitle;  // 推送消息的副标题
     NSString *title = content.title;  // 推送消息的标题
     UIApplicationState state = [UIApplication sharedApplication].applicationState;
-    if (state ==UIApplicationStateActive) {
-        NSLog(@"前台 收到通知");
+    if (self.isLaunchedByNotification) {  //程序关闭状态点击推送消息打开
+          [MessageManger handleMessageWithInfo:userInfo];
     }else{
-        NSLog(@"后台 处理通知");
-        [MessageManger handleMessageWithInfo:userInfo];
+        if (state ==UIApplicationStateActive) {
+            NSLog(@"前台 收到通知");
+        }else{
+            NSLog(@"后台 处理通知");
+            [MessageManger handleMessageWithInfo:userInfo];
+        }
     }
+    
     if([notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
         [JPUSHService handleRemoteNotification:userInfo];
         NSLog(@"iOS10 前台收到远程通知:%@", [self logDic:userInfo]);
@@ -201,12 +219,17 @@ fetchCompletionHandler:
         NSLog(@"iOS10 收到远程通知:%@", [self logDic:userInfo]);
         
         UIApplicationState state = [UIApplication sharedApplication].applicationState;
-        if (state ==UIApplicationStateActive) {
-            NSLog(@"前台 收到通知");
-        }else{
-            NSLog(@"后台 处理通知");
+        if (self.isLaunchedByNotification) {//程序关闭状态点击推送消息打开
             [MessageManger handleMessageWithInfo:userInfo];
+        }else{
+            if (state ==UIApplicationStateActive) {
+                NSLog(@"前台 收到通知");
+            }else{
+                NSLog(@"后台 处理通知");
+                [MessageManger handleMessageWithInfo:userInfo];
+            }
         }
+        
         
         //  [rootViewController addNotificationCount];
         
@@ -296,15 +319,17 @@ fetchCompletionHandler:
         }
             IntelligenceSearchView *insear  = [IntelligenceSearchView viewFromXib];
             insear.contentStr = pasteboard.string;
-            [insear showInWindow];
+            insear.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+            [insear showInWindowWithBackgoundTapDismissEnable:YES];
     }
 }
 
 //yes:可以弹出搜索视图
 - (BOOL)isJumpToSearchV{
     UIViewController *curVc = [self getCurrentVC];
-    if ([curVc isKindOfClass:[CreateShareContrl class]] || [curVc isKindOfClass:[LoginContrl class]] ||[curVc isKindOfClass:[RegisterContrl class]] || [curVc isKindOfClass:[Goto_LoginContrl class]]||[curVc isKindOfClass:[Bind_PhoneContrl class]]||[curVc isKindOfClass:[DetailWebContrl class]] ||[curVc isKindOfClass:[ForeGetPwdcontrl class]] || [curVc isKindOfClass:[NewPeo_shareContrl class]] ) {
+    if ([curVc isKindOfClass:[CreateShareContrl class]] || [curVc isKindOfClass:[LoginContrl class]] ||[curVc isKindOfClass:[RegisterContrl class]] || [curVc isKindOfClass:[Goto_LoginContrl class]]||[curVc isKindOfClass:[Bind_PhoneContrl class]]||[curVc isKindOfClass:[DetailWebContrl class]] ||[curVc isKindOfClass:[ForeGetPwdcontrl class]] || [curVc isKindOfClass:[NewPeo_shareContrl class]]|| [curVc isKindOfClass: NSClassFromString(@"GoodDetailContrl")] ) { //GoodDetailContrl
         //这些场景不用弹出搜索视图
+       
         return NO;
     }
     return YES;

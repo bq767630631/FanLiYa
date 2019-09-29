@@ -17,5 +17,7 @@ static BOOL isProduction = FALSE;
 @property (strong, nonatomic) UIWindow *window;
 
 @property (nonatomic, strong) MPZG_TabBarContrl *tabVc;
+
+@property (nonatomic, assign) BOOL  isLaunchedByNotification;
 @end
 

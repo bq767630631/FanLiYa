@@ -41,11 +41,11 @@
     self.backgroundColor = UIColor.clearColor;
     self.contentView.backgroundColor = UIColor.clearColor;
     ViewBorderRadius(self.contentV, 5, UIColor.whiteColor);
-    self.goodImage.layer.cornerRadius =  3.f;
-    self.goodImage.layer.masksToBounds = YES;//隐藏裁剪掉的部分
-    self.goodImage.layer.borderWidth = 2.f;//宽度
-    self.goodImage.layer.borderColor = RGBColor(246, 189, 57).CGColor;//颜色
-    ViewBorderRadius(self.buTieV, self.buTieV.height*0.5, RGBColor(240, 18, 81));
+//    self.goodImage.layer.cornerRadius =  3.f;
+//    self.goodImage.layer.masksToBounds = YES;//隐藏裁剪掉的部分
+//    self.goodImage.layer.borderWidth = 2.f;//宽度
+//    self.goodImage.layer.borderColor = RGBColor(246, 189, 57).CGColor;//颜色
+    ViewBorderRadius(self.buTieV, 1, RGBColor(254, 30, 82));
     ViewBorderRadius(self.qiangGouBtn, self.qiangGouBtn.height*0.5, UIColor.clearColor);
 //
 //    ViewBorderRadius(self.buTie, self.buTie.height*0.5, UIColor.clearColor);
@@ -61,37 +61,27 @@
     self.info = model;
     [self.goodImage setDefultPlaceholderWithFullPath:self.info.pic];
     self.title.text  = self.info.title;
-    if (self.info.tlj_number.integerValue > 0) {
-         self.shengyu.text = [NSString stringWithFormat:@"剩余%@件",self.info.tlj_number];
-    }else{
-        self.shengyu.text = @"已抢完";
-    }
+//    if (self.info.tlj_number.integerValue > 0) {
+//         self.shengyu.text = [NSString stringWithFormat:@"剩余%@件",self.info.tlj_number];
+//    }else{
+//        self.shengyu.text = @"已抢完";
+//    }
    
-    self.price.text  = self.info.tlj;
-    self.marketPrice.attributedText = [self marketPriceAttr:[NSString stringWithFormat:@" ￥%@",self.info.market_price]];
-    self.xiaDanPrice.text = [NSString stringWithFormat:@"下单价 ￥%@",self.info.price];
-    self.buTieLb.text = [NSString stringWithFormat:@"下单手动登记平台补贴￥%@",self.info.price];
+    self.price.text  = self.info.price;
+   // self.marketPrice.attributedText = [self marketPriceAttr:[NSString stringWithFormat:@" ￥%@",self.info.market_price]];
+   // self.xiaDanPrice.text = [NSString stringWithFormat:@"下单价 ￥%@",self.info.price];
+    self.buTieLb.text = [NSString stringWithFormat:@"平台补贴￥%@元",self.info.price];
     
-    if (self.info.countTime==0) {
-        self.qiangGouBtn.userInteractionEnabled =NO;
-        [self.qiangGouBtn setBackgroundImage:[UIImage new] forState:UIControlStateNormal];
-        [self.qiangGouBtn setBackgroundColor:RGBColor(204, 204, 204)];
-        [self.qiangGouBtn setTitle:@"已经结束" forState:UIControlStateNormal];
-    }else{
-        self.qiangGouBtn.userInteractionEnabled =YES;
-        [self.qiangGouBtn setBackgroundImage:ZDBImage(@"image_new_qianggou") forState:UIControlStateNormal];
-        [self.qiangGouBtn setTitle:@"立即抢购" forState:UIControlStateNormal];
-    }
     
 }
 
 
 - (IBAction)qiangGouAction:(UIButton *)sender {
     if ([self judgeisLogin]) {
-        [self openTbWithUrl:self.info.url];
-        return;
+//        [self openTbWithUrl:self.info.url];
+//        return;
         
-       /* NSDictionary *dict = @{@"sku":self.info.sku,@"token":ToKen,@"v":APP_Version};
+        NSDictionary *dict = @{@"sku":self.info.sku,@"token":ToKen,@"v":APP_Version};
         @weakify(self);
         [PPNetworkHelper POST:URL_Add(@"/v.php/goods.goods/getCouponFree") parameters:dict success:^(id responseObject) {
             @strongify(self);
@@ -113,9 +103,13 @@
                 auth.navi_vc = self.viewController.navigationController;
                 [auth showInWindowWithBackgoundTapDismissEnable:NO];
             }
+            
+            if (code != SucCode) {
+                [YJProgressHUD showMsgWithoutView:responseObject[@"msg"]];
+            }
         } failure:^(NSError *error) {
             [YJProgressHUD showAlertTipsWithError:error];
-        }];*/
+        }];
     }
 }
 

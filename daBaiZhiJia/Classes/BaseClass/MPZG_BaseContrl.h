@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface MPZG_BaseContrl : UIViewController
+@interface MPZG_BaseContrl : UIViewController<UITableViewDelegate,UITableViewDataSource>
 
 - (void)clickToHideKeyboard;
 

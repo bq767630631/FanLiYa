@@ -79,7 +79,9 @@ static NSString *menuCellId = @"menuCellId";
     [self.model queryDataWithBlock:^(NSMutableArray *goodArr, NSError *error) {
         if (!error) {
             if (self.model.isHaveNomoreData) {
+                [self.collcetion.mj_header endRefreshing];
                 [self.collcetion.mj_footer endRefreshingWithNoMoreData];
+                return ;
             }
             
             self.goodArr = goodArr;
@@ -112,7 +114,7 @@ static NSString *menuCellId = @"menuCellId";
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     if (collectionView == self.menuV) {
         LimitSale_SecStatusCell *menuCell = [collectionView dequeueReusableCellWithReuseIdentifier:menuCellId forIndexPath:indexPath];
-        NSLog(@"menuCell");
+//        NSLog(@"menuCell");
         HomePage_FlashSaleInfo *fla = self.timeArr[indexPath.row];
         [menuCell setInfo:fla];
         return menuCell;

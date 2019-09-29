@@ -56,6 +56,8 @@
 
 #define   Is_Show_Info    [[[NSUserDefaults standardUserDefaults] objectForKey:IsShow_InfoKey] boolValue]
 
+#define   is_Force_Update    [[[NSUserDefaults standardUserDefaults] objectForKey:is_Force_UpdateKey] boolValue]
+
 //#define PageSize  10
 
 #pragma mark - screen

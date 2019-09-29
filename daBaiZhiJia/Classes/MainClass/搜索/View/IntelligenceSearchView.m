@@ -12,6 +12,7 @@
 
 @interface IntelligenceSearchView ()
 
+
 @property (weak, nonatomic) IBOutlet UILabel *content;
 
 @end
@@ -21,24 +22,33 @@
     ViewBorderRadius(self
                      , 5, UIColor.clearColor);
 }
+
 - (void)setContentStr:(NSString *)contentStr{
     _contentStr = contentStr;
+    contentStr = [contentStr stringByReplacingOccurrencesOfString:@"\n" withString:@""];
+    contentStr = [contentStr stringByReplacingOccurrencesOfString:@"\t" withString:@""];
+    NSLog(@"contentStr %@",contentStr);
     self.content.text = contentStr;
 }
 
-- (IBAction)cancleAction:(UIButton *)sender {
+- (IBAction)clickaction:(UIButton *)sender {
     [self hideView];
-}
-
-- (IBAction)searchAction:(UIButton *)sender {
-     [self hideView];
+    
+    for (NSString *str in [SearchSaveManager getArray]) {//如果本地有，就清空
+        if ([str isEqualToString:[UIPasteboard generalPasteboard].string]) {
+            [UIPasteboard generalPasteboard].string = @"";
+            NSLog(@"有。。%@",str);
+            break;
+        }
+    }
     //保存在历史搜索里面
     NSMutableArray *temp  = [SearchSaveManager getArray];
     [temp insertObject:self.contentStr atIndex:0];
     [SearchSaveManager saveArrWithArr:temp];
     
     SearchResultContrl *sear = [[SearchResultContrl alloc] initWithSearchStr:self.contentStr];
-   UIViewController *rootVc = [UIApplication sharedApplication].keyWindow.rootViewController;
+    sear.searchType = sender.tag;
+    UIViewController *rootVc = [UIApplication sharedApplication].keyWindow.rootViewController;
     NSLog(@"rootVc  %@",rootVc);
     UINavigationController *navi ;
     if ([rootVc isKindOfClass:[UINavigationController class]]) {
@@ -53,5 +63,9 @@
     [navi pushViewController:sear animated:YES];
 }
 
+- (IBAction)closeAction:(UIButton *)sender {
+    [UIPasteboard generalPasteboard].string = @"";
+    [self hideView];
+}
 
 @end

@@ -21,4 +21,10 @@ typedef void(^NewPeo_shareBlock)(NSMutableArray *goodArr,NSInteger time, NewPeo_
 @property (nonatomic, copy) NSString *action_user   ;
 @property (nonatomic, copy) NSString *action_type;
 @property (nonatomic, copy) NSString *action_content;
+
+@property (nonatomic, copy) NSString *title;
+@property (nonatomic, copy) NSString *logo;
+@property (nonatomic, copy) NSString *content;
+@property (nonatomic, copy) NSString *url;
+@property (nonatomic, strong) NSData *imageData;
 @end

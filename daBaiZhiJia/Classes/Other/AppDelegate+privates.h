@@ -12,6 +12,7 @@
 #import "JPUSHService.h"
 #import "MessageManger.h"
 #import "MSLaunchView.h"
+#import <JDSDK/KeplerApiManager.h>
 
 // iOS10 注册 APNs 所需头文件
 #ifdef NSFoundationVersionNumber_iOS_9_x_Max
@@ -31,6 +32,8 @@ NS_ASSUME_NONNULL_BEGIN
 //设置极光推送
 - (void)setUpJpushWithOptions:(NSDictionary *)launchOptions;
 
+//设置jd
+- (void)setUpJD;
 //设置引导页
 - (void)setUpGuidView;
 @end

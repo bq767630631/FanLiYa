@@ -82,6 +82,7 @@ NS_ASSUME_NONNULL_END
 @property (nonatomic, assign) BOOL  is_From_page;//是否是来自pagevc
 @property (nonatomic, assign) BOOL  is_From_cate; //是否是来自分类
 @property (nonatomic, assign) BOOL  is_Cate_Sec;//是否是分类的二级界面
+@property (nonatomic, assign) BOOL  is_From_PddOrJd; //拼多多和京东的首页界面
 @property (nonatomic, assign) NSInteger countTime;//新手活动倒计时时间
 
 //社群推荐

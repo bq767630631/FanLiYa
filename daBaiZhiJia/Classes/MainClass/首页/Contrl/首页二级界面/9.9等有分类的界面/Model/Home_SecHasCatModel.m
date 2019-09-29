@@ -69,7 +69,11 @@
                 info.shengji_str = (info.profit == info.profit_up)?@"自购省":@"升级赚";
             }
             if (listArray.count ||page != 1) {
-                NSInteger totalPage = [responseObject[@"data"][@"totalPage"] integerValue];
+                NSInteger totalPage = 0;
+                 totalPage = [responseObject[@"data"][@"totalpage"] integerValue];
+                if (type == SecHasCatType_Tehui|| type == SecHasCatType_MuYing||type == SecHasCatType_GaoYong) {
+                     totalPage = [responseObject[@"data"][@"totalPage"] integerValue];
+                }
                 NSInteger currPage = [responseObject[@"data"][@"page"] integerValue];
               
                 if (currPage >= totalPage) { // 当前页数大于等于最大页数 提示没有更多数据

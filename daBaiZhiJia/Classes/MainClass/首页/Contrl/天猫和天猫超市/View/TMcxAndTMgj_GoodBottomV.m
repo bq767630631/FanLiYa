@@ -51,6 +51,7 @@
         [CreateShare_Model geneRateTaoKlWithSku:self.sku vc:self.viewController navi_vc:self.viewController.navigationController block:^(NSString *tkl, NSString *code, NSString *shorturl) {
             if (tkl) {
                 CreateShareContrl *share = [[CreateShareContrl alloc] initWithSku:self.sku];
+                share.pt = FLYPT_Type_TM;
                 [self.viewController.navigationController pushViewController:share animated:YES];
             }
         }];

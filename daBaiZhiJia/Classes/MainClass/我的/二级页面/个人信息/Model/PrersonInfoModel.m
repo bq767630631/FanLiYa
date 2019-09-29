@@ -155,6 +155,21 @@
         callBack(nil,error);
     }];
 }
+
+
++ (void)queryAppSoreInfoWithCallBack:(VEBlock)callBack{
+    NSString *url = @"http://itunes.apple.com/cn/lookup?id=1459203610";
+    [PPNetworkHelper GET:url parameters:nil success:^(id responseObject) {
+        NSArray *list = responseObject[@"results"];
+        NSString *storeVerson = list.firstObject[@"version"];
+       
+        
+        callBack(storeVerson);
+    } failure:^(NSError *error) {
+        callBack(0);
+        NSLog(@"%@",error);
+    }];
+}
 @end
 
 

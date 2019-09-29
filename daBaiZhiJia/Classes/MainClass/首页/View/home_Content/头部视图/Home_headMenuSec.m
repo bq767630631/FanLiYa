@@ -52,14 +52,19 @@
         return;
     }else if (tag==204){
         DetailWebContrl *detailWeb = [[DetailWebContrl alloc] initWithUrl:self.tmgj title:@"天猫国际" para:nil];
+         detailWeb.isFromTaoBao = YES;
         [page.naviContrl pushViewController:detailWeb animated:YES];
         return;
     }else if (tag==205){
-        type = SecHasCatType_Tehui;
-        secTitle = @"特惠专区";
+        DetailWebContrl *detailWeb = [[DetailWebContrl alloc] initWithUrl:self.tmcs title:@"天猫超市" para:nil];
+        detailWeb.isFromTaoBao = YES;
+        [page.naviContrl pushViewController:detailWeb animated:YES];
+        return;
     }else if (tag==206){
         //to do
-        NSLog(@"达人说");
+        NSString *url =  [NSString stringWithFormat:@"%@%@?token=%@",BASE_WEB_URL,@"businessSchool.html",ToKen];
+        DetailWebContrl *detailWeb = [[DetailWebContrl alloc] initWithUrl:url title:@"新手教程" para:nil];
+        [page.naviContrl pushViewController:detailWeb animated:YES];
         return;
     }else if (tag==207){
           NSString *url =  [NSString stringWithFormat:@"%@%@?token=%@",BASE_WEB_URL,@"businessSchool.html",ToKen];

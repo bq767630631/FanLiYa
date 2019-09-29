@@ -17,6 +17,8 @@
 #import "SearchSaveManager.h"
 #import "SearchResultContrl.h"
 #import "DWSearchTableHeadV.h"
+#import <IQKeyboardManager/IQKeyboardManager.h>
+
 static NSString *const HotCellID = @"HotCellID";
 static NSString *const HistoryCellID = @"HistoryCellID";
 
@@ -69,6 +71,7 @@ static NSString *const HistoryCellID = @"HistoryCellID";
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    
     self.historyArr = [SearchSaveManager getArray];
     [self.tableview reloadData];
 }
@@ -95,10 +98,13 @@ static NSString *const HistoryCellID = @"HistoryCellID";
 #pragma mark - UITextFieldDelegate
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
-    NSLog(@"搜索了什么：%@",textField.text);
+  
     SearchResultContrl *searR = [[SearchResultContrl alloc] initWithSearchStr:textField.text];
     searR.searchType = self.searchType;
     [self.navigationController pushViewController:searR animated:YES];
+    textField.text = [textField.text stringByReplacingOccurrencesOfString:@"\n" withString:@""];
+    textField.text = [textField.text stringByReplacingOccurrencesOfString:@"\t" withString:@""];
+      NSLog(@"搜索了什么：%@",textField.text);
     if (![self.historyArr containsObject:textField.text] &&textField.text.length >0) {
         [self.historyArr insertObject:textField.text atIndex:0];
         [SearchSaveManager saveArrWithArr:self.historyArr];

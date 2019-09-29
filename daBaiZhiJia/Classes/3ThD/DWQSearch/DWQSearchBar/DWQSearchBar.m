@@ -34,6 +34,7 @@
         [placeholder addAttributes:@{NSForegroundColorAttributeName
                                      :RGBColor(153, 153, 153), NSFontAttributeName:[UIFont systemFontOfSize:12.f] } range:NSMakeRange(0, holderText.length)];
         self.attributedPlaceholder = placeholder;
+        self.inputAccessoryView = [UIView new];
     }
     
     return self;

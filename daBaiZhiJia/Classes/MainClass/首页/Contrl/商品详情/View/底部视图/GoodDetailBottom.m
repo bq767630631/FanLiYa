@@ -12,6 +12,8 @@
 #import "CreateShareContrl.h"
 #import "CreateShare_Model.h"
 #import "LoginContrl.h"
+#import "DetailWebContrl.h"
+#import <JDSDK/KeplerApiManager.h>
 
 @interface GoodDetailBottom ()
 @property (weak, nonatomic) IBOutlet UIButton *shouCangBtn;
@@ -93,13 +95,34 @@
             [GoodDetailModel pddGetYouhuiQuanWithsku:self.detailInfo.sku CallBack:^(NSDictionary *dict) {
                 if (dict) {
                     NSString *app = dict[@"app"];//如果没下app,safari自动跳转
-                    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:app]];
+                    NSString *iosurl = dict[@"iosurl"];
+                    BOOL can =   [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"pinduoduo://"]];
+                    if (can) {
+                        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:iosurl]];
+                    }else{
+                        DetailWebContrl *web = [[DetailWebContrl alloc] initWithUrl:app title:nil para:nil];
+                        [self.viewController.navigationController pushViewController:web animated:YES];
+                    }
                 }
             }];
             return;
         }else if (self.detailInfo.pt == FLYPT_Type_JD){
-            
-            
+            [GoodDetailModel jdGetYouhuiQuanWithsku:self.detailInfo.sku couponUrl:self.detailInfo.couponUrl CallBack:^(NSDictionary *dict) {
+                if (dict) {
+                    NSString *app = dict[@"app"];
+//                    BOOL can =   [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"jdlogin://"]];
+//                    NSLog(@"can %d",can);
+                    [[KeplerApiManager sharedKPService] openKeplerPageWithURL:app userInfo:nil failedCallback:^(NSInteger code, NSString *url) {
+                        //422:没有安装jd
+                        NSLog(@"%zd",code);
+                        NSLog(@"%@",url);
+                        if (code==422) {
+                            DetailWebContrl *web = [[DetailWebContrl alloc] initWithUrl:app title:nil para:nil];
+                            [self.viewController.navigationController pushViewController:web animated:YES];
+                        }
+                    }];
+                }
+            }];
             return;
         }
         

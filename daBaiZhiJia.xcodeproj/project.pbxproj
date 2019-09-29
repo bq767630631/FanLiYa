@@ -148,10 +148,22 @@
 		C2384F9D2249F30B0070CFFE /* HomeSearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = C2384F9C2249F30B0070CFFE /* HomeSearchView.m */; };
 		C2384F9F2249F3160070CFFE /* HomeSearchView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2384F9E2249F3160070CFFE /* HomeSearchView.xib */; };
 		C2384FA22249F9F70070CFFE /* HomeTextFidld.m in Sources */ = {isa = PBXBuildFile; fileRef = C2384FA12249F9F70070CFFE /* HomeTextFidld.m */; };
+		C2386F01233C553E0013693A /* NewPeo_VipShareV.m in Sources */ = {isa = PBXBuildFile; fileRef = C2386F00233C553E0013693A /* NewPeo_VipShareV.m */; };
+		C2386F03233C55490013693A /* NewPeo_VipShareV.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2386F02233C55490013693A /* NewPeo_VipShareV.xib */; };
+		C2386F0A233CBBBA0013693A /* MerChantPromoContrl.m in Sources */ = {isa = PBXBuildFile; fileRef = C2386F09233CBBBA0013693A /* MerChantPromoContrl.m */; };
+		C2386F11233CBC310013693A /* MerChantPromoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2386F0F233CBC310013693A /* MerChantPromoCell.m */; };
+		C2386F12233CBC310013693A /* MerChantPromoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2386F10233CBC310013693A /* MerChantPromoCell.xib */; };
+		C2386F14233CBC7E0013693A /* MerChantPromoContrl.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2386F13233CBC7E0013693A /* MerChantPromoContrl.xib */; };
+		C2386F18233CBF7A0013693A /* MerChantPromoSecCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2386F16233CBF7A0013693A /* MerChantPromoSecCell.m */; };
+		C2386F19233CBF7A0013693A /* MerChantPromoSecCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2386F17233CBF7A0013693A /* MerChantPromoSecCell.xib */; };
+		C2386F1C233CC4070013693A /* MerChantPromoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C2386F1B233CC4070013693A /* MerChantPromoModel.m */; };
 		C23AF1EB22CAEB9000ED2490 /* ZFDouYinControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = C23AF1EA22CAEB9000ED2490 /* ZFDouYinControlView.m */; };
 		C23AF1EF22CB5B8B00ED2490 /* MessageManger.m in Sources */ = {isa = PBXBuildFile; fileRef = C23AF1EE22CB5B8B00ED2490 /* MessageManger.m */; };
 		C242382722927A3500CF0F5C /* DBZJ_ComCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C242382522927A3500CF0F5C /* DBZJ_ComCollectionCell.m */; };
 		C242382822927A3500CF0F5C /* DBZJ_ComCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C242382622927A3500CF0F5C /* DBZJ_ComCollectionCell.xib */; };
+		C24AD4D9233DFA28009186CD /* JDSDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C24AD4D7233DFA27009186CD /* JDSDK.bundle */; };
+		C24AD4DA233DFA28009186CD /* JDSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C24AD4D8233DFA27009186CD /* JDSDK.framework */; };
+		C24AD4DC233DFAA5009186CD /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C24AD4DB233DFAA5009186CD /* JavaScriptCore.framework */; };
 		C24BE5A8228D599700585157 /* DBZJ_CommunityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C24BE5A7228D599700585157 /* DBZJ_CommunityModel.m */; };
 		C24E1C712334753900A5031A /* GoodDetailPDDDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C24E1C6F2334753900A5031A /* GoodDetailPDDDetailCell.m */; };
 		C24E1C722334753900A5031A /* GoodDetailPDDDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C24E1C702334753900A5031A /* GoodDetailPDDDetailCell.xib */; };
@@ -654,6 +666,20 @@
 		C2384F9E2249F3160070CFFE /* HomeSearchView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeSearchView.xib; sourceTree = "<group>"; };
 		C2384FA02249F9F70070CFFE /* HomeTextFidld.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeTextFidld.h; sourceTree = "<group>"; };
 		C2384FA12249F9F70070CFFE /* HomeTextFidld.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeTextFidld.m; sourceTree = "<group>"; };
+		C2386EFF233C553E0013693A /* NewPeo_VipShareV.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewPeo_VipShareV.h; sourceTree = "<group>"; };
+		C2386F00233C553E0013693A /* NewPeo_VipShareV.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewPeo_VipShareV.m; sourceTree = "<group>"; };
+		C2386F02233C55490013693A /* NewPeo_VipShareV.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewPeo_VipShareV.xib; sourceTree = "<group>"; };
+		C2386F08233CBBBA0013693A /* MerChantPromoContrl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MerChantPromoContrl.h; sourceTree = "<group>"; };
+		C2386F09233CBBBA0013693A /* MerChantPromoContrl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MerChantPromoContrl.m; sourceTree = "<group>"; };
+		C2386F0E233CBC310013693A /* MerChantPromoCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MerChantPromoCell.h; sourceTree = "<group>"; };
+		C2386F0F233CBC310013693A /* MerChantPromoCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MerChantPromoCell.m; sourceTree = "<group>"; };
+		C2386F10233CBC310013693A /* MerChantPromoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MerChantPromoCell.xib; sourceTree = "<group>"; };
+		C2386F13233CBC7E0013693A /* MerChantPromoContrl.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MerChantPromoContrl.xib; sourceTree = "<group>"; };
+		C2386F15233CBF7A0013693A /* MerChantPromoSecCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MerChantPromoSecCell.h; sourceTree = "<group>"; };
+		C2386F16233CBF7A0013693A /* MerChantPromoSecCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MerChantPromoSecCell.m; sourceTree = "<group>"; };
+		C2386F17233CBF7A0013693A /* MerChantPromoSecCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MerChantPromoSecCell.xib; sourceTree = "<group>"; };
+		C2386F1A233CC4070013693A /* MerChantPromoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MerChantPromoModel.h; sourceTree = "<group>"; };
+		C2386F1B233CC4070013693A /* MerChantPromoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MerChantPromoModel.m; sourceTree = "<group>"; };
 		C23AF1E922CAEB8F00ED2490 /* ZFDouYinControlView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFDouYinControlView.h; sourceTree = "<group>"; };
 		C23AF1EA22CAEB9000ED2490 /* ZFDouYinControlView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFDouYinControlView.m; sourceTree = "<group>"; };
 		C23AF1ED22CB5B8B00ED2490 /* MessageManger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MessageManger.h; sourceTree = "<group>"; };
@@ -661,6 +687,9 @@
 		C242382422927A3500CF0F5C /* DBZJ_ComCollectionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DBZJ_ComCollectionCell.h; sourceTree = "<group>"; };
 		C242382522927A3500CF0F5C /* DBZJ_ComCollectionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DBZJ_ComCollectionCell.m; sourceTree = "<group>"; };
 		C242382622927A3500CF0F5C /* DBZJ_ComCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DBZJ_ComCollectionCell.xib; sourceTree = "<group>"; };
+		C24AD4D7233DFA27009186CD /* JDSDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = JDSDK.bundle; sourceTree = "<group>"; };
+		C24AD4D8233DFA27009186CD /* JDSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JDSDK.framework; sourceTree = "<group>"; };
+		C24AD4DB233DFAA5009186CD /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		C24BE5A6228D599700585157 /* DBZJ_CommunityModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DBZJ_CommunityModel.h; sourceTree = "<group>"; };
 		C24BE5A7228D599700585157 /* DBZJ_CommunityModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DBZJ_CommunityModel.m; sourceTree = "<group>"; };
 		C24E1C6E2334753900A5031A /* GoodDetailPDDDetailCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GoodDetailPDDDetailCell.h; sourceTree = "<group>"; };
@@ -1081,6 +1110,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C24AD4DC233DFAA5009186CD /* JavaScriptCore.framework in Frameworks */,
 				C279931D22C32177004C0B4C /* Social.framework in Frameworks */,
 				C2F1038C224F4502007B5A5C /* CoreFoundation.framework in Frameworks */,
 				C2DBC9312289429600CFAE29 /* CoreLocation.framework in Frameworks */,
@@ -1090,6 +1120,7 @@
 				C203F28D2255FF8A009D73CD /* libsqlite3.tbd in Frameworks */,
 				C2F1039E224F4572007B5A5C /* libresolv.tbd in Frameworks */,
 				C236736923233E7A00BBF42B /* UTDID.framework in Frameworks */,
+				C24AD4DA233DFA28009186CD /* JDSDK.framework in Frameworks */,
 				C236736723233E7A00BBF42B /* AlibcLinkPartnerSDK.framework in Frameworks */,
 				C2F1039C224F4564007B5A5C /* UserNotifications.framework in Frameworks */,
 				C2F1039A224F454F007B5A5C /* libz.tbd in Frameworks */,
@@ -1394,6 +1425,7 @@
 			isa = PBXGroup;
 			children = (
 				C203F25E2255E5CE009D73CD /* daBaiZhiJia.entitlements */,
+				C24AD4D6233DFA27009186CD /* 京东 */,
 				C203F2612255FF3B009D73CD /* 阿里巴巴 */,
 				C2210B9B2248BEA600C1C765 /* Classes */,
 				C2210B8E2248B85600C1C765 /* Assets.xcassets */,
@@ -2039,6 +2071,48 @@
 			path = IndexView;
 			sourceTree = "<group>";
 		};
+		C2386F04233CBB3A0013693A /* 商家推广 */ = {
+			isa = PBXGroup;
+			children = (
+				C2386F05233CBB3A0013693A /* Contrl */,
+				C2386F06233CBB3A0013693A /* Model */,
+				C2386F07233CBB3A0013693A /* View */,
+			);
+			path = "商家推广";
+			sourceTree = "<group>";
+		};
+		C2386F05233CBB3A0013693A /* Contrl */ = {
+			isa = PBXGroup;
+			children = (
+				C2386F08233CBBBA0013693A /* MerChantPromoContrl.h */,
+				C2386F09233CBBBA0013693A /* MerChantPromoContrl.m */,
+				C2386F13233CBC7E0013693A /* MerChantPromoContrl.xib */,
+			);
+			path = Contrl;
+			sourceTree = "<group>";
+		};
+		C2386F06233CBB3A0013693A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C2386F1A233CC4070013693A /* MerChantPromoModel.h */,
+				C2386F1B233CC4070013693A /* MerChantPromoModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C2386F07233CBB3A0013693A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C2386F0E233CBC310013693A /* MerChantPromoCell.h */,
+				C2386F0F233CBC310013693A /* MerChantPromoCell.m */,
+				C2386F10233CBC310013693A /* MerChantPromoCell.xib */,
+				C2386F15233CBF7A0013693A /* MerChantPromoSecCell.h */,
+				C2386F16233CBF7A0013693A /* MerChantPromoSecCell.m */,
+				C2386F17233CBF7A0013693A /* MerChantPromoSecCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		C23AF1EC22CB5B1500ED2490 /* 消息处理 */ = {
 			isa = PBXGroup;
 			children = (
@@ -2046,6 +2120,15 @@
 				C23AF1EE22CB5B8B00ED2490 /* MessageManger.m */,
 			);
 			path = "消息处理";
+			sourceTree = "<group>";
+		};
+		C24AD4D6233DFA27009186CD /* 京东 */ = {
+			isa = PBXGroup;
+			children = (
+				C24AD4D7233DFA27009186CD /* JDSDK.bundle */,
+				C24AD4D8233DFA27009186CD /* JDSDK.framework */,
+			);
+			path = "京东";
 			sourceTree = "<group>";
 		};
 		C24FAD4522C45B2100645590 /* 我的战绩 */ = {
@@ -2368,6 +2451,7 @@
 		C279931E22C376EB004C0B4C /* 二级页面 */ = {
 			isa = PBXGroup;
 			children = (
+				C2386F04233CBB3A0013693A /* 商家推广 */,
 				C263C44D2318EFC500590331 /* 意见反馈 */,
 				C23AF1EC22CB5B1500ED2490 /* 消息处理 */,
 				C2EE9B1522C73CD1002775A4 /* 联系客服 */,
@@ -2981,6 +3065,9 @@
 				C2EDB827232A47E50085B9D6 /* NewPeo_DengjiV.h */,
 				C2EDB828232A47E50085B9D6 /* NewPeo_DengjiV.m */,
 				C2EDB82A232A48140085B9D6 /* NewPeo_DengjiV.xib */,
+				C2386EFF233C553E0013693A /* NewPeo_VipShareV.h */,
+				C2386F00233C553E0013693A /* NewPeo_VipShareV.m */,
+				C2386F02233C55490013693A /* NewPeo_VipShareV.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -3334,6 +3421,7 @@
 		F7CEA6AE055A0733EE4CA3B9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C24AD4DB233DFAA5009186CD /* JavaScriptCore.framework */,
 				C279931C22C32177004C0B4C /* Social.framework */,
 				C2DBC9302289429600CFAE29 /* CoreLocation.framework */,
 				C203F2902255FFBA009D73CD /* CoreMotion.framework */,
@@ -3430,6 +3518,7 @@
 				C24E1C722334753900A5031A /* GoodDetailPDDDetailCell.xib in Resources */,
 				C279938A22C376EC004C0B4C /* ClassScheCardCellTableViewCell.xib in Resources */,
 				C279938722C376EC004C0B4C /* RegisterDetailCell.xib in Resources */,
+				C2386F14233CBC7E0013693A /* MerChantPromoContrl.xib in Resources */,
 				C236735F23233E7900BBF42B /* AlipaySDK.bundle in Resources */,
 				C21CB03A2330EA2C0064166C /* Home_HeadDotV.xib in Resources */,
 				C289C9E622BE1DAB0031F21A /* NewPeo_ShareGoodCell.xib in Resources */,
@@ -3465,6 +3554,7 @@
 				C20DA14F22BA2F0A0098F9B2 /* LimitSale_SecStatusCell.xib in Resources */,
 				C21C72DD22C61CD0009F3199 /* Home_horseRacelpCell.xib in Resources */,
 				C2A70BDD22B8772B007B0022 /* GoodDetailBottom.xib in Resources */,
+				C2386F03233C55490013693A /* NewPeo_VipShareV.xib in Resources */,
 				C2F8962F22B3299A00DA02EC /* Home_EveeChoiView.xib in Resources */,
 				C2DBC9472289582000CFAE29 /* CreateshareBottom.xib in Resources */,
 				C267C84822534F7500FE6488 /* ForeGetPwdcontrl.xib in Resources */,
@@ -3485,6 +3575,7 @@
 				C2F00C9922C0CED10020738A /* Goto_LoginContrl.xib in Resources */,
 				C2EE9B1A22C73D0A002775A4 /* ContactKefuContrl.xib in Resources */,
 				C271BEF322B1F54800A94014 /* Home_AdVerView.xib in Resources */,
+				C2386F12233CBC310013693A /* MerChantPromoCell.xib in Resources */,
 				C271BEFF22B2246E00A94014 /* Home_FlashSale.xib in Resources */,
 				C2F151AC226974840017F2E0 /* CouponSearchView.xib in Resources */,
 				C2B9DCAC22851B1A0018F27A /* MineFirstView.xib in Resources */,
@@ -3500,6 +3591,7 @@
 				C2384F9F2249F3160070CFFE /* HomeSearchView.xib in Resources */,
 				C236736123233E7900BBF42B /* NBResource.bundle in Resources */,
 				C27CD56322C0800600852FE0 /* Home_Com_Group_Recom.xib in Resources */,
+				C24AD4D9233DFA28009186CD /* JDSDK.bundle in Resources */,
 				C267C836225315BE00FE6488 /* RegisterContrl.xib in Resources */,
 				C2B9DCB122851C3B0018F27A /* MineActiveAndTool.xib in Resources */,
 				C242382822927A3500CF0F5C /* DBZJ_ComCollectionCell.xib in Resources */,
@@ -3510,6 +3602,7 @@
 				C279939322C376EC004C0B4C /* MyGroupMemberContrl.xib in Resources */,
 				C271BEEF22B1F54800A94014 /* Home_headView.xib in Resources */,
 				C26B3F1E232765B900DA7911 /* GoodDetailInvalidV.xib in Resources */,
+				C2386F19233CBF7A0013693A /* MerChantPromoSecCell.xib in Resources */,
 				C2218C63228968BA0097F8F7 /* CreateshareCollectionCell.xib in Resources */,
 				C25F5F2122D5834B006C7C4D /* New_HomeFlashSaleGoodCell.xib in Resources */,
 				C25F5F2722D58A57006C7C4D /* BrandSpecialArea.xib in Resources */,
@@ -3698,6 +3791,7 @@
 				C2210C352248CD7F00C1C765 /* TAAbstractDotView.m in Sources */,
 				C2C401E422D87FF900290E73 /* GoodDetailTuiJianCell.m in Sources */,
 				C2FD0FF122C204A100418C7A /* MyInvitation_CodeContrl.m in Sources */,
+				C2386F11233CBC310013693A /* MerChantPromoCell.m in Sources */,
 				C290240D228AC2FC00EFFFDC /* NSArray+Safe.m in Sources */,
 				C25F5F1A22D57EBF006C7C4D /* New_HomeFlashSale.m in Sources */,
 				C203F2562255A6F9009D73CD /* SearchResultHead.m in Sources */,
@@ -3721,6 +3815,7 @@
 				C25F5F3722D5DAD9006C7C4D /* Brand_ShowCells.m in Sources */,
 				C2A70BDA22B8772B007B0022 /* GoodDetailSegment.m in Sources */,
 				C2384F9A2249F20E0070CFFE /* IndexButton.m in Sources */,
+				C2386F01233C553E0013693A /* NewPeo_VipShareV.m in Sources */,
 				C2B8905A22A6040A0005AAD5 /* SGQRCodeGenerateManager.m in Sources */,
 				C23317012333499B00B50BE0 /* PDDHotSaleMenu.m in Sources */,
 				C23316FE2333478700B50BE0 /* PDDHotSaleViewContrl.m in Sources */,
@@ -3733,6 +3828,7 @@
 				C279939522C376EC004C0B4C /* MyCollecTionModel.m in Sources */,
 				C279938C22C376EC004C0B4C /* ShareCoffeeContrl.m in Sources */,
 				C2C1A5DE22BDF48600D5F297 /* NewPeo_shareContrl.m in Sources */,
+				C2386F18233CBF7A0013693A /* MerChantPromoSecCell.m in Sources */,
 				C24FAD4B22C45B9B00645590 /* MyCombatContrl.m in Sources */,
 				C267C8B8225367B900FE6488 /* DWSearchHeadView.m in Sources */,
 				C2B8905922A6040A0005AAD5 /* SGQRCodeScanManager.m in Sources */,
@@ -3799,6 +3895,7 @@
 				C2210C442248CD7F00C1C765 /* UIView+TYAutoLayout.m in Sources */,
 				C2E227F0230690C800741CD3 /* NSString+Hash.m in Sources */,
 				C27CD56622C0827C00852FE0 /* Home_Com_Group_Model.m in Sources */,
+				C2386F1C233CC4070013693A /* MerChantPromoModel.m in Sources */,
 				C2210C362248CD7F00C1C765 /* CustomDatePickerDialog.m in Sources */,
 				C279939722C376EC004C0B4C /* MyCollecTionBottom.m in Sources */,
 				C2384F8E2249F20E0070CFFE /* YJProgressHUD.m in Sources */,
@@ -3856,6 +3953,7 @@
 				C21B7EB72331C93100BAD648 /* Home_headMenuSec.m in Sources */,
 				C279939C22C376EC004C0B4C /* Member_Model.m in Sources */,
 				C23AF1EF22CB5B8B00ED2490 /* MessageManger.m in Sources */,
+				C2386F0A233CBBBA0013693A /* MerChantPromoContrl.m in Sources */,
 				C2A70BDC22B8772B007B0022 /* GoodDetailBottom.m in Sources */,
 				C279939622C376EC004C0B4C /* MyCollecTionCell.m in Sources */,
 				C272610B22B090E30078FACA /* HomePage_Model.m in Sources */,
@@ -3994,6 +4092,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/daBaiZhiJia/阿里巴巴/Frameworks",
+					"$(PROJECT_DIR)/daBaiZhiJia/京东",
 				);
 				GCC_ENABLE_CPP_EXCEPTIONS = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
@@ -4127,6 +4226,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/daBaiZhiJia/阿里巴巴/Frameworks",
+					"$(PROJECT_DIR)/daBaiZhiJia/京东",
 				);
 				GCC_ENABLE_CPP_EXCEPTIONS = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;

@@ -24,6 +24,7 @@
 #import "HomePage_UpdateV.h"
 
 #define DateKey  @"DateKey"
+#define DateKey_UpDate  @"DateKey_UpDate" //更新V
 @interface PageViewController ()<UIScrollViewDelegate>
 @property (nonatomic, strong) UIScrollView *scroView;
 
@@ -143,7 +144,7 @@
                 NSLog(@"如果有引导页");
                 [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(guideVLoadFinsh) name:GuideViewLoadFinishNotification object:nil];
             }else{//
-                [self showPopV];
+                [self showPopV:1];
             }
         }
     }];
@@ -163,11 +164,17 @@
       dispatch_group_enter(group);
     [HomePage_Model queryAppSoreInfoWithCallBack:^(NSUInteger res) {
           dispatch_group_leave(group);
-        NSLog(@"queryAppSoreInf0 %zd", res);
+//        NSLog(@"queryAppSoreInf0 %zd", res);
+        NSLog(@"is_Force_Update %d", is_Force_Update);
         if (res ==1) {
-            HomePage_UpdateV *up = [HomePage_UpdateV viewFromXib];
-            up.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
-            [up show];
+            
+            if (is_Force_Update) { //强制更新，每次都出现
+                HomePage_UpdateV *up = [HomePage_UpdateV viewFromXib];
+                up.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+                [up show];
+            }else{ //一天出现一次
+                [self showPopV:2];
+            }
         }
     }];
     
@@ -287,13 +294,17 @@
 
 #pragma mark - 通知action
 - (void)guideVLoadFinsh{
-    [self showPopV];
+    [self showPopV:1];
 }
 
 #pragma mark - private
-//显示弹窗
-- (void)showPopV{//
-    NSString *dateStr     =  [[NSUserDefaults standardUserDefaults]objectForKey:DateKey];
+//显示弹窗 type:1 广告弹窗,2更新弹窗
+- (void)showPopV:(NSInteger)type{//
+    NSString *key = DateKey;
+    if (type == 2) {
+        key = DateKey_UpDate;
+    }
+    NSString *dateStr     =  [[NSUserDefaults standardUserDefaults]objectForKey:key];
     NSString *cur_datestr =  [NSString getDateStrByDate:[NSDate date]];
    //  NSLog(@"dateStr1 %@",dateStr);
     // NSLog(@"curDate %@",cur_datestr);
@@ -302,18 +313,27 @@
         return;
     }
     [self delayDoWork:0.5 WithBlock:^{
-        HomePage_NewPersonPopV *pop = [HomePage_NewPersonPopV viewFromXib];
-        pop.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
-        pop.navi = self.naviContrl;
-        pop.info = self.popInfo;
-        [pop show];
-        
+        if (type==1) {
+            HomePage_NewPersonPopV *pop = [HomePage_NewPersonPopV viewFromXib];
+            pop.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+            pop.navi = self.naviContrl;
+            pop.info = self.popInfo;
+            [pop show];
+        }else if (type==2){
+            HomePage_UpdateV *up = [HomePage_UpdateV viewFromXib];
+            up.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+            [up show];
+        }
+       
         NSString *dateStr = [NSString getDateStrByDate:[NSDate date]];
        // NSLog(@"dateStr2 %@",dateStr);
-        [[NSUserDefaults standardUserDefaults] setValue:dateStr forKey:DateKey];
-        [[NSUserDefaults standardUserDefaults]synchronize];
+        [[NSUserDefaults standardUserDefaults] setValue:dateStr forKey:key];
+        [[NSUserDefaults standardUserDefaults] synchronize];
     }];
 }
+
+
+
 
 #pragma mark - getter
 - (UIScrollView *)scroView{

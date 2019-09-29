@@ -19,3 +19,6 @@ NSString *const GetRemoteNotiFation = @"GetRemoteNotiFation";
 NSString *const IsShow_InfoKey = @"IsShow_InfoKey";
 
 NSString *const GuideViewLoadFinishNotification = @"GuideViewLoadFinishNotification";
+
+
+NSString *const is_Force_UpdateKey = @"is_Force_Update";

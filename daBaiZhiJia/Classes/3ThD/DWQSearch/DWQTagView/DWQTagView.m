@@ -62,10 +62,23 @@
         tag.layer.borderColor = RGBColor(245, 245, 245).CGColor;
         tag.clipsToBounds = YES;
         
+        [textStr textSizeWithFont:[UIFont boldSystemFontOfSize:12] maxSize:CGSizeMake(SCREEN_WIDTH-HORIZONTAL_PADDING*2, 20)];
+        
+        
         CGSize textStrSize = [textStr sizeWithAttributes:@{NSFontAttributeName:[UIFont boldSystemFontOfSize:12]}];
+       
         textStrSize.width += HORIZONTAL_PADDING*2;
         textStrSize.height += VERTICAL_PADDING*2;
         
+        CGFloat maxW =  SCREEN_WIDTH - HORIZONTAL_PADDING*2;
+        if (textStrSize.width > maxW) {//超出最大边框得做判断
+            textStrSize.width = maxW;
+        }
+        if (textStrSize.height > 34.32) {
+            textStrSize.height = 34.32;
+        }
+        
+        NSLog(@"textStrSize %@",NSStringFromCGSize(textStrSize));
         CGRect newRect = CGRectZero;
         
         /** 如果新的tagLab超出屏幕边界 */

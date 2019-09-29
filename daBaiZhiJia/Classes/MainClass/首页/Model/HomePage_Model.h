@@ -71,7 +71,8 @@ typedef void(^tmUrl_Block)(NSString *tmCS,NSString *tmGJ);
 @property (nonatomic, copy) NSString *color;
 @property (nonatomic, copy) NSString *img;
 @property (nonatomic, copy) NSString *url;
-@property (nonatomic, assign) NSInteger  url_type;//1、单品详情；2、内部H5页面；3、淘宝H5页面；4、跳转打开手淘页,5新人专享
+@property (nonatomic, copy) NSString *iosurl;//app 跳
+@property (nonatomic, assign) NSInteger  url_type;//1、单品详情；2、内部H5页面；3、淘宝H5页面；4、跳转打开手淘页,5新人专享6、拼多多主场景；7、拼多多打开APP指定场景；8、京东主场景；9、京东打开APP指定场景；
 @property (nonatomic, copy) NSString *type;//广告位置：1上2中左3中右4下
 @property (nonatomic, assign) NSInteger  pt;
 @end

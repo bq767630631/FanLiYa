@@ -11,6 +11,8 @@
 @interface HomePage_UpdateV ()
 @property (weak, nonatomic) IBOutlet UIButton *shaoHouBtn;
 @property (weak, nonatomic) IBOutlet UIButton *gengXinBtn;
+@property (weak, nonatomic) IBOutlet UIView *contentV;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *gengXinBtnTrail;
 
 @end
 @implementation HomePage_UpdateV
@@ -20,6 +22,19 @@
     self.backgroundColor = [[UIColor blackColor]colorWithAlphaComponent:0.5];
     ViewBorderRadius(self.shaoHouBtn, 17, RGBColor(51, 51, 51));
     ViewBorderRadius(self.gengXinBtn, 17,UIColor.clearColor);
+    
+}
+
+- (void)layoutSubviews{
+    [super layoutSubviews];
+    if (is_Force_Update) {
+        self.shaoHouBtn.hidden = YES;
+        self.gengXinBtnTrail.constant = 90;
+        NSLog(@"is_Force_Update = yes ");
+    }else{
+        self.shaoHouBtn.hidden = NO;
+        self.gengXinBtnTrail.constant = 17;
+    }
 }
 
 - (void)show{

@@ -160,8 +160,25 @@
 +(void)pddGetYouhuiQuanWithsku:(NSString*)sku CallBack:(VEBlock)callBack{
     NSDictionary *para = @{@"sku":sku,@"token":ToKen,@"v":APP_Version};
     [PPNetworkHelper GET:URL_Add(@"/v.php/goods.pdd/getCoupon") parameters:para success:^(id responseObject) {
-        NSLog(@".pdd/getCoupon %@",responseObject);
+        NSLog(@"pdd/getCoupon %@",responseObject);
           NSInteger code = [responseObject[@"code"] integerValue];
+        if (code == SucCode && ![responseObject[@"data"] isKindOfClass:[NSNull class]]) {
+            NSDictionary *dic = responseObject[@"data"];
+            callBack(dic);
+        }else{
+            [YJProgressHUD showMsgWithoutView:responseObject[@"msg"]];
+        }
+    } failure:^(NSError *error) {
+        callBack(nil);
+        [YJProgressHUD showAlertTipsWithError:error];
+    }];
+}
+
++ (void)jdGetYouhuiQuanWithsku:(NSString *)sku couponUrl:(NSString *)couponUrl CallBack:(VEBlock)callBack{
+    NSDictionary *para = @{@"sku":sku,@"couponUrl":couponUrl,@"token":ToKen,@"v":APP_Version};
+    [PPNetworkHelper GET:URL_Add(@"/v.php/goods.jd/getCoupon") parameters:para success:^(id responseObject) {
+        NSLog(@"jd/getCoupon %@",responseObject);
+        NSInteger code = [responseObject[@"code"] integerValue];
         if (code == SucCode && ![responseObject[@"data"] isKindOfClass:[NSNull class]]) {
             NSDictionary *dic = responseObject[@"data"];
             callBack(dic);

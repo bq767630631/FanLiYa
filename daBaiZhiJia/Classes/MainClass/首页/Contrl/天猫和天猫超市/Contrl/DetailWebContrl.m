@@ -90,7 +90,7 @@
     NSString *urlStr = webView.URL.absoluteString;
     NSLog(@"title =%@",webView.title);
     self.navigationItem.title = webView.title;
-    if ([urlStr containsString:@"item.htm"]) {
+    if ([urlStr containsString:@"item.htm"] && self.isFromTaoBao) {
         self.topLb.hidden = NO;
         self.bottomV.hidden = NO;
         NSLog(@"详情");
@@ -128,8 +128,20 @@
     NSLog(@"message.body %@",message.body);
     NSLog(@"message.name %@",message.name);
     if ([message.name isEqualToString:naviToGoodDetail]) {
-        NSString *sku = message.body;
+        NSString *body = message.body;
+        NSString *sku = @"";
+        FLYPT_Type pt = FLYPT_Type_TM;
+        if ([body containsString:@"&"]) {//sku=123&pt=1
+         NSArray *temp = [body componentsSeparatedByString:@"&"];
+            sku = [temp.firstObject substringFromIndex:4];
+            pt  = [[temp.lastObject substringFromIndex:3] integerValue];
+        }else{
+             sku = message.body;
+        }
+        NSLog(@"sku = %@",sku);
+        NSLog(@"pt = %zd",pt);
         GoodDetailContrl *detail = [[GoodDetailContrl alloc] initWithSku:sku];
+        detail.pt = pt;
         [self.navigationController pushViewController:detail animated:YES];
     }
     if ([message.name isEqualToString:naviToToShare]) {

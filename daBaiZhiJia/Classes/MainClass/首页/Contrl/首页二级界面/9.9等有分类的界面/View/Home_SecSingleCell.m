@@ -77,48 +77,20 @@
 
 - (IBAction)shareAction:(IndexButton *)sender {
     if ([self judgeisLogin]) {
-        UINavigationController *navi = nil;
-        if (self.info.is_From_page) {
-            PageViewController *page  = (PageViewController *)self.viewController;
-            navi = page.naviContrl;
-        }else if (self.info.is_From_cate){
-            CategoryContrl *cate  = (CategoryContrl *)self.viewController;
-            if (!self.info.is_Cate_Sec) {
-                navi = cate.naviContrl;
-            }else{
-                navi = cate.navigationController;
-            }
-        }else{
-            navi = self.viewController.navigationController;
-        }
-        
+     
         if (self.info.pt == FLYPT_Type_Pdd||self.info.pt == FLYPT_Type_JD) {
             CreateShareContrl *share = [[CreateShareContrl alloc] initWithSku:self.info.sku];
             share.pt = self.info.pt;
-            PingDuoduoPageHomecontrl *vc = (PingDuoduoPageHomecontrl*)self.viewController;
-            [vc.naviContrl pushViewController:share animated:YES];
+            [[self getCur_Navi] pushViewController:share animated:YES];
             return;
         }
         
-        
-        [CreateShare_Model geneRateTaoKlWithSku:self.info.sku vc:self.viewController navi_vc:navi  block:^(NSString *tkl, NSString *code, NSString *shorturl) {
+        [CreateShare_Model geneRateTaoKlWithSku:self.info.sku vc:self.viewController navi_vc:[self getCur_Navi]   block:^(NSString *tkl, NSString *code, NSString *shorturl) {
             if (tkl) {
                 
                 CreateShareContrl *share = [[CreateShareContrl alloc] initWithSku:self.info.sku ];
                 share.pt = self.info.pt;
-                if (self.info.is_From_page) {
-                    PageViewController *page  = (PageViewController *)self.viewController;
-                    [page.naviContrl pushViewController:share animated:YES];
-                }else if (self.info.is_From_cate){
-                    CategoryContrl *cate  = (CategoryContrl *)self.viewController;
-                    if (!self.info.is_Cate_Sec) {
-                        [cate.naviContrl pushViewController:share animated:YES];
-                    }else{
-                        [cate.navigationController pushViewController:share animated:YES];
-                    }
-                }else{
-                    [self.viewController.navigationController pushViewController:share animated:YES];
-                }
+               [[self getCur_Navi] pushViewController:share animated:YES];
             }
         }];
     }
@@ -147,6 +119,28 @@
         }
         return NO;
     }
+}
+
+- (UINavigationController*)getCur_Navi{
+    UINavigationController *navi = nil;
+    if (self.info.is_From_page) {
+        PageViewController *page  = (PageViewController *)self.viewController;
+        navi =  page.naviContrl;
+    }else if (self.info.is_From_cate){
+        CategoryContrl *cate  = (CategoryContrl *)self.viewController;
+        if (!self.info.is_Cate_Sec) {
+            navi = cate.naviContrl;
+        }else{
+            navi = cate.navigationController;
+        }
+    }else if (self.info.is_From_PddOrJd){
+        PingDuoduoPageHomecontrl *vc = (PingDuoduoPageHomecontrl*)self.viewController;
+        navi = vc.naviContrl;
+    }
+    else{
+        navi = self.viewController.navigationController;
+    }
+    return navi;
 }
 
 

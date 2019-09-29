@@ -30,6 +30,9 @@
 
 //拼多多优惠券
 + (void)pddGetYouhuiQuanWithsku:(NSString*)sku CallBack:(VEBlock)callBack;
+
+//京东优惠券
++ (void)jdGetYouhuiQuanWithsku:(NSString*)sku couponUrl:(NSString*)couponUrl CallBack:(VEBlock)callBack;
 @end
 
 

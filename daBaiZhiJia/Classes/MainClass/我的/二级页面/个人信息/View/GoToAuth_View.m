@@ -83,7 +83,7 @@
     
     AlibcTradeShowParams* showParam = [[AlibcTradeShowParams alloc] init];
     showParam.openType = AlibcOpenTypeAuto; //强制h5不能用淘宝打开
-    showParam.backUrl = @"tbopen27546131://"; //tbopen27546131
+   // showParam.backUrl = @"tbopen27546131://"; //tbopen27546131
 //    [[AlibcTradeSDK sharedInstance].tradeService show:self.navi_vc page:page showParams:showParam taoKeParams:nil trackParam:nil tradeProcessSuccessCallback:^(AlibcTradeResult * _Nullable result) {
 //        [self hideView];
 //        NSLog(@"result %@",result);

@@ -19,11 +19,7 @@
 
 @property (weak, nonatomic) IBOutlet UIView *contentV;
 @property (weak, nonatomic) IBOutlet UIView *tipsV;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *guiZeCntentVH;
 
-@property (weak, nonatomic) IBOutlet UIView *guiZeV;
-
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *tipsV_H;
 @property (weak, nonatomic) IBOutlet UILabel *ljLable;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *lj_H;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *lj_top;
@@ -58,7 +54,7 @@ static NSString *cellId_sec = @"cellId_sec";
 
 - (void)awakeFromNib{
     [super awakeFromNib];
-    [self.time_v addSubview:self.timeV];
+    //[self.time_v addSubview:self.timeV];
    
     [self.tableView registerNib:[UINib nibWithNibName:@"NewPeo_ShareGoodCell" bundle:nil] forCellReuseIdentifier:cellId];
     self.tableView.dataSource  = self;
@@ -66,12 +62,12 @@ static NSString *cellId_sec = @"cellId_sec";
     self.tableView.scrollEnabled = NO;
     self.tableView.backgroundColor = UIColor.clearColor;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    [self.tableV2 registerNib:[UINib nibWithNibName:@"NewPeo_ShareGoodSecCell" bundle:nil] forCellReuseIdentifier:cellId_sec];
-    self.tableV2.dataSource  = self;
-    self.tableV2.delegate    = self;
-    self.tableV2.scrollEnabled = NO;
-    self.tableV2.backgroundColor = UIColor.clearColor;
-     self.tableV2.separatorStyle = UITableViewCellSeparatorStyleNone;
+//    [self.tableV2 registerNib:[UINib nibWithNibName:@"NewPeo_ShareGoodSecCell" bundle:nil] forCellReuseIdentifier:cellId_sec];
+//    self.tableV2.dataSource  = self;
+//    self.tableV2.delegate    = self;
+//    self.tableV2.scrollEnabled = NO;
+//    self.tableV2.backgroundColor = UIColor.clearColor;
+//     self.tableV2.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.bottom_contentV addSubview:self.bottom];
     if (IS_iPhone5SE) {
         self.table_lead.constant = self.table_trail.constant = 5;
@@ -79,11 +75,11 @@ static NSString *cellId_sec = @"cellId_sec";
 }
 
 - (void)setInfoWith:(NSMutableArray *)arr time:(NSInteger)time rule:(id)rule tljList:(NSMutableArray*)tljList{
-    [self.timeV setTime:time];
+ //   [self.timeV setTime:time];
     self.goodArr = arr;
     self.tljList = tljList;
     [self.tableView reloadData];
-    [self.tableV2 reloadData];
+//    [self.tableV2 reloadData];
     self.ruleInfo = rule;
   
     [self.bottom setModel:rule];
@@ -95,8 +91,8 @@ static NSString *cellId_sec = @"cellId_sec";
         self.lj_top.constant = -40;
     }
    
-    self.table_H.constant   = self.tljList.count *Row_H;
-    self.tableV2_H.constant = self.goodArr.count *Row_H;
+    self.table_H.constant   = arr.count *Row_H;
+//    self.tableV2_H.constant = self.goodArr.count *Row_H;
     self.bottom_H.constant = self.bottom.height;
     self.bottom.width = self.bottom_contentV.width;
     
@@ -119,21 +115,27 @@ static NSString *cellId_sec = @"cellId_sec";
 
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return  self.tableView==tableView ? self.tljList.count:self.goodArr.count;
+//    return  self.tableView==tableView ? self.tljList.count:self.goodArr.count;
+    return self.goodArr.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (self.tableView == tableView ) { //淘礼金商品
-        NewPeo_ShareGoodCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
-        SearchResulGoodInfo *info = self.tljList[indexPath.row];
-        [cell setModel:info];
-        return cell;
-    }else{//普通商品
-        NewPeo_ShareGoodSecCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId_sec];
-        SearchResulGoodInfo *info = self.goodArr[indexPath.row];
-        [cell setModel:info];
-        return cell;
-    }
+//    if (self.tableView == tableView ) { //淘礼金商品
+//        NewPeo_ShareGoodCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
+//        SearchResulGoodInfo *info = self.tljList[indexPath.row];
+//        [cell setModel:info];
+//        return cell;
+//    }else{//普通商品
+//        NewPeo_ShareGoodSecCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId_sec];
+//        SearchResulGoodInfo *info = self.goodArr[indexPath.row];
+//        [cell setModel:info];
+//        return cell;
+//    }
+    
+    NewPeo_ShareGoodCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
+    SearchResulGoodInfo *info = self.goodArr[indexPath.row];
+    [cell setModel:info];
+      return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{

@@ -12,7 +12,7 @@
 #import "Home_EveeChoiCell.h"
 #import "Home_SecSingleCell.h"
 #import "GoodDetailContrl.h"
-#define Menu_H  45.f
+#define Menu_H  0
 @interface PDDOperationChannelContrl ()<UICollectionViewDataSource, UICollectionViewDelegate,UIScrollViewDelegate>
 @property (nonatomic, strong) UIScrollView *scroview;
 @property (nonatomic, strong) UIImageView *bannerImageV;
@@ -27,7 +27,7 @@
 @property (nonatomic,assign) NSInteger page;
 @property (nonatomic,copy) NSString *sort;
 @property (nonatomic, assign) BOOL haveNoMoreData;  //没有更多数据。 默认是否
-@property (nonatomic, assign) BOOL switchBtnSelect; //默认 no
+@property (nonatomic, assign) BOOL switchBtnSelect; //默认
 @property (nonatomic,strong) NSMutableArray *searchGoodsArr;
 @end
 
@@ -43,6 +43,7 @@ static NSString *tableCellId = @"tableCellId";
 
 - (void)setUp{
     self.page  = 1;
+    self.switchBtnSelect = YES;
     [self.view addSubview:self.scroview];
 }
 
@@ -181,14 +182,15 @@ static NSString *tableCellId = @"tableCellId";
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
-    if (!self.switchBtnSelect) {
-        CGFloat wd = (SCREEN_WIDTH - Item_Gap*3 ) / 2;
-        CGFloat ht = wd + Margin;
-        CGSize itemSize = CGSizeMake(wd,ht);
-        return itemSize;
-    }else{
-        return CGSizeMake(SCREEN_WIDTH, 139.f);
-    }
+     return CGSizeMake(SCREEN_WIDTH, 139.f);
+//    if (!self.switchBtnSelect) {
+//        CGFloat wd = (SCREEN_WIDTH - Item_Gap*3 ) / 2;
+//        CGFloat ht = wd + Margin;
+//        CGSize itemSize = CGSizeMake(wd,ht);
+//        return itemSize;
+//    }else{
+//        return CGSizeMake(SCREEN_WIDTH, 139.f);
+//    }
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
@@ -285,6 +287,7 @@ static NSString *tableCellId = @"tableCellId";
     if (!_menu) {
         _menu = [SearchResultMenu viewFromXib];
         _menu.searchType = 2;
+        _menu.hidden = YES;
         _menu.frame = CGRectMake(0, _bannerImageV.bottom, SCREEN_WIDTH, Menu_H);
         @weakify(self);
         _menu.searchBlock = ^(NSString *searchType) {
@@ -316,8 +319,8 @@ static NSString *tableCellId = @"tableCellId";
         }else{
             hight = SCREEN_HEIGHT -  self.menu.bottom;
         }
-        CGRect frame = CGRectMake(0, self.menu.bottom, SCREEN_WIDTH, hight);
-        _collectionView = [[UICollectionView alloc] initWithFrame:frame collectionViewLayout:self.doubleLayout];
+        CGRect frame = CGRectMake(0, self.menu.bottom + 10, SCREEN_WIDTH, hight);
+        _collectionView = [[UICollectionView alloc] initWithFrame:frame collectionViewLayout:self.singleLayout];
         _collectionView.dataSource = self;
         _collectionView.delegate = self;
         _collectionView.backgroundColor = RGBColor(245, 245, 245);

@@ -17,6 +17,7 @@
 #import "WXApi.h"
 #import "ContactKefuContrl.h"
 #import "DBZJ_FeedBack.h"
+#import "MerChantPromoContrl.h"
 @interface MineActiveAndTool ()
 @property (weak, nonatomic) IBOutlet UILabel *title;
 @property (weak, nonatomic) IBOutlet UIImageView *image1;
@@ -116,7 +117,7 @@
         }
         [self bindWeiXin];
     }else if (tag==12){
-        vc = [DBZJ_FeedBack new];
+        vc = [MerChantPromoContrl new];
     }
     if (vc){
           [self.viewController.navigationController pushViewController:vc animated:YES];

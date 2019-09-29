@@ -194,12 +194,19 @@ static NSString *kTextCellId = @"kTextCellId";
     PageViewController *page = (PageViewController*)self.viewController;
     if (type ==1) {
         GoodDetailContrl *detail = [[GoodDetailContrl alloc] initWithSku:info.url];
+        detail.pt = info.pt;
         [page.naviContrl pushViewController:detail animated:YES];
     }else if (type ==2||type ==3){
         DetailWebContrl *detailweb = [[DetailWebContrl alloc] initWithUrl:[NSString stringWithFormat:@"%@&token=%@",info.url,ToKen] title:@"" para:nil];
         [page.naviContrl pushViewController:detailweb animated:YES];
     }else if (type==4){
-        [HandelTaoBaoTradeManager openTaoBaoAndTraWithUrl:info.url navi:page.naviContrl];
+        if (info.pt==FLYPT_Type_TM ||info.pt==FLYPT_Type_TB) {
+            [HandelTaoBaoTradeManager openTaoBaoAndTraWithUrl:info.url navi:page.naviContrl];
+        }else if (info.pt==FLYPT_Type_Pdd){
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:info.url]];
+        }else if (info.pt==FLYPT_Type_JD){
+            //todo
+        }
     }
 }
 

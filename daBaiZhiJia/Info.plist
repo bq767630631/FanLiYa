@@ -17,7 +17,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.3</string>
+	<string>1.5</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
@@ -48,9 +48,19 @@
 				<string>tencent1109202625</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>jd</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>sdkbackb93c8303e7a76e0b718fffb410bbb0d2</string>
+			</array>
+		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>2</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>tmall</string>
@@ -58,11 +68,7 @@
 		<string>wechat</string>
 		<string>weixin</string>
 		<string>mqqapi</string>
-		<string>sinaweibohd</string>
-		<string>sinaweibo</string>
 		<string>sinaweibosso</string>
-		<string>weibosdk</string>
-		<string>weibosdk2.5</string>
 		<string>mqqapi</string>
 		<string>mqq</string>
 		<string>mqqOpensdkSSoLogin</string>
@@ -82,13 +88,15 @@
 		<string>mqzonev2</string>
 		<string>mqzoneshare</string>
 		<string>wtloginqzone</string>
-		<string>mqzonewx</string>
 		<string>mqzoneopensdkapiV2</string>
 		<string>mqzoneopensdkapi19</string>
 		<string>mqzoneopensdkapi</string>
 		<string>mqqbrowser</string>
 		<string>mttbrowser</string>
 		<string>taobao</string>
+		<string>pinduoduo</string>
+		<string>jdlogin</string>
+		<string>openapp.jdmobile</string>
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>

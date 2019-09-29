@@ -167,7 +167,13 @@
         DetailWebContrl *detailweb = [[DetailWebContrl alloc] initWithUrl:[NSString stringWithFormat:@"%@&token=%@",info.url,ToKen] title:@"" para:nil];
         [page.naviContrl pushViewController:detailweb animated:YES];
     }else if (type==3){ //跳转打开拼多多APP指定链接
-        
+        BOOL can =   [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"pinduoduo://"]];
+        if (can) {
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:info.iosurl]];
+        }else{
+            DetailWebContrl *web = [[DetailWebContrl alloc] initWithUrl:info.url title:nil para:nil];
+            [page.naviContrl pushViewController:web animated:YES];
+        }
     }
 }
 

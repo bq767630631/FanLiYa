@@ -61,16 +61,15 @@
         type = SecHasCatType_MuYing;
         secTitle = @"母婴专区";
     }else if (tag==207){
-        DetailWebContrl *detailWeb = [[DetailWebContrl alloc] initWithUrl:self.tmcs title:@"天猫超市" para:nil];
-        [page.naviContrl pushViewController:detailWeb animated:YES];
-        return;
+        type = SecHasCatType_Tehui;
+        secTitle = @"特惠专区";
     }else if (tag==208){
           PingDuoduoHomeContrl *pdd =  [PingDuoduoHomeContrl new];
           pdd.pt = FLYPT_Type_Pdd;
           [page.naviContrl pushViewController:pdd animated:YES];
         return;
     }else if (tag==209){
-        PingDuoduoHomeContrl *jd =  [PingDuoduoHomeContrl new];
+        PingDuoduoHomeContrl *jd = [PingDuoduoHomeContrl new];
         jd.pt = FLYPT_Type_JD;
         [page.naviContrl pushViewController:jd animated:YES];
         return;

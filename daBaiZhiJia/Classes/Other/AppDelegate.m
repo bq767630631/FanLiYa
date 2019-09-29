@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 
-#import "iVersion.h"
+//#import "iVersion.h"
 #import "AppDelegate+privates.h"
 #import <IQKeyboardManager/IQKeyboardManager.h>
 #import "WXApi.h"
@@ -38,10 +38,11 @@
         self.tabVc = tabVc;
         [self setUpGuidView];
     }];
-   
+       
     [self setUpJpushWithOptions:launchOptions];
     [self setUpAliSdk];
     [self setUpJShare];
+    [self setUpJD];
     //微信api注册
     [WXApi registerApp:WXAPPID];
     //setUpiVersion

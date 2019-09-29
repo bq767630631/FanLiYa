@@ -23,10 +23,10 @@
 @implementation NewPeo_shareBottomV
 -(void)awakeFromNib{
     [super awakeFromNib];
-    self.contentV.layer.cornerRadius =  5.f;
-    self.contentV.layer.masksToBounds = YES;//隐藏裁剪掉的部分
-    self.contentV.layer.borderWidth = 3.f;//宽度
-    self.contentV.layer.borderColor = RGBColor(246, 189, 57).CGColor;
+//    self.contentV.layer.cornerRadius =  5.f;
+//    self.contentV.layer.masksToBounds = YES;//隐藏裁剪掉的部分
+//    self.contentV.layer.borderWidth = 3.f;//宽度
+//    self.contentV.layer.borderColor = RGBColor(246, 189, 57).CGColor;
 }
 
 - (void)setModel:(id)model{

@@ -9,7 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "HomePage_Model.h"
 NS_ASSUME_NONNULL_BEGIN
-
+/**
+ *广告弹窗
+ **/
 @interface HomePage_NewPersonPopV : UIView
 @property (weak, nonatomic) IBOutlet UIButton *bgBtn;
 

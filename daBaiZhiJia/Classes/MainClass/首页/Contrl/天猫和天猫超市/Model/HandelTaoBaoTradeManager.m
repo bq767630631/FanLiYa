@@ -13,11 +13,9 @@
 
 + (void)openTaoBaoAndTraWithUrl:(NSString*)url navi:(UINavigationController*)navi{
   
-    //id<AlibcTradePage> page = [AlibcTradePageFactory page:url];
-    
     AlibcTradeShowParams* showParam = [[AlibcTradeShowParams alloc] init];
     showParam.openType = AlibcOpenTypeNative;
-    showParam.backUrl = @"tbopen27546131://";
+    //showParam.backUrl = @"tbopen27546131://";
     showParam.isNeedPush = YES;
 //    [[AlibcTradeSDK sharedInstance].tradeService show:navi page:page showParams:showParam taoKeParams:nil trackParam:nil tradeProcessSuccessCallback:^(AlibcTradeResult * _Nullable result) {
 //        NSLog(@"result %@",result);

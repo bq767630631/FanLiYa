@@ -37,10 +37,12 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(homePage_Bg_change:) name:Home_pageScro_ChangeBgNoti object:nil];
 
-    [HomePage_Model queryVerson:^{
-        [self setUpCategory];
-        [self queryData];
-    }];
+//    [HomePage_Model queryVerson:^{
+//        [self setUpCategory];
+//        [self queryData];
+//    }];
+    [self setUpCategory];
+    [self queryData];
 }
 
 

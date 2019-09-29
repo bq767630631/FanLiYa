@@ -84,7 +84,9 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="contentV" destination="08s-Ml-1c6" id="ICK-LC-hvU"/>
                 <outlet property="gengXinBtn" destination="ti0-nV-8Zp" id="wvN-Vp-mVP"/>
+                <outlet property="gengXinBtnTrail" destination="2Xw-99-AnQ" id="hpc-I8-bbd"/>
                 <outlet property="shaoHouBtn" destination="f96-PV-pBx" id="4SP-w9-8v4"/>
             </connections>
         </view>

@@ -11,7 +11,7 @@
 @implementation HomePage_Model
 + (void)queryVerson:(void (^)(void))callBlock{
     [PPNetworkHelper GET:URL_Add(@"/v.php/index.index/getAppShow") parameters:@{@"token":ToKen,@"v":APP_Version} success:^(id responseObject) {
-//         NSLog(@"responseObject %@",responseObject);
+        // NSLog(@"responseObject %@",responseObject);
         NSInteger code = [responseObject[@"code"] integerValue];
         NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
         NSString *cur_ver = [infoDictionary objectForKey:@"CFBundleShortVersionString"];
@@ -22,18 +22,23 @@
             for (Version_info *info in arr) {
                 if ([info.version isEqualToString:cur_ver] ) {//正在审核的版本
                     isShow = [info.show isEqualToString:@"1"]?YES:NO;
-                    NSLog(@"正在审核的版本");
+//                    NSLog(@"正在审核的版本");
                 }
             }
            
             [[NSUserDefaults standardUserDefaults] setBool:isShow forKey:IsShow_InfoKey];
+            
+            BOOL is_update= [responseObject[@"data"][@"is_update"] boolValue];
+            NSLog(@"is_update %d", is_update);
+            [[NSUserDefaults standardUserDefaults] setBool:is_update forKey:is_Force_UpdateKey];
             [[NSUserDefaults standardUserDefaults] synchronize];
-            NSLog(@"isShow %d",[[[NSUserDefaults standardUserDefaults] objectForKey:IsShow_InfoKey] boolValue]);
+            
             callBlock();
         }
        
     } failure:^(NSError *error) {
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:IsShow_InfoKey];
+        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:is_Force_UpdateKey];
         [[NSUserDefaults standardUserDefaults] synchronize];
           callBlock();
         NSLog(@"%@",error);
@@ -204,7 +209,7 @@
 + (void)queryAppTopSideWithBlock:(PPHttpRequestCallBack)block{
     NSDictionary *dict = @{@"token":ToKen,@"v":APP_Version};
     [PPNetworkHelper GET:URL_Add(@"/v.php/index.index/getAppTopSide") parameters:dict success:^(id responseObject) {
-        NSLog(@"getAppTopSide responseObject %@",responseObject);
+        //NSLog(@"getAppTopSide responseObject %@",responseObject);
         NSInteger code = [responseObject[@"code"] integerValue];
         if (code == SucCode) {
             NSMutableArray *InfoArr = [HomePage_bg_bannernfo mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
@@ -225,14 +230,11 @@
         NSString *storeVerson = list.firstObject[@"version"];
         NSString *cur_v = [UIApplication sharedApplication].appVersion;
         NSLog(@"storeVerson %@",storeVerson);
-        NSLog(@"cur_Version %@", [UIApplication sharedApplication].appVersion);
-        NSLog(@"Is_Show_Info %d", Is_Show_Info);
-       // NSLog(@"%@",responseObject);
         NSInteger isShowUpDate = 0;
         if (Is_Show_Info && ![cur_v isEqualToString:storeVerson]) {//非审核状态并且当地版本和线上版本不一样
             isShowUpDate = 1;
         }
-        
+         //  [[NSUserDefaults standardUserDefaults] setBool:YES forKey:is_Force_UpdateKey];
         callBack(isShowUpDate);
     } failure:^(NSError *error) {
         callBack(0);

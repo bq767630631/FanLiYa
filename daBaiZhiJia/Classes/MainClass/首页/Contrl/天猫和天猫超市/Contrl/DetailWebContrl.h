@@ -11,7 +11,7 @@
 @interface DetailWebContrl : MPZG_BaseContrl
 
 - (instancetype)initWithUrl:(NSString*)url title:(NSString*)title para:(NSDictionary*)para;
-
+@property (nonatomic, assign) BOOL isFromTaoBao;//来自淘宝
 @property (nonatomic, assign) BOOL  isFromhomeTab;
 @end
 

@@ -10,6 +10,9 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+/**
+ *更新视图
+ **/
 @interface HomePage_UpdateV : UIView
 - (void)show;
 @end

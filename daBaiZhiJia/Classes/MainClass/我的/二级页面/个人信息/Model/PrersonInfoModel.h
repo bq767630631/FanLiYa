@@ -32,6 +32,8 @@ typedef void(^prersonRevenueBlock)(PersonRevenue*  reve, NSInteger code);
 + (void)queryMyMidddleWithblock:(PPHttpRequestCallBack)callBack;
 
 + (void)queryTaoBaoTklWithCallBack:(void (^)(NSString*url))block;
+
++ (void)queryAppSoreInfoWithCallBack:(VEBlock)callBack;
 @end
 
 @interface PrersonInfoMsg : NSObject

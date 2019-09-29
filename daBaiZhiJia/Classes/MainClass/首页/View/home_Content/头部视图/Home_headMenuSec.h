@@ -12,6 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface Home_headMenuSec : UIView
 @property (nonatomic, copy) NSString *tmgj;
+@property (nonatomic, copy) NSString *tmcs;
 @end
 
 NS_ASSUME_NONNULL_END

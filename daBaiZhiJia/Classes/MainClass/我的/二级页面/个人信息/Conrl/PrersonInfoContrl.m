@@ -19,6 +19,8 @@
 #import "Goto_Login_model.h"
 #import "Bind_PhoneContrl.h"
 
+#define appStoreUrl @"https://apps.apple.com/cn/app/id1459203610"
+
 @interface PrersonInfoContrl ()<UIImagePickerControllerDelegate,UINavigationControllerDelegate,WXApiDelegate>
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *containTop;
 @property (weak, nonatomic) IBOutlet UIImageView *headimageView;
@@ -42,6 +44,13 @@
 @property (nonatomic, strong) PrersonInfoMsg *info;
 @property (nonatomic, copy) NSString *authUrl;
 @property (nonatomic, copy) NSString *authTKL;
+
+@property (weak, nonatomic) IBOutlet UILabel *versionLb;
+@property (weak, nonatomic) IBOutlet UIView *checkVersionV;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *checkV_H;
+@property (nonatomic, assign) BOOL  isNewest;//是否是最新版本
+
+
 @end
 
 @implementation PrersonInfoContrl
@@ -128,6 +137,25 @@
     [PrersonInfoModel queryTaoBaoTklWithCallBack:^(NSString *url) {
         self.authTKL = url;
     }];
+    [self  queryStoreVersion];
+}
+
+- (void)queryStoreVersion{
+    if (Is_Show_Info) {
+        [PrersonInfoModel queryAppSoreInfoWithCallBack:^(NSString *storeV) {
+             NSString *cur_v = [UIApplication sharedApplication].appVersion;
+            if ([cur_v isEqualToString:storeV]) {
+                self.versionLb.text = @"已是最新版本";
+                self.isNewest = YES;
+            }else{
+                self.isNewest = NO;
+                self.versionLb.text = [NSString stringWithFormat:@"有最新版本V%@，请点击更新",storeV];
+            }
+        }];
+    }else{
+        self.checkV_H.constant = 0;
+        self.checkVersionV.hidden = YES;
+    }
 }
 
 - (void)openTbWithUrl:(NSString *)url{    
@@ -135,7 +163,7 @@
     
     AlibcTradeShowParams* showParam = [[AlibcTradeShowParams alloc] init];
     showParam.openType = AlibcOpenTypeAuto;
-    showParam.backUrl = @"tbopen27546131://";
+   // showParam.backUrl = @"tbopen27546131://";
 //    [[AlibcTradeSDK sharedInstance].tradeService show:self page:page showParams:showParam taoKeParams:nil trackParam:nil tradeProcessSuccessCallback:^(AlibcTradeResult * _Nullable result) {
 //        NSLog(@"result %@",result);
 //    } tradeProcessFailedCallback:^(NSError * _Nullable error) {
@@ -305,6 +333,15 @@
     request.scope  = @"snsapi_userinfo";
     BOOL res  = [WXApi sendReq:request];
     NSLog(@"res %d",res);
+}
+
+
+- (IBAction)checkAction:(id)sender {
+    if (self.isNewest) {
+        [YJProgressHUD showMsgWithoutView:@"已是最新版本"];
+        return;
+    }
+      [[UIApplication sharedApplication] openURL:[NSURL URLWithString:appStoreUrl]];
 }
 
 

@@ -26,3 +26,7 @@ UIKIT_EXTERN NSString *const IsShow_InfoKey;
 
 /* 引导页加载完的通知*/
 UIKIT_EXTERN NSString *const GuideViewLoadFinishNotification;
+
+
+/*是否强制更新*/
+UIKIT_EXTERN NSString *const is_Force_UpdateKey;

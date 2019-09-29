@@ -157,7 +157,8 @@ static NSString *cellId = @"cellId";
 }
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
-      SearchResulGoodInfo *info = self.goodArr[indexPath.row];
+    SearchResulGoodInfo *info = self.goodArr[indexPath.row];
+    info.is_From_PddOrJd = YES;
     Home_SecSingleCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellId forIndexPath:indexPath];
     [cell setModel:info];
     return cell;

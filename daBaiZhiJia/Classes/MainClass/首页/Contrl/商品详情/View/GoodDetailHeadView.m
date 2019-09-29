@@ -23,6 +23,8 @@
 #import "ZKCycleScrollView.h"
 #import "GoToAuth_View.h"
 #import "GoodDetailPDDDetailCell.h"
+#import "DetailWebContrl.h"
+#import <JDSDK/KeplerApiManager.h>
 
 static NSString *collecTioncellId = @"collecTioncellId";
 static NSString *tablecellId = @"tablecellId";
@@ -61,6 +63,10 @@ static NSString *KbannerId = @"KbannerId";
 @property (weak, nonatomic) IBOutlet UIView *shengJiV;
 
 @property (weak, nonatomic) IBOutlet UILabel *tuiJianLb;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *tuiJianLb_H;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *tuiJianContent_Bottom;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *tuiJianContent_Top;
 
 @property (weak, nonatomic) IBOutlet UILabel *shoptitle;
 @property (weak, nonatomic) IBOutlet UIImageView *shopPt;
@@ -95,8 +101,6 @@ static NSString *KbannerId = @"KbannerId";
     ViewBorderRadius(self.shengJizhuanBtn, self.shengJizhuanBtn.height*0.5, UIColor.clearColor);
     ViewBorderRadius(self.tuiJianLb, 2, UIColor.clearColor);
     [self addSubview:self.bannerV];
-//    [self addSubview:self.webView];
-//    [self.webView.scrollView addObserver:self forKeyPath:@"contentSize" options:NSKeyValueObservingOptionNew context:nil];
     
     self.collection.delegate = self;
     self.collection.dataSource = self;
@@ -204,6 +208,12 @@ static NSString *KbannerId = @"KbannerId";
     
     self.discountLb.text = [NSString stringWithFormat:@"￥%@",info.coupon_amount];
     self.tuiJianContent.text = info.desc;
+    if (info.desc.length == 0) {//没推荐 隐藏
+        self.tuiJianLb.hidden = YES;
+        self.tuiJianLb_H.constant = 0;
+        self.tuiJianContent_Bottom.constant = 0;
+        self.tuiJianContent_Top.constant = 0;
+    }
   
     if (goodArray.count==0) {
         self.likeView.hidden = YES;
@@ -352,15 +362,38 @@ static NSString *KbannerId = @"KbannerId";
      NSLog(@"领取优惠券");
     if ([self judgeisLogin]) {
         if (self.detailInfo.pt == FLYPT_Type_Pdd) {//pdd
+            
             [GoodDetailModel pddGetYouhuiQuanWithsku:self.detailInfo.sku CallBack:^(NSDictionary *dict) {
                 if (dict) {
                     NSString *app = dict[@"app"];//如果没下app,safari自动跳转
-                    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:app]];
+                    NSString *iosurl = dict[@"iosurl"];
+                   BOOL can =   [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"pinduoduo://"]];
+                    if (can) {
+                        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:iosurl]];
+                    }else{
+                        DetailWebContrl *web = [[DetailWebContrl alloc] initWithUrl:app title:nil para:nil];
+                        [self.viewController.navigationController pushViewController:web animated:YES];
+                    }
                 }
             }];
             return;
         }else if (self.detailInfo.pt == FLYPT_Type_JD){// jd
-            
+            [GoodDetailModel jdGetYouhuiQuanWithsku:self.detailInfo.sku couponUrl:self.detailInfo.couponUrl CallBack:^(NSDictionary *dict) {
+                if (dict) {
+                     NSString *app = dict[@"app"];
+                     BOOL can =   [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"jdlogin://"]];
+                    NSLog(@"can %d",can);
+                    [[KeplerApiManager sharedKPService] openKeplerPageWithURL:app userInfo:nil failedCallback:^(NSInteger code, NSString *url) {
+                        //422:没有安装jd
+                        NSLog(@"%zd",code);
+                        NSLog(@"%@",url);
+                        if (code==422) {
+                            DetailWebContrl *web = [[DetailWebContrl alloc] initWithUrl:app title:nil para:nil];
+                            [self.viewController.navigationController pushViewController:web animated:YES];
+                        }
+                    }];
+                }
+            }];
             
             return;
         }

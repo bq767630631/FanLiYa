@@ -118,7 +118,7 @@
                     }
                     
                 }
-                NSInteger totalPage = [responseObject[@"data"][@"totalPage"] integerValue];
+                NSInteger totalPage = [responseObject[@"data"][@"totalpage"] integerValue];
                  NSInteger cur_Page = [responseObject[@"data"][@"page"] integerValue];
                 if (totalPage <= cur_Page) {
                     self.haveNoMoreData_Marketing = YES;

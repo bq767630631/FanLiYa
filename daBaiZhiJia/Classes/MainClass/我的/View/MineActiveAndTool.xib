@@ -38,10 +38,10 @@
                             <rect key="frame" x="0.0" y="0.0" width="94" height="84"/>
                             <subviews>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_invite" translatesAutoresizingMaskIntoConstraints="NO" id="S6P-2X-u41">
-                                    <rect key="frame" x="33" y="20" width="28" height="28"/>
+                                    <rect key="frame" x="39" y="20" width="16" height="16"/>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="邀请好友" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sp5-MR-aJe">
-                                    <rect key="frame" x="22" y="63" width="50" height="12"/>
+                                    <rect key="frame" x="22" y="51" width="50" height="12"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="12" id="aKX-6X-3Pk"/>
                                     </constraints>
@@ -72,10 +72,10 @@
                             <rect key="frame" x="94" y="0.0" width="93.5" height="84"/>
                             <subviews>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_extension" translatesAutoresizingMaskIntoConstraints="NO" id="GtZ-gq-9bV">
-                                    <rect key="frame" x="33" y="20" width="27" height="27"/>
+                                    <rect key="frame" x="38.5" y="20" width="16" height="16"/>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="地推素材" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cnl-aY-USP">
-                                    <rect key="frame" x="22" y="62" width="49.5" height="12"/>
+                                    <rect key="frame" x="22" y="51" width="49.5" height="12"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="12" id="S0B-pu-HSS"/>
                                     </constraints>
@@ -106,10 +106,10 @@
                             <rect key="frame" x="187.5" y="0.0" width="94" height="84"/>
                             <subviews>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_edit_yaoqingm" translatesAutoresizingMaskIntoConstraints="NO" id="TQy-jp-W1I">
-                                    <rect key="frame" x="33.5" y="20" width="27" height="27"/>
+                                    <rect key="frame" x="39" y="20" width="16" height="16"/>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="自定义邀请码" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FUb-OB-A2M">
-                                    <rect key="frame" x="10" y="62" width="74" height="12"/>
+                                    <rect key="frame" x="10" y="51" width="74" height="12"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="12" id="VJS-SD-aeX"/>
                                     </constraints>
@@ -140,10 +140,10 @@
                             <rect key="frame" x="281.5" y="0.0" width="93.5" height="84"/>
                             <subviews>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_partner" translatesAutoresizingMaskIntoConstraints="NO" id="lJB-vQ-yfE">
-                                    <rect key="frame" x="32.5" y="20" width="28" height="28"/>
+                                    <rect key="frame" x="38.5" y="20" width="16" height="16"/>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="团长系统" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dY3-Bp-JTf">
-                                    <rect key="frame" x="22" y="63" width="49.5" height="12"/>
+                                    <rect key="frame" x="22" y="51" width="49.5" height="12"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="12" id="Zt2-Bb-1Io"/>
                                     </constraints>
@@ -199,10 +199,10 @@
                             <rect key="frame" x="0.0" y="0.0" width="94" height="84"/>
                             <subviews>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_class" translatesAutoresizingMaskIntoConstraints="NO" id="0ht-i8-pin">
-                                    <rect key="frame" x="33" y="20" width="28" height="28"/>
+                                    <rect key="frame" x="39" y="20" width="16" height="16"/>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="新手教程" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rFQ-Bv-dcW">
-                                    <rect key="frame" x="22" y="63" width="50" height="12"/>
+                                    <rect key="frame" x="22" y="51" width="50" height="12"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="12" id="X7J-z1-et2"/>
                                     </constraints>
@@ -233,10 +233,10 @@
                             <rect key="frame" x="94" y="0.0" width="93.5" height="84"/>
                             <subviews>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_qqshequn" translatesAutoresizingMaskIntoConstraints="NO" id="Ndz-sR-HCv">
-                                    <rect key="frame" x="33" y="20" width="27" height="27"/>
+                                    <rect key="frame" x="38.5" y="20" width="16" height="16"/>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="加入社群" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wRW-wR-lyu">
-                                    <rect key="frame" x="22" y="62" width="49.5" height="12"/>
+                                    <rect key="frame" x="22" y="51" width="49.5" height="12"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="12" id="jgu-Mh-J1d"/>
                                     </constraints>
@@ -267,10 +267,10 @@
                             <rect key="frame" x="187.5" y="0.0" width="94" height="84"/>
                             <subviews>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_service" translatesAutoresizingMaskIntoConstraints="NO" id="Hjr-6V-YIE">
-                                    <rect key="frame" x="33" y="20" width="28" height="28"/>
+                                    <rect key="frame" x="39" y="20" width="16" height="16"/>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="联系客服" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jrE-zM-q66">
-                                    <rect key="frame" x="22" y="63" width="49.5" height="12"/>
+                                    <rect key="frame" x="22" y="51" width="49.5" height="12"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="12" id="zmX-C2-Ryr"/>
                                     </constraints>
@@ -301,10 +301,10 @@
                             <rect key="frame" x="281.5" y="0.0" width="93.5" height="84"/>
                             <subviews>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_yunfadan" translatesAutoresizingMaskIntoConstraints="NO" id="dKq-2o-IvF">
-                                    <rect key="frame" x="33" y="20" width="27" height="27"/>
+                                    <rect key="frame" x="38.5" y="20" width="16" height="16"/>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="云发单" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DDz-Fm-EyH">
-                                    <rect key="frame" x="28" y="62" width="37" height="12"/>
+                                    <rect key="frame" x="28" y="51" width="37" height="12"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="12" id="X2l-9Z-BNI"/>
                                     </constraints>
@@ -360,10 +360,10 @@
                             <rect key="frame" x="0.0" y="0.0" width="94" height="84"/>
                             <subviews>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_collect" translatesAutoresizingMaskIntoConstraints="NO" id="w8n-xB-JWI">
-                                    <rect key="frame" x="33" y="20" width="28" height="28"/>
+                                    <rect key="frame" x="39" y="20" width="16" height="16"/>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我的收藏" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DLD-0J-0N5">
-                                    <rect key="frame" x="22" y="63" width="50" height="12"/>
+                                    <rect key="frame" x="22" y="51" width="50" height="12"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="12" id="f1h-Qj-RVk"/>
                                     </constraints>
@@ -394,10 +394,10 @@
                             <rect key="frame" x="94" y="0.0" width="93.5" height="84"/>
                             <subviews>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_zhanji" translatesAutoresizingMaskIntoConstraints="NO" id="SQ0-aN-qdF">
-                                    <rect key="frame" x="32.5" y="20" width="28" height="28"/>
+                                    <rect key="frame" x="38.5" y="20" width="16" height="16"/>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="今日战绩" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NOF-p6-oia">
-                                    <rect key="frame" x="22" y="63" width="49.5" height="12"/>
+                                    <rect key="frame" x="22" y="51" width="49.5" height="12"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="12" id="YVm-vx-cjb"/>
                                     </constraints>
@@ -428,10 +428,10 @@
                             <rect key="frame" x="187.5" y="0.0" width="94" height="84"/>
                             <subviews>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_weixin" translatesAutoresizingMaskIntoConstraints="NO" id="G7E-Ck-JkU">
-                                    <rect key="frame" x="33" y="20" width="28" height="28"/>
+                                    <rect key="frame" x="39" y="20" width="16" height="16"/>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="绑定微信" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mqQ-Tn-b8m">
-                                    <rect key="frame" x="22" y="63" width="49.5" height="12"/>
+                                    <rect key="frame" x="22" y="51" width="49.5" height="12"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="12" id="2Ml-3g-BJb"/>
                                     </constraints>
@@ -458,14 +458,14 @@
                                 <constraint firstItem="G7E-Ck-JkU" firstAttribute="centerX" secondItem="kNW-vI-xiv" secondAttribute="centerX" id="phL-hO-pd4"/>
                             </constraints>
                         </view>
-                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oVa-4I-68d" userLabel="View4">
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oVa-4I-68d" userLabel="View4">
                             <rect key="frame" x="281.5" y="0.0" width="93.5" height="84"/>
                             <subviews>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="形状935" translatesAutoresizingMaskIntoConstraints="NO" id="Iga-Fq-7Mp">
-                                    <rect key="frame" x="33" y="20" width="27" height="27"/>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_sjtuiguang" translatesAutoresizingMaskIntoConstraints="NO" id="Iga-Fq-7Mp">
+                                    <rect key="frame" x="38.5" y="20" width="16" height="16"/>
                                 </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="意见反馈" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SXI-3u-28Y">
-                                    <rect key="frame" x="22" y="62" width="49.5" height="12"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="商家推广" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SXI-3u-28Y">
+                                    <rect key="frame" x="22" y="51" width="49.5" height="12"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="12" id="Km8-8d-1Tq"/>
                                     </constraints>
@@ -548,9 +548,9 @@
         <image name="icon_partner" width="28" height="28"/>
         <image name="icon_qqshequn" width="27" height="27"/>
         <image name="icon_service" width="28" height="28"/>
+        <image name="icon_sjtuiguang" width="24" height="24.5"/>
         <image name="icon_weixin" width="28" height="28"/>
         <image name="icon_yunfadan" width="27" height="27"/>
         <image name="icon_zhanji" width="28" height="28"/>
-        <image name="形状935" width="27" height="27"/>
     </resources>
 </document>
