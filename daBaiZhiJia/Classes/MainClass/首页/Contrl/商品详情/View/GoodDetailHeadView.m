@@ -360,6 +360,8 @@ static NSString *KbannerId = @"KbannerId";
 
 - (IBAction)getQuan:(UIButton *)sender {
      NSLog(@"领取优惠券");
+    //清空剪贴板
+    [UIPasteboard generalPasteboard].string = @"";
     if ([self judgeisLogin]) {
         if (self.detailInfo.pt == FLYPT_Type_Pdd) {//pdd
             
@@ -381,8 +383,6 @@ static NSString *KbannerId = @"KbannerId";
             [GoodDetailModel jdGetYouhuiQuanWithsku:self.detailInfo.sku couponUrl:self.detailInfo.couponUrl CallBack:^(NSDictionary *dict) {
                 if (dict) {
                      NSString *app = dict[@"app"];
-                     BOOL can =   [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"jdlogin://"]];
-                    NSLog(@"can %d",can);
                     [[KeplerApiManager sharedKPService] openKeplerPageWithURL:app userInfo:nil failedCallback:^(NSInteger code, NSString *url) {
                         //422:没有安装jd
                         NSLog(@"%zd",code);

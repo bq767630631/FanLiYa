@@ -14,6 +14,7 @@
 #import "HomePage_Model.h"
 #import "MP_ZG_Const.h"
 #import "CouponListBlankView.h"
+#import "MessageManger.h"
 @interface DBZJ_HomeViewContrl ()<JXCategoryViewDelegate, JXCategoryListContainerViewDelegate>
 
 @property (nonatomic, strong) PageViewController *pageVc;
@@ -36,11 +37,7 @@
     [self.view addSubview:self.searchView];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(homePage_Bg_change:) name:Home_pageScro_ChangeBgNoti object:nil];
-
-//    [HomePage_Model queryVerson:^{
-//        [self setUpCategory];
-//        [self queryData];
-//    }];
+   
     [self setUpCategory];
     [self queryData];
 }
@@ -111,6 +108,7 @@
 - (UIStatusBarStyle)preferredStatusBarStyle{
     return UIStatusBarStyleLightContent;
 }
+
 
 #pragma mark - notifation action
 - (void)homePage_Bg_change:(NSNotification*)noti{

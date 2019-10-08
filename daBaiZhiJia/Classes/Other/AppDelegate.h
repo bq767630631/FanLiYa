@@ -19,5 +19,7 @@ static BOOL isProduction = FALSE;
 @property (nonatomic, strong) MPZG_TabBarContrl *tabVc;
 
 @property (nonatomic, assign) BOOL  isLaunchedByNotification;
+
+@property (nonatomic, copy) NSString *pasBoardStr;
 @end
 

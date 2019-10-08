@@ -31,6 +31,7 @@
 		C20E314922DC545E009FB418 /* MSPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = C20E314822DC545E009FB418 /* MSPageControl.m */; };
 		C217B0D022CEDF8B0061D073 /* HandelTaoBaoTradeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C217B0CF22CEDF8B0061D073 /* HandelTaoBaoTradeManager.m */; };
 		C21A1F1A2251B6D800480EAE /* PageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C21A1F182251B6D700480EAE /* PageViewController.m */; };
+		C21AAB9A2341BF5300FDD5D0 /* MPZG_TempVc.m in Sources */ = {isa = PBXBuildFile; fileRef = C21AAB992341BF5300FDD5D0 /* MPZG_TempVc.m */; };
 		C21B7EB02331BDED00BAD648 /* Home_headMenuFirst.m in Sources */ = {isa = PBXBuildFile; fileRef = C21B7EAF2331BDED00BAD648 /* Home_headMenuFirst.m */; };
 		C21B7EB22331BDF800BAD648 /* Home_headMenuFirst.xib in Resources */ = {isa = PBXBuildFile; fileRef = C21B7EB12331BDF800BAD648 /* Home_headMenuFirst.xib */; };
 		C21B7EB62331C93100BAD648 /* Home_headMenuSec.xib in Resources */ = {isa = PBXBuildFile; fileRef = C21B7EB42331C93000BAD648 /* Home_headMenuSec.xib */; };
@@ -468,6 +469,8 @@
 		C217B0CF22CEDF8B0061D073 /* HandelTaoBaoTradeManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HandelTaoBaoTradeManager.m; sourceTree = "<group>"; };
 		C21A1F162251B6D700480EAE /* PageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageViewController.h; sourceTree = "<group>"; };
 		C21A1F182251B6D700480EAE /* PageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageViewController.m; sourceTree = "<group>"; };
+		C21AAB982341BF5300FDD5D0 /* MPZG_TempVc.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MPZG_TempVc.h; sourceTree = "<group>"; };
+		C21AAB992341BF5300FDD5D0 /* MPZG_TempVc.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MPZG_TempVc.m; sourceTree = "<group>"; };
 		C21B7EAE2331BDED00BAD648 /* Home_headMenuFirst.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Home_headMenuFirst.h; sourceTree = "<group>"; };
 		C21B7EAF2331BDED00BAD648 /* Home_headMenuFirst.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Home_headMenuFirst.m; sourceTree = "<group>"; };
 		C21B7EB12331BDF800BAD648 /* Home_headMenuFirst.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Home_headMenuFirst.xib; sourceTree = "<group>"; };
@@ -1527,6 +1530,8 @@
 				C2210BA82248BEEC00C1C765 /* MPZG_NavigationContrl.m */,
 				C2210BA12248BEEC00C1C765 /* MPZG_TabBarContrl.h */,
 				C2210BA32248BEEC00C1C765 /* MPZG_TabBarContrl.m */,
+				C21AAB982341BF5300FDD5D0 /* MPZG_TempVc.h */,
+				C21AAB992341BF5300FDD5D0 /* MPZG_TempVc.m */,
 			);
 			path = BaseClass;
 			sourceTree = "<group>";
@@ -3796,6 +3801,7 @@
 				C25F5F1A22D57EBF006C7C4D /* New_HomeFlashSale.m in Sources */,
 				C203F2562255A6F9009D73CD /* SearchResultHead.m in Sources */,
 				C2EFFAEC2293FB770051781F /* UINavigationBar+handle.m in Sources */,
+				C21AAB9A2341BF5300FDD5D0 /* MPZG_TempVc.m in Sources */,
 				C2F8963F22B377AD00DA02EC /* Home_SecHasCatModel.m in Sources */,
 				C24FAD5322C4A50700645590 /* NewPeople_EnjoyModel.m in Sources */,
 				C21B7EB02331BDED00BAD648 /* Home_headMenuFirst.m in Sources */,
@@ -4093,6 +4099,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/daBaiZhiJia/阿里巴巴/Frameworks",
 					"$(PROJECT_DIR)/daBaiZhiJia/京东",
+					"$(PROJECT_DIR)/daBaiZhiJia/支付宝sdk",
 				);
 				GCC_ENABLE_CPP_EXCEPTIONS = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
@@ -4227,6 +4234,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/daBaiZhiJia/阿里巴巴/Frameworks",
 					"$(PROJECT_DIR)/daBaiZhiJia/京东",
+					"$(PROJECT_DIR)/daBaiZhiJia/支付宝sdk",
 				);
 				GCC_ENABLE_CPP_EXCEPTIONS = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;

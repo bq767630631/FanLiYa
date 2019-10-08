@@ -22,6 +22,7 @@
 #import "MSLaunchView.h"
 
 #import "HomePage_UpdateV.h"
+#import "MessageManger.h"
 
 #define DateKey  @"DateKey"
 #define DateKey_UpDate  @"DateKey_UpDate" //更新V
@@ -200,6 +201,11 @@
         //NSLog(@"scro_ConteH ==%.f",self.scro_ConteH);
         self.scroView.contentSize = CGSizeMake(0,  self.scro_ConteH);
         self.scro_ConteH -=  self.evDayView.height;
+
+        if ([MessageManger shareMessage].remoteNotification) {
+            [MessageManger handleMessageWithInfo:[MessageManger shareMessage].remoteNotification];
+        }
+        
     });
 }
 
@@ -295,6 +301,11 @@
 #pragma mark - 通知action
 - (void)guideVLoadFinsh{
     [self showPopV:1];
+}
+
+//远程消息
+- (void)handleRemoteNotification:(NSDictionary*)info{
+   // [MessageManger handleMessageWithInfo:info];
 }
 
 #pragma mark - private

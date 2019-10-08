@@ -10,7 +10,7 @@
 #import "IntelligenceSearchView.h"
 #import "RegisterContrl.h"
 #import "MyInvitation_CodeContrl.h"
-
+#import "SearchSaveManager.h"
 #import "CreateShareContrl.h"
 #import "LoginContrl.h"
 #import "RegisterContrl.h"
@@ -111,13 +111,9 @@
         [[NSUserDefaults standardUserDefaults] synchronize];
     }];
     // apn 内容获取：
-    NSDictionary *remoteNotification = [launchOptions objectForKey: UIApplicationLaunchOptionsRemoteNotificationKey];
-    NSLog(@"remoteNotification %@",remoteNotification);
-    if (remoteNotification!=nil) {
-        self.isLaunchedByNotification = YES;
-    }else{
-        self.isLaunchedByNotification = NO;
-    }
+//    NSDictionary *remoteNotification = [launchOptions objectForKey: UIApplicationLaunchOptionsRemoteNotificationKey];
+//    NSLog(@"remoteNotification %@",remoteNotification);
+
 }
 
 
@@ -142,15 +138,14 @@ fetchCompletionHandler:
 (void (^)(UIBackgroundFetchResult))completionHandler {
     [JPUSHService handleRemoteNotification:userInfo];
     
-    if ([[UIDevice currentDevice].systemVersion floatValue]<10.0 || application.applicationState>0) {
-        //[rootViewController addNotificationCount];
-    }
     UIApplicationState state = [UIApplication sharedApplication].applicationState;
     if (self.isLaunchedByNotification) {
-         [MessageManger handleMessageWithInfo:userInfo];
+       
+     
     }else{
         if (state ==UIApplicationStateActive) {
             NSLog(@"前台 收到通知");
+          //  [MessageManger handleMessageWithInfo:userInfo];
         }else{
             NSLog(@"后台 处理通知");
             [MessageManger handleMessageWithInfo:userInfo];
@@ -176,10 +171,11 @@ fetchCompletionHandler:
     NSString *title = content.title;  // 推送消息的标题
     UIApplicationState state = [UIApplication sharedApplication].applicationState;
     if (self.isLaunchedByNotification) {  //程序关闭状态点击推送消息打开
-          [MessageManger handleMessageWithInfo:userInfo];
+      
     }else{
         if (state ==UIApplicationStateActive) {
             NSLog(@"前台 收到通知");
+            // [MessageManger handleMessageWithInfo:userInfo];
         }else{
             NSLog(@"后台 处理通知");
             [MessageManger handleMessageWithInfo:userInfo];
@@ -220,10 +216,11 @@ fetchCompletionHandler:
         
         UIApplicationState state = [UIApplication sharedApplication].applicationState;
         if (self.isLaunchedByNotification) {//程序关闭状态点击推送消息打开
-            [MessageManger handleMessageWithInfo:userInfo];
         }else{
             if (state ==UIApplicationStateActive) {
                 NSLog(@"前台 收到通知");
+               // [MessageManger handleMessageWithInfo:userInfo];
+                
             }else{
                 NSLog(@"后台 处理通知");
                 [MessageManger handleMessageWithInfo:userInfo];
@@ -317,6 +314,14 @@ fetchCompletionHandler:
         if (![self isJumpToSearchV]) {//特定场景下不弹出
             return;
         }
+        
+        NSLog(@"string: %@",[UIPasteboard generalPasteboard].string);
+        if ([self.pasBoardStr isEqualToString:pasteboard.string]) {//相同的内容不要重复弹出
+            NSLog(@"pasBoardStr %@",self.pasBoardStr);
+            return;
+        }
+        
+            self.pasBoardStr = pasteboard.string;
             IntelligenceSearchView *insear  = [IntelligenceSearchView viewFromXib];
             insear.contentStr = pasteboard.string;
             insear.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);

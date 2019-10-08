@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-
+#import "MPZG_TempVc.h"
 //#import "iVersion.h"
 #import "AppDelegate+privates.h"
 #import <IQKeyboardManager/IQKeyboardManager.h>
@@ -22,27 +22,20 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+   
     [NSThread sleepForTimeInterval:0.8];
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    UIImageView *tempImageV = [[UIImageView alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    tempImageV.image = ZDBImage(@"750&13342");
-    UIViewController *tempVc = [[UIViewController alloc] init];
-    [tempVc.view addSubview:tempImageV];
-    [self.window addSubview:tempImageV];
+    MPZG_TempVc *tempVc = [[MPZG_TempVc alloc] init];
     self.window.rootViewController = tempVc;
     [self.window makeKeyAndVisible];
-    [HomePage_Model queryVerson:^{
-        [tempImageV removeFromSuperview];
-        MPZG_TabBarContrl *tabVc = [[MPZG_TabBarContrl alloc] init];
-        self.window.rootViewController = tabVc;
-        self.tabVc = tabVc;
-        [self setUpGuidView];
-    }];
-       
-    [self setUpJpushWithOptions:launchOptions];
+    NSDictionary *remoteNotification = [launchOptions objectForKey: UIApplicationLaunchOptionsRemoteNotificationKey];
+    
+    [MessageManger shareMessage].remoteNotification = remoteNotification;
+
     [self setUpAliSdk];
     [self setUpJShare];
     [self setUpJD];
+    [self setUpJpushWithOptions:launchOptions];
     //微信api注册
     [WXApi registerApp:WXAPPID];
     //setUpiVersion

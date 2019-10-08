@@ -20,4 +20,5 @@
 @property (nonatomic, strong) UITabBarController*tabBarContrl;
 
 @property (nonatomic, assign) CGFloat  viewH;
+
 @end

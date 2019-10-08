@@ -11,7 +11,7 @@
 @implementation HomePage_Model
 + (void)queryVerson:(void (^)(void))callBlock{
     [PPNetworkHelper GET:URL_Add(@"/v.php/index.index/getAppShow") parameters:@{@"token":ToKen,@"v":APP_Version} success:^(id responseObject) {
-        // NSLog(@"responseObject %@",responseObject);
+         NSLog(@"responseObject %@",responseObject);
         NSInteger code = [responseObject[@"code"] integerValue];
         NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
         NSString *cur_ver = [infoDictionary objectForKey:@"CFBundleShortVersionString"];
@@ -224,18 +224,25 @@
 }
 
 + (void)queryAppSoreInfoWithCallBack:(VEBlockInteger)callBack{
-    NSString *url = @"http://itunes.apple.com/cn/lookup?id=1459203610";
-    [PPNetworkHelper GET:url parameters:nil success:^(id responseObject) {
-       NSArray *list = responseObject[@"results"];
-        NSString *storeVerson = list.firstObject[@"version"];
+  //  NSString *url = @"http://itunes.apple.com/cn/lookup?id=1459203610";
+    [PPNetworkHelper GET:URL_Add(@"/v.php/index.index/getAppVersion") parameters:@{@"token":ToKen,@"v":APP_Version,@"type":@"ios"} success:^(id responseObject) {
+        NSLog(@"getAppVersion %@",responseObject);
         NSString *cur_v = [UIApplication sharedApplication].appVersion;
-        NSLog(@"storeVerson %@",storeVerson);
-        NSInteger isShowUpDate = 0;
-        if (Is_Show_Info && ![cur_v isEqualToString:storeVerson]) {//非审核状态并且当地版本和线上版本不一样
-            isShowUpDate = 1;
+           NSInteger code = [responseObject[@"code"] integerValue];
+        if (code == SucCode) {
+              NSString *storeVerson = responseObject[@"data"][@"note"];
+            NSLog(@"storeVerson %@",storeVerson);
+            NSLog(@"cur_v %@",cur_v);
+            NSInteger isShowUpDate = 0;
+            if (Is_Show_Info && ![cur_v isEqualToString:storeVerson]) {//非审核状态并且当地版本和线上版本不一样
+                isShowUpDate = 1;
+            }
+            NSLog(@"isShowUpDate %zd",isShowUpDate);
+            callBack(isShowUpDate);
+        }else{
+            callBack(0);
         }
-         //  [[NSUserDefaults standardUserDefaults] setBool:YES forKey:is_Force_UpdateKey];
-        callBack(isShowUpDate);
+       
     } failure:^(NSError *error) {
         callBack(0);
         NSLog(@"%@",error);

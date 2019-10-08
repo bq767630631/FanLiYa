@@ -70,7 +70,8 @@
     UIViewController *viewCtrl = nil;//[[DBZJ_HomeViewContrl alloc] init];
      self.delegate = (DBZJ_HomeViewContrl*)viewCtrl;
     if (Is_Show_Info) {
-        viewCtrl =    [[DBZJ_HomeViewContrl alloc] init];
+      viewCtrl =   [[DBZJ_HomeViewContrl alloc] init];
+       
     }else{//[NSString stringWithFormat:@"%@%@?token=%@",BASE_WEB_URL,@"businessSchool.html",ToKen]
  NSString *url = [NSString stringWithFormat:@"http://app.dabaihong.com/dabaihome/user/index.html"];
         viewCtrl = [[DetailWebContrl alloc] initWithUrl:url title:nil para:nil];

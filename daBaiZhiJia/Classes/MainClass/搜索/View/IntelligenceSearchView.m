@@ -9,6 +9,8 @@
 #import "IntelligenceSearchView.h"
 #import "SearchResultContrl.h"
 #import "SearchSaveManager.h"
+#import "AppDelegate.h"
+
 
 @interface IntelligenceSearchView ()
 
@@ -33,19 +35,13 @@
 
 - (IBAction)clickaction:(UIButton *)sender {
     [self hideView];
-    
-    for (NSString *str in [SearchSaveManager getArray]) {//如果本地有，就清空
-        if ([str isEqualToString:[UIPasteboard generalPasteboard].string]) {
-            [UIPasteboard generalPasteboard].string = @"";
-            NSLog(@"有。。%@",str);
-            break;
-        }
-    }
     //保存在历史搜索里面
     NSMutableArray *temp  = [SearchSaveManager getArray];
-    [temp insertObject:self.contentStr atIndex:0];
-    [SearchSaveManager saveArrWithArr:temp];
-    
+    if (![temp containsObject:self.contentStr]) {
+        [temp insertObject:self.contentStr atIndex:0];
+        [SearchSaveManager saveArrWithArr:temp];
+    }
+  
     SearchResultContrl *sear = [[SearchResultContrl alloc] initWithSearchStr:self.contentStr];
     sear.searchType = sender.tag;
     UIViewController *rootVc = [UIApplication sharedApplication].keyWindow.rootViewController;
@@ -65,6 +61,8 @@
 
 - (IBAction)closeAction:(UIButton *)sender {
     [UIPasteboard generalPasteboard].string = @"";
+    AppDelegate *delegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
+    delegate.pasBoardStr = @"";
     [self hideView];
 }
 

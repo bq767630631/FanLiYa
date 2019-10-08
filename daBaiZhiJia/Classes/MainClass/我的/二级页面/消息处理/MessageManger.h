@@ -11,8 +11,14 @@
 
 
 @interface MessageManger : NSObject
++ (instancetype)shareMessage;
+
+@property (nonatomic, strong) NSDictionary *remoteNotification;
 
 + (void)handleMessageWithInfo:(NSDictionary*)dict;
+
+
+
 
 @end
 
