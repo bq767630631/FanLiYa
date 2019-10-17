@@ -38,7 +38,9 @@
 
 - (void)starCountDown {
     downCount = 60;
-    
+    if (self.totalTime > 0) {
+        downCount = self.totalTime;
+    }
     @weakify(self);
     _pollingTimer = [NSTimer extScheduledTimerWithTimeInterval:1.0 repeats:YES block:^(NSTimer *timer) {
         

@@ -13,9 +13,11 @@
 #import "CreateShareContrl.h"
 #import "CreateShare_Model.h"
 #import "LoginContrl.h"
+#import <AlipaySDK/AlipaySDK.h>
 
 #define naviToGoodDetail @"navigationToGoodDetail"
 #define naviToToShare @"navigationToShare"
+#define AlyPayMethod @"alyPayMethod"
 @interface DetailWebContrl ()<WKScriptMessageHandler,WKNavigationDelegate>
 @property (nonatomic, strong) NSString *url;
 @property (nonatomic, strong) NSString *titleStr;
@@ -138,8 +140,6 @@
         }else{
              sku = message.body;
         }
-        NSLog(@"sku = %@",sku);
-        NSLog(@"pt = %zd",pt);
         GoodDetailContrl *detail = [[GoodDetailContrl alloc] initWithSku:sku];
         detail.pt = pt;
         [self.navigationController pushViewController:detail animated:YES];
@@ -155,8 +155,39 @@
             }];
         }
     }
+    if ([message.name isEqualToString:AlyPayMethod]) {
+           NSString *bodys = message.body;
+           NSArray *temp = [bodys componentsSeparatedByString:@"&"];
+        NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+        for (NSString *subStr in temp) {
+              NSArray *temp2 = [subStr componentsSeparatedByString:@"="];
+            [dict setObject:temp2.lastObject forKey:temp2.firstObject];
+        }
+        NSString *body = dict[@"body"];
+        NSString *total_amount = dict[@"total_amount"];
+        NSString *subject = dict[@"subject"];
+        NSString *pay_type = dict[@"pay_type"];
+        NSString *out_trade_no = dict[@"out_trade_no"];
+        
+        NSDictionary *para = @{@"token":ToKen,@"body":body,@"total_amount":total_amount,@"subject":subject,@"pay_type":pay_type,@"out_trade_no":out_trade_no};
+        NSLog(@"para %@",para);
+        [PPNetworkHelper GET:URL_Add(@"/v.php/index.pay/index") parameters:para success:^(id responseObject) {
+            NSLog(@"%@",responseObject);
+            NSInteger code = [responseObject[@"code"] integerValue];
+            if (code ==SucCode) {
+                [self alipayWithOrderStr:responseObject[@"data"]];
+            }else{
+                [YJProgressHUD showMsgWithoutView:responseObject[@"msg"]];
+            }
+        } failure:^(NSError *error) {
+            [YJProgressHUD showAlertTipsWithError:error];
+            NSLog(@"%@",error);
+        }];
+        
+        
+    }
 }
-
+#pragma mark - private
 - (BOOL)judgeisLogin{
     NSString *token = ToKen;
     if (User_ID >0 &&token.length > 0) {
@@ -165,6 +196,34 @@
         [self.navigationController pushViewController:[LoginContrl new] animated:YES];
         return NO;
     }
+}
+
+- (void)alipayWithOrderStr:(NSString *)orderStr {
+    [[AlipaySDK defaultService] payOrder:orderStr fromScheme:@"aliPaySDK" callback:^(NSDictionary *resultDic) {//resultStatus = 6001; memo = 用户中途取消;
+        NSLog(@"reslut = %@",resultDic);
+        NSString *msg = @"";
+        if ([resultDic[@"resultStatus"] isEqual:@"9000"]) {
+            msg = @"支付成功";
+        }
+        else if ([resultDic[@"resultStatus"] isEqual:@"8000"]) {
+            msg = @"正在处理中";
+        }
+        else if ([resultDic[@"resultStatus"] isEqual:@"4000"]) {
+            msg = @"订单支付失败";
+        }
+        else if ([resultDic[@"resultStatus"] isEqual:@"6001"]) {
+            msg = @"您已中途取消支付";
+        }
+        else if ([resultDic[@"resultStatus"] isEqual:@"6002"]) {
+            msg = @"您的网络连接出错";
+        }
+        else {
+            msg = @"支付失败";
+        }
+        [YJProgressHUD showMsgWithoutView:msg];
+        NSLog(@"currentThread =%@  %@",[NSThread currentThread], msg);
+        
+    }];
 }
 
 #pragma mark - getter
@@ -176,6 +235,7 @@
         //调用JS方法
         [configuration.userContentController addScriptMessageHandler:self name:naviToGoodDetail];//
         [configuration.userContentController addScriptMessageHandler:self name:naviToToShare];//
+        [configuration.userContentController addScriptMessageHandler:self name:AlyPayMethod];//
         CGRect frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
         _webView = [[WKWebView alloc] initWithFrame:frame configuration:configuration];
        

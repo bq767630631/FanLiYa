@@ -36,6 +36,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)setUpJD;
 //设置引导页
 - (void)setUpGuidView;
+
+- (void)setUpGuideVSec;
 @end
 
 NS_ASSUME_NONNULL_END

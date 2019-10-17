@@ -10,6 +10,7 @@
 @protocol CountDownTimeDelegate;
 
 @interface CountDownTime : NSObject
+@property (nonatomic, assign) NSInteger  totalTime; //倒计时总时间
 
 @property (nonatomic, assign) id<CountDownTimeDelegate> delegate;
 

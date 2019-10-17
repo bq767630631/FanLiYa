@@ -28,6 +28,7 @@
     CGFloat gap = (SCREEN_WIDTH - 42*5 - 15*2) / 4;
     self.view2Lead.constant = gap;
     self.view4Trail.constant = gap;
+    self.opaque;
 }
 
 

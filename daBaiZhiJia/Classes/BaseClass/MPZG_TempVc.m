@@ -11,7 +11,7 @@
 #import "AppDelegate.h"
 #import "MPZG_TabBarContrl.h"
 #import "MSLaunchView.h"
-
+#import "AppGuideV.h"
 @interface MPZG_TempVc ()<MSLaunchViewDeleagte>
 
 @end
@@ -39,7 +39,8 @@
     AppDelegate*delegate =  (AppDelegate*)[UIApplication sharedApplication].delegate;
         delegate.window.rootViewController = tabVc;
         delegate.tabVc = tabVc;
-        [self setUpGuidView];
+//        [self setUpGuidView];
+        [self setUpGuideVSec];
     }];
 }
 
@@ -65,6 +66,20 @@
             NSLog(@"广告加载完成了loadFinishBlock ");
             [[NSNotificationCenter defaultCenter] postNotificationName:GuideViewLoadFinishNotification object:nil];
         };
+    }
+}
+
+
+
+- (void)setUpGuideVSec{
+    BOOL isFirstLaunch = [[NSUserDefaults standardUserDefaults] objectForKey:@"isFirstLaunch"];
+    NSLog(@"isFirstLaunch %d",isFirstLaunch );
+    if (!isFirstLaunch) {
+       [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"isFirstLaunch"];
+        UIWindow *win = [UIApplication sharedApplication].windows.lastObject;
+        AppGuideV *guide  = [AppGuideV viewFromXib];
+        guide.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+        [win addSubview:guide];
     }
 }
 @end

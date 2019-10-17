@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="AppGuidePlayV">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="56n-g5-MjH">
+                    <rect key="frame" x="369" y="69" width="30" height="27"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <state key="normal">
+                        <color key="titleColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="goHomeBtn:" destination="iN0-l3-epB" eventType="touchUpInside" id="4th-Hu-YU1"/>
+                    </connections>
+                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SjW-WS-Anw">
+                    <rect key="frame" x="94.5" y="253" width="225" height="400"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Laf-qf-XcC">
+                            <rect key="frame" x="0.0" y="0.0" width="225" height="400"/>
+                            <state key="normal" image="icon_repaly"/>
+                            <connections>
+                                <action selector="playBtn:" destination="iN0-l3-epB" eventType="touchUpInside" id="rYP-dq-Iu8"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="Laf-qf-XcC" secondAttribute="bottom" id="7de-bC-wtG"/>
+                        <constraint firstAttribute="trailing" secondItem="Laf-qf-XcC" secondAttribute="trailing" id="AeY-T3-MQB"/>
+                        <constraint firstAttribute="width" constant="225" id="KZf-7b-UHM"/>
+                        <constraint firstItem="Laf-qf-XcC" firstAttribute="top" secondItem="SjW-WS-Anw" secondAttribute="top" id="Xak-QD-DcL"/>
+                        <constraint firstItem="Laf-qf-XcC" firstAttribute="leading" secondItem="SjW-WS-Anw" secondAttribute="leading" id="aTi-Lc-oyN"/>
+                        <constraint firstAttribute="width" secondItem="SjW-WS-Anw" secondAttribute="height" multiplier="225:400" id="z82-v1-y0E"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oYK-gA-nwK">
+                    <rect key="frame" x="94.5" y="723" width="225" height="39"/>
+                    <color key="backgroundColor" red="1" green="0.80000000000000004" blue="0.1647058824" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="39" id="SZd-KL-kRK"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <state key="normal" title="进入主页">
+                        <color key="titleColor" red="0.31764705879999999" green="0.15686274510000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="goHomeBtn:" destination="iN0-l3-epB" eventType="touchUpInside" id="NVD-gK-PWQ"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="oYK-gA-nwK" firstAttribute="centerX" secondItem="SjW-WS-Anw" secondAttribute="centerX" id="7A9-gW-ZwQ"/>
+                <constraint firstItem="oYK-gA-nwK" firstAttribute="width" secondItem="SjW-WS-Anw" secondAttribute="width" id="GXe-rw-nv0"/>
+                <constraint firstItem="SjW-WS-Anw" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="PW4-MQ-vri"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="56n-g5-MjH" secondAttribute="trailing" constant="15" id="SIz-A3-w5T"/>
+                <constraint firstItem="56n-g5-MjH" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="25" id="h8w-Ei-mFt"/>
+                <constraint firstItem="oYK-gA-nwK" firstAttribute="top" secondItem="SjW-WS-Anw" secondAttribute="bottom" constant="70" id="hlf-IJ-wA6"/>
+                <constraint firstItem="SjW-WS-Anw" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="jbQ-fh-YUz"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="goHomeBtn" destination="oYK-gA-nwK" id="RIl-Pp-5kn"/>
+                <outlet property="playV" destination="SjW-WS-Anw" id="Vjd-vE-dKp"/>
+                <outlet property="playV_Wd" destination="KZf-7b-UHM" id="OmC-FW-2IC"/>
+                <outlet property="rePlayBtn" destination="Laf-qf-XcC" id="AI9-RB-ZeG"/>
+                <outlet property="skipBtn" destination="56n-g5-MjH" id="5WV-Ci-F9I"/>
+            </connections>
+        </view>
+    </objects>
+    <resources>
+        <image name="icon_repaly" width="30" height="34.5"/>
+    </resources>
+</document>

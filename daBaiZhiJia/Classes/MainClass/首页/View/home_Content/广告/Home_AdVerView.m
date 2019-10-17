@@ -17,7 +17,9 @@
 #import "ZKCycleScrollView.h"
 #import "GoodDetailContrl.h"
 #import <AlibcTradeSDK/AlibcTradeSDK.h>
-
+#import "NewPeople_EnjoyContrl.h"
+#import "PingDuoduoHomeContrl.h"
+#import <JDSDK/KeplerApiManager.h>
 
 @interface Home_AdVerView ()<SDCycleScrollViewDelegate,ZKCycleScrollViewDataSource>
 @property (weak, nonatomic) IBOutlet UILabel *boBao;
@@ -200,13 +202,35 @@ static NSString *kTextCellId = @"kTextCellId";
         DetailWebContrl *detailweb = [[DetailWebContrl alloc] initWithUrl:[NSString stringWithFormat:@"%@&token=%@",info.url,ToKen] title:@"" para:nil];
         [page.naviContrl pushViewController:detailweb animated:YES];
     }else if (type==4){
-        if (info.pt==FLYPT_Type_TM ||info.pt==FLYPT_Type_TB) {
-            [HandelTaoBaoTradeManager openTaoBaoAndTraWithUrl:info.url navi:page.naviContrl];
-        }else if (info.pt==FLYPT_Type_Pdd){
-            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:info.url]];
-        }else if (info.pt==FLYPT_Type_JD){
-            //todo
+        [HandelTaoBaoTradeManager openTaoBaoAndTraWithUrl:info.url navi:page.naviContrl];
+    }else if (type == 5){
+        [page.naviContrl pushViewController:[NewPeople_EnjoyContrl new] animated:YES];
+    }else if (type == 6){
+        PingDuoduoHomeContrl *pdd =  [PingDuoduoHomeContrl new];
+        pdd.pt = FLYPT_Type_Pdd;
+        [page.naviContrl pushViewController:pdd animated:YES];
+    }else if (type==7){
+        BOOL can = [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"pinduoduo://"]];
+        if (can) {
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:info.iosurl]];
+        }else{
+            DetailWebContrl *web = [[DetailWebContrl alloc] initWithUrl:info.url title:nil para:nil];
+            [page.naviContrl pushViewController:web animated:YES];
         }
+    }else if (type==8){ //jd home
+        PingDuoduoHomeContrl *pdd =  [PingDuoduoHomeContrl new];
+        pdd.pt = FLYPT_Type_JD;
+        [page.naviContrl pushViewController:pdd animated:YES];
+    }else if (type==9){//京东界面
+        [[KeplerApiManager sharedKPService] openKeplerPageWithURL:info.url userInfo:nil failedCallback:^(NSInteger code, NSString *url) {
+            //422:没有安装jd
+            NSLog(@"%zd",code);
+            NSLog(@"%@",url);
+            if (code==422) {
+                DetailWebContrl *web = [[DetailWebContrl alloc] initWithUrl:info.url title:nil para:nil];
+                [page.naviContrl pushViewController:web animated:YES];
+            }
+        }];
     }
 }
 

@@ -84,8 +84,8 @@
         vc = [[DetailWebContrl alloc] initWithUrl:url title:@"新手教程" para:nil];
     }else if (tag==2){
         NSLog(@"地推素材");
-        [YJProgressHUD showMsgWithoutView:@"敬请期待"];
-        return;
+//        [YJProgressHUD showMsgWithoutView:@"敬请期待"];
+//        return; 
   NSString *url = [NSString stringWithFormat:@"%@/commander/groundPush.html?token=%@",BASE_WEB_URL,ToKen];
         vc = [[DetailWebContrl alloc] initWithUrl:url title:@"地推素材" para:nil];
     }else if (tag==4){
@@ -97,17 +97,23 @@
         }
         NSString *url = [NSString stringWithFormat:@"%@/commander/headCollege.html?token=%@",BASE_WEB_URL,ToKen];
           vc = [[DetailWebContrl alloc] initWithUrl:url title:@"团长系统" para:nil];
-    }else if (tag==6){
-        NSString *url = [NSString stringWithFormat:@"%@/joinCommunity.html?token=%@",BASE_WEB_URL,ToKen];
-        vc = [[DetailWebContrl alloc] initWithUrl:url title:@"加入社群" para:nil];
+    }else if (tag==6){//打开qq群
+       // NSString *url = [NSString stringWithFormat:@"%@/joinCommunity.html?token=%@",BASE_WEB_URL,ToKen];
+        // url = @"http://app.dabaihong.com/app2019/pay.html";
+     //   vc = [[DetailWebContrl alloc] initWithUrl:url title:@"加入社群" para:nil];
+        
+        NSURL *url = [self getQQQunUrlWithQQ:self.model.qq];
+        if ([[UIApplication sharedApplication] canOpenURL:url]) {
+            [[UIApplication sharedApplication] openURL:url];
+        }
     }else if (tag ==7){
         vc = [ContactKefuContrl new];
     }else if (tag==8){
         [YJProgressHUD showMsgWithoutView:@"敬请期待"];
     }else if (tag==3){
         NSLog(@"自定义邀请码");
-         [YJProgressHUD showMsgWithoutView:@"敬请期待"];
-         return;
+//         [YJProgressHUD showMsgWithoutView:@"敬请期待"];
+//         return;
         NSString *url = [NSString stringWithFormat:@"%@/duck/customInvitationCode.html?token=%@",BASE_WEB_URL,ToKen];
         vc = [[DetailWebContrl alloc] initWithUrl:url title:@"自定义邀请码" para:nil];
     }else if (tag==11){
@@ -126,12 +132,17 @@
 }
 
 
-#pragma mark - bindWeiXin
+#pragma mark - private method
 - (void)bindWeiXin{
     SendAuthReq *request = [SendAuthReq new];
     request.state  =  [NSString getRandomStr];
     request.scope  = @"snsapi_userinfo";
     BOOL res  = [WXApi sendReq:request];
     NSLog(@"res %d",res);
+}
+
+- (NSURL*)getQQQunUrlWithQQ:(NSString*)qq_number {
+    NSString *urlStr = [NSString stringWithFormat:@"mqqapi://card/show_pslcard?src_type=internal&version=1&uin=%@&key=%@&card_type=group&source=external",qq_number, @"44a6e01f2dab126f87ecd2ec7b7e66ae259b30535fd0c2c25776271e8c0ac08f"];
+    return [NSURL URLWithString:urlStr];
 }
 @end

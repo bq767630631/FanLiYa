@@ -12,7 +12,7 @@
 #import "AppDelegate+privates.h"
 #import <IQKeyboardManager/IQKeyboardManager.h>
 #import "WXApi.h"
-
+#import <AlipaySDK/AlipaySDK.h>
 #import "HomePage_Model.h"
 @interface AppDelegate ()
 
@@ -77,6 +77,10 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     [WXApi handleOpenURL:url delegate:(id<WXApiDelegate>)cuvc];
     
     [JSHAREService handleOpenUrl:url];
+    
+    if ([url.host isEqualToString:@"safepay"]) {
+        [[AlipaySDK defaultService] processOrderWithPaymentResult:url standbyCallback:nil];
+    }
 
     // 新接口写法
     if (![[AlibcTradeSDK sharedInstance] application:application
@@ -95,6 +99,10 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     [WXApi handleOpenURL:url delegate:(id<WXApiDelegate>)cuvc];
     
     [JSHAREService handleOpenUrl:url];
+    
+    if ([url.host isEqualToString:@"safepay"]) {
+        [[AlipaySDK defaultService] processOrderWithPaymentResult:url standbyCallback:nil];
+    }
    
     if (@available(iOS 9.0, *)) {
         __unused BOOL isHandledByALBBSDK=[[AlibcTradeSDK sharedInstance] application:application openURL:url options:options];

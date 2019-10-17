@@ -197,7 +197,7 @@
     }else{
         [self.dotV setDotColorWithLeft:RGBColor(51,51,51) right:RGBColor(255,208,153)];
     }
-    NSLog(@"contentOffset2 %@", NSStringFromCGPoint(scrollView.contentOffset));
+  //  NSLog(@"contentOffset2 %@", NSStringFromCGPoint(scrollView.contentOffset));
 }
 #pragma mark - getter
 - (SDCycleScrollView *)myScroview{

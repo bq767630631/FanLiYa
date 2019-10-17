@@ -64,6 +64,7 @@ typedef void(^prersonRevenueBlock)(PersonRevenue*  reve, NSInteger code);
 @property (nonatomic, copy) NSString *month_profit; //本月预估
 @property (nonatomic, copy) NSString *today_profit; //今日预估
 @property (nonatomic, copy) NSString *drawcash; //累积提现金额
+@property (nonatomic, copy) NSString *qq;  //跳转QQ群号
 @end
 
 @interface PersonMiddAdvInfo : NSObject

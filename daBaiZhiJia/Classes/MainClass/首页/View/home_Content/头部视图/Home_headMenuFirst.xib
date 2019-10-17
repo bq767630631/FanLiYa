@@ -363,8 +363,28 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="btn1" destination="kMS-cW-WWB" id="TcI-Ve-Spk"/>
+                <outlet property="btn2" destination="dCc-xK-Krt" id="1xB-Nb-fV8"/>
+                <outlet property="btn3" destination="SNN-Tg-WS8" id="cdq-AW-8Oh"/>
+                <outlet property="btn4" destination="G3T-LZ-FO5" id="XZb-Wh-jT9"/>
+                <outlet property="btn5" destination="QST-5F-DFa" id="MFE-eW-TFt"/>
+                <outlet property="image1" destination="yeN-lH-NJK" id="Aj5-LT-vwk"/>
+                <outlet property="image2" destination="Ewf-yL-dQw" id="q55-gB-lIR"/>
+                <outlet property="image3" destination="ZCK-Ir-Y2b" id="3zG-j4-qyR"/>
+                <outlet property="image4" destination="dm3-c5-bwK" id="315-N2-mgN"/>
+                <outlet property="image5" destination="Ofu-AQ-9lR" id="hGa-e9-3EO"/>
+                <outlet property="lable1" destination="YWm-De-9cV" id="gjf-7j-OmY"/>
+                <outlet property="lable2" destination="2Lr-TF-uaw" id="J6N-7H-55O"/>
+                <outlet property="lable3" destination="Uwz-Z3-ge8" id="dcm-Xe-YTj"/>
+                <outlet property="lable4" destination="cob-06-ygr" id="7Bc-Io-pGR"/>
+                <outlet property="lable5" destination="Fxd-R1-Jus" id="1g2-uI-PLk"/>
+                <outlet property="view1" destination="F3Q-zu-oMP" id="4Ty-cb-Cgj"/>
+                <outlet property="view2" destination="3xj-gY-wIq" id="bWq-Hz-6Ub"/>
                 <outlet property="view2Lead" destination="lvs-jC-aoZ" id="qL0-pf-YAN"/>
+                <outlet property="view3" destination="Keb-DM-Sj1" id="aej-uy-ed3"/>
+                <outlet property="view4" destination="fSB-Ab-BF3" id="cKW-kU-sge"/>
                 <outlet property="view4Trail" destination="xAK-OV-mvd" id="tEO-87-2Vc"/>
+                <outlet property="view5" destination="geN-4a-1j0" id="Z9k-fa-gfH"/>
             </connections>
         </view>
     </objects>

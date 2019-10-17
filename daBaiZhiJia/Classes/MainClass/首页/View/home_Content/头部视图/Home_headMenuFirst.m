@@ -20,8 +20,33 @@
 
 @interface Home_headMenuFirst ()
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *view2Lead;
-
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *view4Trail;
+@property (weak, nonatomic) IBOutlet UIView *view1;
+@property (weak, nonatomic) IBOutlet UIImageView *image1;
+@property (weak, nonatomic) IBOutlet UILabel *lable1;
+@property (weak, nonatomic) IBOutlet UIButton *btn1;
+
+@property (weak, nonatomic) IBOutlet UIView *view2;
+@property (weak, nonatomic) IBOutlet UIImageView *image2;
+@property (weak, nonatomic) IBOutlet UILabel *lable2;
+@property (weak, nonatomic) IBOutlet UIButton *btn2;
+
+@property (weak, nonatomic) IBOutlet UIView *view3;
+@property (weak, nonatomic) IBOutlet UIImageView *image3;
+@property (weak, nonatomic) IBOutlet UILabel *lable3;
+@property (weak, nonatomic) IBOutlet UIButton *btn3;
+
+@property (weak, nonatomic) IBOutlet UIView *view4;
+@property (weak, nonatomic) IBOutlet UIImageView *image4;
+@property (weak, nonatomic) IBOutlet UILabel *lable4;
+@property (weak, nonatomic) IBOutlet UIButton *btn4;
+
+@property (weak, nonatomic) IBOutlet UIView *view5;
+@property (weak, nonatomic) IBOutlet UIImageView *image5;
+@property (weak, nonatomic) IBOutlet UILabel *lable5;
+@property (weak, nonatomic) IBOutlet UIButton *btn5;
+
+
 @end
 @implementation Home_headMenuFirst
 - (void)awakeFromNib{

@@ -19,6 +19,10 @@
 #import "DetailWebContrl.h"
 #import "ForeGetPwdcontrl.h"
 #import "NewPeo_shareContrl.h"
+#import "AppGuideV.h"
+
+#import "SearchResultContrl.h"
+#import "SearchSaveManager.h"
 //#import <objc/runtime.h>
 
 #define QQShare_AppID @"1109202625"
@@ -28,6 +32,15 @@
 
 @implementation AppDelegate (privates)
 
+- (void)setUpGuideVSec{
+    if ([MSLaunchView isFirstLaunch]) {
+        UIWindow *win = [UIApplication sharedApplication].windows.lastObject;
+        AppGuideV *guide  = [AppGuideV viewFromXib];
+        guide.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+        [win addSubview:guide];
+        
+    }
+}
 
 - (void)setUpGuidView{
     
@@ -320,8 +333,22 @@ fetchCompletionHandler:
             NSLog(@"pasBoardStr %@",self.pasBoardStr);
             return;
         }
-        
-            self.pasBoardStr = pasteboard.string;
+        self.pasBoardStr = pasteboard.string;
+        //item.taobao.com（淘宝）  mobile.yangkeduo.com （pdd）   item.m.jd.com（jd）
+        if ([pasteboard.string containsString:@"item.taobao.com"]||[pasteboard.string containsString:@"mobile.yangkeduo.com"]||[pasteboard.string containsString:@"item.m.jd.com"]) { //搜索的是链接
+            NSInteger type = 1;
+            if ([pasteboard.string containsString:@"item.taobao.com"]) {
+                type =1 ;
+            }else if ([pasteboard.string containsString:@"mobile.yangkeduo.com"]){
+                type = 2;
+            }else if ([pasteboard.string containsString:@"item.m.jd.com"]){
+                type = 3;
+            }
+            NSLog(@"type %zd", type);
+            [self jumpToSearchVWithType:type];
+            return;
+        }
+
             IntelligenceSearchView *insear  = [IntelligenceSearchView viewFromXib];
             insear.contentStr = pasteboard.string;
             insear.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
@@ -338,6 +365,32 @@ fetchCompletionHandler:
         return NO;
     }
     return YES;
+}
+
+//直接进入搜索结果界面
+- (void)jumpToSearchVWithType:(NSInteger)type{
+    //保存在历史搜索里面
+    NSMutableArray *temp  = [SearchSaveManager getArray];
+    if (![temp containsObject:self.pasBoardStr]) {
+        [temp insertObject:self.pasBoardStr atIndex:0];
+        [SearchSaveManager saveArrWithArr:temp];
+    }
+    
+    SearchResultContrl *sear = [[SearchResultContrl alloc] initWithSearchStr:self.pasBoardStr];
+    sear.searchType = type;
+    UIViewController *rootVc = [UIApplication sharedApplication].keyWindow.rootViewController;
+    NSLog(@"rootVc  %@",rootVc);
+    UINavigationController *navi ;
+    if ([rootVc isKindOfClass:[UINavigationController class]]) {
+        navi = (UINavigationController*)rootVc;
+    }else if ([rootVc isKindOfClass:[UITabBarController class]]){
+        UITabBarController *tab = (UITabBarController*)rootVc;
+        navi = rootVc.childViewControllers[tab.selectedIndex];
+    }else{
+        UIViewController *vc = [UIViewController new];
+        navi = [[UINavigationController alloc] initWithRootViewController:vc];
+    }
+    [navi pushViewController:sear animated:YES];
 }
 
 #pragma mark -  MSLaunchViewDeleagte
