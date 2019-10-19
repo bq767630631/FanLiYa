@@ -15,15 +15,16 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="24"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3l1-9f-My6">
-                    <rect key="frame" x="204.66666666666666" y="0.0" width="5" height="24"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3l1-9f-My6" userLabel="midView">
+                    <rect key="frame" x="204" y="9" width="6" height="6"/>
+                    <color key="backgroundColor" red="1" green="0.81568627450980391" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="5" id="X88-nc-6v9"/>
+                        <constraint firstAttribute="height" constant="6" id="Q3v-2p-O0L"/>
+                        <constraint firstAttribute="width" constant="6" id="X88-nc-6v9"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l5V-5k-b4K" userLabel="leftdot">
-                    <rect key="frame" x="194" y="9" width="6" height="6"/>
+                    <rect key="frame" x="193.66666666666666" y="9" width="6" height="6"/>
                     <color key="backgroundColor" red="1" green="0.81568627450980391" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="6" id="UNI-Uw-S5I"/>
@@ -31,7 +32,7 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xsh-yQ-BAc" userLabel="rightdot">
-                    <rect key="frame" x="214" y="9" width="6" height="6"/>
+                    <rect key="frame" x="214.66666666666666" y="9" width="6" height="6"/>
                     <color key="backgroundColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="6" id="B66-WC-sMt"/>
@@ -43,8 +44,6 @@
             <constraints>
                 <constraint firstItem="3l1-9f-My6" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Br4-3q-ZNk"/>
                 <constraint firstItem="xsh-yQ-BAc" firstAttribute="leading" secondItem="3l1-9f-My6" secondAttribute="trailing" constant="4.5" id="MQH-XW-08I"/>
-                <constraint firstItem="3l1-9f-My6" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="N6i-u1-2z5"/>
-                <constraint firstAttribute="bottom" secondItem="3l1-9f-My6" secondAttribute="bottom" id="PbP-k8-gXL"/>
                 <constraint firstItem="xsh-yQ-BAc" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="QZR-ca-w7A"/>
                 <constraint firstItem="3l1-9f-My6" firstAttribute="leading" secondItem="l5V-5k-b4K" secondAttribute="trailing" constant="4.5" id="acX-nX-rdq"/>
                 <constraint firstItem="l5V-5k-b4K" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="sbl-9d-ihh"/>
@@ -53,6 +52,7 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="leftDot" destination="l5V-5k-b4K" id="3qR-5T-ZGa"/>
+                <outlet property="midDot" destination="3l1-9f-My6" id="itS-FO-yxu"/>
                 <outlet property="rightDot" destination="xsh-yQ-BAc" id="t4F-OS-kMf"/>
             </connections>
             <point key="canvasLocation" x="131.19999999999999" y="85.714285714285722"/>

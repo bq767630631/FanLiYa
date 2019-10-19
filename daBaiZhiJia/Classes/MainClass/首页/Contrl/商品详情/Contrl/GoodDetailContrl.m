@@ -19,7 +19,10 @@
 #import "MyCollecTionContrl.h"
 #import "LoginContrl.h"
 #import "GoodDetailInvalidV.h"
+#import "CreateShare_Model.h"
+#import "GoodDetailBottomTipsV.h"
 
+#define BotomVH 50
 @interface GoodDetailContrl ()<UIScrollViewDelegate,GoodDetailModelDelegate>
 
 @property (nonatomic, copy) NSString *sku;
@@ -55,7 +58,8 @@
 @property (nonatomic, assign) NSInteger cur_index;//显示当前的弹幕内容
 
 @property (nonatomic, strong) NSMutableArray *barrageArr;//弹幕内容数组
-
+@property (nonatomic, strong) UIButton *ccopyTklBtn; //复制tkl按钮
+@property (nonatomic, strong) GoodDetailBottomTipsV *bottomTipsV;
 @end
 
 @implementation GoodDetailContrl
@@ -123,7 +127,10 @@
     [self.view addSubview:self.scroTopBtn];
     [self.view addSubview:self.topView];
     [self.view addSubview:self.barRage];
-   
+    [self.view addSubview:self.bottomTipsV];
+    if (self.pt ==FLYPT_Type_TM||self.pt ==FLYPT_Type_TB) {
+        [self.view addSubview:self.ccopyTklBtn];
+    }
     self.goodArr = arr;
     [self.headView setInfo:info tuijianArr:arr];
     [self.boottom setInfo:info];
@@ -132,6 +139,7 @@
      self.blankView.hidden = YES;
     self.topView.info = info;
     [self.model queryViewPeople];
+    self.bottomTipsV.detailInfo = info;
 }
 
 - (void)detailModel:(GoodDetailModel *)model queryFail:(id)res{
@@ -189,6 +197,18 @@
       [self.scroView scrollToTop];
 }
 
+- (void)copyTklAction{
+    NSLog(@"");
+    if ([self judgeisLogin]) {
+        [CreateShare_Model geneRateTaoKlWithSku:self.sku vc:self navi_vc:self.navigationController block:^(NSString *tkl, NSString *code, NSString *shorturl) {
+            if (tkl) {
+                [UIPasteboard generalPasteboard].string = tkl;
+                [YJProgressHUD showMsgWithoutView:@"淘口令复制成功"];
+            }
+        }];
+    }
+}
+
 #pragma mark - UIScrollViewDelegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
     CGFloat offy = scrollView.contentOffset.y;
@@ -235,7 +255,7 @@
 
 - (UIScrollView *)scroView{
     if (!_scroView) {
-        CGFloat height = SCREEN_HEIGHT - 50;
+        CGFloat height = SCREEN_HEIGHT - BotomVH;
         if (IS_X_Xr_Xs_XsMax) {
             height -= Bottom_Safe_AreaH;
         }
@@ -313,13 +333,14 @@
 - (GoodDetailBottom *)boottom{
     if (!_boottom) {
         _boottom = [GoodDetailBottom viewFromXib];
+//        _boottom.clipsToBounds = YES;
         CGFloat origy = 0;
         if (IS_X_Xr_Xs_XsMax) {//34 是安全区域的高度
-            origy = SCREEN_HEIGHT - 50 - Bottom_Safe_AreaH;
+            origy = SCREEN_HEIGHT - BotomVH - Bottom_Safe_AreaH;
         }else{
-            origy = SCREEN_HEIGHT - 50;
+            origy = SCREEN_HEIGHT - BotomVH;
         }
-        _boottom.frame = CGRectMake(0, origy, SCREEN_WIDTH, 50);
+        _boottom.frame = CGRectMake(0, origy, SCREEN_WIDTH, BotomVH);
     }
     return _boottom;
 }
@@ -387,6 +408,38 @@
           [[NSRunLoop currentRunLoop] addTimer:_timer forMode:NSRunLoopCommonModes];
     }
     return _timer;
+}
+
+- (UIButton *)ccopyTklBtn{
+    if (!_ccopyTklBtn) {
+        _ccopyTklBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        _ccopyTklBtn.frame = CGRectMake(SCREEN_WIDTH -116, 341, 116, 43);
+        [_ccopyTklBtn setImage:ZDBImage(@"img_button_copytkl") forState:UIControlStateNormal];
+        [_ccopyTklBtn addTarget:self action:@selector(copyTklAction) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _ccopyTklBtn;
+}
+
+- (GoodDetailBottomTipsV *)bottomTipsV{
+    if (!_bottomTipsV) {
+        _bottomTipsV = [GoodDetailBottomTipsV viewFromXib];
+        CGFloat origx = 0;
+        CGFloat origy = 0;
+            if (IS_iPhone5SE) {
+                origx = 60;
+            }else if (IS_iPhone6plus){
+                origx = 105;
+            }else{
+                origx = 74;
+            }
+        if (IS_X_Xr_Xs_XsMax) {//34 是安全区域的高度
+            origy = SCREEN_HEIGHT - BotomVH - Bottom_Safe_AreaH - 31;
+        }else{
+            origy = SCREEN_HEIGHT - BotomVH - 31;
+        }
+        _bottomTipsV.frame = CGRectMake(origx, origy, 193, 37);
+    }
+    return _bottomTipsV;
 }
 
 @end

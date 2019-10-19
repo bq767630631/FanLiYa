@@ -15,6 +15,8 @@
 @interface HandelTaoBaoTradeManager : NSObject
 
 + (void)openTaoBaoAndTraWithUrl:(NSString*)url navi:(UINavigationController*)navi;
+
++ (void)openCartWithNavi:(UINavigationController*)navi;
 @end
 
 

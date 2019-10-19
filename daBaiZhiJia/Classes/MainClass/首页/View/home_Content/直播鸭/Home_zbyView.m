@@ -76,7 +76,6 @@ static NSString *cellId = @"cellId";
 
 
 - (IBAction)moreAction:(UIButton *)sender {
-    NSLog(@"");
     ZbySecContrl *zbySec = [ZbySecContrl new];
     PageViewController *page = (PageViewController *)self.viewController;
     [page.naviContrl pushViewController:zbySec animated:YES];

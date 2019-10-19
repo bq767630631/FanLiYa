@@ -72,6 +72,8 @@
 @property (nonatomic, copy) NSString *commission_money;//
 @property (nonatomic, copy) NSString *couponUrl;//优惠券链接
 @property (nonatomic, copy) NSString *cateid;// 类别ID用于推荐接口的参数
+@property (nonatomic, copy) NSString *one_profit; //预估赚
+@property (nonatomic, copy) NSString *two_profit; //补贴
 
 @property (nonatomic, copy) NSString *video; //视频地址 为空标识没有视频
 @property (nonatomic, assign) NSInteger  is_favorite;

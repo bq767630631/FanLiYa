@@ -25,6 +25,7 @@
            // [YJProgressHUD showMsgWithoutView:responseObject[@"msg"]];
         }
     } failure:^(NSError *error) {
+        [YJProgressHUD showAlertTipsWithError:error];
         block(nil,error,0);
         NSLog(@"error %@",error);
     }];
@@ -35,5 +36,12 @@
 @implementation DBZJ_Zqy_Info
 
 
+
+@end
+@implementation DBZJ_Show_Info
+
+@end
+
+@implementation DBZJ_RateInfo
 
 @end

@@ -30,4 +30,17 @@
     }];
 }
 
++ (void)openCartWithNavi:(UINavigationController*)navi{
+   id <AlibcTradePage> cart = [AlibcTradePageFactory myCartsPage];
+    AlibcTradeShowParams* showParam = [[AlibcTradeShowParams alloc] init];
+    showParam.openType = AlibcOpenTypeNative;
+    showParam.isNeedPush = YES;
+    
+    [[AlibcTradeSDK sharedInstance].tradeService openByBizCode:@"cart" page:cart webView:nil parentController:navi showParams:showParam taoKeParams:nil trackParam:nil tradeProcessSuccessCallback:^(AlibcTradeResult * _Nullable result) {
+        NSLog(@"%@", result);
+    } tradeProcessFailedCallback:^(NSError * _Nullable error) {
+         NSLog(@"error  %@", error);
+    }];
+    
+}
 @end

@@ -23,6 +23,8 @@
 
 #import "HomePage_UpdateV.h"
 #import "MessageManger.h"
+#import "ShenQianJiaoChenContrl.h"
+#import "DetailWebContrl.h"
 
 #define DateKey  @"DateKey"
 #define DateKey_UpDate  @"DateKey_UpDate" //更新V
@@ -42,6 +44,8 @@
 @property (nonatomic, strong) BrandSpecialArea *brandView; //品牌专区
 
 @property (nonatomic, strong) Home_EveeChoiView*evDayView; //每日精选
+
+@property (nonatomic, strong) UIButton *shenQianBtn;
 
 @property (nonatomic, strong) UIButton *scroTopBtn;
 
@@ -67,6 +71,7 @@
     self.page = 1;
     [self.view addSubview:self.scroView];
     [self.view addSubview:self.scroTopBtn];
+    [self.view addSubview:self.shenQianBtn];
     [self queryBroadCastData];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reFreshData) name:HomePageRefresh_NotiFacation object:nil];
 }
@@ -121,6 +126,7 @@
           dispatch_group_leave(group);
         if (timeArr) {
             [self.sec_flashSaView setInfoWith:timeArr goodArr:goodArr];
+            [self.head setInfoWith:timeArr goodArr:goodArr];
         }
     }];
     
@@ -135,7 +141,7 @@
       dispatch_group_enter(group);
     [HomePage_Model queryAppTopSideWithBlock:^(id res, NSError *error) {
           dispatch_group_leave(group);
-        NSLog(@"queryAppTopSide");
+       // NSLog(@"queryAppTopSide");
         if (res) {
             self.popInfo = res;
             BOOL isFirstLaunch = [[NSUserDefaults standardUserDefaults] boolForKey:@"isFirstLaunch"];
@@ -155,7 +161,7 @@
     
       dispatch_group_enter(group);
     [HomePage_Model queryTianMaoUrlWithBlock:^(NSString *tmCS, NSString *tmGJ) {
-        NSLog(@"queryTianMaoUrl");
+        //NSLog(@"queryTianMaoUrl");
            dispatch_group_leave(group);
         if (tmCS&&tmGJ) {
             self.head.tmcs = tmCS;
@@ -165,8 +171,7 @@
       dispatch_group_enter(group);
     [HomePage_Model queryAppSoreInfoWithCallBack:^(NSUInteger res) {
           dispatch_group_leave(group);
-//        NSLog(@"queryAppSoreInf0 %zd", res);
-        NSLog(@"is_Force_Update %d", is_Force_Update);
+//        NSLog(@"is_Force_Update %d", is_Force_Update);
         if (res ==1) {
             
             if (is_Force_Update) { //强制更新，每次都出现
@@ -177,6 +182,15 @@
                 [self showPopV:2];
             }
         }
+    }];
+    
+     dispatch_group_enter(group);
+    [HomePage_Model queryMenuSceneWithBlock:^(NSMutableArray *list, NSError *error) {
+        dispatch_group_leave(group);
+        if (list) {
+            self.head.menuList = list;
+        }
+        
     }];
     
     @weakify(self);
@@ -289,13 +303,38 @@
 #pragma mark - UIScrollViewDelegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
     CGFloat offY = scrollView.contentOffset.y;
-//    NSLog(@"offY =%.f",offY);
      self.scroTopBtn.hidden = offY < self.head.bottom;
      self.head.myScroview.autoScroll = offY < self.head.myScroview.bottom;
 }
 
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
+    [UIView animateWithDuration:0.2 animations:^{
+         self.shenQianBtn.mj_x = SCREEN_WIDTH - 18;
+    }];
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
+    [UIView animateWithDuration:0.2 animations:^{
+         self.shenQianBtn.mj_x = SCREEN_WIDTH - 68 - 12;
+    }];
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
+    if (!decelerate) {
+        [UIView animateWithDuration:0.2 animations:^{
+             self.shenQianBtn.mj_x = SCREEN_WIDTH - 68 - 12;
+        }];
+    }
+}
+
+#pragma mark - actions
 - (void)gotoTopAction{
     [self.scroView scrollToTop];
+}
+
+- (void)clickjiaoChenAction{
+      DetailWebContrl *detailweb = [[DetailWebContrl alloc] initWithUrl:[NSString stringWithFormat:@"%@?&token=%@",@"http://app.dabaihong.com/appShare/show.html",ToKen] title:@"" para:nil];
+    [self.naviContrl pushViewController:detailweb animated:YES];
 }
 
 #pragma mark - 通知action
@@ -437,6 +476,21 @@
     }
     return _scroTopBtn;
 }
+
+- (UIButton *)shenQianBtn{
+    if (!_shenQianBtn) {
+        _shenQianBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        CGFloat orgy = 320;
+        if (IS_iPhone5SE) {
+            orgy = 280;
+        }
+        _shenQianBtn.frame = CGRectMake(SCREEN_WIDTH -68 - 12, orgy, 68, 57.5);
+        [_shenQianBtn setImage:ZDBImage(@"img_shengqianjiaocheng") forState:UIControlStateNormal];
+        [_shenQianBtn addTarget:self action:@selector(clickjiaoChenAction) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _shenQianBtn;
+}
+
 - (NSMutableArray *)goodArr{
     if (!_goodArr) {
         _goodArr = [NSMutableArray array];

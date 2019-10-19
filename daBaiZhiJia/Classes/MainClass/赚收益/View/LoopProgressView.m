@@ -10,7 +10,7 @@
 #import <QuartzCore/QuartzCore.h>
 
 #define ViewWidth self.frame.size.width   //环形进度条的视图宽度
-#define ProgressWidth 2                //环形进度条的圆环宽度
+#define ProgressWidth 8                //环形进度条的圆环宽度
 #define Radius ViewWidth/2-ProgressWidth  //环形进度条的半径
 //#define RGBA(r, g, b, a)   [UIColor colorWithRed:(r/255.0) green:(g/255.0) blue:(b/255.0) alpha:(a)]
 #define RGB(r, g, b)        RGBA(r, g, b, 1.0)
@@ -20,8 +20,9 @@
     CAShapeLayer *arcLayer;
     UILabel *label;
     NSTimer *progressTimer;
+    UIView *dotV;
 }
-@property (nonatomic,assign)CGFloat i;
+@property (nonatomic, assign) CGFloat i;
 
 @end
 
@@ -31,7 +32,13 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        self.backgroundColor = [UIColor clearColor];
+        self.backgroundColor = UIColor.clearColor;
+        //圆点
+        UIView *v = [[UIView alloc] initWithFrame:CGRectMake(self.width*0.5-2, 5.5, 4, 4)];
+        v.backgroundColor = UIColor.whiteColor;
+        ViewBorderRadius(v,2, UIColor.whiteColor);
+        [self addSubview:v];
+        dotV = v;
     }
     return self;
 }
@@ -39,9 +46,10 @@
 - (void)drawRect:(CGRect)rect
 {
     _i = 0;
+    //
     CGContextRef progressContext = UIGraphicsGetCurrentContext();
     CGContextSetLineWidth(progressContext, ProgressWidth);
-    CGContextSetRGBStrokeColor(progressContext, 192.0/255.0, 192.0/255.0, 192.0/255.0, 1);
+    CGContextSetRGBStrokeColor(progressContext, 245/255.0, 245/255.0, 245/255.0, 1);
     
     CGFloat xCenter = rect.size.width * 0.5;
     CGFloat yCenter = rect.size.height * 0.5;
@@ -60,25 +68,26 @@
     label.center = CGPointMake(xCenter, yCenter);
     label.textAlignment = NSTextAlignmentCenter;
     label.font = [UIFont boldSystemFontOfSize:12];
-    label.textColor = RGB(195, 152, 77);
-    label.text = @"0%";
+    label.textColor = RGB(34, 34, 34);
     [self addSubview:label];
     
     UIBezierPath *path=[UIBezierPath bezierPath];
     [path addArcWithCenter:CGPointMake(xCenter,yCenter) radius:Radius startAngle:- M_PI * 0.5 endAngle:to clockwise:YES];
-    arcLayer=[CAShapeLayer layer];
-    arcLayer.path=path.CGPath;//46,169,230
+    arcLayer = [CAShapeLayer layer];
+    arcLayer.path = path.CGPath;
     arcLayer.fillColor = [UIColor clearColor].CGColor;
-    arcLayer.strokeColor=[UIColor colorWithRed:195.0/255.0 green:152.0/255.0 blue:77.0/255.0 alpha:1].CGColor;
-    arcLayer.lineWidth=ProgressWidth;
+    arcLayer.strokeColor = self.strokeColor.CGColor;
+    arcLayer.lineWidth = ProgressWidth;
     arcLayer.lineCap = @"round";
-    arcLayer.backgroundColor = [UIColor blueColor].CGColor;
+    arcLayer.backgroundColor = [UIColor blackColor].CGColor;
+    
     [self.layer addSublayer:arcLayer];
-    
-    
-    dispatch_async(dispatch_get_global_queue(0, 0), ^{
-        [self drawLineAnimation:arcLayer];
-    });
+  
+       label.text = self.lbStr;
+    [self.layer insertSublayer:dotV.layer above:arcLayer];
+//    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+//        [self drawLineAnimation:arcLayer];
+//    });
     
     if (self.progress > 1) {
         NSLog(@"传入数值范围为 0-1");
@@ -89,10 +98,10 @@
         return;
     }
     
-    if (self.progress > 0) {
-        NSThread *thread = [[NSThread alloc]initWithTarget:self selector:@selector(newThread) object:nil];
-        [thread start];
-    }
+//    if (self.progress > 0) {
+//        NSThread *thread = [[NSThread alloc]initWithTarget:self selector:@selector(newThread) object:nil];
+//        [thread start];
+//    }
     
 }
 
@@ -110,12 +119,14 @@
     _i += 0.01;
    
     dispatch_async( dispatch_get_main_queue(), ^{
-        self->label.text = [NSString stringWithFormat:@"%.f%%",_i*100];
+        //self->label.text = [NSString stringWithFormat:@"%.f%%",_i*100];
+        self->label.text = self.lbStr;
     });
     
     if (_i >= self.progress) {
         dispatch_async( dispatch_get_main_queue(), ^{
-            self->label.text = [NSString stringWithFormat:@"%.f%%",self.progress*100];
+           // self->label.text = [NSString stringWithFormat:@"%.f%%",self.progress*100];
+              self->label.text = self.lbStr;
         });
        
         [progressTimer invalidate];

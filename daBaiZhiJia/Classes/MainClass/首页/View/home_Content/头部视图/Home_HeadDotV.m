@@ -18,6 +18,7 @@
     // rgb(255,208,153) rgb(51,51,51)
     ViewBorderRadius(self.leftDot, 3, UIColor.clearColor);
     ViewBorderRadius(self.rightDot, 3, UIColor.clearColor);
+    ViewBorderRadius(self.midDot, 3, UIColor.clearColor);
 }
 
 

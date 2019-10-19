@@ -20,6 +20,11 @@
 @property (weak, nonatomic) IBOutlet UIButton *vipBtn;
 @property (weak, nonatomic) IBOutlet UIButton *buyBtn;
 @property (weak, nonatomic) IBOutlet UILabel *collectionLb;
+@property (weak, nonatomic) IBOutlet UIView *tipsV;
+
+@property (weak, nonatomic) IBOutlet UILabel *tipsLb;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *tipsLead;
 
 @property (nonatomic, strong) NSString *sku;
 
@@ -31,15 +36,23 @@
 
 - (void)awakeFromNib{
     [super awakeFromNib];
-
+//    if (IS_iPhone5SE) {
+//        self.tipsLead.constant = 60;
+//    }else if (IS_iPhone6plus){
+//        self.tipsLead.constant = 105;
+//    }else{
+//        self.tipsLead.constant = 74;
+//    }
 }
 
 - (void)setInfo:(id)info{
+   
     GoodDetailInfo *detail = info;
     self.detailInfo = info;
      self.sku = detail.sku;
     [self.vipBtn setTitle:[NSString stringWithFormat:@"分享赚¥%@",detail.share_profit] forState:UIControlStateNormal];
     [self.buyBtn setTitle:[NSString stringWithFormat:@"自购省¥%@",detail.profit] forState:UIControlStateNormal];
+   
 }
 
 
@@ -154,6 +167,11 @@
         }];
     }
 }
+
+- (IBAction)closeAction:(UIButton *)sender {
+    self.tipsV.hidden = YES;
+}
+
 
 #pragma mark - private
 - (void)openTbWithUrl:(NSString *)url{

@@ -13,6 +13,11 @@ NS_ASSUME_NONNULL_BEGIN
 @interface Home_headMenuSec : UIView
 @property (nonatomic, copy) NSString *tmgj;
 @property (nonatomic, copy) NSString *tmcs;
+@property (nonatomic, strong) NSMutableArray *secList;
+
+
+//限时抢购
+- (void)setInfoWith:(NSMutableArray*)timeArr goodArr:(NSMutableArray*)goodArr;
 @end
 
 NS_ASSUME_NONNULL_END

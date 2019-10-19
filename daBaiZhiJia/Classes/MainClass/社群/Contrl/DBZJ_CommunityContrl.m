@@ -48,9 +48,17 @@ static NSString *newHandCell = @"newHandCell";
     [self.model queryRecommendWithType:self.type];
 }
 
+- (void)setMenuSelected:(NSInteger)index{
+    [self.head setBtnSelectedWithIndex:index];
+}
+
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     self.navigationController.navigationBarHidden = NO;
+    if (self.jumpToSucai) {
+        self.jumpToSucai = NO;
+        [self.head setBtnSelectedWithIndex:1];
+    }
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle{

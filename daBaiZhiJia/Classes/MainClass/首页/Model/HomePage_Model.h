@@ -26,6 +26,8 @@ typedef void(^flashSale_Block)(NSMutableArray*timeArr,NSMutableArray*goodArr,NSI
 typedef void(^everyDayGood_Block)(NSMutableArray*goodArr,BOOL haveNomoreData, NSError *error);
 typedef void(^tmUrl_Block)(NSString *tmCS,NSString *tmGJ);
 
+typedef void(^menuSceneceCallBack)(NSMutableArray*list,NSError *error);
+
 @interface HomePage_Model : NSObject
 
 //查询版本号
@@ -58,6 +60,8 @@ typedef void(^tmUrl_Block)(NSString *tmCS,NSString *tmGJ);
 
 //app信息
 + (void)queryAppSoreInfoWithCallBack:(VEBlockInteger)callBack;
+
++ (void)queryMenuSceneWithBlock:(menuSceneceCallBack)callBack;
 @end
 
 
@@ -106,4 +110,13 @@ typedef void(^tmUrl_Block)(NSString *tmCS,NSString *tmGJ);
 @property (nonatomic, copy) NSString *brandid; //品牌分类id
 @property (nonatomic, copy) NSString *introduce; //品牌简介
 @property (nonatomic, assign) NSInteger  index;
+@end
+
+@interface MenuSceneceInfo : NSObject
+@property (nonatomic, copy) NSString *id_;
+@property (nonatomic, copy) NSString *title;
+@property (nonatomic, assign) NSInteger sort;
+@property (nonatomic, copy) NSString *url;//不为空的打开H5地址接token参数
+@property (nonatomic, copy) NSString *imageUrl; //图片url
+
 @end

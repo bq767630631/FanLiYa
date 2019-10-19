@@ -37,7 +37,7 @@
 @property (nonatomic, strong) UIScrollView *scroView;
 @property (nonatomic, strong) Home_HeadDotV *dotV;
 @property (nonatomic, strong) Home_headMenuFirst *menuFirst;
-@property (nonatomic, strong) Home_headMenuSec *menuSec;
+@property (nonatomic, strong) Home_headMenuFirst *menuSec;
 @end
 @implementation Home_headView
 
@@ -70,6 +70,49 @@
 - (void)setTmgj:(NSString *)tmgj{
     _tmgj = tmgj;
     self.menuSec.tmgj = tmgj;
+}
+
+- (void)setMenuList:(NSMutableArray *)menuList{
+    _menuList = menuList;
+    if (menuList.count >10) {//2 个
+        _scroView.contentSize = CGSizeMake(SCREEN_WIDTH*2, 0);
+        [_scroView addSubview:self.menuFirst];
+        [_scroView addSubview:self.menuSec];
+        self.dotV.midDot.hidden = YES;
+        NSMutableArray *first = [NSMutableArray array];
+        NSMutableArray *sec = [NSMutableArray array];
+        NSInteger index = 0;
+        for (MenuSceneceInfo *info in menuList) {
+            if (index <=9) {
+                [first addObject:info];
+            }else{
+                [sec addObject:info];
+            }
+            index ++;
+        }
+        
+        self.menuFirst.firstList = first;
+        self.menuFirst.tmcs = self.tmcs;
+        self.menuFirst.tmgj = self.tmgj;
+        
+        self.menuSec.firstList = sec;
+        self.menuSec.tmcs = self.tmcs;
+        self.menuSec.tmgj = self.tmgj;
+        
+    }else{//1 个
+        _scroView.contentSize = CGSizeMake(SCREEN_WIDTH, 0);
+        [_scroView addSubview:self.menuFirst];
+        self.dotV.leftDot.hidden = YES;
+        self.dotV.rightDot.hidden = YES;
+        self.menuFirst.firstList = menuList;
+        self.menuFirst.tmcs = self.tmcs;
+        self.menuFirst.tmgj = self.tmgj;
+    }
+}
+
+- (void)setInfoWith:(NSMutableArray*)timeArr goodArr:(NSMutableArray*)goodArr{
+    [self.menuFirst setInfoWith:timeArr goodArr:goodArr];
+    [self.menuSec setInfoWith:timeArr goodArr:goodArr];
 }
 
 - (void)layoutSubviews{
@@ -208,7 +251,6 @@
         _myScroview.autoScrollTimeInterval = 3;
         _myScroview.backgroundColor = UIColor.clearColor;
         ViewBorderRadius(_myScroview, 10, UIColor.clearColor);
-          // NSLog(@"_myScroview1.frame = %@",NSStringFromCGRect( _myScroview.frame));
     }
     return _myScroview;
 }
@@ -216,11 +258,8 @@
 - (UIScrollView *)scroView{
     if (!_scroView) {
         _scroView = [[UIScrollView alloc] init];
-        _scroView.contentSize = CGSizeMake(SCREEN_WIDTH*2, 0);
         _scroView.pagingEnabled = YES;
         _scroView.delegate = self;
-        [_scroView addSubview:self.menuFirst];
-        [_scroView addSubview:self.menuSec];
     }
     return _scroView;
 }
@@ -241,9 +280,9 @@
     return _menuFirst;
 }
 
-- (Home_headMenuSec *)menuSec{
+- (Home_headMenuFirst *)menuSec{
     if (!_menuSec) {
-        _menuSec = [Home_headMenuSec viewFromXib];
+        _menuSec = [Home_headMenuFirst viewFromXib];
         _menuSec.frame = CGRectMake(SCREEN_WIDTH, 0, SCREEN_WIDTH, 175);
     }
     return _menuSec;

@@ -15,11 +15,19 @@
 #import "GoodDetailContrl.h"
 #import "NewPeople_EnjoyContrl.h"
 #import "DetailWebContrl.h"
+#import "PingDuoduoHomeContrl.h"
+#import "Home_Com_Group_Recom.h"
+#import "ZbySecContrl.h"
+#import "LimitSale_SecContrl.h"
+#import "Brand_Showcontrl.h"
+#import "ContactKefuContrl.h"
+#import "MyCollecTionContrl.h"
+#import "LoginContrl.h"
 
 @interface Home_headMenuSec ()
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *view2Lead;
-
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *view4Trail;
+
 @end
 
 @implementation Home_headMenuSec
@@ -28,10 +36,11 @@
     CGFloat gap = (SCREEN_WIDTH - 42*5 - 15*2) / 4;
     self.view2Lead.constant = gap;
     self.view4Trail.constant = gap;
-    self.opaque;
 }
 
-
+- (void)setInfoWith:(NSMutableArray*)timeArr goodArr:(NSMutableArray*)goodArr{
+    
+}
 - (IBAction)clickAction:(UIButton *)sender {
     NSLog(@"%zd",sender.tag);
     NSInteger tag = sender.tag;

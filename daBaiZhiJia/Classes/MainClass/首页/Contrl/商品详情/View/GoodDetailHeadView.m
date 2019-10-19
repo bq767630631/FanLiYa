@@ -49,6 +49,11 @@ static NSString *KbannerId = @"KbannerId";
 
 @property (weak, nonatomic) IBOutlet UILabel *discountLb;
 
+@property (weak, nonatomic) IBOutlet UILabel *yuGuLb;
+@property (weak, nonatomic) IBOutlet UILabel *buTieLb;
+@property (weak, nonatomic) IBOutlet UILabel *youXiaoQixian;
+
+
 @property (weak, nonatomic) IBOutlet UIButton *limiteBuyBtn;//立即购买
 
 @property (nonatomic, strong) WKWebView *webView;
@@ -181,6 +186,14 @@ static NSString *KbannerId = @"KbannerId";
     self.shopPt.image = ZDBImage(shopPtImage);
     
     self.soldNum.text = [NSString stringWithFormat:@"%@件已售",info.sold_num];
+    self.yuGuLb.text = info.one_profit;
+    self.buTieLb.text = info.two_profit;
+    if (info.coupon_start_time) {
+         self.youXiaoQixian.text = [NSString stringWithFormat:@"有效期限%@-%@",info.coupon_start_time,info.coupon_end_time];
+    }else{
+        self.youXiaoQixian.text = @"";
+    }
+   
    
     if (Level != 3) {//团长的时候不用显示
         self.shengJiV_H.constant = 36;

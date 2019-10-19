@@ -11,7 +11,7 @@
 @implementation HomePage_Model
 + (void)queryVerson:(void (^)(void))callBlock{
     [PPNetworkHelper GET:URL_Add(@"/v.php/index.index/getAppShow") parameters:@{@"token":ToKen,@"v":APP_Version} success:^(id responseObject) {
-         NSLog(@"responseObject %@",responseObject);
+        // NSLog(@"responseObject %@",responseObject);
         NSInteger code = [responseObject[@"code"] integerValue];
         NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
         NSString *cur_ver = [infoDictionary objectForKey:@"CFBundleShortVersionString"];
@@ -226,7 +226,7 @@
 + (void)queryAppSoreInfoWithCallBack:(VEBlockInteger)callBack{
   //  NSString *url = @"http://itunes.apple.com/cn/lookup?id=1459203610";
     [PPNetworkHelper GET:URL_Add(@"/v.php/index.index/getAppVersion") parameters:@{@"token":ToKen,@"v":APP_Version,@"type":@"ios"} success:^(id responseObject) {
-        NSLog(@"getAppVersion %@",responseObject);
+      //  NSLog(@"getAppVersion %@",responseObject);
         NSString *cur_v = [UIApplication sharedApplication].appVersion;
            NSInteger code = [responseObject[@"code"] integerValue];
         if (code == SucCode) {
@@ -246,6 +246,28 @@
     } failure:^(NSError *error) {
         callBack(0);
         NSLog(@"%@",error);
+    }];
+}
+
++ (void)queryMenuSceneWithBlock:(menuSceneceCallBack)callBack{
+    
+    [PPNetworkHelper GET:URL_Add(@"/v.php/index.index/getMenuScene") parameters:nil success:^(id responseObject) {
+        NSLog(@"getMenuScene %@",responseObject);
+          NSInteger code = [responseObject[@"code"] integerValue];
+        if (code == SucCode) {
+            NSString *pic = responseObject[@"data"][@"picurl"];
+            NSMutableArray *list = [MenuSceneceInfo mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"list"]];
+           CGFloat scale = [UIScreen mainScreen].scale;
+            
+            for (MenuSceneceInfo *info in list) {
+                info.imageUrl = [NSString stringWithFormat:@"%@%@_ios@%.fx.png",pic,info.id_,scale];
+            }
+             callBack(list,nil);
+        }else{
+            callBack(nil,nil);
+        }
+    } failure:^(NSError *error) {
+        callBack(nil,error);
     }];
 }
 
@@ -276,4 +298,10 @@
 
 
 @implementation BrandCat_info
+@end
+
+@implementation MenuSceneceInfo
++ (NSDictionary *)mj_replacedKeyFromPropertyName{
+    return  @{@"id_":@"id"};
+}
 @end

@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-@class DBZJ_Zqy_Info;
+@class DBZJ_Zqy_Info,DBZJ_RateInfo,DBZJ_Show_Info;
 typedef void(^DBZJ_IncomBlock)(DBZJ_Zqy_Info *info, NSError *error, NSInteger code);
 
 @interface DBZJ_IncomeModel : NSObject
@@ -38,6 +38,8 @@ typedef void(^DBZJ_IncomBlock)(DBZJ_Zqy_Info *info, NSError *error, NSInteger co
 @property (nonatomic, copy) NSString *next_order_number; //下一级需达到单数
 @property (nonatomic, copy) NSString *percent;
 
+@property (nonatomic, strong) DBZJ_Show_Info *show;
+
 @property (nonatomic, copy) NSString *yaoqing;
 @property (nonatomic, copy) NSString *tequan;
 @property (nonatomic, copy) NSString *moshi;
@@ -46,4 +48,23 @@ typedef void(^DBZJ_IncomBlock)(DBZJ_Zqy_Info *info, NSError *error, NSInteger co
 @property (nonatomic, copy) NSString *curStr;
 @property (nonatomic, assign) CGFloat progress;
 @property (nonatomic, copy) NSString *totalStr;
+@property (nonatomic, strong) UIColor *strokeColor;
+@property (nonatomic, copy) NSString *lbStr;
+@end
+
+//
+@interface DBZJ_Show_Info : NSObject
+@property (nonatomic, strong) DBZJ_RateInfo *a;
+@property (nonatomic, strong) DBZJ_RateInfo *b;
+@property (nonatomic, strong) DBZJ_RateInfo *c;
+@property (nonatomic, strong) DBZJ_RateInfo *d;
+@property (nonatomic, strong) DBZJ_RateInfo *e;
+@property (nonatomic, strong) DBZJ_RateInfo *f;
+@end
+
+//收益比例
+@interface DBZJ_RateInfo : NSObject
+@property (nonatomic, copy) NSString *a;
+@property (nonatomic, copy) NSString *b;
+@property (nonatomic, copy) NSString *c;
 @end

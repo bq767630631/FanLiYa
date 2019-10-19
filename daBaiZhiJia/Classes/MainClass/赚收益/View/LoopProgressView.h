@@ -11,7 +11,8 @@
 @interface LoopProgressView : UIView
 
 @property (nonatomic, assign) CGFloat progress;
-
+@property (nonatomic, strong) UIColor *strokeColor;
+@property (nonatomic, copy) NSString *lbStr;
 /*
  带动画环形进度条
  */

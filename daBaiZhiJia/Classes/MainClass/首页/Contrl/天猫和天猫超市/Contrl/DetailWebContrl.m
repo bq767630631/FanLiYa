@@ -203,7 +203,9 @@
         NSLog(@"reslut = %@",resultDic);
         NSString *msg = @"";
         if ([resultDic[@"resultStatus"] isEqual:@"9000"]) {
-            msg = @"支付成功";
+            msg = @"支付成功";//支付成功推出当前界面
+            [self.navigationController popViewControllerAnimated:YES];
+            return ;
         }
         else if ([resultDic[@"resultStatus"] isEqual:@"8000"]) {
             msg = @"正在处理中";
@@ -221,6 +223,7 @@
             msg = @"支付失败";
         }
         [YJProgressHUD showMsgWithoutView:msg];
+        [self.webView reload];
         NSLog(@"currentThread =%@  %@",[NSThread currentThread], msg);
         
     }];

@@ -29,6 +29,9 @@
 		C20E313B22DC4F33009FB418 /* MSLaunchView.m in Sources */ = {isa = PBXBuildFile; fileRef = C20E313722DC4F32009FB418 /* MSLaunchView.m */; };
 		C20E313C22DC4F33009FB418 /* MSLaunchOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = C20E313822DC4F32009FB418 /* MSLaunchOperation.m */; };
 		C20E314922DC545E009FB418 /* MSPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = C20E314822DC545E009FB418 /* MSPageControl.m */; };
+		C21676EF23598CF300D728BC /* GoodDetailBottomTipsV.m in Sources */ = {isa = PBXBuildFile; fileRef = C21676EE23598CF300D728BC /* GoodDetailBottomTipsV.m */; };
+		C21676F123598CFF00D728BC /* GoodDetailBottomTipsV.xib in Resources */ = {isa = PBXBuildFile; fileRef = C21676F023598CFF00D728BC /* GoodDetailBottomTipsV.xib */; };
+		C21676F423599B1700D728BC /* ShenQianJiaoChenContrl.m in Sources */ = {isa = PBXBuildFile; fileRef = C21676F323599B1700D728BC /* ShenQianJiaoChenContrl.m */; };
 		C217B0D022CEDF8B0061D073 /* HandelTaoBaoTradeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C217B0CF22CEDF8B0061D073 /* HandelTaoBaoTradeManager.m */; };
 		C21A1F1A2251B6D800480EAE /* PageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C21A1F182251B6D700480EAE /* PageViewController.m */; };
 		C21AAB9A2341BF5300FDD5D0 /* MPZG_TempVc.m in Sources */ = {isa = PBXBuildFile; fileRef = C21AAB992341BF5300FDD5D0 /* MPZG_TempVc.m */; };
@@ -56,6 +59,8 @@
 		C21C72F022C6254A009F3199 /* SDCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C21C72E422C62549009F3199 /* SDCollectionViewCell.m */; };
 		C21CB0382330EA1F0064166C /* Home_HeadDotV.m in Sources */ = {isa = PBXBuildFile; fileRef = C21CB0372330EA1F0064166C /* Home_HeadDotV.m */; };
 		C21CB03A2330EA2C0064166C /* Home_HeadDotV.xib in Resources */ = {isa = PBXBuildFile; fileRef = C21CB0392330EA2C0064166C /* Home_HeadDotV.xib */; };
+		C21F0234235959F700243F84 /* GoodDetailCopTkLV.m in Sources */ = {isa = PBXBuildFile; fileRef = C21F0233235959F700243F84 /* GoodDetailCopTkLV.m */; };
+		C21F023623595A3D00243F84 /* GoodDetailCopTkLV.xib in Resources */ = {isa = PBXBuildFile; fileRef = C21F023523595A3D00243F84 /* GoodDetailCopTkLV.xib */; };
 		C2210B872248B85300C1C765 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C2210B862248B85300C1C765 /* AppDelegate.m */; };
 		C2210B8F2248B85600C1C765 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C2210B8E2248B85600C1C765 /* Assets.xcassets */; };
 		C2210B952248B85600C1C765 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C2210B942248B85600C1C765 /* main.m */; };
@@ -354,6 +359,8 @@
 		C2CA66C422715B9500CC361F /* DBZJ_CommunityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2CA66C222715B9500CC361F /* DBZJ_CommunityCell.m */; };
 		C2CA66C522715B9500CC361F /* DBZJ_CommunityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2CA66C322715B9500CC361F /* DBZJ_CommunityCell.xib */; };
 		C2CA66C82271998100CC361F /* UIFont+Runtime.m in Sources */ = {isa = PBXBuildFile; fileRef = C2CA66C72271998100CC361F /* UIFont+Runtime.m */; };
+		C2D37F542357FFA500504F43 /* ZhuanQianYaFirstV.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D37F532357FFA500504F43 /* ZhuanQianYaFirstV.m */; };
+		C2D37F562357FFB100504F43 /* ZhuanQianYaFirstV.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2D37F552357FFB100504F43 /* ZhuanQianYaFirstV.xib */; };
 		C2DBC9312289429600CFAE29 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2DBC9302289429600CFAE29 /* CoreLocation.framework */; };
 		C2DBC934228942E400CFAE29 /* AppDelegate+privates.m in Sources */ = {isa = PBXBuildFile; fileRef = C2DBC933228942E400CFAE29 /* AppDelegate+privates.m */; };
 		C2DBC93C22894CB200CFAE29 /* CreateShareContrl.m in Sources */ = {isa = PBXBuildFile; fileRef = C2DBC93A22894CB200CFAE29 /* CreateShareContrl.m */; };
@@ -471,6 +478,11 @@
 		C20E313A22DC4F32009FB418 /* MSLaunchOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSLaunchOperation.h; sourceTree = "<group>"; };
 		C20E314722DC545E009FB418 /* MSPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSPageControl.h; sourceTree = "<group>"; };
 		C20E314822DC545E009FB418 /* MSPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSPageControl.m; sourceTree = "<group>"; };
+		C21676ED23598CF300D728BC /* GoodDetailBottomTipsV.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GoodDetailBottomTipsV.h; sourceTree = "<group>"; };
+		C21676EE23598CF300D728BC /* GoodDetailBottomTipsV.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GoodDetailBottomTipsV.m; sourceTree = "<group>"; };
+		C21676F023598CFF00D728BC /* GoodDetailBottomTipsV.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GoodDetailBottomTipsV.xib; sourceTree = "<group>"; };
+		C21676F223599B1700D728BC /* ShenQianJiaoChenContrl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShenQianJiaoChenContrl.h; sourceTree = "<group>"; };
+		C21676F323599B1700D728BC /* ShenQianJiaoChenContrl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShenQianJiaoChenContrl.m; sourceTree = "<group>"; };
 		C217B0CE22CEDF8B0061D073 /* HandelTaoBaoTradeManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HandelTaoBaoTradeManager.h; sourceTree = "<group>"; };
 		C217B0CF22CEDF8B0061D073 /* HandelTaoBaoTradeManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HandelTaoBaoTradeManager.m; sourceTree = "<group>"; };
 		C21A1F162251B6D700480EAE /* PageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageViewController.h; sourceTree = "<group>"; };
@@ -518,6 +530,9 @@
 		C21CB0362330EA1F0064166C /* Home_HeadDotV.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Home_HeadDotV.h; sourceTree = "<group>"; };
 		C21CB0372330EA1F0064166C /* Home_HeadDotV.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Home_HeadDotV.m; sourceTree = "<group>"; };
 		C21CB0392330EA2C0064166C /* Home_HeadDotV.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Home_HeadDotV.xib; sourceTree = "<group>"; };
+		C21F0232235959F700243F84 /* GoodDetailCopTkLV.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GoodDetailCopTkLV.h; sourceTree = "<group>"; };
+		C21F0233235959F700243F84 /* GoodDetailCopTkLV.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GoodDetailCopTkLV.m; sourceTree = "<group>"; };
+		C21F023523595A3D00243F84 /* GoodDetailCopTkLV.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GoodDetailCopTkLV.xib; sourceTree = "<group>"; };
 		C2210B822248B85300C1C765 /* daBaiZhiJia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = daBaiZhiJia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2210B852248B85300C1C765 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C2210B862248B85300C1C765 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -1006,6 +1021,9 @@
 		C2CA66C322715B9500CC361F /* DBZJ_CommunityCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DBZJ_CommunityCell.xib; sourceTree = "<group>"; };
 		C2CA66C62271998100CC361F /* UIFont+Runtime.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIFont+Runtime.h"; sourceTree = "<group>"; };
 		C2CA66C72271998100CC361F /* UIFont+Runtime.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIFont+Runtime.m"; sourceTree = "<group>"; };
+		C2D37F522357FFA500504F43 /* ZhuanQianYaFirstV.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZhuanQianYaFirstV.h; sourceTree = "<group>"; };
+		C2D37F532357FFA500504F43 /* ZhuanQianYaFirstV.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZhuanQianYaFirstV.m; sourceTree = "<group>"; };
+		C2D37F552357FFB100504F43 /* ZhuanQianYaFirstV.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ZhuanQianYaFirstV.xib; sourceTree = "<group>"; };
 		C2DBC9302289429600CFAE29 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		C2DBC932228942E400CFAE29 /* AppDelegate+privates.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AppDelegate+privates.h"; sourceTree = "<group>"; };
 		C2DBC933228942E400CFAE29 /* AppDelegate+privates.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+privates.m"; sourceTree = "<group>"; };
@@ -1726,6 +1744,9 @@
 				C2C8040E22BCD11C00F60A6D /* DBZJ_Income_ProView.h */,
 				C2C8040F22BCD11C00F60A6D /* DBZJ_Income_ProView.m */,
 				C2C8041122BCD13600F60A6D /* DBZJ_Income_ProView.xib */,
+				C2D37F522357FFA500504F43 /* ZhuanQianYaFirstV.h */,
+				C2D37F532357FFA500504F43 /* ZhuanQianYaFirstV.m */,
+				C2D37F552357FFB100504F43 /* ZhuanQianYaFirstV.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2959,6 +2980,9 @@
 				C2A70BE222B87796007B0022 /* GoodDetail_ShengjiV.h */,
 				C2A70BE322B87796007B0022 /* GoodDetail_ShengjiV.m */,
 				C2A70BE522B877A0007B0022 /* GoodDetail_ShengjiV.xib */,
+				C21676ED23598CF300D728BC /* GoodDetailBottomTipsV.h */,
+				C21676EE23598CF300D728BC /* GoodDetailBottomTipsV.m */,
+				C21676F023598CFF00D728BC /* GoodDetailBottomTipsV.xib */,
 			);
 			path = "底部视图";
 			sourceTree = "<group>";
@@ -2988,6 +3012,9 @@
 				C26B3F1A232765AD00DA7911 /* GoodDetailInvalidV.h */,
 				C26B3F1B232765AD00DA7911 /* GoodDetailInvalidV.m */,
 				C26B3F1D232765B900DA7911 /* GoodDetailInvalidV.xib */,
+				C21F0232235959F700243F84 /* GoodDetailCopTkLV.h */,
+				C21F0233235959F700243F84 /* GoodDetailCopTkLV.m */,
+				C21F023523595A3D00243F84 /* GoodDetailCopTkLV.xib */,
 			);
 			path = "顶部视图";
 			sourceTree = "<group>";
@@ -3073,6 +3100,8 @@
 			children = (
 				C2C1A5DB22BDF48600D5F297 /* NewPeo_shareContrl.h */,
 				C2C1A5DC22BDF48600D5F297 /* NewPeo_shareContrl.m */,
+				C21676F223599B1700D728BC /* ShenQianJiaoChenContrl.h */,
+				C21676F323599B1700D728BC /* ShenQianJiaoChenContrl.m */,
 			);
 			path = Contrl;
 			sourceTree = "<group>";
@@ -3601,6 +3630,7 @@
 				C2A70BDD22B8772B007B0022 /* GoodDetailBottom.xib in Resources */,
 				C2386F03233C55490013693A /* NewPeo_VipShareV.xib in Resources */,
 				C2F8962F22B3299A00DA02EC /* Home_EveeChoiView.xib in Resources */,
+				C2D37F562357FFB100504F43 /* ZhuanQianYaFirstV.xib in Resources */,
 				C2DBC9472289582000CFAE29 /* CreateshareBottom.xib in Resources */,
 				C267C84822534F7500FE6488 /* ForeGetPwdcontrl.xib in Resources */,
 				C203F2582255A6F9009D73CD /* SearchResultMenu.xib in Resources */,
@@ -3651,6 +3681,7 @@
 				C271BEEF22B1F54800A94014 /* Home_headView.xib in Resources */,
 				C26B3F1E232765B900DA7911 /* GoodDetailInvalidV.xib in Resources */,
 				C2386F19233CBF7A0013693A /* MerChantPromoSecCell.xib in Resources */,
+				C21676F123598CFF00D728BC /* GoodDetailBottomTipsV.xib in Resources */,
 				C2218C63228968BA0097F8F7 /* CreateshareCollectionCell.xib in Resources */,
 				C25F5F2122D5834B006C7C4D /* New_HomeFlashSaleGoodCell.xib in Resources */,
 				C25F5F2722D58A57006C7C4D /* BrandSpecialArea.xib in Resources */,
@@ -3664,6 +3695,7 @@
 				C267C82E2253062900FE6488 /* LoginContrl.xib in Resources */,
 				C279937F22C376EB004C0B4C /* MySpreadContrl.xib in Resources */,
 				C21B7EB22331BDF800BAD648 /* Home_headMenuFirst.xib in Resources */,
+				C21F023623595A3D00243F84 /* GoodDetailCopTkLV.xib in Resources */,
 				C279938D22C376EC004C0B4C /* ShareCoffeeContrl.xib in Resources */,
 				C279939022C376EC004C0B4C /* MyGroupMemberCell.xib in Resources */,
 				C2331703233349A500B50BE0 /* PDDHotSaleMenu.xib in Resources */,
@@ -3816,6 +3848,7 @@
 				C23317062333634B00B50BE0 /* HomePage_UpdateV.m in Sources */,
 				C20E313C22DC4F33009FB418 /* MSLaunchOperation.m in Sources */,
 				C2F7D89A22BB5DA600D6D02A /* MJProxy.m in Sources */,
+				C21676EF23598CF300D728BC /* GoodDetailBottomTipsV.m in Sources */,
 				C2F151B122699B260017F2E0 /* KLSwitch.m in Sources */,
 				C2210BAB2248BEEC00C1C765 /* MPZG_BaseContrl.m in Sources */,
 				C27993AF22C3785E004C0B4C /* ZKCycleScrollViewFlowLayout.m in Sources */,
@@ -3916,6 +3949,7 @@
 				C21C72DC22C61CD0009F3199 /* Home_horseRacelpCell.m in Sources */,
 				C2210C3F2248CD7F00C1C765 /* TYAlertDropDownAnimation.m in Sources */,
 				C2218C66228972B00097F8F7 /* IntelligenceSearchView.m in Sources */,
+				C21676F423599B1700D728BC /* ShenQianJiaoChenContrl.m in Sources */,
 				C2210BCC2248C24300C1C765 /* DBZJ_MineContrl.m in Sources */,
 				C26B3F1C232765AD00DA7911 /* GoodDetailInvalidV.m in Sources */,
 				C21B7EC12331D96F00BAD648 /* PingDuoduoHomeSearch.m in Sources */,
@@ -3959,6 +3993,7 @@
 				C2B7602022F816D40099B6B3 /* ShareNewPosterV.m in Sources */,
 				C2F7D88822BB1E5700D6D02A /* PlayVideoContrl.m in Sources */,
 				C21C72D822C616BE009F3199 /* UIView+DKSBadge.m in Sources */,
+				C21F0234235959F700243F84 /* GoodDetailCopTkLV.m in Sources */,
 				C2EFFAEF229402080051781F /* DBZJ_ScanContrl.m in Sources */,
 				C2B9DCAF22851C300018F27A /* MineActiveAndTool.m in Sources */,
 				C2F8964B22B3917B00DA02EC /* BillBoard_FirstMenu.m in Sources */,
@@ -3973,6 +4008,7 @@
 				C2F8963C22B374F300DA02EC /* Home_SecHasCatContrl.m in Sources */,
 				C271BEF922B1F59500A94014 /* Home_zbyCell.m in Sources */,
 				C2F7D89022BB32A000D6D02A /* PlayVideo_Model.m in Sources */,
+				C2D37F542357FFA500504F43 /* ZhuanQianYaFirstV.m in Sources */,
 				C289C9DC22BE010F0031F21A /* NewPeo_shareBottomV.m in Sources */,
 				C25F5F3B22D5DF42006C7C4D /* Brand_ShowModel.m in Sources */,
 				C2210BCF2248C29800C1C765 /* DBZJ_IncomeContrl.m in Sources */,

@@ -12,6 +12,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface Home_headMenuFirst : UIView
 @property (nonatomic, copy) NSString *tmcs;
+@property (nonatomic, copy) NSString *tmgj;
+
+@property (nonatomic, strong) NSMutableArray *firstList;
+
+//限时抢购
+- (void)setInfoWith:(NSMutableArray*)timeArr goodArr:(NSMutableArray*)goodArr;
 @end
 
 NS_ASSUME_NONNULL_END

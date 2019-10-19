@@ -20,6 +20,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, copy) NSString *tmgj;
 
+@property (nonatomic, strong) NSMutableArray *menuList;//菜单数组
+
+//限时抢购
+- (void)setInfoWith:(NSMutableArray*)timeArr goodArr:(NSMutableArray*)goodArr;
 @end
 
 NS_ASSUME_NONNULL_END

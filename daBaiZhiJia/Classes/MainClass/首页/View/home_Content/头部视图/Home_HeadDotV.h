@@ -13,6 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface Home_HeadDotV : UIView
 @property (weak, nonatomic) IBOutlet UIView *leftDot;
 @property (weak, nonatomic) IBOutlet UIView *rightDot;
+@property (weak, nonatomic) IBOutlet UIView *midDot;
 
 - (void)setDotColorWithLeft:(UIColor*)leftcolor right:(UIColor*)rightColor;
 @end

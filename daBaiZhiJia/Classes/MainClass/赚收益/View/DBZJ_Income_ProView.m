@@ -27,15 +27,19 @@
       DBZJ_Zqy_Info *info = model;
     self.cur_Lb.text = info.curStr;
     self.pro_lb.text = info.totalStr;
+    
     self.pro.progress = info.progress;
-    self.pro.center = self.center;
+    self.pro.lbStr = info.lbStr;
+    self.pro.strokeColor = info.strokeColor;
+  
+    [self.pro setNeedsDisplay];
 }
 
 #pragma mark - getter
 - (LoopProgressView *)pro{
     if (!_pro) {
         NSLog(@"LoopProgressView  init");
-        _pro = [[LoopProgressView alloc]initWithFrame:CGRectMake(0, 0, 50, 50)];
+        _pro = [[LoopProgressView alloc]initWithFrame:CGRectMake(0, 0, 84, 84)];
     }
     return _pro;
 }
