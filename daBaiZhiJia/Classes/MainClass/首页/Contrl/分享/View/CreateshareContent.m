@@ -14,7 +14,7 @@
 #import "Share_PosterView.h"
 #import "ShareNewPosterV.h"
 #import "ShareEditeContrl.h"
-
+#import "ShowPopVManager.h"
 static NSString *cellId = @"cellId";
 @interface CreateshareContent ()<UICollectionViewDelegate, UICollectionViewDataSource>
 @property (weak, nonatomic) IBOutlet UILabel *yujiMoney;
@@ -209,16 +209,19 @@ static NSString *cellId = @"cellId";
     [UIPasteboard generalPasteboard].string =  self.wenAnTextV.text; //  self.wenAnLb.text;//
     NSLog(@"%@", [UIPasteboard generalPasteboard].string );
     [YJProgressHUD showMsgWithoutView:@"文案复制成功"];
+    [ShowPopVManager shareInstance].pasBoardStr = [UIPasteboard generalPasteboard].string;
 }
 
 - (IBAction)koulingAction:(UIButton *)sender {
     [UIPasteboard generalPasteboard].string = [NSString stringWithFormat:@"长按復至%@➡[掏✔寳]即可抢购",self.detailinfo.tkl];
     [YJProgressHUD showMsgWithoutView:@"淘口令复制成功"];
+    [ShowPopVManager shareInstance].pasBoardStr = [UIPasteboard generalPasteboard].string;
 }
 
 - (IBAction)xiaZaiLianJieAction:(UIButton *)sender {
     [UIPasteboard generalPasteboard].string = self.detailinfo.shorturl;
     [YJProgressHUD showMsgWithoutView:@"下单地址复制成功"];
+     [ShowPopVManager shareInstance].pasBoardStr = [UIPasteboard generalPasteboard].string;
 }
 
 

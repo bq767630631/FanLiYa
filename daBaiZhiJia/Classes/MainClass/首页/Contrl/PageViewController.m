@@ -25,6 +25,7 @@
 #import "MessageManger.h"
 #import "ShenQianJiaoChenContrl.h"
 #import "DetailWebContrl.h"
+#import "ShowPopVManager.h"
 
 #define DateKey  @"DateKey"
 #define DateKey_UpDate  @"DateKey_UpDate" //更新V
@@ -60,6 +61,7 @@
 @property (nonatomic, assign) BOOL allRequestComp;  //所有请求完成
 
 @property (nonatomic, strong) HomePage_bg_bannernfo *popInfo;//弹窗模型
+@property (nonatomic, assign) BOOL  appBecomeActive;
 @end
 
 @implementation PageViewController
@@ -74,6 +76,7 @@
     [self.view addSubview:self.shenQianBtn];
     [self queryBroadCastData];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reFreshData) name:HomePageRefresh_NotiFacation object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationBecomeActive) name:UIApplicationWillEnterForegroundNotification object:nil];
 }
 
 - (void)setBannerArr:(NSMutableArray *)bannerArr{
@@ -85,6 +88,9 @@
     [self queryBroadCastData];
 }
 
+- (void)applicationBecomeActive{
+    self.appBecomeActive = YES;
+}
 #pragma mark - JXCategoryListContentViewDelegate
 - (UIView *)listView {
     return self.view;
@@ -92,6 +98,7 @@
 
 - (void)listDidAppear {
     self.head.myScroview.autoScroll = YES;
+    NSLog(@"%d", self.appBecomeActive);
 }
 
 - (void)listDidDisappear {
@@ -219,7 +226,8 @@
         if ([MessageManger shareMessage].remoteNotification) {
             [MessageManger handleMessageWithInfo:[MessageManger shareMessage].remoteNotification];
         }
-        
+        //如果有粘贴板有内容就弹出来
+        [[ShowPopVManager shareInstance] showPopV];
     });
 }
 
@@ -315,14 +323,14 @@
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
     [UIView animateWithDuration:0.2 animations:^{
-         self.shenQianBtn.mj_x = SCREEN_WIDTH - 68 - 12;
+         self.shenQianBtn.mj_x = SCREEN_WIDTH - 65;
     }];
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
     if (!decelerate) {
         [UIView animateWithDuration:0.2 animations:^{
-             self.shenQianBtn.mj_x = SCREEN_WIDTH - 68 - 12;
+             self.shenQianBtn.mj_x = SCREEN_WIDTH - 65;
         }];
     }
 }
@@ -484,7 +492,7 @@
         if (IS_iPhone5SE) {
             orgy = 280;
         }
-        _shenQianBtn.frame = CGRectMake(SCREEN_WIDTH -68 - 12, orgy, 68, 57.5);
+        _shenQianBtn.frame = CGRectMake(SCREEN_WIDTH - 65, orgy, 68, 57.5);
         [_shenQianBtn setImage:ZDBImage(@"img_shengqianjiaocheng") forState:UIControlStateNormal];
         [_shenQianBtn addTarget:self action:@selector(clickjiaoChenAction) forControlEvents:UIControlEventTouchUpInside];
     }

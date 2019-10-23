@@ -11,7 +11,7 @@
 @implementation HomePage_Model
 + (void)queryVerson:(void (^)(void))callBlock{
     [PPNetworkHelper GET:URL_Add(@"/v.php/index.index/getAppShow") parameters:@{@"token":ToKen,@"v":APP_Version} success:^(id responseObject) {
-        // NSLog(@"responseObject %@",responseObject);
+         //NSLog(@"responseObject %@",responseObject);
         NSInteger code = [responseObject[@"code"] integerValue];
         NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
         NSString *cur_ver = [infoDictionary objectForKey:@"CFBundleShortVersionString"];
@@ -252,7 +252,7 @@
 + (void)queryMenuSceneWithBlock:(menuSceneceCallBack)callBack{
     
     [PPNetworkHelper GET:URL_Add(@"/v.php/index.index/getMenuScene") parameters:nil success:^(id responseObject) {
-        NSLog(@"getMenuScene %@",responseObject);
+       // NSLog(@"getMenuScene %@",responseObject);
           NSInteger code = [responseObject[@"code"] integerValue];
         if (code == SucCode) {
             NSString *pic = responseObject[@"data"][@"picurl"];

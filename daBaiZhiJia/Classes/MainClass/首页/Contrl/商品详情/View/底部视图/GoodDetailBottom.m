@@ -51,7 +51,8 @@
     self.detailInfo = info;
      self.sku = detail.sku;
     [self.vipBtn setTitle:[NSString stringWithFormat:@"分享赚¥%@",detail.share_profit] forState:UIControlStateNormal];
-    [self.buyBtn setTitle:[NSString stringWithFormat:@"自购省¥%@",detail.profit] forState:UIControlStateNormal];
+    NSString *pro = [NSString stringWithFormat:@"%.2f",(detail.profit.doubleValue+detail.coupon_amount.doubleValue)];
+    [self.buyBtn setTitle:[NSString stringWithFormat:@"自购省¥%@",pro] forState:UIControlStateNormal];
    
 }
 

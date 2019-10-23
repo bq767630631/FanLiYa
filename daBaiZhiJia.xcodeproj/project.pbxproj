@@ -181,6 +181,7 @@
 		C2521D7D226D653900A8D3A0 /* DBZJ_SearchHead.m in Sources */ = {isa = PBXBuildFile; fileRef = C2521D7C226D653900A8D3A0 /* DBZJ_SearchHead.m */; };
 		C2521D7F226D654300A8D3A0 /* DBZJ_SearchHead.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2521D7E226D654300A8D3A0 /* DBZJ_SearchHead.xib */; };
 		C2521D82226D6A9000A8D3A0 /* DBZJ_SearchTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = C2521D81226D6A9000A8D3A0 /* DBZJ_SearchTextField.m */; };
+		C25CF2E3235D444D00E257D7 /* ShowPopVManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C25CF2E2235D444D00E257D7 /* ShowPopVManager.m */; };
 		C25F5F1A22D57EBF006C7C4D /* New_HomeFlashSale.m in Sources */ = {isa = PBXBuildFile; fileRef = C25F5F1922D57EBF006C7C4D /* New_HomeFlashSale.m */; };
 		C25F5F1C22D57ECC006C7C4D /* New_HomeFlashSale.xib in Resources */ = {isa = PBXBuildFile; fileRef = C25F5F1B22D57ECC006C7C4D /* New_HomeFlashSale.xib */; };
 		C25F5F2022D5834B006C7C4D /* New_HomeFlashSaleGoodCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C25F5F1E22D5834B006C7C4D /* New_HomeFlashSaleGoodCell.m */; };
@@ -317,6 +318,11 @@
 		C2A70BE622B877A0007B0022 /* GoodDetail_ShengjiV.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2A70BE522B877A0007B0022 /* GoodDetail_ShengjiV.xib */; };
 		C2ADD8BB227055C1000ED616 /* CouponListBlankView.m in Sources */ = {isa = PBXBuildFile; fileRef = C2ADD8B8227055C1000ED616 /* CouponListBlankView.m */; };
 		C2ADD8BC227055C1000ED616 /* CouponListBlankView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2ADD8B9227055C1000ED616 /* CouponListBlankView.xib */; };
+		C2ADE5DA235B01C100265F19 /* NewNoviceGuideContrl.m in Sources */ = {isa = PBXBuildFile; fileRef = C2ADE5D6235B01C100265F19 /* NewNoviceGuideContrl.m */; };
+		C2ADE5DD235B023400265F19 /* NewNoviceGuideFirst.m in Sources */ = {isa = PBXBuildFile; fileRef = C2ADE5DC235B023400265F19 /* NewNoviceGuideFirst.m */; };
+		C2ADE5DF235B025500265F19 /* NewNoviceGuideFirst.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2ADE5DE235B025500265F19 /* NewNoviceGuideFirst.xib */; };
+		C2ADE5E2235B050600265F19 /* NewNoviceGuideSec.m in Sources */ = {isa = PBXBuildFile; fileRef = C2ADE5E1235B050600265F19 /* NewNoviceGuideSec.m */; };
+		C2ADE5E4235B051200265F19 /* NewNoviceGuideSec.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2ADE5E3235B051200265F19 /* NewNoviceGuideSec.xib */; };
 		C2B7602022F816D40099B6B3 /* ShareNewPosterV.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B7601F22F816D40099B6B3 /* ShareNewPosterV.m */; };
 		C2B7602222F816DF0099B6B3 /* ShareNewPosterV.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2B7602122F816DF0099B6B3 /* ShareNewPosterV.xib */; };
 		C2B8726F2356B943008F920E /* guideVideo.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = C2B872682356B943008F920E /* guideVideo.mp4 */; };
@@ -733,6 +739,8 @@
 		C2521D7E226D654300A8D3A0 /* DBZJ_SearchHead.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DBZJ_SearchHead.xib; sourceTree = "<group>"; };
 		C2521D80226D6A9000A8D3A0 /* DBZJ_SearchTextField.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DBZJ_SearchTextField.h; sourceTree = "<group>"; };
 		C2521D81226D6A9000A8D3A0 /* DBZJ_SearchTextField.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DBZJ_SearchTextField.m; sourceTree = "<group>"; };
+		C25CF2E1235D444D00E257D7 /* ShowPopVManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShowPopVManager.h; sourceTree = "<group>"; };
+		C25CF2E2235D444D00E257D7 /* ShowPopVManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShowPopVManager.m; sourceTree = "<group>"; };
 		C25F5F1822D57EBF006C7C4D /* New_HomeFlashSale.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = New_HomeFlashSale.h; sourceTree = "<group>"; };
 		C25F5F1922D57EBF006C7C4D /* New_HomeFlashSale.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = New_HomeFlashSale.m; sourceTree = "<group>"; };
 		C25F5F1B22D57ECC006C7C4D /* New_HomeFlashSale.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = New_HomeFlashSale.xib; sourceTree = "<group>"; };
@@ -953,6 +961,14 @@
 		C2ADD8B8227055C1000ED616 /* CouponListBlankView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CouponListBlankView.m; sourceTree = "<group>"; };
 		C2ADD8B9227055C1000ED616 /* CouponListBlankView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CouponListBlankView.xib; sourceTree = "<group>"; };
 		C2ADD8BA227055C1000ED616 /* CouponListBlankView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CouponListBlankView.h; sourceTree = "<group>"; };
+		C2ADE5D6235B01C100265F19 /* NewNoviceGuideContrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewNoviceGuideContrl.m; sourceTree = "<group>"; };
+		C2ADE5D7235B01C100265F19 /* NewNoviceGuideContrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewNoviceGuideContrl.h; sourceTree = "<group>"; };
+		C2ADE5DB235B023400265F19 /* NewNoviceGuideFirst.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewNoviceGuideFirst.h; sourceTree = "<group>"; };
+		C2ADE5DC235B023400265F19 /* NewNoviceGuideFirst.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewNoviceGuideFirst.m; sourceTree = "<group>"; };
+		C2ADE5DE235B025500265F19 /* NewNoviceGuideFirst.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewNoviceGuideFirst.xib; sourceTree = "<group>"; };
+		C2ADE5E0235B050600265F19 /* NewNoviceGuideSec.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewNoviceGuideSec.h; sourceTree = "<group>"; };
+		C2ADE5E1235B050600265F19 /* NewNoviceGuideSec.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewNoviceGuideSec.m; sourceTree = "<group>"; };
+		C2ADE5E3235B051200265F19 /* NewNoviceGuideSec.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewNoviceGuideSec.xib; sourceTree = "<group>"; };
 		C2B7601E22F816D40099B6B3 /* ShareNewPosterV.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShareNewPosterV.h; sourceTree = "<group>"; };
 		C2B7601F22F816D40099B6B3 /* ShareNewPosterV.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShareNewPosterV.m; sourceTree = "<group>"; };
 		C2B7602122F816DF0099B6B3 /* ShareNewPosterV.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShareNewPosterV.xib; sourceTree = "<group>"; };
@@ -1498,6 +1514,7 @@
 		C2210B9D2248BEA600C1C765 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				C25CF2E0235D442800E257D7 /* ShowPopvManager */,
 				C2F7D89722BB5DA500D6D02A /* GKDYVideoPlayer */,
 				C2F7D89122BB5DA500D6D02A /* MJ_Proxy */,
 				C2F7D89422BB5DA500D6D02A /* MpZGcons */,
@@ -2222,6 +2239,15 @@
 				C2F1E06A22C9F80100CD354E /* MyCombat_Bottom.xib */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		C25CF2E0235D442800E257D7 /* ShowPopvManager */ = {
+			isa = PBXGroup;
+			children = (
+				C25CF2E1235D444D00E257D7 /* ShowPopVManager.h */,
+				C25CF2E2235D444D00E257D7 /* ShowPopVManager.m */,
+			);
+			path = ShowPopvManager;
 			sourceTree = "<group>";
 		};
 		C25F5F1722D57E9F006C7C4D /* 改版后 */ = {
@@ -3019,6 +3045,45 @@
 			path = "顶部视图";
 			sourceTree = "<group>";
 		};
+		C2ADE5D4235B01C100265F19 /* 双11攻略 */ = {
+			isa = PBXGroup;
+			children = (
+				C2ADE5D5235B01C100265F19 /* Contrl */,
+				C2ADE5D8235B01C100265F19 /* Model */,
+				C2ADE5D9235B01C100265F19 /* View */,
+			);
+			path = "双11攻略";
+			sourceTree = "<group>";
+		};
+		C2ADE5D5235B01C100265F19 /* Contrl */ = {
+			isa = PBXGroup;
+			children = (
+				C2ADE5D7235B01C100265F19 /* NewNoviceGuideContrl.h */,
+				C2ADE5D6235B01C100265F19 /* NewNoviceGuideContrl.m */,
+			);
+			path = Contrl;
+			sourceTree = "<group>";
+		};
+		C2ADE5D8235B01C100265F19 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C2ADE5D9235B01C100265F19 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C2ADE5DB235B023400265F19 /* NewNoviceGuideFirst.h */,
+				C2ADE5DC235B023400265F19 /* NewNoviceGuideFirst.m */,
+				C2ADE5DE235B025500265F19 /* NewNoviceGuideFirst.xib */,
+				C2ADE5E0235B050600265F19 /* NewNoviceGuideSec.h */,
+				C2ADE5E1235B050600265F19 /* NewNoviceGuideSec.m */,
+				C2ADE5E3235B051200265F19 /* NewNoviceGuideSec.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		C2B872672356B943008F920E /* 引导页 */ = {
 			isa = PBXGroup;
 			children = (
@@ -3398,6 +3463,7 @@
 		C2F8963522B3739D00DA02EC /* 首页二级界面 */ = {
 			isa = PBXGroup;
 			children = (
+				C2ADE5D4235B01C100265F19 /* 双11攻略 */,
 				C21B7EB82331D5B900BAD648 /* 拼多多 */,
 				C25F5F2D22D5D233006C7C4D /* 品牌展示 */,
 				C27CD55B22C07FB200852FE0 /* 社区推荐 */,
@@ -3591,8 +3657,10 @@
 				C24FAD5022C45C5400645590 /* MyCombat_ContentV.xib in Resources */,
 				C24E1C722334753900A5031A /* GoodDetailPDDDetailCell.xib in Resources */,
 				C279938A22C376EC004C0B4C /* ClassScheCardCellTableViewCell.xib in Resources */,
+				C2ADE5DF235B025500265F19 /* NewNoviceGuideFirst.xib in Resources */,
 				C279938722C376EC004C0B4C /* RegisterDetailCell.xib in Resources */,
 				C2386F14233CBC7E0013693A /* MerChantPromoContrl.xib in Resources */,
+				C2ADE5E4235B051200265F19 /* NewNoviceGuideSec.xib in Resources */,
 				C236735F23233E7900BBF42B /* AlipaySDK.bundle in Resources */,
 				C21CB03A2330EA2C0064166C /* Home_HeadDotV.xib in Resources */,
 				C289C9E622BE1DAB0031F21A /* NewPeo_ShareGoodCell.xib in Resources */,
@@ -3842,6 +3910,7 @@
 				C2B872722356B943008F920E /* AppGuideV.m in Sources */,
 				C271BF0A22B2488D00A94014 /* Home_FlashSaleGoodCell.m in Sources */,
 				C25F5F2522D58A4D006C7C4D /* BrandSpecialArea.m in Sources */,
+				C2ADE5DD235B023400265F19 /* NewNoviceGuideFirst.m in Sources */,
 				C2210BAC2248BEEC00C1C765 /* MPZG_NavigationContrl.m in Sources */,
 				C27CD56222C0800600852FE0 /* Home_Com_Group_Recom.m in Sources */,
 				C289C9D422BDFB4A0031F21A /* NewPeo_timeView.m in Sources */,
@@ -3896,6 +3965,7 @@
 				C271BF0522B230C700A94014 /* Home_FlashTimeStaCell.m in Sources */,
 				C21C72D622C616BE009F3199 /* UITabBarItem+DKSBadge.m in Sources */,
 				C25F5F4122D5E9B1006C7C4D /* Brand_ShowDetailHead.m in Sources */,
+				C25CF2E3235D444D00E257D7 /* ShowPopVManager.m in Sources */,
 				C25F5F3722D5DAD9006C7C4D /* Brand_ShowCells.m in Sources */,
 				C2A70BDA22B8772B007B0022 /* GoodDetailSegment.m in Sources */,
 				C2384F9A2249F20E0070CFFE /* IndexButton.m in Sources */,
@@ -3988,6 +4058,7 @@
 				C2B8905B22A6040A0005AAD5 /* SGQRCodeAlbumManager.m in Sources */,
 				C271BEF222B1F54800A94014 /* Home_AdVerView.m in Sources */,
 				C2210C402248CD7F00C1C765 /* TYBaseAnimation.m in Sources */,
+				C2ADE5E2235B050600265F19 /* NewNoviceGuideSec.m in Sources */,
 				C201424B2266F366004353DC /* CategoryHeadView.m in Sources */,
 				C21C72EF22C6254A009F3199 /* UIView+SDExtension.m in Sources */,
 				C2B7602022F816D40099B6B3 /* ShareNewPosterV.m in Sources */,
@@ -4031,6 +4102,7 @@
 				C2F8962D22B3299000DA02EC /* Home_EveeChoiView.m in Sources */,
 				C267C84722534F7500FE6488 /* ForeGetPwdcontrl.m in Sources */,
 				C279937E22C376EB004C0B4C /* MySpreadContrl.m in Sources */,
+				C2ADE5DA235B01C100265F19 /* NewNoviceGuideContrl.m in Sources */,
 				C2EE9B1222C70637002775A4 /* GoToAuth_View.m in Sources */,
 				C2EDB822232A38990085B9D6 /* NewPeo_RuleV.m in Sources */,
 				C2E227EF230690C800741CD3 /* HSSessionModel.m in Sources */,

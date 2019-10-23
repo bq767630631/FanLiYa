@@ -20,28 +20,32 @@
 
 - (void)awakeFromNib{
     [super awakeFromNib];
-    [self addSubview:self.pro];
+    
+//    [self addSubview:self.pro];
 }
 
 - (void)setInfo:(id)model{
       DBZJ_Zqy_Info *info = model;
     self.cur_Lb.text = info.curStr;
     self.pro_lb.text = info.totalStr;
-    
+    if (self.pro) {
+        [self.pro removeFromSuperview];
+    }
+    self.pro = [[LoopProgressView alloc]initWithFrame:CGRectMake(0, 0, 84, 84)];
     self.pro.progress = info.progress;
     self.pro.lbStr = info.lbStr;
     self.pro.strokeColor = info.strokeColor;
-  
+    [self addSubview:self.pro];
     [self.pro setNeedsDisplay];
 }
 
 #pragma mark - getter
-- (LoopProgressView *)pro{
-    if (!_pro) {
-        NSLog(@"LoopProgressView  init");
-        _pro = [[LoopProgressView alloc]initWithFrame:CGRectMake(0, 0, 84, 84)];
-    }
-    return _pro;
-}
+//- (LoopProgressView *)pro{
+//    if (!_pro) {
+//        NSLog(@"LoopProgressView  init");
+//        _pro = [[LoopProgressView alloc]initWithFrame:CGRectMake(0, 0, 84, 84)];
+//    }
+//    return _pro;
+//}
 
 @end

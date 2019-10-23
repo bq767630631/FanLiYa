@@ -22,6 +22,7 @@
 #import "NewPeople_EnjoyContrl.h"
 #import "PingDuoduoHomeContrl.h"
 #import <JDSDK/KeplerApiManager.h>
+#import "NewNoviceGuideContrl.h"
 
 @interface Home_headView ()<SDCycleScrollViewDelegate,UIScrollViewDelegate>
 
@@ -214,13 +215,13 @@
     }else if (type==9){//京东界面
         [[KeplerApiManager sharedKPService] openKeplerPageWithURL:info.url userInfo:nil failedCallback:^(NSInteger code, NSString *url) {
             //422:没有安装jd
-            NSLog(@"%zd",code);
-            NSLog(@"%@",url);
             if (code==422) {
                 DetailWebContrl *web = [[DetailWebContrl alloc] initWithUrl:info.url title:nil para:nil];
                 [page.naviContrl pushViewController:web animated:YES];
             }
         }];
+    }else if (type==10){
+        [page.naviContrl pushViewController:[NewNoviceGuideContrl new] animated:YES];
     }
 }
 

@@ -115,14 +115,13 @@
     [self.pro3 setInfo:info];
     
     [self.leadImage setPlaceholderImageWithFullPath:info.share_wechat_image placeholderImage:@"img_head_moren"];
-    self.leadName.text = info.share_wechat_name;
+    self.leadName.text = @"联系团长";
     self.wechat.text = [NSString stringWithFormat:@"微信号: %@",info.share_wechat_account];
 }
 
 #pragma mark - actions
 - (IBAction)yaoQingAction:(UIButton *)sender {
-//    [HandelTaoBaoTradeManager openCartWithNavi:self.viewController.navigationController];
-//    return;
+
      [self.viewController.navigationController pushViewController:[NewPeople_EnjoyContrl new] animated:YES];
 }
 
@@ -140,9 +139,23 @@
     if (self.info.share_wechat_account.length) {
         [UIPasteboard generalPasteboard].string = self.info.share_wechat_account;
         [YJProgressHUD showMsgWithoutView:@"微信号复制成功"];
+        [self delayDoWork:1.0 WithBlock:^{
+            [self openWechat];
+        }];
     }
 }
 
+- (void)openWechat{
+    NSURL *url = [NSURL URLWithString:@"weixin://"];
+    BOOL canOpen = [[UIApplication sharedApplication] canOpenURL:url];
+    //先判断是否能打开该url
+    if (canOpen)
+    {   //打开微信
+        [[UIApplication sharedApplication] openURL:url];
+    }else{
+        NSLog(@"wei  anzhung weixin");
+    }
+}
 
 #pragma mark - getter
 - (DBZJ_Income_ProView *)pro1{

@@ -20,6 +20,7 @@
 #import "NewPeople_EnjoyContrl.h"
 #import "PingDuoduoHomeContrl.h"
 #import <JDSDK/KeplerApiManager.h>
+#import "NewNoviceGuideContrl.h"
 
 @interface Home_AdVerView ()<SDCycleScrollViewDelegate,ZKCycleScrollViewDataSource>
 @property (weak, nonatomic) IBOutlet UILabel *boBao;
@@ -231,6 +232,8 @@ static NSString *kTextCellId = @"kTextCellId";
                 [page.naviContrl pushViewController:web animated:YES];
             }
         }];
+    }else if (type==10){
+         [page.naviContrl pushViewController:[NewNoviceGuideContrl new] animated:YES];
     }
 }
 

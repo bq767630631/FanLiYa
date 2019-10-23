@@ -25,6 +25,7 @@
 #import "LoginContrl.h"
 #import "DBZJ_CommunityContrl.h"
 #import "MPZG_NavigationContrl.h"
+#import "UIImageView+WebCache.h"
 
 @interface Home_headMenuFirst ()
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *view2Lead;
@@ -145,7 +146,7 @@
 }
 
 - (void)handleImageV:(UIImageView*)imageV  lable:(UILabel*)lable info:(MenuSceneceInfo*)info{
-    [imageV setDefultPlaceholderWithFullPath:info.imageUrl];
+    [imageV sd_setImageWithURL:[NSURL URLWithString:info.pic] placeholderImage:nil options:SDWebImageRefreshCached];
     lable.text = info.title;
 }
 
@@ -245,7 +246,6 @@
     }else if ([info.id_ isEqualToString:@"app_18"]){ //素材专区
         page.tabBarContrl.selectedIndex = 3;
        MPZG_NavigationContrl *nav = page.tabBarContrl.viewControllers[3];
-        NSLog(@"%@",nav.viewControllers);
         DBZJ_CommunityContrl *vc = nav.viewControllers.firstObject;
         vc.jumpToSucai = YES;
         return;
@@ -272,6 +272,10 @@
             MyCollecTionContrl *vc = [MyCollecTionContrl new];
               pushvc = vc;
         }
+    }else if ([info.id_ isEqualToString:@"h5"] && info.url&&info.url.length>0){ //
+        NSString *url =  [NSString stringWithFormat:@"%@&token=%@",info.url ,ToKen];
+        DetailWebContrl *vc = [[DetailWebContrl alloc] initWithUrl:url title:@"" para:nil];
+        pushvc = vc;
     }
     
     

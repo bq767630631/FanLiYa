@@ -7,7 +7,7 @@
 //
 
 #import "MPZG_BaseContrl.h"
-
+#import "ShowPopVManager.h"
 @interface MPZG_BaseContrl ()
 
 @end
@@ -35,6 +35,11 @@
     [super viewWillAppear:animated];
     self.navigationController.navigationBarHidden = NO;
     [self.navigationController.navigationBar navBarBackGroundColor:ThemeColor image:nil isOpaque:YES];
+}
+
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+   // [[ShowPopVManager shareInstance] showPopV];
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle{

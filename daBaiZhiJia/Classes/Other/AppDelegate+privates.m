@@ -24,6 +24,7 @@
 #import "SearchResultContrl.h"
 #import "SearchSaveManager.h"
 //#import <objc/runtime.h>
+#import "ShowPopVManager.h"
 
 #define QQShare_AppID @"1109202625"
 #define QQShare_AppSecret @"3YCNoE9R8HIihBGY"
@@ -296,11 +297,18 @@ fetchCompletionHandler:
 
 
 #pragma mark -  UIApplicationDelegate
+//该方法启动的时候不执行！！
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     [application setApplicationIconBadgeNumber:0];
+    [[ShowPopVManager shareInstance] showPopV];
+    NSLog(@"");
 }
 
+
 - (void)applicationDidBecomeActive:(UIApplication *)application{
+    NSLog(@"");
+  
+    return;
     UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
     
     if (pasteboard.string && pasteboard.string.length>0) {
@@ -359,7 +367,7 @@ fetchCompletionHandler:
 //yes:可以弹出搜索视图
 - (BOOL)isJumpToSearchV{
     UIViewController *curVc = [self getCurrentVC];
-    if ([curVc isKindOfClass:[CreateShareContrl class]] || [curVc isKindOfClass:[LoginContrl class]] ||[curVc isKindOfClass:[RegisterContrl class]] || [curVc isKindOfClass:[Goto_LoginContrl class]]||[curVc isKindOfClass:[Bind_PhoneContrl class]]||[curVc isKindOfClass:[DetailWebContrl class]] ||[curVc isKindOfClass:[ForeGetPwdcontrl class]] || [curVc isKindOfClass:[NewPeo_shareContrl class]]|| [curVc isKindOfClass: NSClassFromString(@"GoodDetailContrl")] ) { //GoodDetailContrl
+    if ([curVc isKindOfClass:[LoginContrl class]] ||[curVc isKindOfClass:[RegisterContrl class]] || [curVc isKindOfClass:[Goto_LoginContrl class]]||[curVc isKindOfClass:[Bind_PhoneContrl class]]||[curVc isKindOfClass:[DetailWebContrl class]] ||[curVc isKindOfClass:[ForeGetPwdcontrl class]] || [curVc isKindOfClass:[NewPeo_shareContrl class]]) { //GoodDetailContrl
         //这些场景不用弹出搜索视图
        
         return NO;

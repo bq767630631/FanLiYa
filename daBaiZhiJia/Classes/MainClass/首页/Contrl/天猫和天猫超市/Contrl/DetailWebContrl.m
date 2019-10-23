@@ -14,10 +14,14 @@
 #import "CreateShare_Model.h"
 #import "LoginContrl.h"
 #import <AlipaySDK/AlipaySDK.h>
+#import <JDSDK/KeplerApiManager.h>
+
 
 #define naviToGoodDetail @"navigationToGoodDetail"
 #define naviToToShare @"navigationToShare"
 #define AlyPayMethod @"alyPayMethod"
+#define JumpToPtMethod @"jumpToPtMethod"
+
 @interface DetailWebContrl ()<WKScriptMessageHandler,WKNavigationDelegate>
 @property (nonatomic, strong) NSString *url;
 @property (nonatomic, strong) NSString *titleStr;
@@ -135,8 +139,13 @@
         FLYPT_Type pt = FLYPT_Type_TM;
         if ([body containsString:@"&"]) {//sku=123&pt=1
          NSArray *temp = [body componentsSeparatedByString:@"&"];
-            sku = [temp.firstObject substringFromIndex:4];
-            pt  = [[temp.lastObject substringFromIndex:3] integerValue];
+            NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+            for (NSString *subStr in temp) {
+                NSArray *temp2 = [subStr componentsSeparatedByString:@"="];
+                [dict setObject:temp2.lastObject forKey:temp2.firstObject];
+            }
+            sku = dict[@"sku"];
+            pt = [dict[@"pt"] integerValue];
         }else{
              sku = message.body;
         }
@@ -156,36 +165,21 @@
         }
     }
     if ([message.name isEqualToString:AlyPayMethod]) {
-           NSString *bodys = message.body;
-           NSArray *temp = [bodys componentsSeparatedByString:@"&"];
+        [self handleAlyPayWithMessage:message];
+    }
+    if ([message.name isEqualToString:JumpToPtMethod]) {
+        NSString *bodys = message.body;
+        NSArray *temp = [bodys componentsSeparatedByString:@"&"];
         NSMutableDictionary *dict = [NSMutableDictionary dictionary];
         for (NSString *subStr in temp) {
-              NSArray *temp2 = [subStr componentsSeparatedByString:@"="];
+            NSArray *temp2 = [subStr componentsSeparatedByString:@"="];
             [dict setObject:temp2.lastObject forKey:temp2.firstObject];
         }
-        NSString *body = dict[@"body"];
-        NSString *total_amount = dict[@"total_amount"];
-        NSString *subject = dict[@"subject"];
-        NSString *pay_type = dict[@"pay_type"];
-        NSString *out_trade_no = dict[@"out_trade_no"];
-        
-        NSDictionary *para = @{@"token":ToKen,@"body":body,@"total_amount":total_amount,@"subject":subject,@"pay_type":pay_type,@"out_trade_no":out_trade_no};
-        NSLog(@"para %@",para);
-        [PPNetworkHelper GET:URL_Add(@"/v.php/index.pay/index") parameters:para success:^(id responseObject) {
-            NSLog(@"%@",responseObject);
-            NSInteger code = [responseObject[@"code"] integerValue];
-            if (code ==SucCode) {
-                [self alipayWithOrderStr:responseObject[@"data"]];
-            }else{
-                [YJProgressHUD showMsgWithoutView:responseObject[@"msg"]];
-            }
-        } failure:^(NSError *error) {
-            [YJProgressHUD showAlertTipsWithError:error];
-            NSLog(@"%@",error);
-        }];
-        
-        
+        NSString *pt = dict[@"pt"];
+        NSString *url = dict[@"url"];
+        [self handleJumptWith:pt.integerValue url:url];
     }
+    
 }
 #pragma mark - private
 - (BOOL)judgeisLogin{
@@ -196,6 +190,36 @@
         [self.navigationController pushViewController:[LoginContrl new] animated:YES];
         return NO;
     }
+}
+
+- (void)handleAlyPayWithMessage:(WKScriptMessage *)message {
+    NSString *bodys = message.body;
+    NSArray *temp = [bodys componentsSeparatedByString:@"&"];
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    for (NSString *subStr in temp) {
+        NSArray *temp2 = [subStr componentsSeparatedByString:@"="];
+        [dict setObject:temp2.lastObject forKey:temp2.firstObject];
+    }
+    NSString *body = dict[@"body"];
+    NSString *total_amount = dict[@"total_amount"];
+    NSString *subject = dict[@"subject"];
+    NSString *pay_type = dict[@"pay_type"];
+    NSString *out_trade_no = dict[@"out_trade_no"];
+    NSDictionary *para = @{@"token":ToKen,@"body":body,@"total_amount":total_amount,@"subject":subject,@"pay_type":pay_type,@"out_trade_no":out_trade_no};
+    NSLog(@"para %@",para);
+    
+    [PPNetworkHelper GET:URL_Add(@"/v.php/index.pay/index") parameters:para success:^(id responseObject) {
+        NSLog(@"%@",responseObject);
+        NSInteger code = [responseObject[@"code"] integerValue];
+        if (code ==SucCode) {
+            [self alipayWithOrderStr:responseObject[@"data"]];
+        }else{
+            [YJProgressHUD showMsgWithoutView:responseObject[@"msg"]];
+        }
+    } failure:^(NSError *error) {
+        [YJProgressHUD showAlertTipsWithError:error];
+        NSLog(@"%@",error);
+    }];
 }
 
 - (void)alipayWithOrderStr:(NSString *)orderStr {
@@ -229,6 +253,29 @@
     }];
 }
 
+//处理跳转的平台
+- (void)handleJumptWith:(NSInteger)pt url:(NSString*)url{//1、天猫 2、京东 3、拼多多 4、淘宝
+    if (pt==FLYPT_Type_TM ||pt==FLYPT_Type_TB) {//tb
+         [HandelTaoBaoTradeManager openTaoBaoAndTraWithUrl:url navi:self.navigationController];
+    }else if (pt==FLYPT_Type_Pdd){ //pdd
+        BOOL can = [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"pinduoduo://"]];
+        if (can) {
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
+        }else{
+            DetailWebContrl *web = [[DetailWebContrl alloc] initWithUrl:url title:nil para:nil];
+            [self.navigationController pushViewController:web animated:YES];
+        }
+    }else if (pt==FLYPT_Type_JD){
+        [[KeplerApiManager sharedKPService] openKeplerPageWithURL:url userInfo:nil failedCallback:^(NSInteger code, NSString *url) {
+            //422:没有安装jd
+            if (code==422) {
+                DetailWebContrl *web = [[DetailWebContrl alloc] initWithUrl:url title:nil para:nil];
+                [self.navigationController pushViewController:web animated:YES];
+            }
+        }];
+    }
+}
+
 #pragma mark - getter
 - (WKWebView *)webView{
     if (!_webView) {
@@ -239,6 +286,7 @@
         [configuration.userContentController addScriptMessageHandler:self name:naviToGoodDetail];//
         [configuration.userContentController addScriptMessageHandler:self name:naviToToShare];//
         [configuration.userContentController addScriptMessageHandler:self name:AlyPayMethod];//
+          [configuration.userContentController addScriptMessageHandler:self name:JumpToPtMethod];//
         CGRect frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
         _webView = [[WKWebView alloc] initWithFrame:frame configuration:configuration];
        

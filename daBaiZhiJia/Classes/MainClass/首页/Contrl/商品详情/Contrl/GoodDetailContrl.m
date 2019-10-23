@@ -198,12 +198,12 @@
 }
 
 - (void)copyTklAction{
-    NSLog(@"");
-    if ([self judgeisLogin]) {
+    if ([self judgeisLogin]){
         [CreateShare_Model geneRateTaoKlWithSku:self.sku vc:self navi_vc:self.navigationController block:^(NSString *tkl, NSString *code, NSString *shorturl) {
             if (tkl) {
                 [UIPasteboard generalPasteboard].string = tkl;
                 [YJProgressHUD showMsgWithoutView:@"淘口令复制成功"];
+                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"taobao://m.taobao.com/"]];
             }
         }];
     }

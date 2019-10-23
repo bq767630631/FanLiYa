@@ -47,7 +47,9 @@
 {
     _i = 0;
     //
+ 
     CGContextRef progressContext = UIGraphicsGetCurrentContext();
+    CGContextClearRect(progressContext, rect);
     CGContextSetLineWidth(progressContext, ProgressWidth);
     CGContextSetRGBStrokeColor(progressContext, 245/255.0, 245/255.0, 245/255.0, 1);
     
