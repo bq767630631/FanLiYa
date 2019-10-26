@@ -14,6 +14,8 @@
 @property (nonatomic, strong) UINavigationController *navi_vc;
 - (void)setAuthInfo;
 - (void)setFailInfo;
+- (void)setTipsAuthInfo;
+
 @end
 
 

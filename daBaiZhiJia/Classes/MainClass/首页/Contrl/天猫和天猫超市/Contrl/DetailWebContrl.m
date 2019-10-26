@@ -15,12 +15,18 @@
 #import "LoginContrl.h"
 #import <AlipaySDK/AlipaySDK.h>
 #import <JDSDK/KeplerApiManager.h>
+#import "WXApi.h"
+#import "NewPeo_VipShareV.h"
+#import "NewPeople_EnjoyContrl.h"
+#import "JSHAREService.h"
 
 
 #define naviToGoodDetail @"navigationToGoodDetail"
 #define naviToToShare @"navigationToShare"
 #define AlyPayMethod @"alyPayMethod"
 #define JumpToPtMethod @"jumpToPtMethod"
+#define Jumpapplet @"jumpapplet"   //
+#define jumToOnePointPurchaseShare @"jumpToOnePointPurchaseShare"
 
 @interface DetailWebContrl ()<WKScriptMessageHandler,WKNavigationDelegate>
 @property (nonatomic, strong) NSString *url;
@@ -40,7 +46,7 @@
     if (!self) {
         return nil;
     }
-    self.url = url;
+    self.url = url;// @"http://app.dabaihong.com/app2019/demo.html";
     self.title = title;
     self.para = para;
     return self;
@@ -138,12 +144,7 @@
         NSString *sku = @"";
         FLYPT_Type pt = FLYPT_Type_TM;
         if ([body containsString:@"&"]) {//sku=123&pt=1
-         NSArray *temp = [body componentsSeparatedByString:@"&"];
-            NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-            for (NSString *subStr in temp) {
-                NSArray *temp2 = [subStr componentsSeparatedByString:@"="];
-                [dict setObject:temp2.lastObject forKey:temp2.firstObject];
-            }
+            NSMutableDictionary *dict = [self dictParaWithMessage:message];
             sku = dict[@"sku"];
             pt = [dict[@"pt"] integerValue];
         }else{
@@ -164,24 +165,35 @@
             }];
         }
     }
-    if ([message.name isEqualToString:AlyPayMethod]) {
+    if ([message.name isEqualToString:AlyPayMethod]) {//阿里支付
         [self handleAlyPayWithMessage:message];
     }
-    if ([message.name isEqualToString:JumpToPtMethod]) {
-        NSString *bodys = message.body;
-        NSArray *temp = [bodys componentsSeparatedByString:@"&"];
-        NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-        for (NSString *subStr in temp) {
-            NSArray *temp2 = [subStr componentsSeparatedByString:@"="];
-            [dict setObject:temp2.lastObject forKey:temp2.firstObject];
-        }
+    if ([message.name isEqualToString:JumpToPtMethod]) {//平台
+        NSMutableDictionary *dict = [self dictParaWithMessage:message];
         NSString *pt = dict[@"pt"];
         NSString *url = dict[@"url"];
         [self handleJumptWith:pt.integerValue url:url];
     }
+    if ([message.name isEqualToString:Jumpapplet]) {//小程序
+        [self handleMiniProgramWithMessage:message];
+    }
+    if ([message.name isEqualToString:jumToOnePointPurchaseShare]) {
+        [self handleOnePointPurChaseWithMessage:message];
+    }
     
 }
 #pragma mark - private
+- (NSMutableDictionary*)dictParaWithMessage:(WKScriptMessage *)message{
+    NSString *bodys = message.body;
+    NSArray *temp = [bodys componentsSeparatedByString:@"&"];
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    for (NSString *subStr in temp) {
+        NSArray *temp2 = [subStr componentsSeparatedByString:@"="];
+        [dict setObject:temp2.lastObject forKey:temp2.firstObject];
+    }
+    return dict;
+}
+
 - (BOOL)judgeisLogin{
     NSString *token = ToKen;
     if (User_ID >0 &&token.length > 0) {
@@ -193,13 +205,7 @@
 }
 
 - (void)handleAlyPayWithMessage:(WKScriptMessage *)message {
-    NSString *bodys = message.body;
-    NSArray *temp = [bodys componentsSeparatedByString:@"&"];
-    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-    for (NSString *subStr in temp) {
-        NSArray *temp2 = [subStr componentsSeparatedByString:@"="];
-        [dict setObject:temp2.lastObject forKey:temp2.firstObject];
-    }
+    NSMutableDictionary *dict = [self dictParaWithMessage:message];
     NSString *body = dict[@"body"];
     NSString *total_amount = dict[@"total_amount"];
     NSString *subject = dict[@"subject"];
@@ -276,6 +282,82 @@
     }
 }
 
+//处理小程序跳转
+- (void)handleMiniProgramWithMessage:(WKScriptMessage *)message{
+    NSMutableDictionary *dict = [self dictParaWithMessage:message];
+    NSString *sku = dict[@"sku"];
+    NSString *discount = dict[@"discount"];
+    [PPNetworkHelper GET:URL_Add(@"/v.php/hd.jd/getCoupon") parameters:@{@"sku":sku,@"discount":discount,@"token":ToKen} success:^(id responseObject) {
+        NSInteger code = [responseObject[@"code"] integerValue];
+        if (code ==SucCode) {
+            NSDictionary *dictsec = responseObject[@"data"];
+            NSString *userName = dictsec[@"username"];
+            NSString *path = dictsec[@"url"];
+            if (![WXApi isWXAppInstalled]) {
+                return;
+            }
+            WXLaunchMiniProgramReq *launchMini = [WXLaunchMiniProgramReq object];
+            launchMini.userName = userName;
+            launchMini.path = path;
+            launchMini.miniProgramType = WXMiniProgramTypeRelease;
+            [WXApi sendReq:launchMini];
+        }
+    } failure:^(NSError *error) {
+        [YJProgressHUD showAlertTipsWithError:error];
+    }];
+}
+
+- (void)handleOnePointPurChaseWithMessage:(WKScriptMessage *)message{
+    NSMutableDictionary *dict = [self dictParaWithMessage:message];
+    NSString *urltype = dict[@"urltype"];
+    [PPNetworkHelper GET:URL_Add(@"/v.php/hd.jd/getShareUrl") parameters:@{@"urltype":urltype,@"token":ToKen} success:^(id responseObject) {
+          NSInteger code = [responseObject[@"code"] integerValue];
+        if (code ==SucCode) {
+            NSDictionary *dictSec = responseObject[@"data"];
+            NSString *url = dictSec[@"url"];
+            NSString *pic = dictSec[@"pic"];
+            NSString *title = dictSec[@"title"];
+            NSString *content = dictSec[@"content"];
+            if (url.length==0||[url isEqualToString:@""]|| [url isKindOfClass:[NSNull class]]) {//进入邀请好友界面
+                [self.navigationController pushViewController:[NewPeople_EnjoyContrl new] animated:YES];
+            }else{
+                NewPeo_VipShareV *shar = [NewPeo_VipShareV viewFromXib];
+                shar.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+                [shar showInWindowWithBackgoundTapDismissEnable:YES];
+                shar.callBack = ^(NSUInteger x) {
+                    JSHAREPlatform platform = JSHAREPlatformWechatSession;
+                    if (x==1) {
+                        platform = JSHAREPlatformWechatSession;
+                    }else if (x==2){
+                        platform = JSHAREPlatformWechatTimeLine;
+                    }else if (x==3){
+                        platform = JSHAREPlatformQQ;
+                    }else if (x==4){
+                        platform = JSHAREPlatformQzone;
+                    }
+                    JSHAREMessage *message = [JSHAREMessage message];
+                    message.platform = platform;
+                    message.mediaType = JSHARELink;
+                    message.title = title;
+                    message.text = content;
+                    message.url = url;
+                    
+                    UIImage *temp = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:pic]]];
+                    NSData *tempData = UIImageJPEGRepresentation(temp, 0.1);
+                    message.thumbnail = tempData;
+                    [JSHAREService share:message handler:^(JSHAREState state, NSError *error) {
+                        NSLog(@"分享回调 state= %lu error =%@",(unsigned long)state, error);
+                    }];
+                };
+                    
+            }
+        }
+    } failure:^(NSError *error) {
+         [YJProgressHUD showAlertTipsWithError:error];
+    }];
+    
+}
+
 #pragma mark - getter
 - (WKWebView *)webView{
     if (!_webView) {
@@ -286,7 +368,9 @@
         [configuration.userContentController addScriptMessageHandler:self name:naviToGoodDetail];//
         [configuration.userContentController addScriptMessageHandler:self name:naviToToShare];//
         [configuration.userContentController addScriptMessageHandler:self name:AlyPayMethod];//
-          [configuration.userContentController addScriptMessageHandler:self name:JumpToPtMethod];//
+        [configuration.userContentController addScriptMessageHandler:self name:JumpToPtMethod];//
+        [configuration.userContentController addScriptMessageHandler:self name:Jumpapplet];//
+        [configuration.userContentController addScriptMessageHandler:self name:jumToOnePointPurchaseShare];//
         CGRect frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
         _webView = [[WKWebView alloc] initWithFrame:frame configuration:configuration];
        

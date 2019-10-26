@@ -14,7 +14,7 @@
 #import "LoginContrl.h"
 #import "UIImageView+WebCache.h"
 #import "NewPeo_VipShareV.h"
-
+#import "GoToAuth_View.h"
 @interface NewPeo_shareContrl ()
 @property (nonatomic, strong) UIScrollView *scroView;
 @property (nonatomic, strong) NewPeo_shareContentV *contentV;
@@ -106,8 +106,33 @@
             self.ruleInfo = rule;
             [self.contentV setInfoWith:goodArr time:time rule:rule tljList:tlj_list];
             self.scroView.contentSize = CGSizeMake(0, self.contentV.height + 20);
-         self.ruleInfo.imageData =  [NSData dataWithContentsOfURL:[NSURL URLWithString:rule.logo]];
+           self.ruleInfo.imageData =  [NSData dataWithContentsOfURL:[NSURL URLWithString:rule.logo]];
+             NSString *token = ToKen;
+            if (User_ID >0 &&token.length > 0) { //登录状态才弹
+                 [self queryPersonInfo];
+            }
         }
+    }];
+}
+
+- (void)queryPersonInfo{
+    [PPNetworkHelper POST:URL_Add(@"/v.php/user.user/getuserinfo") parameters:@{@"token":ToKen,@"v":APP_Version} success:^(id responseObject) {
+        NSLog(@"responseObject  %@",responseObject);
+        NSInteger code = [responseObject[@"code"] integerValue];
+        if (code == SucCode) {
+            NSInteger  relation_id = [responseObject[@"data"][@"relation_id"] integerValue];
+            //是否授权绑定过淘宝账号0否 不为0绑定过
+            if (relation_id == 0) {
+                GoToAuth_View *auth = [GoToAuth_View viewFromXib];
+                [auth setTipsAuthInfo];
+                auth.cur_vc  = self;
+                auth.navi_vc = self.navigationController;
+                [auth showInWindowWithBackgoundTapDismissEnable:NO];
+            }
+        }
+    } failure:^(NSError *error) {
+        NSLog(@"%@",error);
+        [YJProgressHUD showAlertTipsWithError:error ];
     }];
 }
 

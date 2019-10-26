@@ -23,6 +23,7 @@
 - (void)awakeFromNib{
     [super awakeFromNib];
     ViewBorderRadius(self, 7, UIColor.clearColor);
+  
 }
 
 - (void)setAuthInfo{
@@ -36,6 +37,14 @@
     self.imageV.image = ZDBImage(@"img_authtaobao");
     self.title.text = @"淘宝授权失败";
     self.content.text = @"淘宝授权失败将无法通过下单或分享产品获得收益";
+    [self.handleBtn setTitle:@"重新授权" forState:UIControlStateNormal];
+}
+
+
+- (void)setTipsAuthInfo{
+    self.imageV.image = ZDBImage(@"img_authtaobao");
+    self.title.text = @"完成授权领免单";
+    self.content.text = [NSString stringWithFormat:@"%@%@",@"第一步完成淘宝授权\n",@"第二部回到APP领取新人免单"];;
     [self.handleBtn setTitle:@"重新授权" forState:UIControlStateNormal];
 }
 

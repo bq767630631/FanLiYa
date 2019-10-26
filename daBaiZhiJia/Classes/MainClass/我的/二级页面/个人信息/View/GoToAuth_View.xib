@@ -12,7 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="GoToAuth_View">
-            <rect key="frame" x="0.0" y="0.0" width="270" height="282"/>
+            <rect key="frame" x="0.0" y="0.0" width="270" height="300"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qgR-rn-mGo">
@@ -48,7 +48,10 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0c3-xa-Qat">
-                    <rect key="frame" x="113.5" y="161.5" width="43" height="17"/>
+                    <rect key="frame" x="72" y="159.5" width="126" height="34"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="34" id="BJx-zn-oLd"/>
+                    </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <state key="normal" title="去授权" backgroundImage="img_buttonauth"/>
                     <connections>
@@ -56,12 +59,10 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fKV-Q4-0HU">
-                    <rect key="frame" x="104" y="188.5" width="62" height="12"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="12" id="oy9-mn-uXz"/>
-                    </constraints>
+                    <rect key="frame" x="72" y="203.5" width="126" height="34"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                    <state key="normal" title="无法授权？">
+                    <state key="normal" title="无法授权 一键口令授权" backgroundImage="img_buttonNotauth">
                         <color key="titleColor" red="0.99607843139999996" green="0.66274509800000003" blue="0.1843137255" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
                     <connections>
@@ -72,11 +73,13 @@
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="qgR-rn-mGo" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="7Ws-jZ-aSC"/>
+                <constraint firstItem="fKV-Q4-0HU" firstAttribute="height" secondItem="0c3-xa-Qat" secondAttribute="height" id="9cs-3A-Rk5"/>
                 <constraint firstItem="yOI-2Y-U9K" firstAttribute="top" secondItem="cd0-rI-f3l" secondAttribute="bottom" constant="21" id="Lyu-9a-041"/>
                 <constraint firstItem="fKV-Q4-0HU" firstAttribute="centerX" secondItem="0c3-xa-Qat" secondAttribute="centerX" id="Mch-k0-fo2"/>
-                <constraint firstItem="0c3-xa-Qat" firstAttribute="top" secondItem="5f4-fD-1LM" secondAttribute="bottom" constant="22" id="Piu-LI-mLt"/>
+                <constraint firstItem="0c3-xa-Qat" firstAttribute="top" secondItem="5f4-fD-1LM" secondAttribute="bottom" constant="20" id="Piu-LI-mLt"/>
                 <constraint firstItem="5f4-fD-1LM" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Who-ek-gLU"/>
                 <constraint firstItem="cd0-rI-f3l" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="az1-lQ-orp"/>
+                <constraint firstItem="fKV-Q4-0HU" firstAttribute="width" secondItem="0c3-xa-Qat" secondAttribute="width" id="fgj-VL-D7F"/>
                 <constraint firstItem="5f4-fD-1LM" firstAttribute="top" secondItem="yOI-2Y-U9K" secondAttribute="bottom" constant="17" id="uZ1-mn-2EF"/>
                 <constraint firstItem="cd0-rI-f3l" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="37" id="v7M-Wv-WUt"/>
                 <constraint firstItem="0c3-xa-Qat" firstAttribute="centerX" secondItem="5f4-fD-1LM" secondAttribute="centerX" id="vMh-Hv-U3N"/>
@@ -98,6 +101,7 @@
     <resources>
         <image name="icon_close_auth" width="12" height="12"/>
         <image name="img_authtaobao" width="63" height="63"/>
+        <image name="img_buttonNotauth" width="205.5" height="35"/>
         <image name="img_buttonauth" width="206" height="35"/>
     </resources>
 </document>

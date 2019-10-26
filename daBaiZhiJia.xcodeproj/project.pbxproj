@@ -4269,6 +4269,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/daBaiZhiJia/Classes/3ThD/WeChatSDK1.8.3",
 				);
+				MARKETING_VERSION = 1.7;
 				OTHER_CFLAGS = (
 					"$(inherited)",
 					"-isystem",
@@ -4404,6 +4405,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/daBaiZhiJia/Classes/3ThD/WeChatSDK1.8.3",
 				);
+				MARKETING_VERSION = 1.7;
 				OTHER_CFLAGS = (
 					"$(inherited)",
 					"-isystem",
